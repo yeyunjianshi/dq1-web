@@ -1,23 +1,23 @@
+import CanvasRenderer from './engine/canvasRenderer'
+import { Resource, AssetLoader, AssetLoadStatus } from './engine/resource'
 import './style.css'
-import typescriptLogo from './typescript.svg'
-import { setupCounter } from './counter'
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+const renderer = new CanvasRenderer('core')
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+const mapKey = 'world_map.png'
+const resource = new Resource()
+const mapPromise = resource
+  .loadSprite(mapKey)
+  .then((image) => console.log(image.naturalHeight))
+
+const assetLoader = new AssetLoader().addAssets(mapPromise)
+assetLoader.assetEvent.addListener((status) => {
+  if (status == AssetLoadStatus.SUCCESS) {
+    console.log(resource.hasSprite(mapKey))
+    renderer.render(() => {
+      renderer.drawSprite(resource.getSprite(mapKey) as Sprite, 1, 0, 0)
+    })
+  }
+})
+
+assetLoader.load()
