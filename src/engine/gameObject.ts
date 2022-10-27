@@ -1,17 +1,15 @@
 import Component from './component'
 import Engine from './engine'
 import AbsoluteLayout from './layout/AbsoluteLayout'
-import {
-  LayoutUnLimit,
-  LayoutMatchParent,
-  LayoutFitContent,
-} from './layout/layout'
+import { LayoutMatchParent, LayoutFitContent } from './layout/layout'
 
 class GameObject implements LifeCycle {
   private _localX = 0
   private _localY = 0
   worldX = 0
   worldY = 0
+  measureWidth = 0
+  measureHeight = 0
   width = 0
   height = 0
   /**
@@ -55,45 +53,29 @@ class GameObject implements LifeCycle {
     this.configLayout = layout ?? new AbsoluteLayout(this)
   }
 
-  layout(
-    measureParentWidth = LayoutUnLimit,
-    measureParentHeight = LayoutUnLimit
-  ): [number, number] {
-    if (
-      this.configWidth === LayoutMatchParent ||
-      this.configWidth === LayoutFitContent
-    ) {
-      this.width = measureParentWidth
-    } else {
-      this.width = this.configWidth
-    }
+  layout(): [number, number] {
+    this.measureWidth =
+      this.configWidth === LayoutMatchParent
+        ? this.parent.width
+        : Math.max(0, this.configWidth)
 
-    if (
-      this.configHeight === LayoutMatchParent ||
-      this.configHeight === LayoutFitContent
-    ) {
-      this.height = measureParentHeight
-    } else {
-      this.height = this.configHeight
-    }
+    this.measureHeight =
+      this.configHeight === LayoutMatchParent
+        ? this.parent.height
+        : Math.max(0, this.configHeight)
 
-    const [measureWidth, measureHeight] = this.layoutChildren(
-      this.width,
-      this.height
-    )
+    const [measureChildWidth, measureChildHeight] = this.layoutChildren()
+    if (this.configWidth === LayoutFitContent)
+      this.measureWidth = measureChildWidth
+    if (this.configHeight === LayoutFitContent)
+      this.measureHeight = measureChildHeight
 
-    if (this.configWidth < 0) this.width = measureWidth
-    if (this.configHeight < 0) this.height = measureHeight
-
-    return [this.width, this.height]
+    return [this.measureWidth, this.measureHeight]
   }
 
-  layoutChildren(
-    measureParentWidth: number,
-    measureParentHeight: number
-  ): [number, number] {
+  layoutChildren(): [number, number] {
     if (this.children.length === 0) return [0, 0]
-    return this.configLayout.layout(measureParentWidth, measureParentHeight)
+    return this.configLayout.layout()
   }
 
   start() {
@@ -125,12 +107,12 @@ class GameObject implements LifeCycle {
         this.alpha,
         0,
         0,
-        this.width,
-        this.height,
+        this.measureWidth,
+        this.measureHeight,
         this.worldX,
         this.worldY,
-        this.width,
-        this.height
+        this.measureWidth,
+        this.measureHeight
       )
   }
 

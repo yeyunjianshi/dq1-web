@@ -15,6 +15,11 @@ export default class implements LifeCycle {
   }
 
   start() {
+    if (this.rootObject.width < 0)
+      this.rootObject.width = this.engine.renderer.width
+    if (this.rootObject.height < 0)
+      this.rootObject.height = this.engine.renderer.height
+
     this.rootObject.layout()
     this.rootObject.start()
   }

@@ -45,10 +45,7 @@ interface IRenderer {
 }
 
 interface ILayout {
-  layout(
-    measureParentWidth: number,
-    measureParentHeight: number
-  ): [number, number]
+  layout(): [number, number]
 }
 
 interface ITime {

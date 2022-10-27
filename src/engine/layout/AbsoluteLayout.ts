@@ -1,5 +1,4 @@
 import GameObject from '../gameObject'
-import { LayoutUnLimit } from './layout'
 
 export default class AbsoluteLayout implements ILayout {
   private _root: GameObject
@@ -8,16 +7,10 @@ export default class AbsoluteLayout implements ILayout {
     this._root = root
   }
 
-  layout(
-    measureParentWidth: number,
-    measureParentHeight: number
-  ): [number, number] {
+  layout(): [number, number] {
     const [maxMeasureWidth, maxMeasureHeight] = this._root.children.reduce(
       ([maxChildWidth, maxChildHeight], child) => {
-        const [childWidth, childHeight] = child.layout(
-          measureParentWidth,
-          measureParentHeight
-        )
+        const [childWidth, childHeight] = child.layout()
         return [
           Math.max(child.localX + childWidth, maxChildWidth),
           Math.max(child.localY + childHeight, maxChildHeight),
@@ -25,15 +18,6 @@ export default class AbsoluteLayout implements ILayout {
       },
       [0, 0]
     )
-    const maxWidth =
-      measureParentWidth == LayoutUnLimit
-        ? maxMeasureWidth
-        : Math.min(measureParentWidth, maxMeasureWidth)
-    const maxHeight =
-      measureParentHeight == LayoutUnLimit
-        ? maxMeasureHeight
-        : Math.min(measureParentHeight, maxMeasureHeight)
-
-    return [maxWidth, maxHeight]
+    return [maxMeasureWidth, maxMeasureHeight]
   }
 }

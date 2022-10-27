@@ -1,5 +1,5 @@
 import GameObject from '../gameObject'
-import { LayoutUnLimit } from './layout'
+import { LayoutFitContent } from './layout'
 
 export default class VerticalLayout implements ILayout {
   private _root: GameObject
@@ -10,48 +10,32 @@ export default class VerticalLayout implements ILayout {
     this._gravity = config.gravity
   }
 
-  layout(
-    measureParentWidth: number,
-    measureParentHeight: number
-  ): [number, number] {
+  layout(): [number, number] {
     let y = 0
-    let maxWidth = measureParentWidth
-    let maxHeight = measureParentHeight
+    let maxWidth = 0
+    let maxHeight = 0
 
-    if (measureParentHeight === LayoutUnLimit) {
-      this._root.children.forEach((child) => {
-        child.localX = 0
-        child.localY = y
+    this._root.children.forEach((child) => {
+      child.localX = 0
+      child.localY = y
 
-        const [measureWidth, measureHeight] = child.layout(
-          measureParentWidth,
-          measureParentHeight
-        )
-        y += measureHeight
-        maxWidth = Math.max(maxWidth, measureWidth)
-        maxHeight = y
-      })
-    } else {
-      this._root.children.forEach((child) => {
-        if (y >= measureParentHeight) {
-          child.localX = 0
-          child.localY = 0
-          child.active = false
-          return
-        }
+      const [measureWidth, measureHeight] = child.layout()
+      y += measureHeight
+      maxWidth = Math.max(maxWidth, measureWidth)
+      maxHeight = y
+    })
 
-        child.localX = 0
-        child.localY = y
+    const parentWidth =
+      this._root.parent.configWidth === LayoutFitContent
+        ? maxWidth
+        : this._root.parent.measureWidth
 
-        const [measureWidth, measureHeight] = child.layout(
-          measureParentWidth,
-          measureParentHeight - y
-        )
-
-        y += measureHeight
-        maxWidth = Math.max(maxWidth, measureWidth)
-      })
-    }
+    this._root.children.forEach((child) => {
+      if (this._gravity === 'center')
+        child.localX = (parentWidth - child.measureWidth) / 2
+      else if (this._gravity === 'right')
+        child.localX = parentWidth - child.measureWidth
+    })
 
     return [maxWidth, maxHeight]
   }
