@@ -1,0 +1,12 @@
+{
+  "name": "TestScene",
+  "root": {
+    "x": 0,
+    "y": 0,
+    "width": 400,
+    "height": 400,
+    "active": true,
+    "background": "test/title_background.png",
+    "alpha": 1
+  }
+}

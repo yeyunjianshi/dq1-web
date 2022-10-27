@@ -43,3 +43,52 @@ interface IRenderer {
     dh: number
   )
 }
+
+interface ILayout {
+  layout(
+    measureParentWidth: number,
+    measureParentHeight: number
+  ): [number, number]
+}
+
+interface ITime {
+  init(): void
+  tick(delta: number | null): void
+  get scaleDeltaTime(): number
+}
+
+interface LifeCycle {
+  active: boolean
+  start?(): void
+  tick?: () => void
+  update?: () => void
+  render?: () => void
+}
+
+type ComponentData = {
+  type: string
+  [K in 'string']: any
+}
+
+type GameObjectData = {
+  name?: string
+  x: number
+  y: number
+  width: number
+  height: number
+  layout?: LayoutData
+  active: boolean
+  background?: string
+  alpha?: number
+  children?: GameObjectData[]
+  components?: ComponentData[]
+}
+
+type SceneData = {
+  name: string
+  root: GameObjectData
+}
+
+type LayoutData = {
+  type: 'AbsoluteLayout' | 'VerticalLayout' | 'HorizontalLayout' | 'GridLayout'
+}
