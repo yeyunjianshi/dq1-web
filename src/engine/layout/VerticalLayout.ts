@@ -3,9 +3,11 @@ import { LayoutUnLimit } from './layout'
 
 export default class VerticalLayout implements ILayout {
   private _root: GameObject
+  private _gravity: LayoutGravity
 
-  constructor(root: GameObject) {
+  constructor(root: GameObject, config: VerticalLayoutConfig) {
     this._root = root
+    this._gravity = config.gravity
   }
 
   layout(

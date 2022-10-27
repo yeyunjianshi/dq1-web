@@ -89,6 +89,15 @@ type SceneData = {
   root: GameObjectData
 }
 
-type LayoutData = {
-  type: 'AbsoluteLayout' | 'VerticalLayout' | 'HorizontalLayout' | 'GridLayout'
+type LayoutGravity = 'center' | 'left' | 'right'
+type LayoutConfig =
+  | {
+      type: 'AbsoluteLayout'
+    }
+  | ({
+      type: 'VerticalLayout'
+    } & VerticalLayoutConfig)
+
+type VerticalLayoutConfig = {
+  gravity: LayoutGravity
 }

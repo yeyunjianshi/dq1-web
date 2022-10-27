@@ -14,10 +14,11 @@ let id = 0
 
 const parseLayout = (
   root: GameObject,
-  layoutData: LayoutData = { type: 'AbsoluteLayout' }
+  layoutData: LayoutConfig = { type: 'AbsoluteLayout' }
 ): ILayout => {
   if (layoutData.type === 'AbsoluteLayout') return new AbsoluteLayout(root)
-  else if (layoutData.type === 'VerticalLayout') return new VerticalLayout(root)
+  else if (layoutData.type === 'VerticalLayout')
+    return new VerticalLayout(root, layoutData)
   return new AbsoluteLayout(root)
 }
 
