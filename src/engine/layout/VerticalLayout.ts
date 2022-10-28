@@ -1,9 +1,9 @@
 import GameObject from '../gameObject'
-import { LayoutFitContent } from './layout'
+import { LayoutFitContent, measureLocalPositionByGravity } from './layout'
 
 export default class VerticalLayout implements ILayout {
   private _root: GameObject
-  private _gravity: LayoutGravity
+  private _gravity: HorizontalGravity
 
   constructor(root: GameObject, config: VerticalLayoutConfig) {
     this._root = root
@@ -31,10 +31,11 @@ export default class VerticalLayout implements ILayout {
         : this._root.parent.measureWidth
 
     this._root.children.forEach((child) => {
-      if (this._gravity === 'center')
-        child.localX = (parentWidth - child.measureWidth) / 2
-      else if (this._gravity === 'right')
-        child.localX = parentWidth - child.measureWidth
+      measureLocalPositionByGravity(
+        this._gravity,
+        parentWidth,
+        child.measureWidth
+      )
     })
 
     return [maxWidth, maxHeight]

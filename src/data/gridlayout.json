@@ -1,0 +1,80 @@
+{
+  "name": "TestScene",
+  "root": {
+    "x": 200,
+    "y": 150,
+    "width": -1,
+    "height": -1,
+    "active": true,
+    "background": "world_map.png",
+    "layout": {
+      "type": "GridLayout",
+      "gravities": ["center", "center"],
+      "cell": [200, 50],
+      "row": 3,
+      "col": 2
+    },
+    "alpha": 1,
+    "children": [
+      {
+        "x": 10,
+        "y": 0,
+        "width": 102,
+        "height": 40,
+        "background": "test/title_btn_start_0.png",
+        "active": true,
+        "components": [
+          { "type": "$SpriteAnimation", "path": "data/anims/title.json" }
+        ]
+      },
+      {
+        "x": 30,
+        "y": 60,
+        "width": 102,
+        "height": 40,
+        "background": "test/All_Sys_56-11.png",
+        "active": true
+      },
+      {
+        "x": 0,
+        "y": 80,
+        "width": 102,
+        "height": 40,
+        "background": "test/All_Sys_57-10.png",
+        "active": true
+      },
+      {
+        "x": 30,
+        "y": 60,
+        "width": 102,
+        "height": 40,
+        "background": "test/All_Sys_56-11.png",
+        "active": true
+      },
+      {
+        "x": 0,
+        "y": 80,
+        "width": 102,
+        "height": 40,
+        "background": "test/All_Sys_57-10.png",
+        "active": true
+      },
+      {
+        "x": 30,
+        "y": 60,
+        "width": 102,
+        "height": 40,
+        "background": "test/All_Sys_56-11.png",
+        "active": true
+      },
+      {
+        "x": 0,
+        "y": 80,
+        "width": 102,
+        "height": 40,
+        "background": "test/All_Sys_57-10.png",
+        "active": true
+      }
+    ]
+  }
+}

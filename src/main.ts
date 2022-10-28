@@ -5,7 +5,8 @@ import VerticalLayout from './engine/layout/VerticalLayout'
 import { AssetLoader, AssetLoadStatus } from './engine/resource'
 import Scene from './engine/scene'
 import './style.css'
-import TestData from './data/vertical_linear.json'
+import TestData from './data/gridlayout.json'
+import GridLayout from './engine/layout/GridLayout'
 
 const assetLoader = new AssetLoader()
 const engine = createDefaultEngine()
@@ -16,9 +17,11 @@ const parseLayout = (
   root: GameObject,
   layoutData: LayoutConfig = { type: 'AbsoluteLayout' }
 ): ILayout => {
-  if (layoutData.type === 'AbsoluteLayout') return new AbsoluteLayout(root)
-  else if (layoutData.type === 'VerticalLayout')
+  if (layoutData.type === 'VerticalLayout')
     return new VerticalLayout(root, layoutData)
+  else if (layoutData.type === 'GridLayout')
+    return new GridLayout(root, layoutData)
+
   return new AbsoluteLayout(root)
 }
 
