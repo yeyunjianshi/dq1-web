@@ -25,8 +25,7 @@ class GameObject implements LifeCycle {
   name = ''
   children: GameObject[] = []
   components: Component[] = []
-  backgroudKey: string | null = null
-  background: Sprite | null = null
+  background: Background | null = null
   alpha = 1
   animtations: Animation[] = []
   parent: GameObject
@@ -101,19 +100,35 @@ class GameObject implements LifeCycle {
   }
 
   renderBackground() {
-    if (this.background)
-      this.engine.renderer.drawSprite(
-        this.background,
-        this.alpha,
-        0,
-        0,
-        this.measureWidth,
-        this.measureHeight,
-        this.worldX,
-        this.worldY,
-        this.measureWidth,
-        this.measureHeight
-      )
+    if (this.background) {
+      if (this.background.sprite) {
+        const sourceWidth =
+          this.background.scaleType === 'fit'
+            ? this.background.sprite.naturalWidth
+            : this.measureWidth
+
+        const sourceHeight =
+          this.background.scaleType === 'fit'
+            ? this.background.sprite.naturalHeight
+            : this.measureHeight
+
+        this.engine.renderer.drawSprite(
+          this.background.sprite,
+          this.alpha,
+          0,
+          0,
+          sourceWidth,
+          sourceHeight,
+          this.worldX,
+          this.worldY,
+          this.measureWidth,
+          this.measureHeight
+        )
+      }
+      if (this.background.border > 0) {
+        // todo
+      }
+    }
   }
 
   renderComponents() {

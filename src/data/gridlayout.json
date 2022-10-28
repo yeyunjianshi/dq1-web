@@ -1,12 +1,17 @@
 {
   "name": "TestScene",
   "root": {
-    "x": 200,
-    "y": 150,
-    "width": -1,
-    "height": -1,
+    "x": 0,
+    "y": 0,
+    "width": 800,
+    "height": 600,
     "active": true,
-    "background": "world_map.png",
+    "background": {
+      "sprite": "world_map.png",
+      "scaleType": "original",
+      "border": 3,
+      "borderColor": "0xffffff"
+    },
     "layout": {
       "type": "GridLayout",
       "gravities": ["center", "center"],

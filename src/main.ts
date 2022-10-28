@@ -2,7 +2,11 @@ import { createDefaultEngine } from './engine/engine'
 import GameObject from './engine/gameObject'
 import AbsoluteLayout from './engine/layout/AbsoluteLayout'
 import VerticalLayout from './engine/layout/VerticalLayout'
-import { AssetLoader, AssetLoadStatus } from './engine/resource'
+import {
+  AssetLoader,
+  AssetLoadStatus,
+  supportSpriteExt,
+} from './engine/resource'
 import Scene from './engine/scene'
 import './style.css'
 import TestData from './data/gridlayout.json'
@@ -41,15 +45,39 @@ const parseGameObject = (
   gameObject.configWidth = data.width
   gameObject.configHeight = data.height
   gameObject.active = data.active
-  gameObject.backgroudKey = data.background?.trim() ?? null
   gameObject.alpha = data.alpha ?? 1
 
-  if (gameObject.backgroudKey)
+  if (
+    typeof data.background === 'string' &&
+    supportSpriteExt(data.background)
+  ) {
+    gameObject.background = {
+      name: data.background,
+      sprite: null,
+      scaleType: 'original',
+      border: 0,
+      alpha: 1,
+    }
+  } else if (typeof data.background === 'object') {
+    gameObject.background = {
+      name: data.background.sprite,
+      sprite: null,
+      scaleType: data.background.scaleType,
+      border: data.background.border,
+      borderColor: data.background.borderColor
+        ? +data.background.borderColor
+        : 0,
+      alpha: data.background.alpha ?? 1,
+    }
+  }
+
+  if (gameObject.background && gameObject.background.name) {
     assetLoader.addAssets(
       engine.resource
-        .loadSprite(gameObject.backgroudKey)
-        .then((sprite) => (gameObject.background = sprite))
+        .loadSprite(gameObject.background.name)
+        .then((sprite) => (gameObject.background!.sprite = sprite))
     )
+  }
 
   if (data.children) {
     gameObject.children = data.children.map((childData) => {

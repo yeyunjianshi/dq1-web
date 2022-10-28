@@ -1,6 +1,17 @@
 /// <reference types="vite/client" />
 
+type Color = number
 type Sprite = HTMLImageElement
+
+type Background = {
+  name: string
+  sprite: Sprite | null
+  scaleType: 'fit' | 'original'
+  border: number
+  borderColor?: Color
+  alpha: number
+}
+
 type Audio = HTMLAudioElement
 
 // load sprite, audio, json
@@ -67,6 +78,16 @@ type ComponentData = {
   [K in 'string']: any
 }
 
+type BackgroundData =
+  | string
+  | {
+      sprite: string
+      scaleType: 'fit' | 'original'
+      border: number
+      borderColor?: number | string
+      alpha?: number
+    }
+
 type GameObjectData = {
   name?: string
   x: number
@@ -75,7 +96,7 @@ type GameObjectData = {
   height: number
   layout?: LayoutData
   active: boolean
-  background?: string
+  background?: BackgroundData
   alpha?: number
   children?: GameObjectData[]
   components?: ComponentData[]
