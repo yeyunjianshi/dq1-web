@@ -6,7 +6,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: white;
+  background-color: black;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -26,7 +26,6 @@ body {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  
 }
 
 canvas {

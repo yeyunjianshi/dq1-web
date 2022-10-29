@@ -7,9 +7,12 @@
     "height": 300,
     "active": true,
     "background": {
+      "sprite": "world_map.png",
       "scaleType": "original",
-      "border": 3,
-      "borderColor": "0xffffff"
+      "backgroundColor": "red",
+      "borderWidth": 3,
+      "borderColor": "white",
+      "alpha": 1
     },
     "layout": {
       "type": "GridLayout",

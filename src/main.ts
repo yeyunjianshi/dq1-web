@@ -9,7 +9,7 @@ import {
 } from './engine/resource'
 import Scene from './engine/scene'
 import './style.css'
-import TestData from './data/gridlayout.json'
+import TestData from './data/border.json'
 import GridLayout from './engine/layout/GridLayout'
 
 const assetLoader = new AssetLoader()
@@ -55,18 +55,22 @@ const parseGameObject = (
       name: data.background,
       sprite: null,
       scaleType: 'original',
-      border: 0,
+      color: 'transparent',
+      border: {
+        width: 0,
+      },
       alpha: 1,
     }
   } else if (typeof data.background === 'object') {
     gameObject.background = {
       name: data.background.sprite,
       sprite: null,
-      scaleType: data.background.scaleType,
-      border: data.background.border,
-      borderColor: data.background.borderColor
-        ? +data.background.borderColor
-        : 0,
+      scaleType: data.background.scaleType ?? 'original',
+      color: data.background.backgroundColor ?? 'transparent',
+      border: {
+        width: data.background.borderWidth ?? 0,
+        radius: data.background.radius ?? 4,
+      },
       alpha: data.background.alpha ?? 1,
     }
   }

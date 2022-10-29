@@ -125,9 +125,15 @@ class GameObject implements LifeCycle {
           this.measureHeight
         )
       }
-      if (this.background.border > 0) {
-        // todo
-      }
+      this.engine.renderer.drawRectColorAndBorder(
+        this.worldX,
+        this.worldY,
+        this.measureWidth,
+        this.measureHeight,
+        this.background.color,
+        this.background.border,
+        this.background.alpha
+      )
     }
   }
 

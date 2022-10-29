@@ -98,6 +98,59 @@ export default class implements IRenderer {
     this._cacheContext.restore()
   }
 
+  drawRectColorAndBorder(
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    fillColor: Color,
+    border: Border,
+    alpha = 1
+  ) {
+    const hasBorder = border.width > 0
+    const hasColor = !!fillColor && fillColor.trim() !== 'transparent'
+
+    if (!hasBorder && !hasColor) return
+
+    const radius = border.radius ?? 0
+
+    this._cacheContext.save()
+    this._cacheContext.globalAlpha = alpha
+
+    if (hasBorder) {
+      const halfBorderWidth = border.width / 2
+      x += halfBorderWidth
+      y += halfBorderWidth
+      width -= border.width
+      height -= border.width
+      this._cacheContext.strokeStyle = border.color ?? 'white'
+      this._cacheContext.lineWidth = border.width
+    }
+    if (hasColor) {
+      this._cacheContext.fillStyle = fillColor
+    }
+
+    this._cacheContext.beginPath()
+    this._cacheContext.moveTo(x, y + radius)
+    this._cacheContext.lineTo(x, y + height - radius)
+    this._cacheContext.quadraticCurveTo(x, y + height, x + radius, y + height)
+    this._cacheContext.lineTo(x + width - radius, y + height)
+    this._cacheContext.quadraticCurveTo(
+      x + width,
+      y + height,
+      x + width,
+      y + height - radius
+    )
+    this._cacheContext.lineTo(x + width, y + radius)
+    this._cacheContext.quadraticCurveTo(x + width, y, x + width - radius, y)
+    this._cacheContext.lineTo(x + radius, y)
+    this._cacheContext.quadraticCurveTo(x, y, x, y + radius)
+
+    if (hasColor) this._cacheContext.fill()
+    if (hasBorder) this._cacheContext.stroke()
+
+    this._cacheContext.restore()
+  }
   renderBegin(): void {
     this._cacheContext.clearRect(0, 0, this.width, this.height)
   }

@@ -1,14 +1,19 @@
 /// <reference types="vite/client" />
 
-type Color = number
+type Color = string
 type Sprite = HTMLImageElement
+type Border = {
+  width: number
+  color?: Color
+  radius?: number
+}
 
 type Background = {
   name: string
   sprite: Sprite | null
+  color: Color
   scaleType: 'fit' | 'original'
-  border: number
-  borderColor?: Color
+  border: Border
   alpha: number
 }
 
@@ -53,6 +58,16 @@ interface IRenderer {
     dw: number,
     dh: number
   )
+
+  drawRectColorAndBorder(
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    backgroundColor: Color,
+    border: Border,
+    alpha?: number
+  )
 }
 
 interface ILayout {
@@ -82,9 +97,11 @@ type BackgroundData =
   | string
   | {
       sprite: string
-      scaleType: 'fit' | 'original'
-      border: number
-      borderColor?: number | string
+      scaleType?: 'fit' | 'original'
+      backgroundColor?: string
+      borderWidth?: number
+      borderColor?: string
+      radius?: number
       alpha?: number
     }
 
