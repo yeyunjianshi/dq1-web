@@ -1,1 +1,1 @@
-import './MoveComponent'
+import './TeamControllerComponent'

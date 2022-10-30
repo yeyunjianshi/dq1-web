@@ -5,6 +5,8 @@ class Input {
   active = true
   private _handlers: (() => void)[] = []
 
+  pressedKyes: string[] = []
+
   pressedKeyInfo: {
     key: string
     frame: number
@@ -22,27 +24,34 @@ class Input {
   }
 
   init() {
+    const dispatch = () => {
+      const currentPressedKey =
+        this.pressedKyes.length > 0
+          ? this.pressedKyes[this.pressedKyes.length - 1]
+          : ''
+      if (currentPressedKey !== this.pressedKeyInfo.key) {
+        this.pressedKeyInfo.key = currentPressedKey
+        this.pressedKeyInfo.frame = this._time.currentFrame
+        this.pressedKeyInfo.intialTime = this._time.currentFrameTime
+        this.pressedKeyInfo.updateTime = 0
+      }
+    }
+
     const keyDownHandler = (event: KeyboardEvent) => {
       return () => {
         console.log(`${event.key} keydown`)
-        if (!this.active) return
-
-        if (this.pressedKeyInfo.key !== event.key) {
-          this.pressedKeyInfo.key = event.key
-          this.pressedKeyInfo.frame = this._time.currentFrame
-          this.pressedKeyInfo.intialTime = this._time.currentFrameTime
-          this.pressedKeyInfo.updateTime = 0
-        }
+        if (!this.active || this.pressedKeyInfo.key === event.key) return
+        this.pressedKyes.push(event.key)
+        dispatch()
       }
     }
     const keyUpHandler = (event: KeyboardEvent) => {
       return () => {
         console.log(`${event.key} keyup`)
         if (!this.active) return
-        this.pressedKeyInfo.key = ''
-        this.pressedKeyInfo.frame = 0
-        this.pressedKeyInfo.intialTime = 0
-        this.pressedKeyInfo.updateTime = 0
+
+        this.pressedKyes = this.pressedKyes.filter((k) => k !== event.key)
+        dispatch()
       }
     }
     document.addEventListener('keydown', (event: KeyboardEvent) => {
@@ -54,7 +63,6 @@ class Input {
   }
 
   isPressed(key: string, checkFrameTime = false) {
-    console.log(this._time.currentFrame + ' ' + this.pressedKeyInfo.frame)
     return (
       key === this.pressedKeyInfo.key &&
       (!checkFrameTime || this._time.currentFrame === this.pressedKeyInfo.frame)

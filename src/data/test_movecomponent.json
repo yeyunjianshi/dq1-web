@@ -1,17 +1,27 @@
 {
   "name": "TestScene",
   "root": {
-    "x": 64,
-    "y": 64,
-    "width": 32,
-    "height": 32,
+    "x": 0,
+    "y": 0,
+    "width": 4096,
+    "height": 4096,
     "active": true,
     "alpha": 1,
-    "components": [
+    "background": "world_map.png",
+    "children": [
       {
-        "type": "$TeamControllerComponent",
-        "roleIndex": "0",
-        "aniamtionDuration": 1000
+        "x": 64,
+        "y": 64,
+        "width": 32,
+        "height": 32,
+        "active": true,
+        "alpha": 1,
+        "components": [
+          {
+            "type": "$TeamControllerComponent",
+            "moveSpeed": 96
+          }
+        ]
       }
     ]
   }

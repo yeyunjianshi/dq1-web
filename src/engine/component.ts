@@ -30,6 +30,11 @@ abstract class Component implements LifeCycle {
     return this._root.engine.input
   }
 
+  set local(pos: Vector2) {
+    this.root.localX = pos[0]
+    this.root.localY = pos[1]
+  }
+
   parseData(assetLoader: AssetLoader, data: ComponentData): void {}
 
   start() {}
