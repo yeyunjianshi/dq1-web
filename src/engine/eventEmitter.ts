@@ -18,7 +18,7 @@ export default class EventEmitter<T> {
   removeListener(listener: EventListener<T>) {
     const index = this._listeners.indexOf(listener)
     if (index != -1) {
-      this._listeners.slice(index, 1)
+      this._listeners.splice(index, 1)
     }
   }
 
