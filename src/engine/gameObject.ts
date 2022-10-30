@@ -25,7 +25,7 @@ class GameObject implements LifeCycle {
   name = ''
   children: GameObject[] = []
   components: Component[] = []
-  background: Background | null = null
+  background: Background
   alpha = 1
   animtations: Animation[] = []
   parent: GameObject
@@ -49,6 +49,16 @@ class GameObject implements LifeCycle {
       this.engine = this.parent.engine
     }
 
+    this.background = {
+      name: '',
+      sprite: undefined,
+      scaleType: 'original',
+      color: 'transparent',
+      border: {
+        width: 0,
+      },
+      alpha: 1,
+    }
     this.configLayout = layout ?? new AbsoluteLayout(this)
   }
 
@@ -100,41 +110,40 @@ class GameObject implements LifeCycle {
   }
 
   renderBackground() {
-    if (this.background) {
-      if (this.background.sprite) {
-        const sourceWidth =
-          this.background.scaleType === 'fit'
-            ? this.background.sprite.naturalWidth
-            : this.measureWidth
+    if (this.background.sprite) {
+      const sourceWidth =
+        this.background.scaleType === 'fit'
+          ? this.background.sprite.naturalWidth
+          : this.measureWidth
 
-        const sourceHeight =
-          this.background.scaleType === 'fit'
-            ? this.background.sprite.naturalHeight
-            : this.measureHeight
+      const sourceHeight =
+        this.background.scaleType === 'fit'
+          ? this.background.sprite.naturalHeight
+          : this.measureHeight
 
-        this.engine.renderer.drawSprite(
-          this.background.sprite,
-          this.alpha,
-          0,
-          0,
-          sourceWidth,
-          sourceHeight,
-          this.worldX,
-          this.worldY,
-          this.measureWidth,
-          this.measureHeight
-        )
-      }
-      this.engine.renderer.drawRectColorAndBorder(
+      this.engine.renderer.drawSprite(
+        this.background.sprite,
+        this.alpha,
+        0,
+        0,
+        sourceWidth,
+        sourceHeight,
         this.worldX,
         this.worldY,
         this.measureWidth,
-        this.measureHeight,
-        this.background.color,
-        this.background.border,
-        this.background.alpha
+        this.measureHeight
       )
     }
+
+    this.engine.renderer.drawRectColorAndBorder(
+      this.worldX,
+      this.worldY,
+      this.measureWidth,
+      this.measureHeight,
+      this.background.color,
+      this.background.border,
+      this.background.alpha
+    )
   }
 
   renderComponents() {

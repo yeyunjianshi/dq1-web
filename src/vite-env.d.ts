@@ -10,7 +10,7 @@ type Border = {
 
 type Background = {
   name: string
-  sprite: Sprite | null
+  sprite?: Sprite
   color: Color
   scaleType: 'fit' | 'original'
   border: Border
@@ -57,7 +57,7 @@ interface IRenderer {
     dy: number,
     dw: number,
     dh: number
-  )
+  ): void
 
   drawRectColorAndBorder(
     x: number,
@@ -67,7 +67,9 @@ interface IRenderer {
     backgroundColor: Color,
     border: Border,
     alpha?: number
-  )
+  ): void
+
+  drawText(): void
 }
 
 interface ILayout {
