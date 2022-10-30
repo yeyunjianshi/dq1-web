@@ -9,7 +9,7 @@ import {
 } from './engine/resource'
 import Scene from './engine/scene'
 import './style.css'
-import TestData from './data/border.json'
+import TestData from './data/test_movecomponent.json'
 import GridLayout from './engine/layout/GridLayout'
 
 const assetLoader = new AssetLoader()
@@ -51,27 +51,22 @@ const parseGameObject = (
     typeof data.background === 'string' &&
     supportSpriteExt(data.background)
   ) {
-    gameObject.background = {
-      name: data.background,
-      sprite: null,
-      scaleType: 'original',
-      color: 'transparent',
-      border: {
-        width: 0,
-      },
-      alpha: 1,
-    }
+    gameObject.background.name = data.background
   } else if (typeof data.background === 'object') {
     gameObject.background = {
       name: data.background.sprite,
-      sprite: null,
-      scaleType: data.background.scaleType ?? 'original',
-      color: data.background.backgroundColor ?? 'transparent',
+      scaleType: data.background.scaleType ?? gameObject.background.scaleType,
+      color: data.background.backgroundColor ?? gameObject.background.color,
       border: {
-        width: data.background.borderWidth ?? 0,
-        radius: data.background.radius ?? 4,
+        width:
+          data.background.borderWidth ?? gameObject.background.border.width,
+        color:
+          data.background.borderColor ?? gameObject.background.border.color,
+        radius: data.background.radius ?? gameObject.background.border.radius,
       },
-      alpha: data.background.alpha ?? 1,
+      pivotOffset:
+        data.background.pivotOffset ?? gameObject.background.pivotOffset,
+      alpha: data.background.alpha ?? gameObject.background.alpha,
     }
   }
 
@@ -90,19 +85,19 @@ const parseGameObject = (
   }
 
   if (data.components) {
-    // gameObject.components = data.components
-    //   .filter(
-    //     (script) =>
-    //       script.type.trim() &&
-    //       engine.componentContainer.has(script.type.trim())
-    //   )
-    //   .map((script) => {
-    //     const com = new (engine.componentContainer.get(script.type.trim())!)(
-    //       gameObject
-    //     )
-    //     com.parseData(assetLoader, script)
-    //     return com
-    //   })
+    gameObject.components = data.components
+      .filter(
+        (script) =>
+          script.type.trim() &&
+          engine.componentContainer.has(script.type.trim())
+      )
+      .map((script) => {
+        const com = new (engine.componentContainer.get(
+          script.type.trim()
+        ) as ComponentConstruct)(gameObject)
+        com.parseData(assetLoader, script)
+        return com
+      })
   }
 
   return gameObject
@@ -115,10 +110,12 @@ const parseScene = (data: SceneData) => {
 const scene = parseScene(TestData as SceneData)
 
 const render = (time = 0) => {
-  console.log(`frame render: ${time}`)
+  // console.log(`frame render: ${time}`)
   engine.time.tick()
+  engine.input.tick()
   engine.renderer.render(() => {
     if (scene.loaded) scene.tick()
+    // engine.renderer.drawText()
   })
   requestAnimationFrame(render)
 }

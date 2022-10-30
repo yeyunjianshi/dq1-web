@@ -2,6 +2,7 @@ import Component from './component'
 import Engine from './engine'
 import AbsoluteLayout from './layout/AbsoluteLayout'
 import { LayoutMatchParent, LayoutFitContent } from './layout/layout'
+import { supportSpriteExt } from './resource'
 
 class GameObject implements LifeCycle {
   private _localX = 0
@@ -56,7 +57,10 @@ class GameObject implements LifeCycle {
       color: 'transparent',
       border: {
         width: 0,
+        color: 'white',
+        radius: 4,
       },
+      pivotOffset: [0, 0],
       alpha: 1,
     }
     this.configLayout = layout ?? new AbsoluteLayout(this)
@@ -110,6 +114,13 @@ class GameObject implements LifeCycle {
   }
 
   renderBackground() {
+    if (!this.background.sprite) {
+      if (supportSpriteExt(this.background.name)) {
+        this.background.sprite = this.engine.resource.getSprite(
+          this.background.name
+        )
+      }
+    }
     if (this.background.sprite) {
       const sourceWidth =
         this.background.scaleType === 'fit'
@@ -123,9 +134,9 @@ class GameObject implements LifeCycle {
 
       this.engine.renderer.drawSprite(
         this.background.sprite,
-        this.alpha,
-        0,
-        0,
+        this.background.alpha,
+        this.background.pivotOffset[0],
+        this.background.pivotOffset[1],
         sourceWidth,
         sourceHeight,
         this.worldX,

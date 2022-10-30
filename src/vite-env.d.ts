@@ -1,5 +1,7 @@
 /// <reference types="vite/client" />
 
+type Vector2 = [number, number]
+
 type Color = string
 type Sprite = HTMLImageElement
 type Border = {
@@ -14,6 +16,7 @@ type Background = {
   color: Color
   scaleType: 'fit' | 'original'
   border: Border
+  pivotOffset: [number, number]
   alpha: number
 }
 
@@ -26,7 +29,7 @@ interface IResource {
   loadJson<T>(path: string): Promise<T>
 
   hasSprite(key: string): boolean
-  getSprite(key: string): Sprite | null
+  getSprite(key: string): Sprite | undefined
 }
 
 // render
@@ -90,6 +93,10 @@ interface LifeCycle {
   render?: () => void
 }
 
+type ComponentConstruct = {
+  new (GameObject): Component
+}
+
 type ComponentData = {
   type: string
   [K in 'string']: any
@@ -105,6 +112,7 @@ type BackgroundData =
       borderColor?: string
       radius?: number
       alpha?: number
+      pivotOffset?: [number, number]
     }
 
 type GameObjectData = {

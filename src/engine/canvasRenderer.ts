@@ -151,6 +151,28 @@ export default class implements IRenderer {
 
     this._cacheContext.restore()
   }
+
+  drawText() {
+    this._cacheContext.save()
+    const text = '123123这\n这是什么情况 '
+    const textlines = text.split('\n')
+
+    const fontSize = 20
+    const fontFamily = 'serif'
+    this._cacheContext.font = `italic bold ${fontSize}px ${fontFamily}`
+    this._cacheContext.fillStyle = 'white'
+    textlines.forEach((line, i) => {
+      const textMetrics = this._cacheContext.measureText(line)
+      this._cacheContext.fillText(
+        line,
+        0,
+        (i + 1) * fontSize,
+        textMetrics.width
+      )
+    })
+    this._cacheContext.restore()
+  }
+
   renderBegin(): void {
     this._cacheContext.clearRect(0, 0, this.width, this.height)
   }
@@ -175,6 +197,4 @@ export default class implements IRenderer {
     fn()
     this.renderEnd()
   }
-
-  drawText() {}
 }

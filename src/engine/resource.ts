@@ -65,11 +65,16 @@ export class Resource implements IResource {
   private _audios = new Map<string, Audio>()
 
   loadSprite(relativePath: string): Promise<Sprite> {
+    if (this.hasSprite(relativePath)) {
+      return Promise.resolve(this.getSprite(relativePath) as Sprite)
+    }
+
     const path = `${SPRITES_PREFIX}${relativePath}`
     if (!supportSpriteExt(path))
       return Promise.reject(
         `resource: load image ${path} error, not support ext.`
       )
+
     const image = new Image()
     image.src = path
 
@@ -107,8 +112,8 @@ export class Resource implements IResource {
     return this._sprites.has(key)
   }
 
-  getSprite(key: string): HTMLImageElement | null {
-    return this._sprites.get(key) ?? null
+  getSprite(key: string): HTMLImageElement | undefined {
+    return this._sprites.get(key)
   }
 }
 

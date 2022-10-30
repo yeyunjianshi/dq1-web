@@ -18,6 +18,18 @@ abstract class Component implements LifeCycle {
     return this._root.engine.time
   }
 
+  get resource() {
+    return this._root.engine.resource
+  }
+
+  get background() {
+    return this._root.background
+  }
+
+  get input() {
+    return this._root.engine.input
+  }
+
   parseData(assetLoader: AssetLoader, data: ComponentData): void {}
 
   start() {}
