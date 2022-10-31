@@ -132,6 +132,8 @@ type GameObjectData = {
 type SceneData = {
   name: string
   root: GameObjectData
+  width?: number
+  height?: number
 }
 
 type LayoutGravity = HorizontalGravity | VerticalGaravity

@@ -69,12 +69,12 @@ class GameObject implements LifeCycle {
   layout(): [number, number] {
     this.measureWidth =
       this.configWidth === LayoutMatchParent
-        ? this.parent.width
+        ? this.parent.measureWidth
         : Math.max(0, this.configWidth)
 
     this.measureHeight =
       this.configHeight === LayoutMatchParent
-        ? this.parent.height
+        ? this.parent.measureHeight
         : Math.max(0, this.configHeight)
 
     const [measureChildWidth, measureChildHeight] = this.layoutChildren()
@@ -98,8 +98,8 @@ class GameObject implements LifeCycle {
 
   updateChildrens() {
     this.children.forEach((child) => {
-      child.worldX = this.worldX + child.localX
-      child.worldY = this.worldY + child.localY
+      // child.worldX = this.worldX + child.localX
+      // child.worldY = this.worldY + child.localY
 
       if (child.update) child.update()
     })
@@ -139,8 +139,8 @@ class GameObject implements LifeCycle {
         this.background.pivotOffset[1],
         sourceWidth,
         sourceHeight,
-        this.worldX,
-        this.worldY,
+        this.worldX - this.engine.camera.x,
+        this.worldY - this.engine.camera.y,
         this.measureWidth,
         this.measureHeight
       )
@@ -173,6 +173,11 @@ class GameObject implements LifeCycle {
 
   update() {
     if (this.active) {
+      this.worldX =
+        this == this.parent ? this._localX : this.parent.worldX + this.localX
+      this.worldY =
+        this == this.parent ? this._localY : this.parent.worldY + this.localY
+
       this.updateComponents()
       this.updateChildrens()
     }

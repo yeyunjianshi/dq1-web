@@ -25,3 +25,11 @@ export function distance(a: Vector2, b: Vector2): number {
   if (d[0] === 0 || d[1] === 0) return Math.abs(d[0]) + Math.abs(d[1])
   return Math.sqrt(d[0] * d[0] + d[1] * d[1])
 }
+
+export function vector2Add(a: Vector2, b: Vector2): Vector2 {
+  return [a[0] + b[0], a[1] + b[1]]
+}
+
+export function vector2Minus(a: Vector2, b: Vector2): Vector2 {
+  return [a[0] - b[0], a[1] - b[1]]
+}

@@ -1,17 +1,19 @@
 {
   "name": "TestScene",
+  "width": 4096,
+  "height": 4096,
   "root": {
     "x": 0,
     "y": 0,
-    "width": 4096,
-    "height": 4096,
+    "width": -2,
+    "height": -2,
     "active": true,
     "alpha": 1,
     "background": "world_map.png",
     "children": [
       {
-        "x": 64,
-        "y": 64,
+        "x": 2056,
+        "y": 2056,
         "width": 32,
         "height": 32,
         "active": true,

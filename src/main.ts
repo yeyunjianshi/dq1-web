@@ -104,7 +104,10 @@ const parseGameObject = (
 }
 
 const parseScene = (data: SceneData) => {
-  return new Scene(data.name, parseGameObject(data.root, null), engine)
+  const scene = new Scene(data.name, parseGameObject(data.root, null), engine)
+  scene.width = data.width ?? -1
+  scene.height = data.height ?? -1
+  return scene
 }
 
 const scene = parseScene(TestData as SceneData)
@@ -123,6 +126,7 @@ const render = (time = 0) => {
 assetLoader.assetEvent.addListener((status) => {
   if (status === AssetLoadStatus.SUCCESS) {
     scene.loaded = true
+    scene.show()
     scene.start()
   }
 })

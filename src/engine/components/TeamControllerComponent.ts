@@ -1,7 +1,7 @@
 import { InnerGameComponent } from '.'
 import GameObject from '../gameObject'
 import { Direction } from '../input'
-import { distance, lerpVector2 } from '../math'
+import { distance, lerpVector2, vector2Add } from '../math'
 import { AssetLoader } from '../resource'
 import MoveComponent, {
   DefaultAnimationDuration,
@@ -22,7 +22,7 @@ type TeamControllerData = {
   maxTeamCount?: number
 } & MoveComponentData
 
-const DefaultMaxTeamCount = 3
+const DefaultMaxTeamCount = 1
 const DefaultMoveSpeed = 64
 const DefaultTileSize = 32
 
@@ -93,13 +93,16 @@ export default class TeamControllerComponent extends MoveComponent {
 
     this.updateDistance((this.moveSpeed * this.time.scaleDeltaTime) / 1000)
     this.refreshAnimation()
+    this.camera.moveToCenter(
+      vector2Add(this._head.position, this.worldPosition)
+    )
   }
 
   updateDistance(moveDelta: number): void {
     const pressedDirection = this.input.getPressedDirection()
-    console.log(
-      `==========  ${this.time.currentFrame} ${pressedDirection} ==============`
-    )
+    // console.log(
+    //   `==========  ${this.time.currentFrame} ${pressedDirection} ==============`
+    // )
 
     if (!this.isMoving) {
       if (pressedDirection !== Direction.none) {
@@ -114,10 +117,10 @@ export default class TeamControllerComponent extends MoveComponent {
           this._head.targetCoord = nextCoord
           this._head.targetPosition = CoordToPosition(nextCoord)
 
-          console.log('---------------------------------')
-          console.log(nextCoord)
-          console.log(this._head.targetPosition)
-          console.log('---------------------------------')
+          // console.log('---------------------------------')
+          // console.log(nextCoord)
+          // console.log(this._head.targetPosition)
+          // console.log('---------------------------------')
 
           this.refreshNextPlayerStats()
           this.isMoving = true
@@ -147,12 +150,12 @@ export default class TeamControllerComponent extends MoveComponent {
   move(dis: number) {
     this.playerStats.forEach((p) => {
       p.position = lerpVector2(p.position, p.targetPosition, dis)
-      console.log(p.position)
+      // console.log(p.position)
     })
     this._head.position = this.playerStats[0].position
 
     this.refreshAllMoveComponent((stat, component) => {
-      component.local = stat.position
+      component.localPosition = stat.position
     })
   }
 
@@ -167,7 +170,7 @@ export default class TeamControllerComponent extends MoveComponent {
     console.log(this._head.position)
 
     this.refreshAllMoveComponent((stat, component) => {
-      component.local = stat.targetPosition
+      component.localPosition = stat.targetPosition
     })
 
     this.isMoving = false
@@ -183,7 +186,7 @@ export default class TeamControllerComponent extends MoveComponent {
     }
 
     this.refreshAllMoveComponent((stat, component) => {
-      component.local = stat.position
+      component.localPosition = stat.position
       component.direction = stat.direction
     })
   }

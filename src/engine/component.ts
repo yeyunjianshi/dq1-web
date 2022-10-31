@@ -30,9 +30,17 @@ abstract class Component implements LifeCycle {
     return this._root.engine.input
   }
 
-  set local(pos: Vector2) {
+  get camera() {
+    return this._root.engine.camera
+  }
+
+  set localPosition(pos: Vector2) {
     this.root.localX = pos[0]
     this.root.localY = pos[1]
+  }
+
+  get worldPosition(): Vector2 {
+    return [this._root.worldX, this._root.worldY]
   }
 
   parseData(assetLoader: AssetLoader, data: ComponentData): void {}
