@@ -12,8 +12,8 @@
     "background": "world_map.png",
     "children": [
       {
-        "x": 2056,
-        "y": 2056,
+        "x": 1440,
+        "y": 1440,
         "width": 32,
         "height": 32,
         "active": true,

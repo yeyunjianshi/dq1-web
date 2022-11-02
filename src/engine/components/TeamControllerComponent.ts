@@ -1,21 +1,16 @@
 import { InnerGameComponent } from '.'
 import GameObject from '../gameObject'
-import { Direction } from '../input'
+import { Direction, DirectionToCoord } from '../input'
 import { distance, lerpVector2, vector2Add } from '../math'
 import { AssetLoader } from '../resource'
 import MoveComponent, {
+  CoordToPosition,
   DefaultAnimationDuration,
+  DefaultMoveState,
   DefaultRoleSprite,
   MoveComponentData,
+  MoveState,
 } from './MoveComponent'
-
-type MoveState = {
-  coord: Vector2
-  position: Vector2
-  targetCoord: Vector2
-  targetPosition: Vector2
-  direction: Direction
-}
 
 type TeamControllerData = {
   moveSpeed?: number
@@ -26,23 +21,15 @@ const DefaultMaxTeamCount = 1
 const DefaultMoveSpeed = 64
 const DefaultTileSize = 32
 
-function CoordToPosition(coord: Vector2): Vector2 {
-  return [coord[0] * DefaultTileSize, coord[1] * DefaultTileSize]
-}
-
-const DirectionToCoord = new Map<Direction, Vector2>([
-  [Direction.none, [0, 0]],
-  [Direction.left, [-1, 0]],
-  [Direction.right, [1, 0]],
-  [Direction.up, [0, -1]],
-  [Direction.down, [0, 1]],
-])
-function NextCoordByDirection(coord: Vector2, direction: Direction): Vector2 {
+export function NextCoordByDirection(
+  coord: Vector2,
+  direction: Direction
+): Vector2 {
   const delta = DirectionToCoord.get(direction) as Vector2
   return [coord[0] + delta[0], coord[1] + delta[1]]
 }
 
-function checkNextCoordCanMove(coord: Vector2): boolean {
+export function checkNextCoordCanMove(coord: Vector2): boolean {
   return true
 }
 
@@ -53,7 +40,7 @@ export default class TeamControllerComponent extends MoveComponent {
   targetCoord: Vector2 = [0, 0]
   playerMoveComponents: MoveComponent[] = []
   playerStats: MoveState[] = []
-  private _head: MoveState
+  private _head: MoveState = DefaultMoveState
   inited = false
   moveSpeed = DefaultMoveSpeed
   isMoving = false
@@ -61,14 +48,6 @@ export default class TeamControllerComponent extends MoveComponent {
 
   constructor(root: GameObject) {
     super(root)
-
-    this._head = {
-      coord: this.coord,
-      position: [0, 0],
-      targetCoord: [0, 0],
-      targetPosition: [0, 0],
-      direction: Direction.down,
-    }
   }
 
   start() {

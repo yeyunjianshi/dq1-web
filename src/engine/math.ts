@@ -33,3 +33,24 @@ export function vector2Add(a: Vector2, b: Vector2): Vector2 {
 export function vector2Minus(a: Vector2, b: Vector2): Vector2 {
   return [a[0] - b[0], a[1] - b[1]]
 }
+
+export function vector2Include(
+  point: Vector2,
+  scopeRect: [Vector2, Vector2]
+): boolean {
+  return (
+    point[0] >= scopeRect[0][0] &&
+    point[0] <= scopeRect[1][0] &&
+    point[1] >= scopeRect[0][1] &&
+    point[1] <= scopeRect[1][1]
+  )
+}
+
+export function random(scope: number, start = 0): number {
+  return Math.floor(Math.random() * scope) + start
+}
+
+export function clamp(value: number, min: number, max: number) {
+  if (min > max) [min, max] = [max, min]
+  return Math.min(max, Math.max(min, value))
+}

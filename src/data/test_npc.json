@@ -1,0 +1,42 @@
+{
+  "name": "TestScene",
+  "width": 4096,
+  "height": 4096,
+  "root": {
+    "x": 0,
+    "y": 0,
+    "width": -2,
+    "height": -2,
+    "active": true,
+    "alpha": 1,
+    "children": [
+      {
+        "x": 320,
+        "y": 320,
+        "width": 32,
+        "height": 32,
+        "active": true,
+        "alpha": 1,
+        "components": [
+          {
+            "type": "$NPCControllerComponent",
+            "roleIndex": 3,
+            "moveSpeed": 32,
+            "moveWaitTime": 100,
+            "path": {
+              "type": "random",
+              "radius": 1,
+              "alternate": true,
+              "datas": [
+                [3, 0],
+                [3, 8],
+                [8, 8],
+                [8, 0]
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

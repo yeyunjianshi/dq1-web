@@ -96,11 +96,23 @@ class GameObject implements LifeCycle {
     this.children?.forEach((child) => child.start && child.start())
   }
 
+  update() {
+    if (this.active) {
+      this.updateWorldPosition()
+      this.updateComponents()
+      this.updateChildrens()
+    }
+  }
+
+  updateWorldPosition() {
+    this.worldX =
+      this == this.parent ? this._localX : this.parent.worldX + this.localX
+    this.worldY =
+      this == this.parent ? this._localY : this.parent.worldY + this.localY
+  }
+
   updateChildrens() {
     this.children.forEach((child) => {
-      // child.worldX = this.worldX + child.localX
-      // child.worldY = this.worldY + child.localY
-
       if (child.update) child.update()
     })
   }
@@ -111,6 +123,14 @@ class GameObject implements LifeCycle {
         com.update()
       }
     })
+  }
+
+  render() {
+    if (this.active) {
+      this.renderBackground()
+      this.renderComponents()
+      this.renderChildrens()
+    }
   }
 
   renderBackground() {
@@ -171,29 +191,9 @@ class GameObject implements LifeCycle {
     })
   }
 
-  update() {
-    if (this.active) {
-      this.worldX =
-        this == this.parent ? this._localX : this.parent.worldX + this.localX
-      this.worldY =
-        this == this.parent ? this._localY : this.parent.worldY + this.localY
-
-      this.updateComponents()
-      this.updateChildrens()
-    }
-  }
-
-  render() {
-    if (this.active) {
-      this.renderBackground()
-      this.renderComponents()
-      this.renderChildrens()
-    }
-  }
-
   set localX(val: number) {
     this._localX = val
-    if (this.parent === this) this.worldX = val
+    this.updateWorldPosition()
   }
 
   get localX(): number {
@@ -202,7 +202,7 @@ class GameObject implements LifeCycle {
 
   set localY(val: number) {
     this._localY = val
-    if (this.parent === this) this.worldY = val
+    this.updateWorldPosition()
   }
 
   get localY(): number {

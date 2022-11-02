@@ -136,5 +136,20 @@ export enum Direction {
   left,
   right,
 }
+export function getDirectionByCoord(coord: Vector2) {
+  if (coord[0] < 0) return Direction.left
+  if (coord[0] > 0) return Direction.right
+  if (coord[1] < 0) return Direction.up
+  if (coord[1] > 0) return Direction.down
+  return Direction.none
+}
+
+export const DirectionToCoord = new Map<Direction, Vector2>([
+  [Direction.none, [0, 0]],
+  [Direction.left, [-1, 0]],
+  [Direction.right, [1, 0]],
+  [Direction.up, [0, -1]],
+  [Direction.down, [0, 1]],
+])
 
 export default Input

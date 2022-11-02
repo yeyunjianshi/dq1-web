@@ -12,11 +12,38 @@ export type MoveComponentData = {
   animtionOffset: [number, number]
 }
 
+export type MoveState = {
+  coord: Vector2
+  position: Vector2
+  targetCoord: Vector2
+  targetPosition: Vector2
+  direction: Direction
+}
+
 export const DefaultRoleSprite = 'characters.png'
 export const DefalutMoveTileWidth = 32
 export const DefaultMoveTileHeight = 32
 export const DefaultAnimationCountInDirection = 2
 export const DefaultAnimationDuration = 1000
+
+export const DefaultMoveState = {
+  coord: [0, 0] as Vector2,
+  position: [0, 0] as Vector2,
+  targetCoord: [0, 0] as Vector2,
+  targetPosition: [0, 0] as Vector2,
+  direction: Direction.down,
+}
+
+export function CoordToPosition(coord: Vector2): Vector2 {
+  return [coord[0] * DefalutMoveTileWidth, coord[1] * DefaultMoveTileHeight]
+}
+
+export function PositionToCoord(position: Vector2): Vector2 {
+  return [
+    Math.floor(position[0] / DefalutMoveTileWidth),
+    Math.floor(position[1] / DefaultMoveTileHeight),
+  ]
+}
 
 @InnerGameComponent
 class MoveComponent extends Component {

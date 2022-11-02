@@ -9,7 +9,7 @@ import {
 } from './engine/resource'
 import Scene from './engine/scene'
 import './style.css'
-import TestData from './data/test_movecomponent.json'
+import TestData from './data/test_npc.json'
 import GridLayout from './engine/layout/GridLayout'
 
 const assetLoader = new AssetLoader()
