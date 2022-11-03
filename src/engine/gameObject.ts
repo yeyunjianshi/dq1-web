@@ -32,6 +32,8 @@ class GameObject implements LifeCycle {
   parent: GameObject
   engine: Engine
   static = false
+  pivot: Vector2 = [0, 0]
+  layoutGravity: [HorizontalGravity, VerticalGaravity] = ['left', 'top']
 
   constructor(
     parent: GameObject | null,
@@ -175,6 +177,21 @@ class GameObject implements LifeCycle {
       this.background.border,
       this.background.alpha
     )
+  }
+
+  get anchorPoint(): Vector2 {
+    return [
+      this.layoutGravity[0] === 'right'
+        ? 1
+        : this.layoutGravity[0] === 'center'
+        ? 0.5
+        : 0,
+      this.layoutGravity[1] === 'bottom'
+        ? 1
+        : this.layoutGravity[1] === 'center'
+        ? 0.5
+        : 0,
+    ]
   }
 
   renderComponents() {
