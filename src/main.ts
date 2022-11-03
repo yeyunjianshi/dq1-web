@@ -9,7 +9,7 @@ import {
 } from './engine/resource'
 import Scene from './engine/scene'
 import './style.css'
-import TestData from './data/test_npc.json'
+import TestData from './data/test_battle.json'
 import GridLayout from './engine/layout/GridLayout'
 
 const assetLoader = new AssetLoader()
@@ -46,6 +46,8 @@ const parseGameObject = (
   gameObject.configHeight = data.height
   gameObject.active = data.active
   gameObject.alpha = data.alpha ?? 1
+  gameObject.layoutGravity = data.layoutGravity ?? ['left', 'top']
+  gameObject.pivot = data.pivot ?? [0, 0]
 
   if (
     typeof data.background === 'string' &&
@@ -55,6 +57,10 @@ const parseGameObject = (
   } else if (typeof data.background === 'object') {
     gameObject.background = {
       name: data.background.sprite,
+      spriteWidth:
+        data.background.spriteWidth ?? gameObject.background.spriteWidth,
+      spriteHeight:
+        data.background.spriteHeight ?? gameObject.background.spriteHeight,
       scaleType: data.background.scaleType ?? gameObject.background.scaleType,
       color: data.background.backgroundColor ?? gameObject.background.color,
       border: {
@@ -105,12 +111,14 @@ const parseGameObject = (
 
 const parseScene = (data: SceneData) => {
   const scene = new Scene(data.name, parseGameObject(data.root, null), engine)
-  scene.width = data.width ?? -1
-  scene.height = data.height ?? -1
+  scene.width =
+    data.width && data.width >= 0 ? data.width : engine.renderer.width
+  scene.height =
+    data.height && data.height >= 0 ? data.height : engine.renderer.height
   return scene
 }
 
-const scene = parseScene(TestData as SceneData)
+const scene = parseScene(TestData as unknown as SceneData)
 
 const render = (time = 0) => {
   // console.log(`frame render: ${time}`)

@@ -13,6 +13,8 @@ type Border = {
 type Background = {
   name: string
   sprite?: Sprite
+  spriteWidth: number
+  spriteHeight: number
   color: Color
   scaleType: 'fit' | 'original'
   border: Border
@@ -62,13 +64,22 @@ interface IRenderer {
     dh: number
   ): void
 
-  drawRectColorAndBorder(
+  drawBorder(
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    border: Border,
+    alpha?: number
+  ): void
+
+  drawRect(
     x: number,
     y: number,
     width: number,
     height: number,
     backgroundColor: Color,
-    border: Border,
+    radius?: number,
     alpha?: number
   ): void
 
@@ -106,6 +117,8 @@ type BackgroundData =
   | string
   | {
       sprite: string
+      spriteWidth?: number
+      spriteHeight: number
       scaleType?: 'fit' | 'original'
       backgroundColor?: string
       borderWidth?: number
@@ -127,6 +140,8 @@ type GameObjectData = {
   alpha?: number
   children?: GameObjectData[]
   components?: ComponentData[]
+  layoutGravity?: [HorizontalGravity, VerticalGaravity]
+  pivot?: Vector2
 }
 
 type SceneData = {

@@ -98,38 +98,59 @@ export default class implements IRenderer {
     this._cacheContext.restore()
   }
 
-  drawRectColorAndBorder(
+  drawRect(
     x: number,
     y: number,
     width: number,
     height: number,
-    fillColor: Color,
+    fillColor: string,
+    radius = 0,
+    alpha = 1
+  ): void {
+    if (!fillColor || fillColor.trim() === 'transparent') return
+
+    this._cacheContext.save()
+    this._cacheContext.fillStyle = fillColor
+    this._cacheContext.globalAlpha = alpha
+    this.drawRoundRectPath(x, y, width, height, radius)
+    this._cacheContext.fill()
+    this._cacheContext.restore()
+  }
+
+  drawBorder(
+    x: number,
+    y: number,
+    width: number,
+    height: number,
     border: Border,
     alpha = 1
   ) {
-    const hasBorder = border.width > 0
-    const hasColor = !!fillColor && fillColor.trim() !== 'transparent'
-
-    if (!hasBorder && !hasColor) return
+    if (border.width <= 0) return
 
     const radius = border.radius ?? 0
-
     this._cacheContext.save()
     this._cacheContext.globalAlpha = alpha
 
-    if (hasBorder) {
-      const halfBorderWidth = border.width / 2
-      x += halfBorderWidth
-      y += halfBorderWidth
-      width -= border.width
-      height -= border.width
-      this._cacheContext.strokeStyle = border.color ?? 'white'
-      this._cacheContext.lineWidth = border.width
-    }
-    if (hasColor) {
-      this._cacheContext.fillStyle = fillColor
-    }
+    const halfBorderWidth = border.width / 2
+    x += halfBorderWidth
+    y += halfBorderWidth
+    width -= border.width
+    height -= border.width
+    this._cacheContext.strokeStyle = border.color ?? 'white'
+    this._cacheContext.lineWidth = border.width
 
+    this.drawRoundRectPath(x, y, width, height, radius)
+    this._cacheContext.stroke()
+    this._cacheContext.restore()
+  }
+
+  private drawRoundRectPath(
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    radius = 0
+  ) {
     this._cacheContext.beginPath()
     this._cacheContext.moveTo(x, y + radius)
     this._cacheContext.lineTo(x, y + height - radius)
@@ -145,11 +166,6 @@ export default class implements IRenderer {
     this._cacheContext.quadraticCurveTo(x + width, y, x + width - radius, y)
     this._cacheContext.lineTo(x + radius, y)
     this._cacheContext.quadraticCurveTo(x, y, x, y + radius)
-
-    if (hasColor) this._cacheContext.fill()
-    if (hasBorder) this._cacheContext.stroke()
-
-    this._cacheContext.restore()
   }
 
   drawText() {

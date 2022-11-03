@@ -57,6 +57,8 @@ class GameObject implements LifeCycle {
       sprite: undefined,
       scaleType: 'original',
       color: 'transparent',
+      spriteWidth: -1,
+      spriteHeight: -1,
       border: {
         width: 0,
         color: 'white',
@@ -136,6 +138,15 @@ class GameObject implements LifeCycle {
   }
 
   renderBackground() {
+    this.engine.renderer.drawRect(
+      this.worldX,
+      this.worldY,
+      this.measureWidth,
+      this.measureHeight,
+      this.background.color,
+      this.background.border?.radius ?? 0,
+      this.background.alpha
+    )
     if (!this.background.sprite) {
       if (supportSpriteExt(this.background.name)) {
         this.background.sprite = this.engine.resource.getSprite(
@@ -145,13 +156,33 @@ class GameObject implements LifeCycle {
     }
     if (this.background.sprite) {
       const sourceWidth =
-        this.background.scaleType === 'fit'
+        this.background.spriteWidth > 0
+          ? this.background.spriteWidth
+          : this.background.scaleType === 'fit'
           ? this.background.sprite.naturalWidth
           : this.measureWidth
 
       const sourceHeight =
-        this.background.scaleType === 'fit'
+        this.background.spriteHeight > 0
+          ? this.background.spriteHeight
+          : this.background.scaleType === 'fit'
           ? this.background.sprite.naturalHeight
+          : this.measureHeight
+
+      const destWidth =
+        this.background.scaleType === 'fit'
+          ? this.measureWidth
+          : this.background.spriteWidth > 0 &&
+            this.background.spriteWidth < this.measureWidth
+          ? this.background.spriteWidth
+          : this.measureWidth
+
+      const destHeight =
+        this.background.scaleType === 'fit'
+          ? this.measureHeight
+          : this.background.spriteHeight > 0 &&
+            this.background.spriteHeight < this.measureHeight
+          ? this.background.spriteHeight
           : this.measureHeight
 
       this.engine.renderer.drawSprite(
@@ -163,17 +194,16 @@ class GameObject implements LifeCycle {
         sourceHeight,
         this.worldX - this.engine.camera.x,
         this.worldY - this.engine.camera.y,
-        this.measureWidth,
-        this.measureHeight
+        destWidth,
+        destHeight
       )
     }
 
-    this.engine.renderer.drawRectColorAndBorder(
+    this.engine.renderer.drawBorder(
       this.worldX,
       this.worldY,
       this.measureWidth,
       this.measureHeight,
-      this.background.color,
       this.background.border,
       this.background.alpha
     )

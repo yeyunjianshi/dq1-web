@@ -1,0 +1,103 @@
+{
+  "name": "BattleScene",
+  "width": -2,
+  "height": -2,
+  "root": {
+    "x": 0,
+    "y": 0,
+    "width": -2,
+    "height": -2,
+    "active": true,
+    "background": "world_map.png",
+    "alpha": 1,
+    "children": [
+      {
+        "name": "background",
+        "x": 0,
+        "y": -60,
+        "width": 384,
+        "height": 336,
+        "pivot": [0.5, 0.5],
+        "layoutGravity": ["center", "center"],
+        "background": {
+          "sprite": "bg-battle.png",
+          "spriteWidth": 256,
+          "spriteHeight": 224,
+          "backgroundColor": "#000",
+          "scaleType": "fit",
+          "borderWidth": 4,
+          "pivotOffset": [260, 228]
+        },
+        "active": true,
+        "children": [
+          {
+            "name": "enemy",
+            "x": 0,
+            "y": 10,
+            "width": 300,
+            "height": 300,
+            "pivot": [0.5, 0.5],
+            "layoutGravity": ["center", "center"],
+            "background": {
+              "sprite": "enemy.png",
+              "spriteWidth": 100,
+              "spriteHeight": 100,
+              "scaleType": "fit",
+              "pivotOffset": [300, 0]
+            },
+            "active": true
+          }
+        ]
+      },
+      {
+        "name": "characterStatus",
+        "x": -350,
+        "y": -228,
+        "width": 150,
+        "height": 200,
+        "pivot": [0, 0],
+        "layoutGravity": ["center", "center"],
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borderWidth": 4
+        },
+        "active": true,
+        "layout": {
+          "type": "VerticalLayout"
+        },
+        "children": [
+          {
+            "x": 0,
+            "y": 10,
+            "width": -2,
+            "height": 40,
+            "background": {
+              "sprite": "enemy.png",
+              "spriteWidth": 100,
+              "spriteHeight": 100,
+              "scaleType": "fit",
+              "pivotOffset": [300, 0]
+            },
+            "active": true
+          }
+        ]
+      },
+      {
+        "name": "characterStatus",
+        "x": -350,
+        "y": 120,
+        "width": 700,
+        "height": 200,
+        "pivot": [0, 0],
+        "layoutGravity": ["center", "center"],
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borderWidth": 4
+        },
+        "active": true
+      }
+    ]
+  }
+}
