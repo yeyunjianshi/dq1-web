@@ -14,7 +14,7 @@
     },
     "layout": {
       "type": "GridLayout",
-      "gravities": ["center", "center"],
+      "gravity": ["center", "center"],
       "cell": [200, 50],
       "row": 3,
       "col": 2

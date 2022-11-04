@@ -1,0 +1,38 @@
+{
+  "x": 0,
+  "y": 0,
+  "width": -2,
+  "height": -2,
+  "active": true,
+  "components": [{ "type": "$TextItemComponent" }],
+  "children": [
+    {
+      "x": 0,
+      "y": 0,
+      "width": -2,
+      "height": -2,
+      "active": true,
+      "components": [
+        {
+          "type": "$TextComponent",
+          "text": "攻击",
+          "lineHeight": 1,
+          "font": {
+            "size": "26",
+            "align": "center"
+          }
+        }
+      ]
+    },
+    {
+      "x": 0,
+      "y": 0,
+      "width": 30,
+      "height": 30,
+      "background": "test/title_btn_start_0.png",
+      "layoutGravity": ["left", "center"],
+      "pivot": [0, 0.5],
+      "active": true
+    }
+  ]
+}

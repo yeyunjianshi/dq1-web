@@ -202,7 +202,7 @@
         "x": -350,
         "y": 120,
         "width": 700,
-        "height": 200,
+        "height": 190,
         "pivot": [0, 0],
         "layoutGravity": ["center", "center"],
         "background": {
@@ -213,7 +213,7 @@
         "active": true,
         "children": [
           {
-            "x": 20,
+            "x": 0,
             "y": 0,
             "width": 680,
             "height": 200,
@@ -222,7 +222,8 @@
             "components": [
               {
                 "type": "$ScrollTextComponent",
-                "text": "ありがとう,这是什么情况水电费水电费水电费水电费师傅的说法所发生的粉丝水电费第三方水电费水电费水电费似懂非懂舒服\n不知道的人啊\n命中的神啊\n来测试以下吧\n勇者啊，赶快杀死魔王吧\n....\n获得道具 药草"
+                "text": "ありがとう,这是什么情况水电费水电费水电费水电费师傅的说法所发生的粉丝水电费第三方水电费水电费水电费似懂非懂舒服\n不知道的人啊\n命中的神啊\n来测试以下吧\n勇者啊，赶快杀死魔王吧\n....\n获得道具 药草",
+                "padding": [16, 30, 10, 30]
               }
             ]
           }
@@ -233,7 +234,7 @@
         "x": -354,
         "y": 110,
         "width": 180,
-        "height": 190,
+        "height": 180,
         "pivot": [0, 0],
         "layoutGravity": ["center", "center"],
         "background": {
@@ -241,7 +242,15 @@
           "backgroundColor": "#222",
           "borderWidth": 4
         },
-        "active": true
+        "active": true,
+        "layout": {
+          "type": "GridLayout",
+          "row": 4,
+          "col": 1,
+          "cell": [180, 40],
+          "gravity": ["left", "top"],
+          "template": "test_text_item.json"
+        }
       },
       {
         "name": "enemyInfo",

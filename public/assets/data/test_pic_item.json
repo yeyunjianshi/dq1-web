@@ -1,0 +1,11 @@
+{
+  "x": 10,
+  "y": 0,
+  "width": 102,
+  "height": 40,
+  "background": "test/title_btn_start_0.png",
+  "active": true,
+  "components": [
+    { "type": "$SpriteAnimation", "path": "data/anims/title.json" }
+  ]
+}

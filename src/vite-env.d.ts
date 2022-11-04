@@ -1,5 +1,15 @@
 /// <reference types="vite/client" />
 
+type Hover = (...args: unknown[]) => void
+type Select = (...args: unknown[]) => void
+
+interface SelectListener {
+  select: Select
+  hover: Hover
+  unselect: Select
+  unhover: Hover
+}
+
 type Font = {
   size: number
   family: string
@@ -185,16 +195,17 @@ type VerticalGaravity = 'center' | 'top' | 'bottom'
 type LayoutConfig =
   | { type: 'AbsoluteLayout' }
   | ({ type: 'VerticalLayout' } & VerticalLayoutConfig)
-  | ({ type: 'GridLayout'; template: GameObjectData } & GridLayoutConfig)
+  | ({ type: 'GridLayout' } & GridLayoutConfig)
 
 type VerticalLayoutConfig = {
   gravity: HorizontalGravity
 }
 
 type GridLayoutConfig = {
-  gravities: [HorizontalGravity, VerticalGaravity]
+  gravity: [HorizontalGravity, VerticalGaravity]
   cell: [number, number]
   col: number
   row: number
   spacing?: [number, number]
+  template?: string
 }

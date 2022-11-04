@@ -1,4 +1,5 @@
 import GameObject from '../gameObject'
+import { parseGameObject } from '../parser'
 import { measureLocalPositionByGravity } from './layout'
 
 export default class GridLayout implements ILayout {
@@ -7,20 +8,35 @@ export default class GridLayout implements ILayout {
   row: number
   col: number
   spacing: [number, number]
-  gravities: [LayoutGravity, LayoutGravity]
-  template: GameObject | undefined
+  gravity: [LayoutGravity, LayoutGravity]
+  template: GameObjectData | undefined
 
   constructor(
     root: GameObject,
     config: GridLayoutConfig,
-    template?: GameObject
+    template?: GameObjectData
   ) {
     this._root = root
     this.cell = config.cell
     this.row = config.row
     this.col = config.col
     this.spacing = config.spacing ?? [0, 0]
-    this.gravities = config.gravities
+    this.gravity = config.gravity
+    this.template = template
+  }
+
+  initTemplate(templateData: GameObjectData) {
+    this.template = templateData
+    this._root.children = []
+    for (let i = 0; i < this.row * this.col; i++)
+      this._root.children.push(this.parseTemplate(templateData))
+  }
+
+  private parseTemplate(templateData: GameObjectData): GameObject {
+    const template = parseGameObject(templateData, this._root)
+    if (template.configWidth === -2) template.configWidth = this.cell[0]
+    if (template.configHeight === -2) template.configHeight = this.cell[1]
+    return template
   }
 
   layout(): [number, number] {
@@ -37,27 +53,26 @@ export default class GridLayout implements ILayout {
       for (let col = 0; col < this.col; col++) {
         const x = col * cellWidth
         const y = row * cellHeight
-        if (children.length > index) {
+
+        if (index < children.length) {
           const child = children[index]
           const [measureChildWidth, measureChildHeight] = child.layout()
           child.localX =
             x +
             measureLocalPositionByGravity(
-              this.gravities[0],
+              this.gravity[0],
               cellContentWidth,
               measureChildWidth
             )
           child.localY =
             y +
             measureLocalPositionByGravity(
-              this.gravities[1],
+              this.gravity[1],
               cellContentHeight,
               measureChildHeight
             )
-        } else if (this.template != null) {
-          // todo
+          index++
         }
-        index++
       }
     }
 

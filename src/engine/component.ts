@@ -10,6 +10,47 @@ abstract class Component implements LifeCycle {
     this._root = root
   }
 
+  getComponentsInChildren<T extends typeof Component>(
+    componentConstructor: T
+  ): Component[] {
+    const ret: Component[] = []
+
+    const queue: GameObject[] = [this.root]
+    while (queue.length > 0) {
+      const node = queue.shift() as GameObject
+      const components = node.components.filter(
+        (child) => child instanceof componentConstructor
+      )
+      ret.push(...components)
+      queue.push(...node.children)
+    }
+
+    return ret
+  }
+
+  getComponentInChildren<T extends typeof Component>(
+    componentConstructor: T
+  ): Component | undefined {
+    const queue: GameObject[] = [this.root]
+    while (queue.length > 0) {
+      const node = queue.shift() as GameObject
+      const component = node.components.find(
+        (child) => child instanceof componentConstructor
+      )
+      if (component) return component
+      queue.push(...node.children)
+    }
+    return undefined
+  }
+
+  getComponent<T extends typeof Component>(
+    componentConstructor: T
+  ): Component | undefined {
+    return this.root.components.find(
+      (component) => component instanceof componentConstructor
+    )
+  }
+
   get root() {
     return this._root
   }

@@ -1,10 +1,10 @@
 {
   "name": "TestScene",
   "root": {
-    "x": 200,
-    "y": 150,
-    "width": 400,
-    "height": 300,
+    "x": 0,
+    "y": 0,
+    "width": -2,
+    "height": -2,
     "active": true,
     "background": {
       "sprite": "world_map.png",
@@ -16,10 +16,11 @@
     },
     "layout": {
       "type": "GridLayout",
-      "gravities": ["center", "center"],
+      "gravity": ["center", "center"],
       "cell": [200, 50],
       "row": 3,
-      "col": 2
+      "col": 2,
+      "template": "test_pic_item.json"
     },
     "alpha": 1,
     "children": [

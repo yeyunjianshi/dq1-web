@@ -1,5 +1,7 @@
 import Time from './time'
 
+export const DefaultInputCheckDelay = 500
+
 class Input {
   private _time: Time
   active = true

@@ -2,6 +2,7 @@ import EventEmitter from './eventEmitter'
 
 export const ASSETS_PREFIX = 'public/assets/'
 export const SPRITES_PREFIX = ASSETS_PREFIX + 'sprites/'
+export const DATA_PREFIX = ASSETS_PREFIX + 'data/'
 
 export enum AssetLoadStatus {
   READY,
@@ -97,7 +98,7 @@ export class Resource implements IResource {
   }
 
   loadJson<T>(relativePath: string): Promise<T> {
-    const path = `${ASSETS_PREFIX}${relativePath}`
+    const path = `${DATA_PREFIX}${relativePath}`
 
     return fetch(path)
       .then((data) => {

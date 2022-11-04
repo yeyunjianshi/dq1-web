@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'VonwaonBitmap';
+  font-style: normal;
+  src: local('VonwaonBitmap'),
+    url(../public/assets/font/VonwaonBitmap-16px.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'ipix';
+  font-style: normal;
+  src: local('ipix'), url(../public/assets/font/ipix.ttf) format('truetype');
+}
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -30,5 +42,4 @@ body {
 
 canvas {
   border: 1px solid #999;
-  image-rendering: pixelated;
 }
