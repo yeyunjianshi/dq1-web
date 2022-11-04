@@ -14,6 +14,10 @@ abstract class Component implements LifeCycle {
     return this._root
   }
 
+  get renderer() {
+    return this._root.engine.renderer
+  }
+
   get time() {
     return this._root.engine.time
   }
@@ -41,6 +45,14 @@ abstract class Component implements LifeCycle {
 
   get worldPosition(): Vector2 {
     return [this._root.worldX, this._root.worldY]
+  }
+
+  get width() {
+    return this.root.measureWidth
+  }
+
+  get height() {
+    return this.root.measureHeight
   }
 
   parseData(assetLoader: AssetLoader, data: ComponentData): void {}

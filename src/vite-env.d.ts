@@ -1,6 +1,22 @@
 /// <reference types="vite/client" />
 
+type Font = {
+  size: number
+  family: string
+  color: string
+  bold: boolean
+  italic: boolean
+  align: HorizontalGravity
+}
+
+type LineInfo = {
+  text: string
+  width: number
+}
+
 type Vector2 = [number, number]
+type Vector3 = [number, number, number]
+type Vector4 = [number, number, number, number]
 
 type Color = string
 type Sprite = HTMLImageElement
@@ -84,6 +100,17 @@ interface IRenderer {
   ): void
 
   drawText(): void
+
+  drawTextOneLine(
+    text: string,
+    x: number,
+    y: number,
+    font: Required<Font>,
+    maxWidth?: number,
+    alpha?: number
+  )
+
+  measureText(text: string, width: number, font: Required<Font>): LineInfo[]
 }
 
 interface ILayout {

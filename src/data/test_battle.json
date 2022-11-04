@@ -51,10 +51,10 @@
       },
       {
         "name": "characterStatus",
-        "x": -350,
+        "x": -354,
         "y": -228,
-        "width": 150,
-        "height": 200,
+        "width": 160,
+        "height": 190,
         "pivot": [0, 0],
         "layoutGravity": ["center", "center"],
         "background": {
@@ -63,28 +63,142 @@
           "borderWidth": 4
         },
         "active": true,
-        "layout": {
-          "type": "VerticalLayout"
-        },
         "children": [
           {
+            "name": "characterName",
             "x": 0,
-            "y": 10,
+            "y": 8,
             "width": -2,
             "height": 40,
-            "background": {
-              "sprite": "enemy.png",
-              "spriteWidth": 100,
-              "spriteHeight": 100,
-              "scaleType": "fit",
-              "pivotOffset": [300, 0]
-            },
-            "active": true
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "勇者洛特",
+                "font": {
+                  "size": 26,
+                  "align": "center"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterHPLable",
+            "x": 20,
+            "y": 50,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "H",
+                "font": {
+                  "size": 26,
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterHP",
+            "x": -20,
+            "y": 50,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "layoutGravity": ["right", "top"],
+            "pivot": [1, 0],
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "150",
+                "font": {
+                  "size": 26,
+                  "align": "right"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterMPLable",
+            "x": 20,
+            "y": 90,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "M",
+                "font": {
+                  "size": 26,
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterHP",
+            "x": -20,
+            "y": 90,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "layoutGravity": ["right", "top"],
+            "pivot": [1, 0],
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "150",
+                "font": {
+                  "size": 26,
+                  "align": "right"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterLVLable",
+            "x": 20,
+            "y": 130,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "LV",
+                "font": {
+                  "size": 26,
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterLV",
+            "x": -20,
+            "y": 130,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "layoutGravity": ["right", "top"],
+            "pivot": [1, 0],
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "30",
+                "font": {
+                  "size": 26,
+                  "align": "right"
+                }
+              }
+            ]
           }
         ]
       },
       {
-        "name": "characterStatus",
         "x": -350,
         "y": 120,
         "width": 700,
@@ -96,7 +210,60 @@
           "backgroundColor": "#222",
           "borderWidth": 4
         },
+        "active": true,
+        "children": [
+          {
+            "x": 20,
+            "y": 0,
+            "width": 680,
+            "height": 200,
+            "pivot": [0, 0],
+            "active": true,
+            "components": [
+              {
+                "type": "$ScrollTextComponent",
+                "text": "ありがとう,这是什么情况水电费水电费水电费水电费师傅的说法所发生的粉丝水电费第三方水电费水电费水电费似懂非懂舒服\n不知道的人啊\n命中的神啊\n来测试以下吧\n勇者啊，赶快杀死魔王吧\n....\n获得道具 药草"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "characterCommands",
+        "x": -354,
+        "y": 110,
+        "width": 180,
+        "height": 190,
+        "pivot": [0, 0],
+        "layoutGravity": ["center", "center"],
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borderWidth": 4
+        },
         "active": true
+      },
+      {
+        "name": "enemyInfo",
+        "x": -170,
+        "y": 110,
+        "width": 400,
+        "height": 60,
+        "pivot": [0, 0],
+        "layoutGravity": ["center", "center"],
+        "active": true,
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borderWidth": 4
+        },
+        "components": [
+          {
+            "type": "$TextComponent",
+            "text": "龙王",
+            "padding": [0, 0, 0, 26]
+          }
+        ]
       }
     ]
   }

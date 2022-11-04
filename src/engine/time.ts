@@ -6,6 +6,12 @@ export const delay = (time: number) => {
   })
 }
 
+export const nextFrame = () => {
+  return new Promise((resolve) => {
+    requestAnimationFrame(() => resolve(1))
+  })
+}
+
 export class Time implements ITime {
   private _deltaTime = 0
   private _currentFrameTime = 0

@@ -42,7 +42,7 @@ type NPCData = {
 
 const DefaultMoveSpeed = 96
 const DefaultMoveWaitTime = 1000
-const DefaultPathData: NPCRandomPathData = {
+const DefaultPathData: Required<NPCRandomPathData> = {
   type: 'random',
   centerCoord: [0, 0] as Vector2,
   radius: 2,
@@ -56,7 +56,7 @@ const DefaultPathData: NPCRandomPathData = {
 export class NPCControllerComponent extends MoveComponent {
   moveSpeed = DefaultMoveSpeed
   moveWaitTime = DefaultMoveWaitTime
-  path: NPCFixedPathData | NPCRandomPathData = DefaultPathData
+  path: Required<NPCFixedPathData | NPCRandomPathData> = DefaultPathData
 
   isMoving = false
   moveState: MoveState & { pathIndex: number; reverse: boolean } = {
@@ -163,14 +163,13 @@ export class NPCControllerComponent extends MoveComponent {
     if (data.path) {
       if (data.path.type === 'random') {
         const dataPath = data.path as NPCRandomPathData
-        const path = this.path as NPCRandomPathData
+        const path = this.path as Required<NPCRandomPathData>
         path.radius = dataPath.radius ?? path.radius
         path.centerCoord =
           dataPath.centerCoord ?? PositionToCoord(this.worldPosition)
-        const radius = path.radius as number
         path.scope = [
-          vector2Minus(path.centerCoord, [radius, radius]),
-          vector2Add(path.centerCoord, [radius, radius]),
+          vector2Minus(path.centerCoord, [path.radius, path.radius]),
+          vector2Add(path.centerCoord, [path.radius, path.radius]),
         ]
         this.initMoveState(path.centerCoord)
       } else if (data.path.type === 'fixed') {

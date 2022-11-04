@@ -168,25 +168,93 @@ export default class implements IRenderer {
     this._cacheContext.quadraticCurveTo(x, y, x, y + radius)
   }
 
-  drawText() {
+  drawTextOneLine(
+    text: string,
+    x: number,
+    y: number,
+    font: Required<Font>,
+    maxWidth?: number,
+    alpha = 1
+  ) {
     this._cacheContext.save()
-    const text = '123123这\n这是什么情况 '
-    const textlines = text.split('\n')
-
-    const fontSize = 20
-    const fontFamily = 'serif'
-    this._cacheContext.font = `italic bold ${fontSize}px ${fontFamily}`
-    this._cacheContext.fillStyle = 'white'
-    textlines.forEach((line, i) => {
-      const textMetrics = this._cacheContext.measureText(line)
-      this._cacheContext.fillText(
-        line,
-        0,
-        (i + 1) * fontSize,
-        textMetrics.width
-      )
-    })
+    this._cacheContext.globalAlpha = alpha
+    this._cacheContext.font = `${font.italic ? 'italic' : ''} ${
+      font.bold ? 'bold' : ''
+    } ${font.size}px ${font.family}`
+    this._cacheContext.textBaseline = 'top'
+    this._cacheContext.fillStyle = font.color
+    this._cacheContext.fillText(text, x, y, maxWidth)
     this._cacheContext.restore()
+  }
+
+  // drawText(
+  //   width: number,
+  //   text: string,
+  //   size = 20,
+  //   bold = false,
+  //   italic = false,
+  //   color = '#eee',
+  //   fontFamily = 'serif'
+  // ) {
+  //   if (text.length === 0) return
+
+  //   this._cacheContext.save()
+  //   this._cacheContext.font = `${italic} ${bold} ${size}px ${fontFamily}`
+  //   this._cacheContext.fillStyle = color
+  //   let currentLine = ''
+  //   const textLines: string[] = []
+
+  //   for (let i = 0; i < text.length; i++) {
+  //     const char = text[i]
+  //     if (char === '\n') {
+  //       textLines.push(currentLine)
+  //       currentLine = ''
+  //     } else {
+  //       const textMetrics = this._cacheContext.measureText(currentLine + char)
+  //       if (textMetrics.width > width) {
+  //         textLines.push(currentLine)
+  //         currentLine = char
+  //       }
+  //     }
+  //   }
+  //   textLines.push(currentLine)
+  // }
+
+  drawText() {}
+
+  measureText(text: string, width: number, font: Required<Font>): LineInfo[] {
+    if (text.length === 0) return []
+
+    this._cacheContext.save()
+    this._cacheContext.font = `${font.italic ? 'italic' : ''} ${
+      font.bold ? 'bold' : ''
+    } ${font.size}px ${font.family}`
+
+    let currentLine = ''
+    let currentWidth = 0
+    const textLines: LineInfo[] = []
+
+    for (let i = 0; i < text.length; i++) {
+      const char = text[i]
+      if (char === '\n') {
+        textLines.push({ text: currentLine, width: currentWidth })
+        currentLine = ''
+        currentWidth = 0
+      } else {
+        const textMetrics = this._cacheContext.measureText(currentLine + char)
+        if (textMetrics.width > width) {
+          textLines.push({ text: currentLine, width: currentWidth })
+          currentLine = char
+          currentWidth = textMetrics.width - currentWidth
+        } else {
+          currentLine += char
+          currentWidth = textMetrics.width
+        }
+      }
+    }
+    textLines.push({ text: currentLine, width: currentWidth })
+
+    return textLines
   }
 
   renderBegin(): void {
