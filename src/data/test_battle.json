@@ -1,5 +1,6 @@
 {
   "name": "BattleScene",
+  "bgm": "PeacefulVillage.mp3",
   "width": -2,
   "height": -2,
   "root": {

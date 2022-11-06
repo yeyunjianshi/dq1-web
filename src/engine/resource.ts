@@ -2,6 +2,7 @@ import EventEmitter from './eventEmitter'
 
 export const ASSETS_PREFIX = 'public/assets/'
 export const SPRITES_PREFIX = ASSETS_PREFIX + 'sprites/'
+export const AUDIO_PREFIX = ASSETS_PREFIX + 'audios/'
 export const DATA_PREFIX = ASSETS_PREFIX + 'data/'
 
 export enum AssetLoadStatus {
@@ -60,6 +61,8 @@ export class AssetLoader {
 
 export const supportSpriteExt = (path: string): boolean =>
   ['.png', '.jpg', '.jpeg', '.bmp'].some((ext) => path.endsWith(ext))
+export const supportAudioExt = (path: string): boolean =>
+  ['.mp3', '.jpg', '.jpeg', '.bmp'].some((ext) => path.endsWith(ext))
 
 export class Resource implements IResource {
   private _sprites = new Map<string, Sprite>()
@@ -93,8 +96,31 @@ export class Resource implements IResource {
     return promise
   }
 
-  loadAudio(): Promise<Audio> {
-    return Promise.resolve(new Audio())
+  loadAudio(relativePath: string): Promise<Audio> {
+    if (this.hasAudio(relativePath)) {
+      return Promise.resolve(this.getAudio(relativePath) as Audio)
+    }
+
+    const path = `${AUDIO_PREFIX}${relativePath}`
+    if (!supportAudioExt(path))
+      return Promise.reject(
+        `resource: load audio ${path} error, not support ext.`
+      )
+
+    const audio = new Audio(path)
+
+    const promise = new Promise<Audio>((resolve, reject) => {
+      audio.addEventListener('canplay', () => {
+        console.log(`resource: load audio ${path} success`)
+        this._audios.set(relativePath, audio)
+        resolve(audio)
+      })
+      audio.addEventListener('error', () => {
+        reject(`resource: load audio ${path} error.`)
+      })
+    })
+
+    return promise
   }
 
   loadJson<T>(relativePath: string): Promise<T> {
@@ -113,8 +139,16 @@ export class Resource implements IResource {
     return this._sprites.has(key)
   }
 
-  getSprite(key: string): HTMLImageElement | undefined {
+  getSprite(key: string): Sprite | undefined {
     return this._sprites.get(key)
+  }
+
+  hasAudio(key: string): boolean {
+    return this._audios.has(key)
+  }
+
+  getAudio(key: string): Audio | undefined {
+    return this._audios.get(key)
   }
 }
 

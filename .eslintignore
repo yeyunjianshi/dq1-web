@@ -3,3 +3,4 @@ node_modules
 .husky
 .git
 dist
+config

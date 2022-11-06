@@ -11,6 +11,7 @@ export default class implements LifeCycle {
   width = -1
   height = -1
   isSetCamera = true
+  bgm?: string
   isAsync = false
 
   constructor(name = '', rootObject: GameObject, engine: Engine) {
@@ -50,6 +51,9 @@ export default class implements LifeCycle {
 
     this.rootObject.layout()
     this.rootObject.start()
+
+    // play bgm
+    this.engine.audios.playBGM(this.bgm)
   }
 
   tick() {

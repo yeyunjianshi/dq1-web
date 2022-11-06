@@ -1,10 +1,11 @@
-import { createDefaultEngine } from './engine/engine'
-import { AssetLoadStatus } from './engine/resource'
 import './style.css'
+import { createEngine } from './engine/engine'
+import { AssetLoadStatus } from './engine/resource'
 import TestData from './data/test_battle.json'
 import { assetLoader, parseScene } from './engine/parser'
+import './gameplay/componentConfig'
 
-const engine = createDefaultEngine()
+const engine = createEngine()
 const scene = parseScene(TestData as unknown as SceneData, engine)
 
 const render = () => {
@@ -26,6 +27,10 @@ assetLoader.assetEvent.addListener((status) => {
   }
 })
 assetLoader.load()
+
+document.getElementById('startBtn')?.addEventListener('click', () => {
+  engine.audios.replayBGM()
+})
 
 const GameStart = () => {
   engine.init()

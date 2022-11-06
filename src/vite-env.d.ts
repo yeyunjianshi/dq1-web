@@ -53,11 +53,13 @@ type Audio = HTMLAudioElement
 // load sprite, audio, json
 interface IResource {
   loadSprite(path: string): Promise<Sprite>
-  loadAudio(): Promise<Audio>
+  loadAudio(path: string): Promise<Audio>
   loadJson<T>(path: string): Promise<T>
 
   hasSprite(key: string): boolean
   getSprite(key: string): Sprite | undefined
+  hasAudio(key: string): boolean
+  getAudio(key: string): Audio | undefined
 }
 
 // render
@@ -184,6 +186,7 @@ type GameObjectData = {
 type SceneData = {
   name: string
   root: GameObjectData
+  bgm?: string
   width?: number
   height?: number
 }

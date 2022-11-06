@@ -134,5 +134,9 @@ export function parseScene(data: SceneData, engine: Engine) {
     data.width && data.width >= 0 ? data.width : engine.renderer.width
   scene.height =
     data.height && data.height >= 0 ? data.height : engine.renderer.height
+  scene.bgm = data.bgm
+  if (data.bgm) {
+    assetLoader.addAssets(engine.resource.loadAudio(data.bgm))
+  }
   return scene
 }
