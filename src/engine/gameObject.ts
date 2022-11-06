@@ -238,6 +238,65 @@ class GameObject implements LifeCycle {
     })
   }
 
+  getComponentsInChildren<T extends typeof Component>(
+    componentConstructor: T
+  ): Component[] {
+    const ret: Component[] = []
+
+    const queue: GameObject[] = [this]
+    while (queue.length > 0) {
+      const node = queue.shift() as GameObject
+      const components = node.components.filter(
+        (child) => child instanceof componentConstructor
+      )
+      ret.push(...components)
+      queue.push(...node.children)
+    }
+
+    return ret
+  }
+
+  getComponentInChildren<T extends typeof Component>(
+    componentConstructor: T
+  ): Component | undefined {
+    const queue: GameObject[] = [this]
+    while (queue.length > 0) {
+      const node = queue.shift() as GameObject
+      const component = node.components.find(
+        (child) => child instanceof componentConstructor
+      )
+      if (component) return component
+      queue.push(...node.children)
+    }
+    return undefined
+  }
+
+  getComponent<T extends typeof Component>(
+    componentConstructor: T
+  ): Component | undefined {
+    return this.components.find(
+      (component) => component instanceof componentConstructor
+    )
+  }
+
+  getComponentInChildByName<T extends typeof Comment>(
+    name: string,
+    componentConstructor: T
+  ) {
+    const queue: GameObject[] = [this]
+    while (queue.length > 0) {
+      const node = queue.shift() as GameObject
+      if (node.name === name) {
+        const component = node.components.find(
+          (child) => child instanceof componentConstructor
+        )
+        if (component) return component
+      }
+      queue.push(...node.children)
+    }
+    return undefined
+  }
+
   set localX(val: number) {
     this._localX = val
     this.updateWorldPosition()

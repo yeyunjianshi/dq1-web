@@ -25,7 +25,7 @@ export default class ListComponent extends Component {
   private _selecting = false
 
   start(): void {
-    this._items = this.getComponentsInChildren(ListItem) as ListItem[]
+    this._items = this.root.getComponentsInChildren(ListItem) as ListItem[]
     this.getRowAndColfromLayout()
   }
 

@@ -49,17 +49,24 @@ class Engine {
   }
 }
 
-export function createDefaultEngine(
-  renderer: IRenderer = new CanvasRenderer('core'),
-  resources: IResource = new Resources(),
-  time: Time = new Time(),
-  input: Input = new Input(time),
-  camera: Camera = new Camera(renderer.width, renderer.height),
-  componentContainer: Map<string, ComponentConstruct> = new Map<
-    string,
-    ComponentConstruct
-  >()
-) {
+type EngineConfig = {
+  renderer?: IRenderer
+  resources?: IResource
+  time?: Time
+  input?: Input
+  camera?: Camera
+  componentContainer?: Map<string, ComponentConstruct>
+}
+
+export function createEngine(config: EngineConfig | undefined = {}) {
+  const renderer = config.renderer ?? new CanvasRenderer('core')
+  const resources = config.resources ?? new Resources()
+  const time = config.time ?? new Time()
+  const input = config.input ?? new Input(time)
+  const camera = config.camera ?? new Camera(renderer.width, renderer.height)
+  const componentContainer =
+    config.componentContainer ?? new Map<string, ComponentConstruct>()
+
   return new Engine(
     renderer,
     resources,
