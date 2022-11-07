@@ -154,4 +154,12 @@ export const DirectionToCoord = new Map<Direction, Vector2>([
   [Direction.down, [0, 1]],
 ])
 
+export function oppsiteDirection(direction: Direction): Direction {
+  if (direction === Direction.left) return Direction.right
+  if (direction === Direction.right) return Direction.left
+  if (direction === Direction.up) return Direction.down
+  if (direction === Direction.down) return Direction.up
+  return Direction.none
+}
+
 export default Input

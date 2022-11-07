@@ -8,6 +8,12 @@ import Camera from './camera'
 import AudioManager from './audio'
 import SceneManger from './sceneManager'
 
+export const GlobalTeamController = '$TeamController'
+export const GlobalSceneTransition = '$GlobalSceneTransition'
+export const GlobalSceneTransitionDestination =
+  '$GlobalSceneTransitionDestination'
+export const GlobalSceneComponent = '$GlobalSceneComponent'
+
 class Engine {
   renderer: IRenderer
   resource: IResource
@@ -17,6 +23,7 @@ class Engine {
   audios: AudioManager
   sceneManager: SceneManger
   componentContainer: Map<string, ComponentConstruct>
+  private _globalVariables: Map<string, any> = new Map<string, any>()
 
   constructor(
     renderer: IRenderer,
@@ -58,6 +65,16 @@ class Engine {
       this.sceneManager.tick()
     })
     requestAnimationFrame(() => this.tick())
+  }
+
+  getVariable<T>(key: string): T {
+    const value = this._globalVariables.get(key)
+    if (!value) throw new Error(`Engine get variable error: not find ${key}`)
+    return value as T
+  }
+
+  setVariable(key: string, value: any) {
+    this._globalVariables.set(key, value)
   }
 }
 

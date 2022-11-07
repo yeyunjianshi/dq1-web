@@ -1,6 +1,5 @@
 {
   "name": "NPCScene",
-  "bgm": "PeacefulVillage.mp3",
   "width": 640,
   "height": 768,
   "root": {
@@ -11,7 +10,27 @@
     "active": true,
     "background": "TantegelCastle.png",
     "alpha": 1,
+    "components": [
+      {
+        "type": "$SceneComponent"
+      }
+    ],
     "children": [
+      {
+        "x": 0,
+        "y": 32,
+        "width": 32,
+        "height": 32,
+        "active": true,
+        "alpha": 1,
+        "components": [
+          {
+            "type": "$SceneTransition",
+            "tag": "floor_down",
+            "nextScene": "Battle"
+          }
+        ]
+      },
       {
         "x": 320,
         "y": 320,

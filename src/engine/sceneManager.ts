@@ -58,7 +58,7 @@ export default class SceneManger {
     }
   }
 
-  loadScene(sceneName: string, loadType?: SceneLoadType) {
+  loadScene(sceneName: string, loadType?: SceneLoadType): Scene {
     let scene = this._cacheScenes.find((s) => sceneName === s.name)
     if (!scene) {
       const sceneData = GetGameSceneData(sceneName)
@@ -78,6 +78,7 @@ export default class SceneManger {
     this._scenes.push(scene)
     this._renderScenes = [...this._scenes]
     this._renderScenes.sort((a, b) => a.priority - b.priority)
+    return scene
   }
 
   unloadScene(sceneName: string) {
@@ -94,7 +95,7 @@ export default class SceneManger {
   //     this._cacheScenes.push(this.currentScene)
   //   }
   //   this._scenes.pop()
-  //   this.currentScene = this._scenes[this._cacheScenes.length - 1]
+
   //   this._renderScenes = [...this._scenes]
   //   this._renderScenes.sort((a, b) => a.priority - b.priority)
   // }

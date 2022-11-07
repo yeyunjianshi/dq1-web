@@ -56,9 +56,6 @@ export default class implements LifeCycle {
 
     this.rootObject.layout()
     this.rootObject.awake()
-
-    // play bgm
-    this.engine.audios.playBGM(this.bgm)
   }
 
   start() {

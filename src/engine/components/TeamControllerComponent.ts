@@ -1,6 +1,7 @@
 import { InnerGameComponent } from '.'
+import { GlobalSceneComponent, GlobalTeamController } from '../engine'
 import GameObject from '../gameObject'
-import { Direction, DirectionToCoord } from '../input'
+import { Direction, DirectionToCoord, oppsiteDirection } from '../input'
 import { distance, lerpVector2, vector2Add } from '../math'
 import { AssetLoader } from '../resource'
 import MoveComponent, {
@@ -10,7 +11,9 @@ import MoveComponent, {
   DefaultRoleSprite,
   MoveComponentData,
   MoveState,
+  PositionToCoord,
 } from './MoveComponent'
+import SceneComponent from './SceneComponent'
 
 type TeamControllerData = {
   moveSpeed?: number
@@ -21,7 +24,7 @@ const DefaultMaxTeamCount = 1
 const DefaultMoveSpeed = 64
 const DefaultTileSize = 32
 
-export function NextCoordByDirection(
+export function nextCoordByDirection(
   coord: Vector2,
   direction: Direction
 ): Vector2 {
@@ -48,6 +51,10 @@ export default class TeamControllerComponent extends MoveComponent {
     super(root)
   }
 
+  awake(): void {
+    this.engine.setVariable(GlobalTeamController, this)
+  }
+
   start() {
     for (let i = 0; i < this.maxTeamCount; i++) {
       const child = new GameObject(this.root, `PlayerMoveAnimation_${i}`)
@@ -70,9 +77,7 @@ export default class TeamControllerComponent extends MoveComponent {
 
     this.updateDistance((this.moveSpeed * this.time.scaleDeltaTime) / 1000)
     this.refreshAnimation()
-    this.camera.moveToCenter(
-      vector2Add(this._head.position, this.worldPosition)
-    )
+    this.camera.moveToCenter(this.headPosition)
   }
 
   updateDistance(moveDelta: number): void {
@@ -85,7 +90,7 @@ export default class TeamControllerComponent extends MoveComponent {
       if (pressedDirection !== Direction.none) {
         this.changeHeadDirection(pressedDirection)
 
-        const nextCoord = NextCoordByDirection(
+        const nextCoord = nextCoordByDirection(
           this._head.coord,
           pressedDirection
         )
@@ -116,9 +121,7 @@ export default class TeamControllerComponent extends MoveComponent {
       if (moveDistance <= moveDelta) {
         this.moveToTarget() // 移动到目标坐标
         // 检查是否有事件发生
-        if (this._checkDoor()) {
-          console.log(this._head.coord)
-          this.sceneManager.loadScene('Battle')
+        if (this.checkDestination()) {
           return
         }
         if (moveDistance - moveDelta > 0.01) {
@@ -130,9 +133,21 @@ export default class TeamControllerComponent extends MoveComponent {
     }
   }
 
-  _checkDoor() {
-    if (this._head.coord[0] === 2 && this._head.coord[1] === 0) {
-      return true
+  checkDestination() {
+    const sceneComponent = this.engine.getVariable(
+      GlobalSceneComponent
+    ) as SceneComponent
+    if (sceneComponent) {
+      const transition = sceneComponent.triggerTransition(
+        vector2Add(this.headPosition, [
+          DefaultTileSize >> 1,
+          DefaultTileSize >> 1,
+        ])
+      )
+      if (transition) {
+        transition.transitionTo()
+        return true
+      }
     }
     return false
   }
@@ -199,6 +214,36 @@ export default class TeamControllerComponent extends MoveComponent {
   changeHeadDirection(direciton: Direction) {
     this._head.direction = direciton
     this.playerMoveComponents[0].direction = direciton
+  }
+
+  public moveTo(worldPostion: Vector2, dir: Direction, isPermutation = true) {
+    this.isMoving = false
+    const coord = PositionToCoord(worldPostion)
+    this._head.targetCoord = this._head.coord = coord
+    this._head.direction = dir
+    for (let i = 0; i < this.playerStats.length; i++) {
+      const playerState = this.playerStats[i]
+      playerState.coord = playerState.targetCoord =
+        i == 0 || !isPermutation
+          ? coord
+          : nextCoordByDirection(
+              this.playerStats[i - 1].targetCoord,
+              oppsiteDirection(dir)
+            )
+      playerState.position = playerState.targetPosition = CoordToPosition(
+        playerState.coord
+      )
+      playerState.direction = this.direction
+    }
+    this.refreshAllMoveComponent((stat, component) => {
+      component.localPosition = stat.position
+      component.direction = stat.direction
+    })
+    this.refreshAnimationSprite()
+  }
+
+  get headPosition() {
+    return vector2Add(this._head.position, this.worldPosition)
   }
 
   parseData(assetLoader: AssetLoader, data: TeamControllerData): void {

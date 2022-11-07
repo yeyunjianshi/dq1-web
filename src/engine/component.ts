@@ -11,8 +11,14 @@ abstract class Component implements LifeCycle {
     this._root = root
   }
 
+  saveToEngineGlobal() {}
+
   get root() {
     return this._root
+  }
+
+  get engine() {
+    return this._root.engine
   }
 
   get renderer() {
@@ -41,6 +47,10 @@ abstract class Component implements LifeCycle {
 
   get sceneManager() {
     return this._root.engine.sceneManager
+  }
+
+  get audios() {
+    return this._root.engine.audios
   }
 
   set localPosition(pos: Vector2) {

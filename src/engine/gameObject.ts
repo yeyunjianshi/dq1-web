@@ -2,6 +2,7 @@ import Component from './component'
 import Engine from './engine'
 import AbsoluteLayout from './layout/AbsoluteLayout'
 import { LayoutMatchParent, LayoutFitContent } from './layout/layout'
+import { vector2Add, vector2Minus } from './math'
 import { supportSpriteExt } from './resource'
 
 class GameObject implements LifeCycle {
@@ -319,6 +320,12 @@ class GameObject implements LifeCycle {
 
   get localY(): number {
     return this._localY
+  }
+
+  get boundingBox(): [Vector2, Vector2] {
+    const worldPosition: Vector2 = [this.worldX, this.worldY]
+    const include: Vector2 = [this.measureWidth, this.measureHeight]
+    return [worldPosition, vector2Add(worldPosition, include)]
   }
 }
 
