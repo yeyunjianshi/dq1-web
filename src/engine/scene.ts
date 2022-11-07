@@ -1,6 +1,7 @@
 import Engine from './engine'
 import GameObject from './gameObject'
 import { LayoutFitContent, LayoutMatchParent } from './layout/layout'
+import { SceneLoadType } from './sceneManager'
 
 export default class implements LifeCycle {
   name = ''
@@ -13,6 +14,8 @@ export default class implements LifeCycle {
   isSetCamera = true
   bgm?: string
   isAsync = false
+  priority = 10
+  loadType: SceneLoadType = SceneLoadType.Replace
 
   constructor(name = '', rootObject: GameObject, engine: Engine) {
     this.name = name
@@ -26,6 +29,7 @@ export default class implements LifeCycle {
         this.width === -1 ? this.engine.renderer.width : this.width
       this.engine.camera.sceneHeight =
         this.height === -1 ? this.engine.renderer.height : this.height
+      this.engine.camera.refresh()
     }
     this.active = true
   }
@@ -34,7 +38,7 @@ export default class implements LifeCycle {
     this.active = false
   }
 
-  start() {
+  awake() {
     this.rootObject.measureWidth =
       this.rootObject.configWidth === LayoutMatchParent
         ? this.width
@@ -50,14 +54,18 @@ export default class implements LifeCycle {
         : this.rootObject.configHeight
 
     this.rootObject.layout()
-    this.rootObject.start()
+    this.rootObject.awake()
 
     // play bgm
     this.engine.audios.playBGM(this.bgm)
   }
 
+  start() {
+    this.rootObject.start()
+  }
+
   tick() {
-    if (this.active) {
+    if (this.loaded && this.active) {
       this.update()
       this.render()
     }

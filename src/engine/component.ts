@@ -57,6 +57,7 @@ abstract class Component implements LifeCycle {
 
   parseData(assetLoader: AssetLoader, data: ComponentData): void {}
 
+  awake() {}
   start() {}
   tick() {}
   update() {}

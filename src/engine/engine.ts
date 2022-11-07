@@ -6,6 +6,7 @@ import './components/config'
 import Input from './input'
 import Camera from './camera'
 import AudioManager from './audio'
+import SceneManger from './sceneManager'
 
 class Engine {
   renderer: IRenderer
@@ -14,6 +15,7 @@ class Engine {
   input: Input
   camera: Camera
   audios: AudioManager
+  sceneManager: SceneManger
   componentContainer: Map<string, ComponentConstruct>
 
   constructor(
@@ -31,6 +33,7 @@ class Engine {
     this.time = time
     this.input = input
     this.camera = camera
+    this.sceneManager = new SceneManger(this)
     this.componentContainer = new Map<string, ComponentConstruct>([
       ...innerContainer,
       ...componentContainer,
@@ -40,6 +43,7 @@ class Engine {
   init() {
     this.time.init()
     this.input.init()
+    this.sceneManager.init()
   }
 
   run() {
@@ -49,6 +53,10 @@ class Engine {
 
   tick() {
     this.time.tick()
+    this.input.tick()
+    this.renderer.render(() => {
+      this.sceneManager.tick()
+    })
     requestAnimationFrame(() => this.tick())
   }
 }
@@ -60,6 +68,7 @@ type EngineConfig = {
   input?: Input
   camera?: Camera
   componentContainer?: Map<string, ComponentConstruct>
+  sceneManager?: SceneManger
   audios?: AudioManager
 }
 

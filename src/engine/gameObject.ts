@@ -95,6 +95,11 @@ class GameObject implements LifeCycle {
     return this.configLayout.layout()
   }
 
+  awake() {
+    this.components?.forEach((com) => com.awake && com.awake())
+    this.children?.forEach((child) => child.awake && child.awake())
+  }
+
   start() {
     this.components?.forEach((com) => com.start && com.start())
     this.children?.forEach((child) => child.start && child.start())

@@ -36,7 +36,7 @@ export class Camera {
         : pos[0] - this._halfWidth
     this.y =
       this.height >= this.sceneHeight
-        ? (this.sceneWidth - this.height) >> 1
+        ? (this.sceneHeight - this.height) >> 1
         : pos[1] <= this._halfHeight
         ? 0
         : this._halfHeight + pos[1] >= this.sceneHeight
@@ -44,6 +44,10 @@ export class Camera {
         : pos[1] - this._halfHeight
 
     console.log(this.x, this.y)
+  }
+
+  refresh() {
+    this.moveToCenter([0, 0], false)
   }
 
   set width(val: number) {

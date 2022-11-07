@@ -3,11 +3,12 @@ import GameObject from './gameObject'
 import AbsoluteLayout from './layout/AbsoluteLayout'
 import GridLayout from './layout/GridLayout'
 import VerticalLayout from './layout/VerticalLayout'
-import { AssetLoader, supportSpriteExt } from './resource'
+import { AssetLoader, AssetLoadStatus, supportSpriteExt } from './resource'
 import Scene from './scene'
 
-export const assetLoader = new AssetLoader()
 export let id = 0
+
+let assetLoader = new AssetLoader()
 
 export function parseLayout(
   root: GameObject,
@@ -125,6 +126,7 @@ export function parseGameObject(
 }
 
 export function parseScene(data: SceneData, engine: Engine) {
+  assetLoader = new AssetLoader()
   const scene = new Scene(
     data.name,
     parseGameObject(data.root, null, engine),
@@ -138,5 +140,14 @@ export function parseScene(data: SceneData, engine: Engine) {
   if (data.bgm) {
     assetLoader.addAssets(engine.resource.loadAudio(data.bgm))
   }
+  assetLoader.assetEvent.addListener((status) => {
+    if (status === AssetLoadStatus.SUCCESS) {
+      scene.show()
+      scene.awake()
+      scene.start()
+      scene.loaded = true
+    }
+  })
+  assetLoader.load()
   return scene
 }

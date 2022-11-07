@@ -137,6 +137,7 @@ interface ITime {
 
 interface LifeCycle {
   active: boolean
+  awake?(): void
   start?(): void
   tick?: () => void
   update?: () => void
