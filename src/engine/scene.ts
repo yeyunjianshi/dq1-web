@@ -7,6 +7,7 @@ export default class implements LifeCycle {
   name = ''
   rootObject: GameObject
   active = true
+  enable = true
   loaded = false
   engine: Engine
   width = -1
@@ -66,16 +67,18 @@ export default class implements LifeCycle {
 
   tick() {
     if (this.loaded && this.active) {
-      this.update()
+      if (this.enable) this.update()
       this.render()
     }
   }
 
   update() {
-    this.rootObject.update()
+    if (this.loaded && this.active && this.enable) {
+      this.rootObject.update()
+    }
   }
 
   render() {
-    this.rootObject.render()
+    if (this.loaded && this.active) this.rootObject.render()
   }
 }

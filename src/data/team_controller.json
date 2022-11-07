@@ -1,0 +1,21 @@
+{
+  "name": "TeamController",
+  "width": -2,
+  "height": -2,
+  "loadType": 2,
+  "priority": 100,
+  "root": {
+    "x": 0,
+    "y": 0,
+    "width": 32,
+    "height": 32,
+    "alpha": 1,
+    "active": true,
+    "components": [
+      {
+        "type": "$TeamControllerComponent",
+        "moveSpeed": 96
+      }
+    ]
+  }
+}

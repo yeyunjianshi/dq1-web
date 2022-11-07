@@ -5,6 +5,7 @@ import GridLayout from './layout/GridLayout'
 import VerticalLayout from './layout/VerticalLayout'
 import { AssetLoader, AssetLoadStatus, supportSpriteExt } from './resource'
 import Scene from './scene'
+import { SceneLoadType } from './sceneManager'
 
 export let id = 0
 
@@ -125,6 +126,7 @@ export function parseGameObject(
   return gameObject
 }
 
+const DefaultScenePriority = 10
 export function parseScene(data: SceneData, engine: Engine) {
   assetLoader = new AssetLoader()
   const scene = new Scene(
@@ -137,6 +139,8 @@ export function parseScene(data: SceneData, engine: Engine) {
   scene.height =
     data.height && data.height >= 0 ? data.height : engine.renderer.height
   scene.bgm = data.bgm
+  scene.loadType = data.loadType ?? SceneLoadType.Replace
+  scene.priority = data.priority ?? DefaultScenePriority
   if (data.bgm) {
     assetLoader.addAssets(engine.resource.loadAudio(data.bgm))
   }

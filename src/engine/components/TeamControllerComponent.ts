@@ -36,8 +36,6 @@ export function checkNextCoordCanMove(coord: Vector2): boolean {
 @InnerGameComponent
 export default class TeamControllerComponent extends MoveComponent {
   characterSpriteName = ''
-  coord: Vector2 = [0, 0]
-  targetCoord: Vector2 = [0, 0]
   playerMoveComponents: MoveComponent[] = []
   playerStats: MoveState[] = []
   private _head: MoveState = DefaultMoveState
@@ -117,6 +115,12 @@ export default class TeamControllerComponent extends MoveComponent {
 
       if (moveDistance <= moveDelta) {
         this.moveToTarget() // 移动到目标坐标
+        // 检查是否有事件发生
+        if (this._checkDoor()) {
+          console.log(this._head.coord)
+          this.sceneManager.loadScene('Battle')
+          return
+        }
         if (moveDistance - moveDelta > 0.01) {
           this.updateDistance(moveDistance - moveDelta)
         }
@@ -124,6 +128,13 @@ export default class TeamControllerComponent extends MoveComponent {
         this.move(moveDelta)
       }
     }
+  }
+
+  _checkDoor() {
+    if (this._head.coord[0] === 2 && this._head.coord[1] === 0) {
+      return true
+    }
+    return false
   }
 
   move(dis: number) {
@@ -146,7 +157,7 @@ export default class TeamControllerComponent extends MoveComponent {
     this._head.coord = this._head.targetCoord
     this._head.position = this._head.targetPosition
 
-    console.log(this._head.position)
+    // console.log(this._head.position)
 
     this.refreshAllMoveComponent((stat, component) => {
       component.localPosition = stat.targetPosition

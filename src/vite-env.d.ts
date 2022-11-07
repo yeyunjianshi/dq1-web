@@ -137,6 +137,8 @@ interface ITime {
 
 interface LifeCycle {
   active: boolean
+  enable: boolean
+
   awake?(): void
   start?(): void
   tick?: () => void
@@ -190,6 +192,8 @@ type SceneData = {
   bgm?: string
   width?: number
   height?: number
+  loadType?: number
+  priority?: number
 }
 
 type LayoutGravity = HorizontalGravity | VerticalGaravity

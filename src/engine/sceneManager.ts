@@ -4,8 +4,9 @@ import Scene from './scene'
 import DefaultLoadingSceneData from '../data/loading.json'
 
 export enum SceneLoadType {
-  Replace,
+  Replace = 0,
   Addon,
+  Global,
 }
 
 const gameScenes = new Map<string, SceneData>([
@@ -57,7 +58,7 @@ export default class SceneManger {
     }
   }
 
-  loadScene(sceneName: string) {
+  loadScene(sceneName: string, loadType?: SceneLoadType) {
     let scene = this._cacheScenes.find((s) => sceneName === s.name)
     if (!scene) {
       const sceneData = GetGameSceneData(sceneName)
@@ -65,10 +66,13 @@ export default class SceneManger {
       this._loadingScenes.push(scene)
     }
 
+    scene.loadType = loadType ?? scene.loadType
+
     this.currentScene = scene
     if (scene.loadType === SceneLoadType.Replace) {
+      this.currentScene = scene
       this._scenes = this._scenes.filter(
-        (s) => s.loadType !== SceneLoadType.Replace
+        (s) => s.loadType === SceneLoadType.Global
       )
     }
     this._scenes.push(scene)
@@ -76,17 +80,22 @@ export default class SceneManger {
     this._renderScenes.sort((a, b) => a.priority - b.priority)
   }
 
-  popScene() {
-    if (!this.currentScene || this._scenes.length)
-      throw new Error(`Pop Scene Error`)
-
-    if (this.currentScene.loadType === SceneLoadType.Addon) {
-      this.currentScene.active = false
-      this._cacheScenes.push(this.currentScene)
-    }
-    this._scenes.pop()
-    this.currentScene = this._scenes[this._cacheScenes.length - 1]
-    this._renderScenes = [...this._scenes]
-    this._renderScenes.sort((a, b) => a.priority - b.priority)
+  unloadScene(sceneName: string) {
+    this._scenes = this._scenes.filter((s) => s.name !== sceneName)
+    this._renderScenes = this._renderScenes.filter((s) => s.name !== sceneName)
   }
+
+  // popScene() {
+  //   if (!this.currentScene || this._scenes.length)
+  //     throw new Error(`Pop Scene Error`)
+
+  //   if (this.currentScene.loadType === SceneLoadType.Addon) {
+  //     this.currentScene.active = false
+  //     this._cacheScenes.push(this.currentScene)
+  //   }
+  //   this._scenes.pop()
+  //   this.currentScene = this._scenes[this._cacheScenes.length - 1]
+  //   this._renderScenes = [...this._scenes]
+  //   this._renderScenes.sort((a, b) => a.priority - b.priority)
+  // }
 }

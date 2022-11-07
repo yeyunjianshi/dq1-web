@@ -41,7 +41,7 @@ class Input {
 
     const keyDownHandler = (event: KeyboardEvent) => {
       return () => {
-        console.log(`${event.key} keydown`)
+        // console.log(`${event.key} keydown`)
         if (!this.active || this.pressedKeyInfo.key === event.key) return
         this.pressedKyes.push(event.key)
         dispatch()
@@ -49,7 +49,7 @@ class Input {
     }
     const keyUpHandler = (event: KeyboardEvent) => {
       return () => {
-        console.log(`${event.key} keyup`)
+        // console.log(`${event.key} keyup`)
         if (!this.active) return
 
         this.pressedKyes = this.pressedKyes.filter((k) => k !== event.key)

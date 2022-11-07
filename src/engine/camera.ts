@@ -42,8 +42,6 @@ export class Camera {
         : this._halfHeight + pos[1] >= this.sceneHeight
         ? Math.max(0, this.sceneHeight - this.height)
         : pos[1] - this._halfHeight
-
-    console.log(this.x, this.y)
   }
 
   refresh() {

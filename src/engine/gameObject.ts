@@ -23,6 +23,7 @@ class GameObject implements LifeCycle {
   configHeight = -1
   configLayout: ILayout
   active = true
+  enable = true
   name = ''
   children: GameObject[] = []
   components: Component[] = []
@@ -106,7 +107,7 @@ class GameObject implements LifeCycle {
   }
 
   update() {
-    if (this.active) {
+    if (this.active && this.enable) {
       this.updateWorldPosition()
       this.updateComponents()
       this.updateChildrens()
@@ -122,13 +123,13 @@ class GameObject implements LifeCycle {
 
   updateChildrens() {
     this.children.forEach((child) => {
-      if (child.update) child.update()
+      if (child.active && child.enable && child.update) child.update()
     })
   }
 
   updateComponents() {
     this.components.forEach((com) => {
-      if (com.active && com.update) {
+      if (com.active && com.enable && com.update) {
         com.update()
       }
     })

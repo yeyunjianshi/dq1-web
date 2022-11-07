@@ -3,6 +3,7 @@ import { AssetLoader } from './resource'
 
 abstract class Component implements LifeCycle {
   active = true
+  enable = true
 
   private _root: GameObject
 
@@ -36,6 +37,10 @@ abstract class Component implements LifeCycle {
 
   get camera() {
     return this._root.engine.camera
+  }
+
+  get sceneManager() {
+    return this._root.engine.sceneManager
   }
 
   set localPosition(pos: Vector2) {
