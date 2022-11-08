@@ -1,9 +1,11 @@
 import { InnerGameComponent } from '.'
 import { GlobalSceneComponent, GlobalTeamController } from '../engine'
 import GameObject from '../gameObject'
-import { Direction, DirectionToCoord, oppsiteDirection } from '../input'
+import Input, { Direction, DirectionToCoord, oppsiteDirection } from '../input'
 import { distance, lerpVector2, vector2Add } from '../math'
 import { AssetLoader } from '../resource'
+import { AddExecuteEvent, AddGameEvent, Execute } from './events/EventExector'
+import { EventTriggerWhen } from './events/QuestEvent'
 import MoveComponent, {
   CoordToPosition,
   DefaultAnimationDuration,
@@ -34,6 +36,10 @@ export function nextCoordByDirection(
 
 export function checkNextCoordCanMove(coord: Vector2): boolean {
   return true
+}
+
+function playerCenterPosition(pos: Vector2): Vector2 {
+  return vector2Add(pos, [DefaultTileSize >> 1, DefaultTileSize >> 1])
 }
 
 @InnerGameComponent
@@ -87,6 +93,10 @@ export default class TeamControllerComponent extends MoveComponent {
     // )
 
     if (!this.isMoving) {
+      // 对话、调查、开门
+      if (this.checkConfirmPressed()) {
+        return
+      }
       if (pressedDirection !== Direction.none) {
         this.changeHeadDirection(pressedDirection)
 
@@ -133,7 +143,30 @@ export default class TeamControllerComponent extends MoveComponent {
     }
   }
 
-  checkDestination() {
+  private checkConfirmPressed(): boolean {
+    if (!this.input.isConfirmPressed()) return false
+    const sceneComponent = this.engine.getVariable(
+      GlobalSceneComponent
+    ) as SceneComponent
+
+    const nextPosition = CoordToPosition(
+      nextCoordByDirection(this._head.coord, this._head.direction)
+    )
+
+    // 对话
+    const questEvent = sceneComponent.triggerQuestEvent(
+      playerCenterPosition(nextPosition),
+      EventTriggerWhen.InteractiveConfirm
+    )
+    if (questEvent) {
+      AddExecuteEvent(questEvent)
+      Execute(this.engine)
+      return true
+    }
+    return false
+  }
+
+  private checkDestination(): boolean {
     const sceneComponent = this.engine.getVariable(
       GlobalSceneComponent
     ) as SceneComponent

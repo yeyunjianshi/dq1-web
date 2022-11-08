@@ -28,6 +28,11 @@
             "type": "$SceneTransition",
             "tag": "floor_down",
             "nextScene": "Battle"
+          },
+          {
+            "type": "$QuestEvent",
+            "eventId": 1,
+            "when": 2
           }
         ]
       },

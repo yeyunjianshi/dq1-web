@@ -5,10 +5,19 @@ import BattleData from './data/test_battle.json'
 import TeamController from './data/team_controller.json'
 import './gameplay/componentConfig'
 import { AddGameSceneData } from './engine/sceneManager'
+import { AssetLoader } from './engine/resource'
+import { SetGameEventScript } from './engine/components/events/EventExector'
 
 AddGameSceneData([TestData, TeamController, BattleData as any])
 
 const engine = createEngine()
+
+const assetLoader = new AssetLoader()
+assetLoader.addAssets(
+  engine.resource
+    .loadJson<Record<string, string>>('events.json')
+    .then((events) => SetGameEventScript(events))
+)
 
 engine.sceneManager.loadScene('TeamController')
 engine.sceneManager.loadScene('NPCScene')

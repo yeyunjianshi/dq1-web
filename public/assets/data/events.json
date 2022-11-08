@@ -1,6 +1,3 @@
-[
-  {
-    "id": "1",
-    "data": "talk('国王', '欢迎来到这个王国')"
-  }
-]
+{
+  "event_1": "task(async () => {\r\n  await talk('国王', '勇者的后代')\r\n  await talk('国王', '你们是什么情况')\r\n})\r\n"
+}

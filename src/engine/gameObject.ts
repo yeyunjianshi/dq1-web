@@ -2,7 +2,7 @@ import Component from './component'
 import Engine from './engine'
 import AbsoluteLayout from './layout/AbsoluteLayout'
 import { LayoutMatchParent, LayoutFitContent } from './layout/layout'
-import { vector2Add, vector2Minus } from './math'
+import { vector2Add } from './math'
 import { supportSpriteExt } from './resource'
 
 class GameObject implements LifeCycle {
