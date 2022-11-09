@@ -1,10 +1,10 @@
 import { InnerGameComponent } from '.'
 import { GlobalSceneComponent, GlobalTeamController } from '../engine'
 import GameObject from '../gameObject'
-import Input, { Direction, DirectionToCoord, oppsiteDirection } from '../input'
+import { Direction, DirectionToCoord, oppsiteDirection } from '../input'
 import { distance, lerpVector2, vector2Add } from '../math'
 import { AssetLoader } from '../resource'
-import { AddExecuteEvent, AddGameEvent, Execute } from './events/EventExector'
+import { AddExecuteEvent, Execute } from './events/EventExector'
 import { EventTriggerWhen } from './events/QuestEvent'
 import MoveComponent, {
   CoordToPosition,

@@ -9,10 +9,8 @@ import AudioManager from './audio'
 import SceneManger from './sceneManager'
 
 export const GlobalTeamController = '$TeamController'
-export const GlobalSceneTransition = '$GlobalSceneTransition'
-export const GlobalSceneTransitionDestination =
-  '$GlobalSceneTransitionDestination'
 export const GlobalSceneComponent = '$GlobalSceneComponent'
+export const GlobalWindow = '$GlobalWindow'
 
 class Engine {
   renderer: IRenderer

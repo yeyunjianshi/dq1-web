@@ -3,7 +3,7 @@ import Component from '../component'
 import { measureLocalPositionByGravity } from '../layout/layout'
 import { AssetLoader } from '../resource'
 import { delay, nextFrame } from '../time'
-import { DefaultFont, DefaultLineHeight, TextData } from './TextComponent'
+import { DefaultFont, DefaultLineHeightScale, TextData } from './TextComponent'
 
 type ScrollTextData = {
   type: string
@@ -12,9 +12,11 @@ type ScrollTextData = {
   textSpeed?: number
 } & TextData
 
-const DefaultTextSpeed = 50
-const DefaultScreenScrollSpeed = 1000
+const DefaultTextSpeed = 30
+const DefaultScreenScrollSpeed = 1500
 const DefaultShowMaxLines = 4
+
+type TextLine = LineInfo & { prefix: string; prefixWidth: number }
 
 @InnerGameComponent
 export default class ScrollTextComponent extends Component {
@@ -23,39 +25,43 @@ export default class ScrollTextComponent extends Component {
   textSpeed = DefaultTextSpeed
   font: Required<Font> = DefaultFont
   isShowing = false
-  textLines: LineInfo[] = []
-  lineHeight = DefaultLineHeight
+  textLines: TextLine[] = []
+  lineHeight = DefaultLineHeightScale
   padding: Vector4 = [0, 0, 0, 0]
 
   start() {
     this.showText(this.text)
   }
 
-  async showText(text: string, callback?: () => void) {
+  async showText(text: string, prefix = '', callback?: () => void) {
     if (text.length === 0) return
 
     this.isShowing = true
-    const lineInfos = this.renderer.measureText(
-      text,
+    const prefixInfo = this.renderer.measureText(
+      prefix,
       this.textMaxWidth,
       this.font
+    )[0]
+    const lineInfos = this.renderer.measureText(
+      text,
+      this.textMaxWidth - prefixInfo.width,
+      this.font
     )
-    let deltaScroll = 0
-    const lineHeight = this.lineHeight * this.font.size
-    const initLocalY = this.root.localY
+    let previousTextLineLenght = this.textLines.length
     for (let i = 0; i < lineInfos.length; i++) {
-      while (this.textLines.length >= DefaultShowMaxLines) {
-        deltaScroll += this.screenSpeed / 1000
-        this.root.localY = initLocalY - deltaScroll
-        if (deltaScroll >= lineHeight) {
-          deltaScroll = 0
-          this.textLines.shift()
-          this.root.localY = initLocalY
-        }
-        await nextFrame()
+      if (this.textLines.length >= DefaultShowMaxLines) {
+        const needScrollLineLength =
+          this.textLines.length - DefaultShowMaxLines + 1
+        await this.scrollLineLength(needScrollLineLength)
+        previousTextLineLenght -= needScrollLineLength
       }
       const currentLine = lineInfos[i]
-      this.textLines.push({ ...currentLine, text: '' })
+      this.textLines.push({
+        ...currentLine,
+        text: '',
+        prefix: i == 0 ? prefix : '',
+        prefixWidth: prefixInfo.width,
+      })
       for (let i = 0; i < currentLine.text.length; i++) {
         this.textLines[this.textLines.length - 1].text = currentLine.text.slice(
           0,
@@ -64,7 +70,36 @@ export default class ScrollTextComponent extends Component {
         await delay(this.textSpeed)
       }
     }
+    if (previousTextLineLenght > 0) {
+      await this.scrollLineLength(previousTextLineLenght)
+    }
     if (callback) callback()
+  }
+
+  clearText() {
+    this.textLines = []
+  }
+
+  async scrollClearText() {
+    await this.scrollLineLength(this.textLines.length)
+  }
+
+  private async scrollLineLength(lineLenght: number) {
+    let deltaScroll = 0
+    const lineHeight = this.lineHeight * this.font.size
+    const initLocalY = this.root.localY
+
+    while (lineLenght > 0) {
+      deltaScroll += this.screenSpeed / 1000
+      this.root.localY = initLocalY - deltaScroll
+      if (deltaScroll >= lineHeight) {
+        deltaScroll = 0
+        this.textLines.shift()
+        this.root.localY = initLocalY
+        lineLenght--
+      }
+      await nextFrame()
+    }
   }
 
   render() {
@@ -80,9 +115,19 @@ export default class ScrollTextComponent extends Component {
           this.textMaxWidth,
           line.width
         ) + this.padding[3]
+      if (line.text.length > 0) {
+        this.renderer.drawTextOneLine(
+          line.prefix,
+          this.worldPosition[0] + offsetX,
+          this.worldPosition[1] + offsetY + i * lineHeight,
+          this.font,
+          this.textMaxWidth,
+          this.root.alpha
+        )
+      }
       this.renderer.drawTextOneLine(
         line.text,
-        this.worldPosition[0] + offsetX,
+        this.worldPosition[0] + offsetX + line.prefixWidth,
         this.worldPosition[1] + offsetY + i * lineHeight,
         this.font,
         this.textMaxWidth,

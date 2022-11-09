@@ -1,0 +1,52 @@
+{
+  "name": "Global",
+  "width": -2,
+  "height": -2,
+  "loadType": 2,
+  "priority": 500,
+  "root": {
+    "x": 0,
+    "y": 0,
+    "width": -2,
+    "height": -2,
+    "active": true,
+    "alpha": 1,
+    "components": [
+      {
+        "type": "$GlobalWindowComponent"
+      }
+    ],
+    "children": [
+      {
+        "x": -350,
+        "y": 120,
+        "width": 700,
+        "height": 190,
+        "pivot": [0, 0],
+        "layoutGravity": ["center", "center"],
+        "active": false,
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borderWidth": 4
+        },
+        "children": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 680,
+            "height": 200,
+            "pivot": [0, 0],
+            "active": true,
+            "components": [
+              {
+                "type": "$ScrollTextComponent",
+                "padding": [16, 30, 10, 30]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

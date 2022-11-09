@@ -10,7 +10,7 @@ export type TextData = {
   lineHeight?: number
   padding?: Vector4 // [top, right, bottom, left]px
 }
-export const DefaultLineHeight = 1.25
+export const DefaultLineHeightScale = 1.25
 export const DefaultFont: Required<Font> = {
   color: '#eee',
   family: 'VonwaonBitmap',
@@ -24,7 +24,7 @@ export const DefaultFont: Required<Font> = {
 export default class TextComponent extends Component {
   private _text = ''
   font = DefaultFont
-  lineHeight = DefaultLineHeight
+  lineHeightScale = DefaultLineHeightScale
   showTextLineInfo?: LineInfo
   padding: Vector4 = [0, 0, 0, 0]
 
@@ -44,7 +44,9 @@ export default class TextComponent extends Component {
     if (!this.showTextLineInfo) return
 
     const offsetY =
-      (this.padding[0] + Math.max(1 - this.lineHeight, 1) * this.font.size) >> 1
+      (this.padding[0] +
+        Math.max(1 - this.lineHeightScale, 1) * this.font.size) >>
+      1
     const offsetX =
       measureLocalPositionByGravity(
         this.font.align,
@@ -68,7 +70,7 @@ export default class TextComponent extends Component {
   parseData(_: AssetLoader, data: TextData): void {
     this._text = data.text ?? this._text
     if (data.font) this.font = { ...this.font, ...data.font }
-    this.lineHeight = data.lineHeight ?? this.lineHeight
+    this.lineHeightScale = data.lineHeight ?? this.lineHeightScale
     this.padding = data.padding ?? this.padding
   }
 }

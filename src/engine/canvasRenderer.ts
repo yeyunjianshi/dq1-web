@@ -223,7 +223,7 @@ export default class implements IRenderer {
   drawText() {}
 
   measureText(text: string, width: number, font: Required<Font>): LineInfo[] {
-    if (text.length === 0) return []
+    if (text.length === 0) return [{ text: '', width: 0 }]
 
     this._cacheContext.save()
     this._cacheContext.font = `${font.italic ? 'italic' : ''} ${

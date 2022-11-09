@@ -1,3 +1,3 @@
 {
-  "event_1": "task(async () => {\r\n  await talk('国王', '勇者的后代')\r\n  await talk('国王', '你们是什么情况')\r\n})\r\n"
+  "event_1": "task(async () => {\n  await talk('国王', '勇者的后代')\n  await talk('国王', '这个你拿去吧')\n  await message('获得了钥匙')\n  await talk('国王', '祝你旅途愉快!')\n})\n"
 }

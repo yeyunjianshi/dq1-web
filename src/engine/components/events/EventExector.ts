@@ -1,5 +1,6 @@
-import Engine, { GlobalTeamController } from '../../engine'
+import Engine, { GlobalWindow } from '../../engine'
 import { nextFrame } from '../../time'
+import GlobalWindowComponent from '../GlobalWindowComponent'
 import { QuestEvent } from './QuestEvent'
 
 const gameEvents = new Map<string, string>()
@@ -69,18 +70,14 @@ async function task(callback: (...args: unknown[]) => Promise<unknown>) {
   await callback()
   executingEventStatus = EventStatus.Finish
 }
-async function InputConfirmOrCancel() {
-  await nextFrame()
-  while (
-    !executingEngine!.input.isConfirmPressed() &&
-    !executingEngine!.input.isCancelPressed()
-  ) {
-    await nextFrame()
-  }
+
+async function talk(characterName: string, text: string, clear = false) {
+  const globalWindow =
+    executingEngine!.getVariable<GlobalWindowComponent>(GlobalWindow)
+
+  await globalWindow.talk(characterName, text, clear)
 }
 
-async function talk(characterName: string | null, text: string) {
-  console.log(executingEngine?.getVariable(GlobalTeamController) ?? 'not found')
-  console.log(characterName + ' ' + text)
-  await InputConfirmOrCancel()
+async function message(text: string) {
+  await talk('', text, true)
 }
