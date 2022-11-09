@@ -65,6 +65,11 @@ export function parseGameObject(
   gameObject.alpha = data.alpha ?? 1
   gameObject.layoutGravity = data.layoutGravity ?? ['left', 'top']
   gameObject.pivot = data.pivot ?? [0, 0]
+  gameObject.useScreenPosition =
+    typeof data.useScreenPosition === 'boolean' ? data.useScreenPosition : false
+  gameObject.useScreenPositionInRender =
+    (parent !== null && parent.useScreenPositionInRender) ||
+    gameObject.useScreenPosition
 
   if (
     typeof data.background === 'string' &&
@@ -141,6 +146,8 @@ export function parseScene(data: SceneData, engine: Engine) {
   scene.bgm = data.bgm
   scene.loadType = data.loadType ?? SceneLoadType.Replace
   scene.priority = data.priority ?? DefaultScenePriority
+  scene.isSetCamera =
+    typeof data.hasCamera === 'boolean' ? data.hasCamera : true
   if (data.bgm) {
     assetLoader.addAssets(engine.resource.loadAudio(data.bgm))
   }

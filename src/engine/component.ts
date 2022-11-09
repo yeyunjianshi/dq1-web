@@ -62,6 +62,10 @@ abstract class Component implements LifeCycle {
     return [this._root.worldX, this._root.worldY]
   }
 
+  get cameraPosition(): Vector2 {
+    return [this._root.cameraX, this._root.cameraY]
+  }
+
   get width() {
     return this.root.measureWidth
   }

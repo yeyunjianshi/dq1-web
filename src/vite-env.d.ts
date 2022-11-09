@@ -184,6 +184,7 @@ type GameObjectData = {
   components?: ComponentData[]
   layoutGravity?: [HorizontalGravity, VerticalGaravity]
   pivot?: Vector2
+  useScreenPosition?: boolean // 是否使用屏幕坐标，屏幕坐标开始时使用本身的相对坐标。当当前对象设置为true，所有子物体在渲染时都会转化为屏幕坐标
 }
 
 type SceneData = {
@@ -193,7 +194,8 @@ type SceneData = {
   width?: number
   height?: number
   loadType?: number
-  priority?: number
+  priority?: number // 场景渲染顺序
+  hasCamera?: boolean // 是否有摄像机
 }
 
 type LayoutGravity = HorizontalGravity | VerticalGaravity

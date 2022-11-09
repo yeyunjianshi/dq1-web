@@ -55,8 +55,8 @@ export default class TextComponent extends Component {
       ) + this.padding[3]
     this.renderer.drawTextOneLine(
       this.showTextLineInfo.text,
-      this.worldPosition[0] + offsetX,
-      this.worldPosition[1] + offsetY,
+      this.cameraPosition[0] + offsetX,
+      this.cameraPosition[1] + offsetY,
       this.font,
       this.textMaxWidth,
       this.root.alpha

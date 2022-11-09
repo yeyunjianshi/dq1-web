@@ -36,6 +36,8 @@ class GameObject implements LifeCycle {
   static = false
   pivot: Vector2 = [0, 0]
   layoutGravity: [HorizontalGravity, VerticalGaravity] = ['left', 'top']
+  useScreenPosition = false
+  useScreenPositionInRender = false
 
   constructor(
     parent: GameObject | null,
@@ -117,9 +119,13 @@ class GameObject implements LifeCycle {
 
   updateWorldPosition() {
     this.worldX =
-      this == this.parent ? this._localX : this.parent.worldX + this.localX
+      this == this.parent || this.useScreenPosition
+        ? this._localX
+        : this.parent.worldX + this.localX
     this.worldY =
-      this == this.parent ? this._localY : this.parent.worldY + this.localY
+      this == this.parent || this.useScreenPosition
+        ? this._localY
+        : this.parent.worldY + this.localY
   }
 
   updateChildrens() {
@@ -146,8 +152,8 @@ class GameObject implements LifeCycle {
 
   renderBackground() {
     this.engine.renderer.drawRect(
-      this.worldX,
-      this.worldY,
+      this.cameraX,
+      this.cameraY,
       this.measureWidth,
       this.measureHeight,
       this.background.color,
@@ -199,16 +205,16 @@ class GameObject implements LifeCycle {
         this.background.pivotOffset[1],
         sourceWidth,
         sourceHeight,
-        this.worldX - this.engine.camera.x,
-        this.worldY - this.engine.camera.y,
+        this.cameraX,
+        this.cameraY,
         destWidth,
         destHeight
       )
     }
 
     this.engine.renderer.drawBorder(
-      this.worldX,
-      this.worldY,
+      this.cameraX,
+      this.cameraY,
       this.measureWidth,
       this.measureHeight,
       this.background.border,
@@ -320,6 +326,18 @@ class GameObject implements LifeCycle {
 
   get localY(): number {
     return this._localY
+  }
+
+  get cameraX() {
+    return this.useScreenPositionInRender
+      ? this.worldX
+      : this.worldX - this.engine.camera.x
+  }
+
+  get cameraY() {
+    return this.useScreenPositionInRender
+      ? this.worldY
+      : this.worldY - this.engine.camera.y
   }
 
   get boundingBox(): [Vector2, Vector2] {

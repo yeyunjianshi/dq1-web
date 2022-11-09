@@ -4,6 +4,7 @@
   "height": -2,
   "loadType": 2,
   "priority": 500,
+  "hasCamera": false,
   "root": {
     "x": 0,
     "y": 0,
@@ -11,6 +12,7 @@
     "height": -2,
     "active": true,
     "alpha": 1,
+    "useScreenPosition": true,
     "components": [
       {
         "type": "$GlobalWindowComponent"

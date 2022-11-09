@@ -13,7 +13,7 @@ type ScrollTextData = {
 } & TextData
 
 const DefaultTextSpeed = 30
-const DefaultScreenScrollSpeed = 1500
+const DefaultScreenScrollSpeed = 1800
 const DefaultShowMaxLines = 4
 
 type TextLine = LineInfo & { prefix: string; prefixWidth: number }
@@ -118,8 +118,8 @@ export default class ScrollTextComponent extends Component {
       if (line.text.length > 0) {
         this.renderer.drawTextOneLine(
           line.prefix,
-          this.worldPosition[0] + offsetX,
-          this.worldPosition[1] + offsetY + i * lineHeight,
+          this.cameraPosition[0] + offsetX,
+          this.cameraPosition[1] + offsetY + i * lineHeight,
           this.font,
           this.textMaxWidth,
           this.root.alpha
@@ -127,8 +127,8 @@ export default class ScrollTextComponent extends Component {
       }
       this.renderer.drawTextOneLine(
         line.text,
-        this.worldPosition[0] + offsetX + line.prefixWidth,
-        this.worldPosition[1] + offsetY + i * lineHeight,
+        this.cameraPosition[0] + offsetX + line.prefixWidth,
+        this.cameraPosition[1] + offsetY + i * lineHeight,
         this.font,
         this.textMaxWidth,
         this.root.alpha
