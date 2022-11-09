@@ -1,6 +1,6 @@
 import { InnerGameComponent } from '.'
 import Component from '../component'
-import { GlobalSceneComponent } from '../engine'
+import { GlobalSceneComponentMarker } from '../engine'
 import { vector2Include } from '../math'
 import { EventTriggerWhen, QuestEvent } from './events/QuestEvent'
 import {
@@ -15,7 +15,7 @@ export default class SceneComponent extends Component {
   private _questEvents: QuestEvent[] = []
 
   awake(): void {
-    this.engine.setVariable(GlobalSceneComponent, this)
+    this.engine.setVariable(GlobalSceneComponentMarker, this)
 
     this._transitions = this.root.getComponentsInChildren(
       SceneTransition

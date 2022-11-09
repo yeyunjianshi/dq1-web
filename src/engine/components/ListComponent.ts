@@ -3,6 +3,7 @@ import Component from '../component'
 import { DefaultInputCheckDelay } from '../input'
 import GridLayout from '../layout/GridLayout'
 import { AssetLoader } from '../resource'
+import TextItemComponent from './TextItemComponent'
 
 type ListComponentData = {
   type: string
@@ -11,9 +12,9 @@ type ListComponentData = {
 
 @InnerGameComponent
 export default class ListComponent extends Component {
-  private _hoverListener: Hover[] = []
-  private _selectListener: Select[] = []
-  private _cancelListener: Select[] = []
+  private _hoverListener: ListenerFunction[] = []
+  private _selectListener: ListenerFunction[] = []
+  private _cancelListener: ListenerFunction[] = []
   private _isCanSelect = false
   private _items: ListItem[] = []
   private _adapter?: Adapter<ItemData>
@@ -21,10 +22,10 @@ export default class ListComponent extends Component {
   private _row = 1
 
   private _previusIndex = -1
-  private _currentIndex = -1
-  private _selecting = false
+  private _currentIndex = 0
+  private _selecting = true
 
-  start(): void {
+  awake(): void {
     this._items = this.root.getComponentsInChildren(ListItem) as ListItem[]
     this.getRowAndColfromLayout()
   }
@@ -55,50 +56,57 @@ export default class ListComponent extends Component {
         (hor === 1 &&
           (this._currentIndex + hor) % this._col !== 0 &&
           this._currentIndex < this.dataLength - 1) ||
-        (hor === -1 && this._currentIndex % this._col === 0)
+        (hor === -1 && this._currentIndex % this._col !== 0)
       ) {
         index += hor
       }
       if (
-        this._currentIndex + ver * this._col > 0 &&
+        this._currentIndex + ver * this._col >= 0 &&
         this._currentIndex + ver * this._col < this.dataLength
       ) {
         index += ver * this._col
       }
       if (index !== this._currentIndex) {
         this._items[this._currentIndex].unhover()
-        this._currentIndex = index
-        this._items[this._currentIndex].hover()
-        this.trigger('hover')
+        this.setCursorIndex(index)
       }
     }
   }
 
-  public setAdapter<T extends ItemData>(adapter: Adapter<T>) {
-    this._adapter = adapter
+  setCursorIndex(index: number) {
+    this._currentIndex = index
+    this._items[this._currentIndex].hover()
+    this.trigger('hover')
   }
 
-  public addHoverListenner(listener: Hover) {
+  public setAdapter<T extends ItemData>(adapter: Adapter<T>) {
+    this._adapter = adapter
+    for (let i = 0; i < this._items.length; i++) {
+      adapter.getView(this._items[i], adapter.getData(i), i)
+    }
+  }
+
+  public addHoverListenner(listener: ListenerFunction) {
     this._hoverListener.push(listener)
   }
 
-  public addSelectListener(listener: Select) {
+  public addSelectListener(listener: ListenerFunction) {
     this._selectListener.push(listener)
   }
 
-  public addCancelListener(listener: () => void) {
+  public addCancelListener(listener: ListenerFunction) {
     this._cancelListener.push(listener)
   }
 
-  public removeHoverListenner(listener: Hover) {
+  public removeHoverListenner(listener: ListenerFunction) {
     this._hoverListener = this._hoverListener.filter((l) => l !== listener)
   }
 
-  public removeSelectListener(listener: Select) {
+  public removeSelectListener(listener: ListenerFunction) {
     this._selectListener = this._selectListener.filter((l) => l !== listener)
   }
 
-  public removeCancelListener(listener: () => void) {
+  public removeCancelListener(listener: ListenerFunction) {
     this._cancelListener = this._cancelListener.filter((l) => l !== listener)
   }
 
@@ -157,4 +165,10 @@ export abstract class Adapter<T extends ItemData> {
   }
 
   abstract getView(view: ListItem, data: T, position: number): void
+}
+
+export class TextAdapter extends Adapter<{ text: string }> {
+  getView(view: TextItemComponent, data: { text: string }): void {
+    view.setText(data.text)
+  }
 }

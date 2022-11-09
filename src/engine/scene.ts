@@ -26,7 +26,6 @@ export default class implements LifeCycle {
 
   show() {
     if (this.isSetCamera) {
-      console.log(this.width + ' ' + this.height)
       this.engine.camera.sceneWidth =
         this.width === -1 ? this.engine.renderer.width : this.width
       this.engine.camera.sceneHeight =

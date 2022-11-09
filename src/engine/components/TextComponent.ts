@@ -29,7 +29,7 @@ export default class TextComponent extends Component {
   padding: Vector4 = [0, 0, 0, 0]
 
   start() {
-    this.setText(this._text)
+    if (!this.showTextLineInfo) this.setText(this._text)
   }
 
   setText(text: string) {

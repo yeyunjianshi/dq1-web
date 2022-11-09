@@ -1,12 +1,12 @@
 import GameObject from '../gameObject'
 import { LayoutFitContent, measureLocalPositionByGravity } from './layout'
 
-export default class VerticalLayout implements ILayout {
+export default class HorizontalLayout implements ILayout {
   private _root: GameObject
-  private _gravity: HorizontalGravity
+  private _gravity: VerticalGaravity
   private _padding: Vector4
 
-  constructor(root: GameObject, config: VerticalLayoutConfig) {
+  constructor(root: GameObject, config: HorizontalLayoutConfig) {
     this._root = root
     this._gravity = config.gravity
     this._padding = config.padding ?? [0, 0, 0, 0]
@@ -17,25 +17,25 @@ export default class VerticalLayout implements ILayout {
     let maxHeight = 0
 
     this._root.children.forEach((child) => {
-      child.localY = this._padding[3] + maxHeight
+      child.localX = this._padding[3] + maxWidth
 
       const [measureWidth, measureHeight] = child.layout()
 
-      maxHeight += measureHeight
-      maxWidth = Math.max(maxWidth, measureWidth)
+      maxWidth += measureWidth
+      maxHeight = Math.max(maxHeight, measureHeight)
     })
 
-    const containerWidth =
-      this._root.configWidth === LayoutFitContent
-        ? maxWidth + this._padding[1] + this._padding[3]
-        : this._root.measureWidth
+    const containerHeight =
+      this._root.configHeight === LayoutFitContent
+        ? maxHeight + this._padding[0] + this._padding[2]
+        : this._root.measureHeight
 
     this._root.children.forEach((child) => {
-      child.localX = measureLocalPositionByGravity(
+      child.localY = measureLocalPositionByGravity(
         this._gravity,
-        containerWidth,
-        child.measureWidth,
-        [this._padding[1], this._padding[3]]
+        containerHeight,
+        child.measureHeight,
+        [this._padding[0], this._padding[2]]
       )
     })
 

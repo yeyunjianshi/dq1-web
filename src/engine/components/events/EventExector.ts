@@ -1,6 +1,6 @@
-import Engine, { GlobalWindow } from '../../engine'
+import Engine, { GlobalWindowMarker } from '../../engine'
 import { nextFrame } from '../../time'
-import GlobalWindowComponent from '../GlobalWindowComponent'
+import GlobalWindowComponent from '../../../gameplay/menu/GlobalWindowComponent'
 import { QuestEvent } from './QuestEvent'
 
 const gameEvents = new Map<string, string>()
@@ -73,9 +73,9 @@ async function task(callback: (...args: unknown[]) => Promise<unknown>) {
 
 async function talk(characterName: string, text: string, clear = false) {
   const globalWindow =
-    executingEngine!.getVariable<GlobalWindowComponent>(GlobalWindow)
+    executingEngine!.getVariable<GlobalWindowComponent>(GlobalWindowMarker)
 
-  await globalWindow.talk(characterName, text, clear)
+  await globalWindow.messageWindow.talk(characterName, text, clear)
 }
 
 async function message(text: string) {

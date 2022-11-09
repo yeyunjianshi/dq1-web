@@ -1,13 +1,12 @@
 /// <reference types="vite/client" />
 
-type Hover = (...args: unknown[]) => void
-type Select = (...args: unknown[]) => void
+type ListenerFunction = (...args: unknown[]) => void
 
 interface SelectListener {
-  select: Select
-  hover: Hover
-  unselect: Select
-  unhover: Hover
+  select: ListenerFunction
+  hover: ListenerFunction
+  unselect: ListenerFunction
+  unhover: ListenerFunction
 }
 
 type Font = {
@@ -204,11 +203,18 @@ type VerticalGaravity = 'center' | 'top' | 'bottom'
 
 type LayoutConfig =
   | { type: 'AbsoluteLayout' }
+  | ({ type: 'HorizontalLayout' } & HorizontalLayoutConfig)
   | ({ type: 'VerticalLayout' } & VerticalLayoutConfig)
   | ({ type: 'GridLayout' } & GridLayoutConfig)
 
+type HorizontalLayoutConfig = {
+  gravity: VerticalGaravity
+  padding?: Vector4
+}
+
 type VerticalLayoutConfig = {
   gravity: HorizontalGravity
+  padding?: Vector4
 }
 
 type GridLayoutConfig = {

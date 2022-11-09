@@ -15,10 +15,883 @@
     "useScreenPosition": true,
     "components": [
       {
-        "type": "$GlobalWindowComponent"
+        "type": "GlobalWindowComponent"
       }
     ],
     "children": [
+      {
+        "name": "menuWindow",
+        "x": -354,
+        "y": -280,
+        "width": 260,
+        "height": 136,
+        "pivot": [0, 0],
+        "layoutGravity": ["center", "center"],
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borderWidth": 4
+        },
+        "active": false,
+        "components": [
+          {
+            "type": "$ListComponent"
+          }
+        ],
+        "layout": {
+          "type": "GridLayout",
+          "row": 3,
+          "col": 2,
+          "cell": [130, 40],
+          "gravity": ["left", "top"],
+          "template": "text_item.json"
+        }
+      },
+      {
+        "name": "commonGoldWindow",
+        "x": 354,
+        "y": -218,
+        "width": 160,
+        "height": 66,
+        "pivot": [1, 1],
+        "layoutGravity": ["center", "center"],
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borderWidth": 4
+        },
+        "layout": {
+          "type": "HorizontalLayout",
+          "gravity": "center",
+          "padding": [0, 16, 0, 16]
+        },
+        "active": true,
+        "children": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 40,
+            "height": 50,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "G",
+                "font": {
+                  "size": 26,
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Gold",
+            "x": 0,
+            "y": 0,
+            "width": 90,
+            "height": 50,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "100",
+                "font": {
+                  "size": 26,
+                  "align": "right"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "commonCharacterWindow",
+        "x": 354,
+        "y": 310,
+        "width": 160,
+        "height": 190,
+        "pivot": [1, 1],
+        "layoutGravity": ["center", "center"],
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borderWidth": 4
+        },
+        "active": true,
+        "children": [
+          {
+            "name": "characterName",
+            "x": 0,
+            "y": 8,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "勇者洛特",
+                "font": {
+                  "size": 26,
+                  "align": "center"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterHPLable",
+            "x": 20,
+            "y": 50,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "H",
+                "font": {
+                  "size": 26,
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterHP",
+            "x": -20,
+            "y": 50,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "layoutGravity": ["right", "top"],
+            "pivot": [1, 0],
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "150",
+                "font": {
+                  "size": 26,
+                  "align": "right"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterMPLable",
+            "x": 20,
+            "y": 90,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "M",
+                "font": {
+                  "size": 26,
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterMP",
+            "x": -20,
+            "y": 90,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "layoutGravity": ["right", "top"],
+            "pivot": [1, 0],
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "150",
+                "font": {
+                  "size": 26,
+                  "align": "right"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterLVLable",
+            "x": 20,
+            "y": 130,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "LV",
+                "font": {
+                  "size": 26,
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterLV",
+            "x": -20,
+            "y": 130,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "layoutGravity": ["right", "top"],
+            "pivot": [1, 0],
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "30",
+                "font": {
+                  "size": 26,
+                  "align": "right"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "MenuStatusWindow",
+        "x": 0,
+        "y": -40,
+        "width": 600,
+        "height": 355,
+        "pivot": [0.5, 0.5],
+        "layoutGravity": ["center", "center"],
+        "active": false,
+        "background": {
+          "sprite": "",
+          "backgroundColor": "red"
+        },
+        "children": [
+          {
+            "name": "MenuStatusLeftWindow",
+            "x": -150,
+            "y": 0,
+            "width": 300,
+            "height": 355,
+            "pivot": [0.5, 0.5],
+            "layoutGravity": ["center", "center"],
+            "background": {
+              "sprite": "",
+              "backgroundColor": "#222",
+              "borderWidth": 4
+            },
+            "active": true,
+            "children": [
+              {
+                "name": "characterName",
+                "x": 0,
+                "y": 10,
+                "width": -2,
+                "height": 40,
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "勇者洛特",
+                    "font": {
+                      "size": 26,
+                      "align": "center"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterLVLable",
+                "x": 20,
+                "y": 50,
+                "width": 150,
+                "height": 40,
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "LV",
+                    "font": {
+                      "size": 26,
+                      "align": "center"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterLV",
+                "x": -60,
+                "y": 50,
+                "width": -2,
+                "height": 40,
+                "active": true,
+                "layoutGravity": ["right", "top"],
+                "pivot": [1, 0],
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "30",
+                    "font": {
+                      "size": 26,
+                      "align": "right"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterHPLable",
+                "x": 20,
+                "y": 90,
+                "width": 150,
+                "height": 40,
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "HP",
+                    "font": {
+                      "size": 26,
+                      "align": "center"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterHP",
+                "x": -60,
+                "y": 90,
+                "width": -2,
+                "height": 40,
+                "active": true,
+                "layoutGravity": ["right", "top"],
+                "pivot": [1, 0],
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "150",
+                    "font": {
+                      "size": 26,
+                      "align": "right"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterMPLable",
+                "x": 20,
+                "y": 130,
+                "width": 150,
+                "height": 40,
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "MP",
+                    "font": {
+                      "size": 26,
+                      "align": "center"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterMP",
+                "x": -60,
+                "y": 130,
+                "width": -2,
+                "height": 40,
+                "active": true,
+                "layoutGravity": ["right", "top"],
+                "pivot": [1, 0],
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "150",
+                    "font": {
+                      "size": 26,
+                      "align": "right"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterWeaponLable",
+                "x": 20,
+                "y": 170,
+                "width": 150,
+                "height": 40,
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "武",
+                    "font": {
+                      "size": 26,
+                      "align": "center"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterWeapon",
+                "x": -60,
+                "y": 170,
+                "width": -2,
+                "height": 40,
+                "active": true,
+                "layoutGravity": ["right", "top"],
+                "pivot": [1, 0],
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "铜剑",
+                    "font": {
+                      "size": 26,
+                      "align": "right"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterBodyLable",
+                "x": 20,
+                "y": 210,
+                "width": 150,
+                "height": 40,
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "防",
+                    "font": {
+                      "size": 26,
+                      "align": "center"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterBody",
+                "x": -60,
+                "y": 210,
+                "width": -2,
+                "height": 40,
+                "active": true,
+                "layoutGravity": ["right", "top"],
+                "pivot": [1, 0],
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "铜剑",
+                    "font": {
+                      "size": 26,
+                      "align": "right"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterShieldLable",
+                "x": 80,
+                "y": 250,
+                "width": -2,
+                "height": 40,
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "盾",
+                    "font": {
+                      "size": 26,
+                      "align": "left"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterShield",
+                "x": -60,
+                "y": 250,
+                "width": -2,
+                "height": 40,
+                "active": true,
+                "layoutGravity": ["right", "top"],
+                "pivot": [1, 0],
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "铜剑",
+                    "font": {
+                      "size": 26,
+                      "align": "right"
+                    }
+                  }
+                ]
+              },
+
+              {
+                "name": "characterResilienceLable",
+                "x": 80,
+                "y": 290,
+                "width": -2,
+                "height": 40,
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "饰",
+                    "font": {
+                      "size": 26,
+                      "align": "left"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterResilience",
+                "x": -60,
+                "y": 290,
+                "width": -2,
+                "height": 40,
+                "active": true,
+                "layoutGravity": ["right", "top"],
+                "pivot": [1, 0],
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "诅咒戒指",
+                    "font": {
+                      "size": 26,
+                      "align": "right"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "MenuStatusRightWindow",
+            "x": 150.2,
+            "y": 0,
+            "width": 300,
+            "height": 355,
+            "pivot": [0.5, 0.5],
+            "layoutGravity": ["center", "center"],
+            "background": {
+              "sprite": "",
+              "backgroundColor": "#222",
+              "borderWidth": 4
+            },
+            "active": true,
+            "children": [
+              {
+                "name": "characterPowerLable",
+                "x": 20,
+                "y": 10,
+                "width": 150,
+                "height": 40,
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "力量",
+                    "font": {
+                      "size": 26,
+                      "align": "center"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterPower",
+                "x": -60,
+                "y": 10,
+                "width": -2,
+                "height": 40,
+                "active": true,
+                "layoutGravity": ["right", "top"],
+                "pivot": [1, 0],
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "30",
+                    "font": {
+                      "size": 26,
+                      "align": "right"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterSpeedLable",
+                "x": 20,
+                "y": 50,
+                "width": 150,
+                "height": 40,
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "速度",
+                    "font": {
+                      "size": 26,
+                      "align": "center"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterSpeed",
+                "x": -60,
+                "y": 50,
+                "width": -2,
+                "height": 40,
+                "active": true,
+                "layoutGravity": ["right", "top"],
+                "pivot": [1, 0],
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "30",
+                    "font": {
+                      "size": 26,
+                      "align": "right"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterResilienceLable",
+                "x": 20,
+                "y": 90,
+                "width": 150,
+                "height": 40,
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "耐力",
+                    "font": {
+                      "size": 26,
+                      "align": "center"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterResilience",
+                "x": -60,
+                "y": 90,
+                "width": -2,
+                "height": 40,
+                "active": true,
+                "layoutGravity": ["right", "top"],
+                "pivot": [1, 0],
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "150",
+                    "font": {
+                      "size": 26,
+                      "align": "right"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterMaxHPLable",
+                "x": 20,
+                "y": 130,
+                "width": 150,
+                "height": 40,
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "最大HP",
+                    "font": {
+                      "size": 26,
+                      "align": "center"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterMaxHP",
+                "x": -60,
+                "y": 130,
+                "width": -2,
+                "height": 40,
+                "active": true,
+                "layoutGravity": ["right", "top"],
+                "pivot": [1, 0],
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "150",
+                    "font": {
+                      "size": 26,
+                      "align": "right"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterMaxMPLabel",
+                "x": 20,
+                "y": 170,
+                "width": 150,
+                "height": 40,
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "最大MP",
+                    "font": {
+                      "size": 26,
+                      "align": "center"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterMaxMP",
+                "x": -60,
+                "y": 170,
+                "width": -2,
+                "height": 40,
+                "active": true,
+                "layoutGravity": ["right", "top"],
+                "pivot": [1, 0],
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "150",
+                    "font": {
+                      "size": 26,
+                      "align": "right"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterAttackLable",
+                "x": 20,
+                "y": 210,
+                "width": 150,
+                "height": 40,
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "攻击力",
+                    "font": {
+                      "size": 26,
+                      "align": "center"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterAttack",
+                "x": -60,
+                "y": 210,
+                "width": -2,
+                "height": 40,
+                "active": true,
+                "layoutGravity": ["right", "top"],
+                "pivot": [1, 0],
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "150",
+                    "font": {
+                      "size": 26,
+                      "align": "right"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterDefendLabel",
+                "x": 20,
+                "y": 250,
+                "width": 150,
+                "height": 40,
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "防御力",
+                    "font": {
+                      "size": 26,
+                      "align": "center"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterShield",
+                "x": -60,
+                "y": 250,
+                "width": -2,
+                "height": 40,
+                "active": true,
+                "layoutGravity": ["right", "top"],
+                "pivot": [1, 0],
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "150",
+                    "font": {
+                      "size": 26,
+                      "align": "right"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterAccessoriesLable",
+                "x": 20,
+                "y": 290,
+                "width": 150,
+                "height": 40,
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "经验",
+                    "font": {
+                      "size": 26,
+                      "align": "center"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "characterAccessories",
+                "x": -60,
+                "y": 290,
+                "width": -2,
+                "height": 40,
+                "active": true,
+                "layoutGravity": ["right", "top"],
+                "pivot": [1, 0],
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "20000",
+                    "font": {
+                      "size": 26,
+                      "align": "right"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
       {
         "x": -350,
         "y": 120,
@@ -34,6 +907,7 @@
         },
         "children": [
           {
+            "name": "messageWindow",
             "x": 0,
             "y": 0,
             "width": 680,

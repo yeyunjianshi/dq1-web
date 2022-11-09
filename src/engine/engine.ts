@@ -8,9 +8,9 @@ import Camera from './camera'
 import AudioManager from './audio'
 import SceneManger from './sceneManager'
 
-export const GlobalTeamController = '$TeamController'
-export const GlobalSceneComponent = '$GlobalSceneComponent'
-export const GlobalWindow = '$GlobalWindow'
+export const GlobalTeamControllerMarker = '$TeamController'
+export const GlobalSceneComponentMarker = '$GlobalSceneComponent'
+export const GlobalWindowMarker = '$GlobalWindow'
 
 class Engine {
   renderer: IRenderer

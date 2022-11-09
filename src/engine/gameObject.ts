@@ -292,7 +292,7 @@ class GameObject implements LifeCycle {
     )
   }
 
-  getComponentInChildByName<T extends typeof Comment>(
+  getComponentInChildByName<T extends typeof Component>(
     name: string,
     componentConstructor: T
   ) {

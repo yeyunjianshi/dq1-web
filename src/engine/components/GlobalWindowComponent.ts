@@ -1,6 +1,6 @@
 import { InnerGameComponent } from '.'
 import Component from '../component'
-import { GlobalWindow } from '../engine'
+import { GlobalWindowMarker } from '../engine'
 import { delay, nextFrame } from '../time'
 import ScrollTextComponent from './ScrollTextComponent'
 
@@ -13,7 +13,7 @@ export default class GlobalWindowComponent extends Component {
       ScrollTextComponent
     ) as ScrollTextComponent
 
-    this.engine.setVariable(GlobalWindow, this)
+    this.engine.setVariable(GlobalWindowMarker, this)
   }
 
   async InputConfirmOrCancel() {

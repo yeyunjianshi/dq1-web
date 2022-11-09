@@ -2,6 +2,7 @@ import Engine from './engine'
 import GameObject from './gameObject'
 import AbsoluteLayout from './layout/AbsoluteLayout'
 import GridLayout from './layout/GridLayout'
+import HorizontalLayout from './layout/HorizontalLayout'
 import VerticalLayout from './layout/VerticalLayout'
 import { AssetLoader, AssetLoadStatus, supportSpriteExt } from './resource'
 import Scene from './scene'
@@ -17,6 +18,8 @@ export function parseLayout(
 ): ILayout {
   if (layoutData.type === 'VerticalLayout')
     return new VerticalLayout(root, layoutData)
+  else if (layoutData.type === 'HorizontalLayout')
+    return new HorizontalLayout(root, layoutData)
   else if (layoutData.type === 'GridLayout') {
     const gridLayout = new GridLayout(root, layoutData)
     if (layoutData.template) {

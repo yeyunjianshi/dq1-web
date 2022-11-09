@@ -1,6 +1,6 @@
 import { InnerGameComponent } from '..'
 import Component from '../../component'
-import Engine, { GlobalTeamController } from '../../engine'
+import Engine, { GlobalTeamControllerMarker } from '../../engine'
 import { Direction } from '../../input'
 import { AssetLoader } from '../../resource'
 import { SceneLoadType } from '../../sceneManager'
@@ -37,8 +37,9 @@ async function transitionToScene(
     )
 
   const moveDestination = destination as SceneTransitionDestination
-  const teamController =
-    engine.getVariable<TeamControllerComponent>(GlobalTeamController)
+  const teamController = engine.getVariable<TeamControllerComponent>(
+    GlobalTeamControllerMarker
+  )
   teamController.moveTo(
     moveDestination.worldPosition,
     moveDestination.direciton,

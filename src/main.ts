@@ -23,6 +23,7 @@ assetLoader.addAssets(
 engine.sceneManager.loadScene('Global')
 engine.sceneManager.loadScene('TeamController')
 engine.sceneManager.loadScene('NPCScene')
+// engine.sceneManager.loadScene('Battle')
 
 engine.init()
 engine.run()

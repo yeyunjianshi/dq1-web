@@ -1,3 +1,4 @@
+import { InnerGameComponent } from '.'
 import GameObject from '../gameObject'
 import { AssetLoader } from '../resource'
 import { ListItem } from './ListComponent'
@@ -8,16 +9,21 @@ type TextItemData = {
   canSelect?: boolean
 }
 
+@InnerGameComponent
 export default class TextItemComponent extends ListItem {
   private _textComponent?: TextComponent
   private _arrow?: GameObject
 
-  start(): void {
+  awake(): void {
     this._textComponent = this.root.children[0].components.find(
       (com) => com instanceof TextComponent
     ) as TextComponent
     this._arrow = this.root.children[1]
     if (this._arrow) this._arrow.alpha = 0
+  }
+
+  setText(text: string) {
+    this._textComponent?.setText(text)
   }
 
   select(): void {

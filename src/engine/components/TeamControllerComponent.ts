@@ -1,5 +1,10 @@
 import { InnerGameComponent } from '.'
-import { GlobalSceneComponent, GlobalTeamController } from '../engine'
+import GlobalWindowComponent from '../../gameplay/menu/GlobalWindowComponent'
+import {
+  GlobalSceneComponentMarker,
+  GlobalTeamControllerMarker,
+  GlobalWindowMarker,
+} from '../engine'
 import GameObject from '../gameObject'
 import { Direction, DirectionToCoord, oppsiteDirection } from '../input'
 import { distance, lerpVector2, vector2Add } from '../math'
@@ -58,7 +63,7 @@ export default class TeamControllerComponent extends MoveComponent {
   }
 
   awake(): void {
-    this.engine.setVariable(GlobalTeamController, this)
+    this.engine.setVariable(GlobalTeamControllerMarker, this)
   }
 
   start() {
@@ -87,12 +92,18 @@ export default class TeamControllerComponent extends MoveComponent {
   }
 
   updateDistance(moveDelta: number): void {
+    if (this._isMenu) return
+
     const pressedDirection = this.input.getPressedDirection()
     // console.log(
     //   `==========  ${this.time.currentFrame} ${pressedDirection} ==============`
     // )
 
     if (!this.isMoving) {
+      // 菜单
+      if (this.checkCancelPressed()) {
+        return
+      }
       // 对话、调查、开门
       if (this.checkConfirmPressed()) {
         return
@@ -143,10 +154,20 @@ export default class TeamControllerComponent extends MoveComponent {
     }
   }
 
+  _isMenu = false
+  private checkCancelPressed(): boolean {
+    if (!this.input.isCancelPressed()) return false
+    const globalWindow = this.engine.getVariable(
+      GlobalWindowMarker
+    ) as GlobalWindowComponent
+    globalWindow.menuWindow.show()
+    return true
+  }
+
   private checkConfirmPressed(): boolean {
     if (!this.input.isConfirmPressed()) return false
     const sceneComponent = this.engine.getVariable(
-      GlobalSceneComponent
+      GlobalSceneComponentMarker
     ) as SceneComponent
 
     const nextPosition = CoordToPosition(
@@ -168,7 +189,7 @@ export default class TeamControllerComponent extends MoveComponent {
 
   private checkDestination(): boolean {
     const sceneComponent = this.engine.getVariable(
-      GlobalSceneComponent
+      GlobalSceneComponentMarker
     ) as SceneComponent
     if (sceneComponent) {
       const transition = sceneComponent.triggerTransition(
