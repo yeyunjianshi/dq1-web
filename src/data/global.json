@@ -65,6 +65,11 @@
           "gravity": "center",
           "padding": [0, 16, 0, 16]
         },
+        "components": [
+          {
+            "type": "CommonGoldWindow"
+          }
+        ],
         "active": true,
         "children": [
           {
@@ -85,7 +90,7 @@
             ]
           },
           {
-            "name": "Gold",
+            "name": "CharacterGold",
             "x": 0,
             "y": 0,
             "width": 90,
@@ -105,7 +110,7 @@
         ]
       },
       {
-        "name": "commonCharacterWindow",
+        "name": "commonStatusWindow",
         "x": 354,
         "y": 310,
         "width": 160,
@@ -117,6 +122,11 @@
           "backgroundColor": "#222",
           "borderWidth": 4
         },
+        "components": [
+          {
+            "type": "CommonStatusWindow"
+          }
+        ],
         "active": true,
         "children": [
           {

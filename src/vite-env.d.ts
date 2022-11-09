@@ -225,3 +225,7 @@ type GridLayoutConfig = {
   spacing?: [number, number]
   template?: string
 }
+
+interface Cloneable<T> {
+  clone(init?: boolean = true): T
+}

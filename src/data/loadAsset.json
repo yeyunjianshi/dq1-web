@@ -1,0 +1,33 @@
+{
+  "name": "LoadingAsset",
+  "width": "-2",
+  "height": "-2",
+  "root": {
+    "x": 0,
+    "y": 0,
+    "width": -2,
+    "height": -2,
+    "active": true,
+    "children": [
+      {
+        "x": 0,
+        "y": 0,
+        "width": 300,
+        "height": 40,
+        "active": true,
+        "pivot": [0.5, 0.5],
+        "layoutGravity": ["center", "center"],
+        "components": [
+          {
+            "type": "$TextComponent",
+            "text": "资源加载中 ...",
+            "font": {
+              "size": 40,
+              "align": "center"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

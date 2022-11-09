@@ -7,11 +7,13 @@ import GameObject from '../../engine/gameObject'
 import ListComponent, {
   TextAdapter,
 } from '../../engine/components/ListComponent'
+import CommonStatusWindow from './CommonStatusWindow'
 
 @GameplayComponent
 export default class GlobalWindowComponent extends Component {
   private _messageWindow?: MessageWindow
   private _menuWindow?: MenuWindow
+  private _commonStatusWindow?: CommonStatusWindow
 
   awake(): void {
     this._messageWindow = new MessageWindow(
@@ -28,6 +30,10 @@ export default class GlobalWindowComponent extends Component {
       ) as ListComponent,
       this.root
     )
+    this._commonStatusWindow = this.root.getComponentInChildByName(
+      'commonStatusWindow',
+      CommonStatusWindow
+    ) as CommonStatusWindow
 
     this.engine.setVariable(GlobalWindowMarker, this)
 

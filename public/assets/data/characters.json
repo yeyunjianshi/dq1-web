@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "roleId": 0,
+    "name": "阿弗雷",
+    "lv": 0,
+    "maxHp": 15,
+    "maxMp": 0,
+    "HP": 15,
+    "MP": 0,
+    "power": 7,
+    "speed": 2,
+    "resilience": 5,
+    "exp": 0,
+    "nextExp": 0,
+    "gold": 120,
+
+    "weaponId": -1,
+    "bodyId": -1,
+    "shieldId": -1,
+    "accessoriesId": -1,
+
+    "lvsAbility": [
+      {
+        "lv": 1,
+        "exp": 0
+      },
+      {
+        "lv": 2,
+        "power": 2,
+        "maxHp": 6
+      }
+    ]
+  }
+]
