@@ -15,11 +15,6 @@
     "nextExp": 0,
     "gold": 120,
 
-    "weaponId": -1,
-    "bodyId": -1,
-    "shieldId": -1,
-    "accessoriesId": -1,
-
     "lvsAbility": [
       {
         "lv": 1,

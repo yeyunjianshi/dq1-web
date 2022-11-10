@@ -1,5 +1,5 @@
 interface GlobalEventListener {
-  (...args: unknown[]): void
+  (...args: any[]): void
 }
 
 export enum GlobalEventType {
@@ -18,7 +18,7 @@ export function GlobalEventAddListener(
 }
 
 export function GlobalEventOnce(event: string, listener: GlobalEventListener) {
-  const handler = (...args: unknown[]) => {
+  const handler = (...args: any[]) => {
     listener(args)
     GlobalEventRemoveListener(event, handler)
   }
@@ -42,7 +42,7 @@ export function GlobalEventClear(event: string) {
   globalEvents.set(event, [])
 }
 
-export function GlobalEventEmit(event: string, ...args: unknown[]) {
+export function GlobalEventEmit(event: string, ...args: any[]) {
   const listeners = globalEvents.get(event) ?? []
   listeners.forEach((listener) => {
     listener(args)

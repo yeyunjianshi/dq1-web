@@ -1,4 +1,5 @@
 import { InnerGameComponent } from '.'
+import { globalGameData, InputType } from '../../gameplay/asset/gameData'
 import GlobalWindowComponent from '../../gameplay/menu/GlobalWindowComponent'
 import {
   GlobalSceneComponentMarker,
@@ -92,12 +93,9 @@ export default class TeamControllerComponent extends MoveComponent {
   }
 
   updateDistance(moveDelta: number): void {
-    if (this._isMenu) return
+    if (globalGameData.inputType !== InputType.Move) return
 
     const pressedDirection = this.input.getPressedDirection()
-    // console.log(
-    //   `==========  ${this.time.currentFrame} ${pressedDirection} ==============`
-    // )
 
     if (!this.isMoving) {
       // 菜单
@@ -119,11 +117,6 @@ export default class TeamControllerComponent extends MoveComponent {
         if (checkNextCoordCanMove(nextCoord)) {
           this._head.targetCoord = nextCoord
           this._head.targetPosition = CoordToPosition(nextCoord)
-
-          // console.log('---------------------------------')
-          // console.log(nextCoord)
-          // console.log(this._head.targetPosition)
-          // console.log('---------------------------------')
 
           this.refreshNextPlayerStats()
           this.isMoving = true
@@ -154,13 +147,16 @@ export default class TeamControllerComponent extends MoveComponent {
     }
   }
 
-  _isMenu = false
   private checkCancelPressed(): boolean {
     if (!this.input.isCancelPressed()) return false
+
+    globalGameData.inputType = InputType.Menu
+
     const globalWindow = this.engine.getVariable(
       GlobalWindowMarker
     ) as GlobalWindowComponent
-    globalWindow.menuWindow.show()
+    globalWindow.showMenu()
+
     return true
   }
 
@@ -209,7 +205,6 @@ export default class TeamControllerComponent extends MoveComponent {
   move(dis: number) {
     this.playerStats.forEach((p) => {
       p.position = lerpVector2(p.position, p.targetPosition, dis)
-      // console.log(p.position)
     })
     this._head.position = this.playerStats[0].position
 
@@ -225,8 +220,6 @@ export default class TeamControllerComponent extends MoveComponent {
     })
     this._head.coord = this._head.targetCoord
     this._head.position = this._head.targetPosition
-
-    // console.log(this._head.position)
 
     this.refreshAllMoveComponent((stat, component) => {
       component.localPosition = stat.targetPosition

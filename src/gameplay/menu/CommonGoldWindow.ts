@@ -1,11 +1,11 @@
-import Component from '../../engine/component'
 import { GameplayComponent } from '../../engine/components'
+import BaseWindow from '../../engine/components/BaseWindow'
 import TextComponent from '../../engine/components/TextComponent'
 import { globalGameData } from '../asset/gameData'
 import { GlobalEventAddListener, GlobalEventType } from '../asset/globaEvents'
 
 @GameplayComponent
-export default class CommonGoldWindow extends Component {
+export default class CommonGoldWindow extends BaseWindow {
   private _goldText?: TextComponent
 
   start() {

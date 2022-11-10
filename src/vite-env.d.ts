@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 
-type ListenerFunction = (...args: unknown[]) => void
+type ListenerFunction = (...args: any[]) => void
 
 interface SelectListener {
   select: ListenerFunction

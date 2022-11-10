@@ -75,6 +75,10 @@ export default class ListComponent extends Component {
 
   setCursorIndex(index: number) {
     this._currentIndex = index
+    for (let i = 0; i < this._items.length; i++) {
+      if (i === this._currentIndex) this._items[i].hover()
+      else this._items[i].unhover()
+    }
     this._items[this._currentIndex].hover()
     this.trigger('hover')
   }

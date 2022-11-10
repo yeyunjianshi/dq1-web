@@ -46,9 +46,16 @@ export function GetEnemy(id: number): Enemy {
   return enemy
 }
 
+export enum InputType {
+  Move,
+  Menu,
+  Battle,
+}
+
 export class GameData {
   teamCharactes: Character[] = []
   npcCharacters: { roldId: number }[] = []
+  inputType: InputType = InputType.Move
 
   startGame() {
     const initCharacter = GetCharacter(DefaultInitGameCharacter.id)

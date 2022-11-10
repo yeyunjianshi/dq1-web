@@ -70,7 +70,7 @@
             "type": "CommonGoldWindow"
           }
         ],
-        "active": true,
+        "active": false,
         "children": [
           {
             "x": 0,
@@ -127,7 +127,7 @@
             "type": "CommonStatusWindow"
           }
         ],
-        "active": true,
+        "active": false,
         "children": [
           {
             "name": "characterName",
@@ -264,7 +264,7 @@
         ]
       },
       {
-        "name": "MenuStatusWindow",
+        "name": "menuStatusWindow",
         "x": 0,
         "y": -40,
         "width": 600,
@@ -276,9 +276,14 @@
           "sprite": "",
           "backgroundColor": "red"
         },
+        "components": [
+          {
+            "type": "MenuStatusWindow"
+          }
+        ],
         "children": [
           {
-            "name": "MenuStatusLeftWindow",
+            "name": "menuStatusLeftWindow",
             "x": -150,
             "y": 0,
             "width": 300,
@@ -540,7 +545,7 @@
               },
 
               {
-                "name": "characterResilienceLable",
+                "name": "characterAccessoriesLable",
                 "x": 80,
                 "y": 290,
                 "width": -2,
@@ -558,7 +563,7 @@
                 ]
               },
               {
-                "name": "characterResilience",
+                "name": "characterAccessories",
                 "x": -60,
                 "y": 290,
                 "width": -2,
@@ -580,7 +585,7 @@
             ]
           },
           {
-            "name": "MenuStatusRightWindow",
+            "name": "menuStatusRightWindow",
             "x": 150.2,
             "y": 0,
             "width": 300,
@@ -841,7 +846,7 @@
                 ]
               },
               {
-                "name": "characterShield",
+                "name": "characterDefend",
                 "x": -60,
                 "y": 250,
                 "width": -2,
@@ -861,7 +866,7 @@
                 ]
               },
               {
-                "name": "characterAccessoriesLable",
+                "name": "characterExpLable",
                 "x": 20,
                 "y": 290,
                 "width": 150,
@@ -879,7 +884,7 @@
                 ]
               },
               {
-                "name": "characterAccessories",
+                "name": "characterExp",
                 "x": -60,
                 "y": 290,
                 "width": -2,

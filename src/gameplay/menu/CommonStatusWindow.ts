@@ -1,11 +1,11 @@
-import Component from '../../engine/component'
 import { GameplayComponent } from '../../engine/components'
+import BaseWindow from '../../engine/components/BaseWindow'
 import TextComponent from '../../engine/components/TextComponent'
 import { globalGameData } from '../asset/gameData'
 import { GlobalEventType, GlobalEventAddListener } from '../asset/globaEvents'
 
 @GameplayComponent
-export default class CommonStatusWindow extends Component {
+export default class CommonStatusWindow extends BaseWindow {
   private _nameText?: TextComponent
   private _hpText?: TextComponent
   private _mpText?: TextComponent
