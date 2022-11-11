@@ -3,7 +3,7 @@ import Component from '../component'
 import { DefaultInputCheckDelay } from '../input'
 import GridLayout from '../layout/GridLayout'
 import { AssetLoader } from '../resource'
-import TextItemComponent from './TextItemComponent'
+import KeyValueItemComponent from './KeyValueItemComponent'
 
 type ListComponentData = {
   type: string
@@ -172,7 +172,7 @@ export abstract class Adapter<T extends ItemData> {
 }
 
 export class TextAdapter extends Adapter<{ text: string }> {
-  getView(view: TextItemComponent, data: { text: string }): void {
-    view.setText(data.text)
+  getView(view: KeyValueItemComponent, data: { text: string }): void {
+    view.setKeyText(data.text)
   }
 }

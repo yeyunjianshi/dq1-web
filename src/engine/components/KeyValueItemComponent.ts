@@ -10,20 +10,32 @@ type TextItemData = {
 }
 
 @InnerGameComponent
-export default class TextItemComponent extends ListItem {
-  private _textComponent?: TextComponent
+export default class KeyValueItemComponent extends ListItem {
+  private _keyComponent?: TextComponent
+  private _valueComponent?: TextComponent
   private _arrow?: GameObject
 
   awake(): void {
-    this._textComponent = this.root.children[0].components.find(
+    this._keyComponent = this.root.children[0].components.find(
       (com) => com instanceof TextComponent
     ) as TextComponent
-    this._arrow = this.root.children[1]
+    if (this.root.children.length > 2) {
+      this._valueComponent = this.root.children[1].components.find(
+        (com) => com instanceof TextComponent
+      ) as TextComponent
+      this._arrow = this.root.children[2]
+    } else {
+      this._arrow = this.root.children[1]
+    }
     if (this._arrow) this._arrow.alpha = 0
   }
 
-  setText(text: string) {
-    this._textComponent?.setText(text)
+  setKeyText(text: string) {
+    this._keyComponent?.setText(text)
+  }
+
+  setValueText(text: string) {
+    this._valueComponent?.setText(text)
   }
 
   select(): void {

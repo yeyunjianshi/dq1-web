@@ -363,7 +363,7 @@
                 "components": [
                   {
                     "type": "$TextComponent",
-                    "text": "HP",
+                    "text": " HP ",
                     "font": {
                       "size": 26,
                       "align": "center"
@@ -507,9 +507,9 @@
               },
               {
                 "name": "characterShieldLable",
-                "x": 80,
+                "x": 20,
                 "y": 250,
-                "width": -2,
+                "width": 150,
                 "height": 40,
                 "active": true,
                 "components": [
@@ -518,7 +518,7 @@
                     "text": "盾",
                     "font": {
                       "size": 26,
-                      "align": "left"
+                      "align": "center"
                     }
                   }
                 ]
@@ -543,12 +543,11 @@
                   }
                 ]
               },
-
               {
                 "name": "characterAccessoriesLable",
-                "x": 80,
+                "x": 20,
                 "y": 290,
-                "width": -2,
+                "width": 150,
                 "height": 40,
                 "active": true,
                 "components": [
@@ -557,7 +556,7 @@
                     "text": "饰",
                     "font": {
                       "size": 26,
-                      "align": "left"
+                      "align": "center"
                     }
                   }
                 ]
@@ -933,6 +932,185 @@
               {
                 "type": "$ScrollTextComponent",
                 "padding": [16, 30, 10, 30]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "menuLeftEquipmentWindow",
+        "x": 0,
+        "y": 0,
+        "width": 160,
+        "height": 300,
+        "layoutGravity": ["center", "center"],
+        "pivot": [0.5, 0.5],
+        "active": true,
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borard": 4
+        },
+        "components": [],
+        "layout": {
+          "type": "GridLayout",
+          "row": 3,
+          "col": 2,
+          "cell": [160, 40],
+          "gravity": ["left", "top"],
+          "template": "text_item.json"
+        },
+        "children": [
+          {
+            "name": "characterWeaponLable",
+            "x": 20,
+            "y": 170,
+            "width": 150,
+            "height": 40,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "武",
+                "font": {
+                  "size": 26,
+                  "align": "center"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterWeapon",
+            "x": -60,
+            "y": 170,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "layoutGravity": ["right", "top"],
+            "pivot": [1, 0],
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "铜剑",
+                "font": {
+                  "size": 26,
+                  "align": "right"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterBodyLable",
+            "x": 20,
+            "y": 210,
+            "width": 150,
+            "height": 40,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "防",
+                "font": {
+                  "size": 26,
+                  "align": "center"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterBody",
+            "x": -60,
+            "y": 210,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "layoutGravity": ["right", "top"],
+            "pivot": [1, 0],
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "铜剑",
+                "font": {
+                  "size": 26,
+                  "align": "right"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterShieldLable",
+            "x": 20,
+            "y": 250,
+            "width": 150,
+            "height": 40,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "盾",
+                "font": {
+                  "size": 26,
+                  "align": "center"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterShield",
+            "x": -60,
+            "y": 250,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "layoutGravity": ["right", "top"],
+            "pivot": [1, 0],
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "铜剑",
+                "font": {
+                  "size": 26,
+                  "align": "right"
+                }
+              }
+            ]
+          },
+
+          {
+            "name": "characterAccessoriesLable",
+            "x": 20,
+            "y": 290,
+            "width": 150,
+            "height": 40,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "饰",
+                "font": {
+                  "size": 26,
+                  "align": "center"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterAccessories",
+            "x": -60,
+            "y": 290,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "layoutGravity": ["right", "top"],
+            "pivot": [1, 0],
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "诅咒戒指",
+                "font": {
+                  "size": 26,
+                  "align": "right"
+                }
               }
             ]
           }

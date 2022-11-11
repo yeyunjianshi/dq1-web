@@ -4,7 +4,7 @@
   "width": -2,
   "height": -2,
   "active": true,
-  "components": [{ "type": "$KeyValueItemComponent", "canSelect": true }],
+  "components": [{ "type": "$TextItemComponent", "canSelect": true }],
   "children": [
     {
       "x": 0,
@@ -15,11 +15,29 @@
       "components": [
         {
           "type": "$TextComponent",
-          "text": "攻击",
+          "text": "武",
           "lineHeight": 1,
           "font": {
             "size": "26",
-            "align": "center"
+            "align": "left"
+          }
+        }
+      ]
+    },
+    {
+      "x": 0,
+      "y": 0,
+      "width": -2,
+      "height": -2,
+      "active": true,
+      "components": [
+        {
+          "type": "$TextComponent",
+          "text": "铜剑",
+          "lineHeight": 1,
+          "font": {
+            "size": "26",
+            "align": "right"
           }
         }
       ]
