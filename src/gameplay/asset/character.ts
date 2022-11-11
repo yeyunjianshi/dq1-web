@@ -1,7 +1,22 @@
 import { clamp } from '../../engine/math'
-import Item from '../inventory/item'
-import { GetItem } from './gameData'
+import { DefaultNotEquipItemSlot, ItemSlot } from '../inventory/inventory'
+import Item, { HasType, ItemEquipmentType, ItemType } from '../inventory/item'
+import { globalGameData } from './gameData'
 import { GlobalEventEmit, GlobalEventType } from './globaEvents'
+
+const gameAllCharacters: Map<number, Character> = new Map()
+
+export function SetCharacters(characters: Character[]) {
+  characters.forEach((ch) => {
+    gameAllCharacters.set(ch.id, ch)
+  })
+}
+
+export function GetCharacter(id: number): Character {
+  const ch = gameAllCharacters.get(id)
+  if (!ch) throw new Error('未找到id等于${id}的Character')
+  return ch
+}
 
 export default class Character {
   id = 0
@@ -53,40 +68,89 @@ export default class Character {
     return this._hp <= 0
   }
 
-  get weapon(): Item {
-    return GetItem(this.weaponId)
+  get weapon() {
+    return globalGameData.inventory.getItemSlot(this.weaponId)
   }
 
-  get body(): Item {
-    return GetItem(this.bodyId)
+  get body() {
+    return globalGameData.inventory.getItemSlot(this.bodyId)
   }
 
-  get shield(): Item {
-    return GetItem(this.shieldId)
+  get shield() {
+    return globalGameData.inventory.getItemSlot(this.shieldId)
   }
 
-  get accessories(): Item {
-    return GetItem(this.accessoriesId)
+  get accessories() {
+    return globalGameData.inventory.getItemSlot(this.accessoriesId)
   }
 
   get attack() {
     return (
       this.power +
-      this.weapon.ability.attack +
-      this.body.ability.attack +
-      this.shield.ability.attack +
-      this.accessories.ability.attack
+      this.weapon.item.ability.attack +
+      this.body.item.ability.attack +
+      this.shield.item.ability.attack +
+      this.accessories.item.ability.attack
     )
   }
 
   get defend() {
     return (
       this.resilience +
-      this.weapon.ability.defend +
-      this.body.ability.defend +
-      this.shield.ability.defend +
-      this.accessories.ability.defend
+      this.weapon.item.ability.defend +
+      this.body.item.ability.defend +
+      this.shield.item.ability.defend +
+      this.accessories.item.ability.defend
     )
+  }
+
+  equip(equipment: ItemSlot, type: ItemEquipmentType) {
+    if ((equipment.item.type & type) === 0) return
+
+    let preItemSlot = DefaultNotEquipItemSlot
+    switch (type) {
+      case ItemType.Weapon:
+        preItemSlot = this.weapon
+        this.weaponId = equipment.id
+        break
+      case ItemType.Body:
+        preItemSlot = this.body
+        this.bodyId = equipment.id
+        break
+      case ItemType.Shield:
+        preItemSlot = this.shield
+        this.shieldId = equipment.id
+        break
+      case ItemType.Accessories:
+        preItemSlot = this.accessories
+        this.accessoriesId = equipment.id
+        break
+    }
+    if (preItemSlot !== DefaultNotEquipItemSlot) preItemSlot.isEquip = false
+    if (equipment !== DefaultNotEquipItemSlot) equipment.isEquip = true
+    return preItemSlot
+  }
+
+  tryEquipment(equipment: ItemSlot, type: ItemType = ItemType.All) {
+    type = equipment.item.type & type
+
+    const property = (p: 'attack' | 'defend') =>
+      (HasType(type, ItemType.Weapon) ? equipment.item : this.weapon.item)
+        .ability[p] +
+      (HasType(type, ItemType.Body) ? equipment.item : this.body.item).ability[
+        p
+      ] +
+      (HasType(type, ItemType.Shield) ? equipment.item : this.shield.item)
+        .ability[p] +
+      (HasType(type, ItemType.Accessories)
+        ? equipment.item
+        : this.accessories.item
+      ).ability[p]
+
+    return {
+      attack: this.power + property('attack'),
+      defend: this.resilience + property('defend'),
+    }
   }
 
   addGold(val: number) {

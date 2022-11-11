@@ -1,8 +1,8 @@
 export enum CommandTriggerWhen {
-  None = 0x00,
-  Common = 0x01,
-  Battle = 0x10,
-  All = 0x11,
+  None = 0b00,
+  Common = 0b01,
+  Battle = 0b10,
+  All = 0b11,
 }
 
 export enum CommandTriggerType {

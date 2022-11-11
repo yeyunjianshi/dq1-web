@@ -1,13 +1,24 @@
-import { ChangeWhen, Command, CommandCalacuteType } from '../effects/buffer'
-import UsePeropertyEffect from '../effects/UsePropertyEffect'
+import { Command, CommandCalacuteType } from '../effects/buffer'
 
 export enum ItemType {
-  Weapon = 0x000001,
-  Body = 0x000010,
-  Shield = 0x000100,
-  Accessories = 0x001000,
-  Item = 0x010000,
-  ImportItem = 0x100000,
+  Weapon = 0b000001,
+  Body = 0b000010,
+  Shield = 0b000100,
+  Accessories = 0b001000,
+  Item = 0b010000,
+  ImportItem = 0b100000,
+  Equipment = 0b001111,
+  All = 0b111111,
+}
+
+export type ItemEquipmentType =
+  | ItemType.Weapon
+  | ItemType.Body
+  | ItemType.Shield
+  | ItemType.Accessories
+
+export function HasType(type: ItemType, filterType: ItemType) {
+  return (type & filterType) > 0
 }
 
 export default class Item {
@@ -42,6 +53,22 @@ export default class Item {
   get equipDefend() {
     return this.isCanEquip ? 0 : this.ability.defend
   }
+
+  get isItem() {
+    return (this.type & ItemType.Item) > 0
+  }
+  get isWeapon() {
+    return (this.type & ItemType.Weapon) > 0
+  }
+  get isBody() {
+    return (this.type & ItemType.Body) > 0
+  }
+  get isShield() {
+    return (this.type & ItemType.Shield) > 0
+  }
+  get isAccessories() {
+    return (this.type & ItemType.Accessories) > 0
+  }
 }
 
 export function parseItem(data: ItemData): Item {
@@ -54,6 +81,8 @@ export function parseItem(data: ItemData): Item {
   item.isCanCommonUse = ((data.canUse ?? 0) & 0x01) > 0
   item.isCanBattleUse = ((data.canUse ?? 0) & 0x02) > 0
   item.useCount = typeof data.useCount === 'number' ? data.useCount : 1
+  if (data.effect && data.effect.length > 0)
+    parseEffect(data.effect ?? '', item)
   return item
 }
 
@@ -84,25 +113,26 @@ export function parseEffect(effectString: string, item: Item) {
   const effectCommands = effectString.split(';').filter((s) => s.length > 0)
   effectCommands.map((effectCommand) => {
     const [command, ...args] = effectCommand.split(':')
-    if (command === 'u') {
-      if (args.length >= 2) {
-        const when = ChangeWhen(args[0])
-        if (when > 0) {
-          if (args[1] === 'light') {
-            return
-          } else {
-            item.useEffects.push(
-              new UsePeropertyEffect(
-                when,
-                args[1],
-                ...parseNumberValue(args[2])
-              )
-            )
-          }
-        }
-      }
-      return
-    } else if (command === 'e') {
+    // if (command === 'u') {
+    //   if (args.length >= 2) {
+    //     const when = ChangeWhen(args[0])
+    //     if (when > 0) {
+    //       if (args[1] === 'light') {
+    //         return
+    //       } else {
+    //         item.useEffects.push(
+    //           new UsePeropertyEffect(
+    //             when,
+    //             args[1],
+    //             ...parseNumberValue(args[2])
+    //           )
+    //         )
+    //       }
+    //     }
+    //   }
+    //   return
+    // } else if (command === 'e') {
+    if (command === 'e') {
       if (args.length >= 2) {
         if (args[0] === 'attack') item.ability.attack = parseInt(args[1], 10)
         else if (args[0] === 'defend')

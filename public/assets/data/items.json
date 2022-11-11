@@ -81,13 +81,6 @@
     "effect": "u:common:maxMP:3-5"
   },
   {
-    "id": 0,
-    "name": "无",
-    "price": 0,
-    "sellPrice": 0,
-    "type": 30
-  },
-  {
     "id": 101,
     "name": "竹枪",
     "price": 10,

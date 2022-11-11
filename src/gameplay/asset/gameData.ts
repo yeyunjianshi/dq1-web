@@ -1,10 +1,16 @@
-import Item from '../inventory/item'
+import Inventory, {
+  DefaultNotEquipItemSlot,
+  DefaultRemoveEquipItemSlot,
+  ItemSlot,
+} from '../inventory/inventory'
+import Item, { ItemEquipmentType, ItemType } from '../inventory/item'
 import Character from './character'
 import Enemy from './enemy'
 
 const DefaultInitGameCharacter = {
   id: 1,
   lv: 1,
+  inventory: [1, 101, 102, 201, 202, 301, 302, 401, 402, 501],
 }
 
 const gameAllCharacters: Map<number, Character> = new Map()
@@ -56,14 +62,32 @@ export class GameData {
   teamCharactes: Character[] = []
   npcCharacters: { roldId: number }[] = []
   inputType: InputType = InputType.Move
+  inventory = new Inventory()
 
   startGame() {
     const initCharacter = GetCharacter(DefaultInitGameCharacter.id)
     this.teamCharactes = [initCharacter]
+    DefaultInitGameCharacter.inventory.forEach((itemId) =>
+      this.inventory.addItem(itemId)
+    )
   }
 
   init() {
     this.startGame()
+  }
+
+  heroEquip(equipment: ItemSlot, type: ItemEquipmentType) {
+    if (
+      equipment !== DefaultRemoveEquipItemSlot &&
+      this.inventory.getItemSlot(equipment.id) === DefaultNotEquipItemSlot
+    )
+      return
+
+    if (equipment === DefaultRemoveEquipItemSlot) {
+      equipment = DefaultNotEquipItemSlot
+    }
+    this.hero.equip(equipment, type)
+    this.inventory.sort()
   }
 
   public get hero() {

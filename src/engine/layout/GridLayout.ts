@@ -39,6 +39,16 @@ export default class GridLayout implements ILayout {
     return template
   }
 
+  regenerate(row: number, col: number) {
+    if (!this.template) return
+    this.col = col
+    this.row = row
+    this.initTemplate(this.template)
+    this._root.layout()
+    this._root.awakeChildren()
+    this._root.startChildren()
+  }
+
   layout(): [number, number] {
     const cellContentWidth = this.cell[0]
     const cellContentHeight = this.cell[1]

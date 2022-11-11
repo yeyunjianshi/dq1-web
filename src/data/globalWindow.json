@@ -32,7 +32,7 @@
           "backgroundColor": "#222",
           "borderWidth": 4
         },
-        "active": false,
+        "active": true,
         "components": [
           {
             "type": "$ListComponent"
@@ -70,7 +70,7 @@
             "type": "CommonGoldWindow"
           }
         ],
-        "active": false,
+        "active": true,
         "children": [
           {
             "x": 0,
@@ -127,7 +127,7 @@
             "type": "CommonStatusWindow"
           }
         ],
-        "active": false,
+        "active": true,
         "children": [
           {
             "name": "characterName",
@@ -907,6 +907,153 @@
         ]
       },
       {
+        "name": "menuEquipmentWindow",
+        "x": -60,
+        "y": 6,
+        "width": 405,
+        "height": 560,
+        "layoutGravity": ["center", "center"],
+        "pivot": [0.5, 0.5],
+        "active": false,
+        "enable": false,
+        "components": [
+          {
+            "type": "MenuEquipmentWindow"
+          }
+        ],
+        "children": [
+          {
+            "name": "menuEquipmentLeftWindow",
+            "x": -100,
+            "y": 54,
+            "width": 200,
+            "height": 172,
+            "layoutGravity": ["center", "top"],
+            "pivot": [0.5, 0],
+            "active": true,
+            "background": {
+              "sprite": "",
+              "backgroundColor": "#222",
+              "borderWidth": 4
+            },
+            "components": [
+              {
+                "type": "$ListComponent"
+              }
+            ],
+            "layout": {
+              "type": "GridLayout",
+              "row": 4,
+              "col": 1,
+              "cell": [184, 40],
+              "gravity": ["center", "center"],
+              "template": "key_value_item.json"
+            }
+          },
+          {
+            "name": "menuEquipmentLeftTopWindow",
+            "x": -100,
+            "y": 0,
+            "width": 200,
+            "height": 54,
+            "layoutGravity": ["center", "top"],
+            "pivot": [0.5, 0],
+            "active": true,
+            "background": {
+              "sprite": "",
+              "backgroundColor": "#222",
+              "borderWidth": 4
+            },
+            "components": [],
+            "children": [
+              {
+                "x": 28,
+                "y": 0,
+                "width": -2,
+                "height": -2,
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "攻",
+                    "lineHeight": 1,
+                    "font": {
+                      "size": "26",
+                      "align": "left"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "menuEquipmentLeftTopWindowText",
+                "x": 64,
+                "y": 0,
+                "width": 130,
+                "height": -2,
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "111→115",
+                    "lineHeight": 1,
+                    "font": {
+                      "size": "26",
+                      "align": "center"
+                    }
+                  }
+                ]
+              },
+              {
+                "x": 14,
+                "y": 6,
+                "width": 10,
+                "height": 16,
+                "background": {
+                  "sprite": "system/cursor.png",
+                  "scaleType": "fit",
+                  "spriteWidth": 8,
+                  "spriteHeight": 13
+                },
+                "layoutGravity": ["left", "center"],
+                "pivot": [0, 0.5],
+                "active": false
+              }
+            ]
+          },
+          {
+            "name": "menuEquipmentRightWindow",
+            "x": 101,
+            "y": 54,
+            "width": 200,
+            "height": -1,
+            "layoutGravity": ["center", "top"],
+            "pivot": [0.5, 0],
+            "active": true,
+            "background": {
+              "sprite": "",
+              "backgroundColor": "#222",
+              "borderWidth": 4
+            },
+            "components": [
+              {
+                "type": "$ListComponent",
+                "canSelect": false,
+                "wrapLayout": 1,
+                "wrapLayoutOffset": 12
+              }
+            ],
+            "layout": {
+              "type": "GridLayout",
+              "row": 10,
+              "col": 1,
+              "cell": [200, 40],
+              "gravity": ["center", "center"],
+              "template": "key_value_item.json"
+            }
+          }
+        ]
+      },
+      {
         "x": -350,
         "y": 120,
         "width": 700,
@@ -932,185 +1079,6 @@
               {
                 "type": "$ScrollTextComponent",
                 "padding": [16, 30, 10, 30]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "menuLeftEquipmentWindow",
-        "x": 0,
-        "y": 0,
-        "width": 160,
-        "height": 300,
-        "layoutGravity": ["center", "center"],
-        "pivot": [0.5, 0.5],
-        "active": true,
-        "background": {
-          "sprite": "",
-          "backgroundColor": "#222",
-          "borard": 4
-        },
-        "components": [],
-        "layout": {
-          "type": "GridLayout",
-          "row": 3,
-          "col": 2,
-          "cell": [160, 40],
-          "gravity": ["left", "top"],
-          "template": "text_item.json"
-        },
-        "children": [
-          {
-            "name": "characterWeaponLable",
-            "x": 20,
-            "y": 170,
-            "width": 150,
-            "height": 40,
-            "active": true,
-            "components": [
-              {
-                "type": "$TextComponent",
-                "text": "武",
-                "font": {
-                  "size": 26,
-                  "align": "center"
-                }
-              }
-            ]
-          },
-          {
-            "name": "characterWeapon",
-            "x": -60,
-            "y": 170,
-            "width": -2,
-            "height": 40,
-            "active": true,
-            "layoutGravity": ["right", "top"],
-            "pivot": [1, 0],
-            "components": [
-              {
-                "type": "$TextComponent",
-                "text": "铜剑",
-                "font": {
-                  "size": 26,
-                  "align": "right"
-                }
-              }
-            ]
-          },
-          {
-            "name": "characterBodyLable",
-            "x": 20,
-            "y": 210,
-            "width": 150,
-            "height": 40,
-            "active": true,
-            "components": [
-              {
-                "type": "$TextComponent",
-                "text": "防",
-                "font": {
-                  "size": 26,
-                  "align": "center"
-                }
-              }
-            ]
-          },
-          {
-            "name": "characterBody",
-            "x": -60,
-            "y": 210,
-            "width": -2,
-            "height": 40,
-            "active": true,
-            "layoutGravity": ["right", "top"],
-            "pivot": [1, 0],
-            "components": [
-              {
-                "type": "$TextComponent",
-                "text": "铜剑",
-                "font": {
-                  "size": 26,
-                  "align": "right"
-                }
-              }
-            ]
-          },
-          {
-            "name": "characterShieldLable",
-            "x": 20,
-            "y": 250,
-            "width": 150,
-            "height": 40,
-            "active": true,
-            "components": [
-              {
-                "type": "$TextComponent",
-                "text": "盾",
-                "font": {
-                  "size": 26,
-                  "align": "center"
-                }
-              }
-            ]
-          },
-          {
-            "name": "characterShield",
-            "x": -60,
-            "y": 250,
-            "width": -2,
-            "height": 40,
-            "active": true,
-            "layoutGravity": ["right", "top"],
-            "pivot": [1, 0],
-            "components": [
-              {
-                "type": "$TextComponent",
-                "text": "铜剑",
-                "font": {
-                  "size": 26,
-                  "align": "right"
-                }
-              }
-            ]
-          },
-
-          {
-            "name": "characterAccessoriesLable",
-            "x": 20,
-            "y": 290,
-            "width": 150,
-            "height": 40,
-            "active": true,
-            "components": [
-              {
-                "type": "$TextComponent",
-                "text": "饰",
-                "font": {
-                  "size": 26,
-                  "align": "center"
-                }
-              }
-            ]
-          },
-          {
-            "name": "characterAccessories",
-            "x": -60,
-            "y": 290,
-            "width": -2,
-            "height": 40,
-            "active": true,
-            "layoutGravity": ["right", "top"],
-            "pivot": [1, 0],
-            "components": [
-              {
-                "type": "$TextComponent",
-                "text": "诅咒戒指",
-                "font": {
-                  "size": 26,
-                  "align": "right"
-                }
               }
             ]
           }

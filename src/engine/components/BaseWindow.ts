@@ -19,4 +19,8 @@ export default abstract class BaseWindow extends Component {
   hide() {
     this.root.active = false
   }
+
+  interceptCancel() {
+    return false
+  }
 }

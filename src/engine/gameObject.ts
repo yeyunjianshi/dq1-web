@@ -101,11 +101,19 @@ class GameObject implements LifeCycle {
 
   awake() {
     this.components?.forEach((com) => com.awake && com.awake())
+    this.awakeChildren()
+  }
+
+  awakeChildren() {
     this.children?.forEach((child) => child.awake && child.awake())
   }
 
   start() {
     this.components?.forEach((com) => com.start && com.start())
+    this.startChildren()
+  }
+
+  startChildren() {
     this.children?.forEach((child) => child.start && child.start())
   }
 
@@ -304,6 +312,18 @@ class GameObject implements LifeCycle {
           (child) => child instanceof componentConstructor
         )
         if (component) return component
+      }
+      queue.push(...node.children)
+    }
+    return undefined
+  }
+
+  getGameObjectInChildren(name: string) {
+    const queue: GameObject[] = [this]
+    while (queue.length > 0) {
+      const node = queue.shift() as GameObject
+      if (node.name === name) {
+        return node
       }
       queue.push(...node.children)
     }

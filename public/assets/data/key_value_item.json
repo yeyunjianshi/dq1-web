@@ -4,7 +4,7 @@
   "width": -2,
   "height": -2,
   "active": true,
-  "components": [{ "type": "$TextItemComponent", "canSelect": true }],
+  "components": [{ "type": "$KeyValueItemComponent", "canSelect": true }],
   "children": [
     {
       "x": 0,
@@ -20,7 +20,8 @@
           "font": {
             "size": "26",
             "align": "left"
-          }
+          },
+          "padding": [0, 30, 0, 30]
         }
       ]
     },
@@ -33,17 +34,18 @@
       "components": [
         {
           "type": "$TextComponent",
-          "text": "铜剑",
+          "text": "钢剑",
           "lineHeight": 1,
           "font": {
             "size": "26",
             "align": "right"
-          }
+          },
+          "padding": [0, 20, 0, 0]
         }
       ]
     },
     {
-      "x": 20,
+      "x": 14,
       "y": 6,
       "width": 10,
       "height": 16,
