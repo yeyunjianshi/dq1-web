@@ -14,27 +14,6 @@ export const DefaultNoneItemSlot: ItemSlot = {
   isEquip: false,
 }
 
-// 显示装备卸下装备的插槽
-// export const [
-//   DefaultRemoveWeaponItemSlot,
-//   DefaultRemoveBodyItemSlot,
-//   DefaultRemoveShieldItemSlot,
-//   DefaultRemoveAccessoriesItemSlot,
-// ] = [ItemType.Weapon, ItemType.Body, ItemType.Shield, ItemType.Accessories].map(
-//   (itemType: ItemType, i: number) => {
-//     return {
-//       id: 1 + i,
-//       item: parseItem({
-//         id: 10000,
-//         name: '卸下',
-//         price: 0,
-//         sellPrice: 0,
-//         type: itemType,
-//       }),
-//       isEquip: false,
-//     }
-//   }
-// )
 export const DefaultRemoveEquipItemSlot = {
   id: 1,
   item: parseItem({
@@ -56,12 +35,10 @@ export default class inventory {
     if (typeof item === 'number') {
       item = GetItem(item)
     }
-    this._slots.push({
-      id: this.generateSlotId(),
-      item,
-      isEquip: false,
-    })
+    const slot = { id: this.generateSlotId(), item, isEquip: false }
+    this._slots.push(slot)
     this.sort()
+    return slot
   }
 
   getItem(id: number) {
@@ -100,6 +77,18 @@ export default class inventory {
       } else if (a.isEquip) return -1
       else return 1
     })
+  }
+
+  itemCount(itemId: number) {
+    return this._slots.filter((slot) => slot.item.id === itemId).length
+  }
+
+  isEmpty() {
+    return this._slots.length === 0
+  }
+
+  isFull() {
+    return this._slots.length === this.capacity
   }
 
   all() {

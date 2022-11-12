@@ -1129,6 +1129,178 @@
           }
         ]
       },
+
+      {
+        "name": "shopWindow",
+        "x": 0,
+        "y": 0,
+        "width": -2,
+        "height": -2,
+        "active": false,
+        "alpha": 1,
+        "useScreenPosition": true,
+        "components": [
+          {
+            "type": "ShopWindow"
+          }
+        ],
+        "children": [
+          {
+            "name": "shopSelectWindow",
+            "x": 354,
+            "y": -70,
+            "width": 160,
+            "height": 132,
+            "pivot": [1, 1],
+            "layoutGravity": ["center", "center"],
+            "active": true,
+            "background": {
+              "sprite": "",
+              "backgroundColor": "#222",
+              "borderWidth": 4
+            },
+            "components": [
+              {
+                "type": "$ListComponent"
+              }
+            ],
+            "layout": {
+              "type": "GridLayout",
+              "row": 3,
+              "col": 1,
+              "cell": [160, 40],
+              "gravity": ["center", "center"],
+              "template": "text_item.json"
+            }
+          },
+          {
+            "name": "shopItemWindow",
+            "x": -150,
+            "y": -296,
+            "width": 400,
+            "height": -1,
+            "layoutGravity": ["center", "center"],
+            "pivot": [0.5, 0],
+            "active": true,
+            "background": {
+              "sprite": "",
+              "backgroundColor": "#222",
+              "borderWidth": 4
+            },
+            "components": [
+              {
+                "type": "$ListComponent",
+                "wrapLayout": 1,
+                "wrapLayoutOffset": 12
+              }
+            ],
+            "layout": {
+              "type": "GridLayout",
+              "row": 6,
+              "col": 1,
+              "cell": [400, 40],
+              "gravity": ["center", "center"],
+              "template": "key_value_item.json"
+            }
+          },
+          {
+            "name": "shopMessageWindow",
+            "x": -350,
+            "y": 120,
+            "width": 704,
+            "height": 102,
+            "pivot": [0, 0],
+            "layoutGravity": ["center", "center"],
+            "active": true,
+            "background": {
+              "sprite": "",
+              "backgroundColor": "#222",
+              "borderWidth": 4
+            },
+            "children": [
+              {
+                "name": "shopMessageLabelText",
+                "x": 200,
+                "y": 0,
+                "width": 680,
+                "height": 42,
+                "pivot": [0, 0],
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "拥有",
+                    "font": {
+                      "size": 26,
+                      "align": "left"
+                    }
+                  }
+                ]
+              },
+              {
+                "x": 0,
+                "y": 48,
+                "width": -2,
+                "height": 2,
+                "pivot": [0, 0],
+                "active": true,
+                "background": {
+                  "sprite": "",
+                  "borderWidth": 1,
+                  "backgroundColor": "white"
+                }
+              },
+              {
+                "x": 0,
+                "y": 50,
+                "width": 680,
+                "height": 42,
+                "pivot": [0, 0],
+                "active": true,
+                "children": [
+                  {
+                    "name": "shopMessageNameText",
+                    "x": 30,
+                    "y": 0,
+                    "width": 200,
+                    "height": 42,
+                    "pivot": [0, 0],
+                    "active": true,
+                    "components": [
+                      {
+                        "type": "$TextComponent",
+                        "text": "名字",
+                        "font": {
+                          "size": 26,
+                          "align": "left"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "name": "shopMessageValueText",
+                    "x": 200,
+                    "y": 0,
+                    "width": 480,
+                    "height": 42,
+                    "pivot": [0, 0],
+                    "active": true,
+                    "components": [
+                      {
+                        "type": "$TextComponent",
+                        "text": "100",
+                        "font": {
+                          "size": 26
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
       {
         "x": -350,
         "y": 120,
@@ -1136,7 +1308,7 @@
         "height": 190,
         "pivot": [0, 0],
         "layoutGravity": ["center", "center"],
-        "active": false,
+        "active": true,
         "background": {
           "sprite": "",
           "backgroundColor": "#222",
@@ -1157,6 +1329,70 @@
                 "padding": [16, 30, 10, 30]
               }
             ]
+          }
+        ]
+      },
+      {
+        "name": "alertWindow",
+        "x": 0,
+        "y": 0,
+        "width": 340,
+        "height": 130,
+        "pivot": [0.5, 0.5],
+        "layoutGravity": ["center", "center"],
+        "active": false,
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borderWidth": 4
+        },
+        "components": [
+          {
+            "type": "AlertWindow"
+          }
+        ],
+        "children": [
+          {
+            "name": "alertContentText",
+            "x": 0,
+            "y": 8,
+            "width": -2,
+            "height": 40,
+            "pivot": [0, 0],
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "是否覆盖？",
+                "font": {
+                  "size": 26,
+                  "align": "center"
+                }
+              }
+            ]
+          },
+          {
+            "name": "alertJudgeComponent",
+            "x": 0,
+            "y": 64,
+            "width": 240,
+            "height": 52,
+            "layoutGravity": ["center", "top"],
+            "pivot": [0.5, 0],
+            "active": true,
+            "components": [
+              {
+                "type": "$ListComponent"
+              }
+            ],
+            "layout": {
+              "type": "GridLayout",
+              "row": 1,
+              "col": 2,
+              "cell": [120, 40],
+              "gravity": ["center", "center"],
+              "template": "text_item.json"
+            }
           }
         ]
       }

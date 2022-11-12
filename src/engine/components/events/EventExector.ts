@@ -2,6 +2,7 @@ import Engine, { GlobalWindowMarker } from '../../engine'
 import { nextFrame } from '../../time'
 import GlobalWindowComponent from '../../../gameplay/menu/GlobalWindowComponent'
 import { QuestEvent } from './QuestEvent'
+import { globalGameData, InputType } from '../../../gameplay/asset/gameData'
 
 const gameEvents = new Map<string, string>()
 
@@ -84,4 +85,11 @@ export async function talk(characterName: string, text: string, clear = false) {
 
 export async function message(text: string) {
   await talk('', text, true)
+}
+
+export async function messageCachePreviousInputType(text: string) {
+  const previouseInputType = globalGameData.inputType
+  globalGameData.inputType = InputType.Message
+  await message(text)
+  globalGameData.inputType = previouseInputType
 }

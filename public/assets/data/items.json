@@ -5,7 +5,7 @@
     "price": 10,
     "sellPrice": 5,
     "canUse": 3,
-    "type": 32,
+    "type": 16,
     "effect": "u:all:HP:20-35"
   },
   {
@@ -14,7 +14,7 @@
     "price": 8,
     "sellPrice": 4,
     "canUse": 3,
-    "type": 32,
+    "type": 16,
     "effect": "u:common:light;use:battle:damage:4-6"
   },
   {
@@ -23,7 +23,7 @@
     "price": 24,
     "sellPrice": 12,
     "canUse": 1,
-    "type": 32,
+    "type": 16,
     "effect": "u:common:move"
   },
   {
@@ -32,7 +32,7 @@
     "price": 12,
     "sellPrice": 19,
     "canUse": 3,
-    "type": 32,
+    "type": 16,
     "effect": "u:common:meetEnemy:127;u:battle:damage:16-20"
   },
   {
@@ -41,7 +41,7 @@
     "price": 224,
     "sellPrice": 112,
     "canUse": 1,
-    "type": 32,
+    "type": 16,
     "effect": "u:common:power:1-3"
   },
   {
@@ -50,7 +50,7 @@
     "price": 200,
     "sellPrice": 100,
     "canUse": 1,
-    "type": 32,
+    "type": 16,
     "effect": "u:common:speed:1-3"
   },
   {
@@ -59,7 +59,7 @@
     "price": 200,
     "sellPrice": 100,
     "canUse": 1,
-    "type": 32,
+    "type": 16,
     "effect": "u:common:resilience:4"
   },
   {
@@ -68,7 +68,7 @@
     "price": 300,
     "sellPrice": 150,
     "canUse": 1,
-    "type": 32,
+    "type": 16,
     "effect": "u:common:maxHP:4-6"
   },
   {
@@ -77,7 +77,7 @@
     "price": 200,
     "sellPrice": 100,
     "canUse": 1,
-    "type": 32,
+    "type": 16,
     "effect": "u:common:maxMP:3-5"
   },
   {
@@ -266,7 +266,7 @@
     "price": 0,
     "sellPrice": 15,
     "canUse": 0,
-    "type": 64,
+    "type": 32,
     "isCanDiscard": false
   },
   {
@@ -275,7 +275,7 @@
     "price": 0,
     "sellPrice": -1,
     "canUse": 1,
-    "type": 64,
+    "type": 32,
     "isCanDiscard": false,
     "effect": "u:commonScript:meetEnemy"
   },
@@ -285,7 +285,7 @@
     "price": 0,
     "sellPrice": -1,
     "canUse": 0,
-    "type": 64,
+    "type": 32,
     "isCanDiscard": false
   },
   {
@@ -294,7 +294,7 @@
     "price": 0,
     "sellPrice": -1,
     "canUse": 0,
-    "type": 64,
+    "type": 32,
     "isCanDiscard": false
   },
   {
@@ -304,7 +304,7 @@
     "sellPrice": -1,
     "canUse": 1,
     "isCanDiscard": false,
-    "type": 64,
+    "type": 32,
     "effect": "u:commonScript:catExp"
   },
   {
@@ -312,7 +312,7 @@
     "name": "洛特之证",
     "isCanDiscard": false,
     "price": 0,
-    "type": 64
+    "type": 32
   },
   {
     "id": 507,
@@ -320,7 +320,7 @@
     "price": 0,
     "sellPrice": -1,
     "isCanDiscard": false,
-    "type": 64
+    "type": 32
   },
   {
     "id": 508,
@@ -328,6 +328,6 @@
     "price": 0,
     "sellPrice": -1,
     "isCanDiscard": false,
-    "type": 64
+    "type": 32
   }
 ]

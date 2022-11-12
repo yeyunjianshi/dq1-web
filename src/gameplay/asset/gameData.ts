@@ -1,5 +1,4 @@
 import { CommandTriggerType, CommandTriggerWhen } from '../effects/buffer'
-import inventory from '../inventory/inventory'
 import Inventory, {
   DefaultNoneItemSlot,
   DefaultRemoveEquipItemSlot,
@@ -12,7 +11,7 @@ import Enemy from './enemy'
 const DefaultInitGameCharacter = {
   id: 1,
   lv: 1,
-  inventory: [1, 101, 102, 201, 202, 301, 302, 401, 402, 501],
+  inventory: [1, 102, 201, 202, 301, 302, 401, 402, 501],
 }
 
 const gameAllCharacters: Map<number, Character> = new Map()
@@ -39,6 +38,19 @@ export function SetItems(items: Item[]) {
 
 export function GetItem(id: number) {
   return gameAllItems.get(id)!
+}
+
+const gameShopItems: Map<number, Item[]> = new Map()
+
+export function SetShopItems(shopData: { id: number; data: number[] }[]) {
+  shopData.forEach(({ id, data }) => {
+    const items = data.map((itemId) => GetItem(itemId))
+    gameShopItems.set(id, items)
+  })
+}
+
+export function GetShopItems(id: number) {
+  return gameShopItems.get(id)!
 }
 
 const gameAllEneies: Map<number, Enemy> = new Map()

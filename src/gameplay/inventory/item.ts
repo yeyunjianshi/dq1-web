@@ -9,6 +9,7 @@ export enum ItemType {
   Item = 0b010000,
   ImportItem = 0b100000,
   Equipment = 0b001111,
+  AllItem = 0b110000,
   All = 0b111111,
 }
 
@@ -29,7 +30,6 @@ export default class Item {
   type: ItemType = ItemType.Item
   price = 0
   sellPrice = 0
-  isCanSell = true
   useCount = 1
   isCanCommonUse = false
   isCanBattleUse = false
@@ -45,6 +45,10 @@ export default class Item {
           ItemType.Accessories)) >
       0
     )
+  }
+
+  get isCanSell() {
+    return this.sellPrice >= 0
   }
 
   ability: { attack: number; defend: number } = { attack: 0, defend: 0 }
@@ -74,6 +78,9 @@ export default class Item {
   }
   get isEquipment() {
     return HasType(this.type, ItemType.Equipment)
+  }
+  get isAllItem() {
+    return HasType(this.type, ItemType.AllItem)
   }
 }
 

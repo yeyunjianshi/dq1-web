@@ -14,6 +14,8 @@ import { globalGameData, InputType } from '../asset/gameData'
 import MenuStatusWindow from './MenuStatusWindow'
 import MenuEquipmentWindow from './MenuEquipmentWindow'
 import MenuItemWindow from './MenuItemWindow'
+import ShopWindow from './ShopWindow'
+import AlertWindow from './AlertWindow'
 
 interface IWindowStack {
   pushWindow(w: BaseWindow | string): void
@@ -32,6 +34,8 @@ export default class GlobalWindowComponent
   private _menuStatusWindow?: MenuStatusWindow
   private _menuEquipmentWindow?: MenuEquipmentWindow
   private _menuItemWindow?: MenuItemWindow
+  private _shopWindow?: ShopWindow
+  private _alertWindow?: AlertWindow
   private _windowStack: BaseWindow[] = []
   private _pressedFrame = 0
 
@@ -76,6 +80,16 @@ export default class GlobalWindowComponent
       MenuItemWindow
     ) as MenuItemWindow
 
+    this._shopWindow = this.root.getComponentInChildByName(
+      'shopWindow',
+      ShopWindow
+    ) as ShopWindow
+
+    this._alertWindow = this.root.getComponentInChildByName(
+      'alertWindow',
+      AlertWindow
+    ) as AlertWindow
+
     this.engine.setVariable(GlobalWindowMarker, this)
 
     this._messageWindow.awake()
@@ -100,7 +114,20 @@ export default class GlobalWindowComponent
     this._commonStatusWindow?.hide()
     this.menuWindow.hide()
     this._windowStack = []
-    globalGameData.inputType = InputType.Move
+  }
+
+  showShop(shopId: number) {
+    this._commonGoldWindow?.show()
+    this._pressedFrame = this.time.currentFrame
+    this._shopWindow!.show(true, shopId)
+    this._windowStack.push(this._shopWindow!)
+  }
+
+  alert(content: string, callback: ListenerFunction) {
+    this._pressedFrame = this.time.currentFrame
+    this._alertWindow!.addListener(callback)
+    this._alertWindow!.show(true, content)
+    this._windowStack.push(this._alertWindow!)
   }
 
   pushWindow(w: BaseWindow | string) {
@@ -123,6 +150,7 @@ export default class GlobalWindowComponent
     window?.hide()
 
     if (this._windowStack.length == 0) {
+      globalGameData.inputType = InputType.Move
       this.hideMenu()
     }
   }

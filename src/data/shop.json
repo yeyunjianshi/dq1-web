@@ -1,0 +1,177 @@
+{
+  "name": "ShopScene",
+  "width": -2,
+  "height": -2,
+  "loadType": 2,
+  "priority": 501,
+  "hasCamera": false,
+  "root": {
+    "name": "shopWindow",
+    "x": 0,
+    "y": 0,
+    "width": -2,
+    "height": -2,
+    "active": true,
+    "alpha": 1,
+    "useScreenPosition": true,
+    "components": [
+      {
+        "type": "ShopWindowComponent"
+      }
+    ],
+    "children": [
+      {
+        "name": "shopSelectWindow",
+        "x": 354,
+        "y": -70,
+        "width": 160,
+        "height": 132,
+        "pivot": [1, 1],
+        "layoutGravity": ["center", "center"],
+        "active": true,
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borderWidth": 4
+        },
+        "components": [
+          {
+            "type": "$ListComponent"
+          }
+        ],
+        "layout": {
+          "type": "GridLayout",
+          "row": 3,
+          "col": 1,
+          "cell": [160, 40],
+          "gravity": ["center", "center"],
+          "template": "text_item.json"
+        }
+      },
+      {
+        "name": "shopItemWindow",
+        "x": -150,
+        "y": -290,
+        "width": 400,
+        "height": 412,
+        "layoutGravity": ["center", "center"],
+        "pivot": [0.5, 0],
+        "active": true,
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borderWidth": 4
+        },
+        "components": [
+          {
+            "type": "$ListComponent"
+          }
+        ],
+        "layout": {
+          "type": "GridLayout",
+          "row": 6,
+          "col": 1,
+          "cell": [400, 40],
+          "gravity": ["center", "center"],
+          "template": "key_value_item.json"
+        }
+      },
+      {
+        "name": "shopMessageWindow",
+        "x": -350,
+        "y": 120,
+        "width": 704,
+        "height": 102,
+        "pivot": [0, 0],
+        "layoutGravity": ["center", "center"],
+        "active": true,
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borderWidth": 4
+        },
+        "children": [
+          {
+            "x": 200,
+            "y": 0,
+            "width": 680,
+            "height": 42,
+            "pivot": [0, 0],
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "拥有",
+                "font": {
+                  "size": 26,
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "name": "shopMessageLabel",
+            "x": 0,
+            "y": 48,
+            "width": -2,
+            "height": 2,
+            "pivot": [0, 0],
+            "active": true,
+            "background": {
+              "sprite": "",
+              "borderWidth": 1,
+              "backgroundColor": "white"
+            }
+          },
+          {
+            "name": "shopMessageCharacterName",
+            "x": 0,
+            "y": 50,
+            "width": 680,
+            "height": 42,
+            "pivot": [0, 0],
+            "active": true,
+            "children": [
+              {
+                "x": 30,
+                "y": 0,
+                "width": 200,
+                "height": 42,
+                "pivot": [0, 0],
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "名字",
+                    "font": {
+                      "size": 26,
+                      "align": "left"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "shopMessageValue",
+                "x": 200,
+                "y": 0,
+                "width": 480,
+                "height": 42,
+                "pivot": [0, 0],
+                "active": true,
+                "components": [
+                  {
+                    "type": "$TextComponent",
+                    "text": "100",
+                    "font": {
+                      "size": 26
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

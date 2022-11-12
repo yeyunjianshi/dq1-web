@@ -100,12 +100,16 @@ export default class ListComponent extends Component {
     this._currentIndex = clamp(this._currentIndex, 0, this.renderLength - 1)
 
     if (this._items.length === 0) return
+
     for (let i = 0; i < this._items.length; i++) {
-      if (i === this._currentIndex) this._items[i].hover()
+      if (i < this.dataLength && i === this._currentIndex)
+        this._items[i].hover()
       else this._items[i].unhover()
     }
-    this._items[this._currentIndex].hover()
-    this.trigger('hover')
+    if (this._currentIndex < this.dataLength) {
+      this._items[this._currentIndex].hover()
+      this.trigger('hover')
+    }
   }
 
   setAdapter<T extends ItemData>(adapter: Adapter<T>) {

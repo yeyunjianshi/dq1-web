@@ -3,6 +3,7 @@ import { createEngine } from './engine/engine'
 import TestData from './data/test_npc.json'
 import BattleData from './data/test_battle.json'
 import GlobalScene from './data/globalWindow.json'
+import ShopScene from './data/shop.json'
 import TeamController from './data/team_controller.json'
 import './gameplay/componentConfig'
 import { AddGameSceneData } from './engine/sceneManager'
@@ -15,15 +16,24 @@ import {
   globalGameData,
   SetCharacters,
   SetItems,
+  SetShopItems,
 } from './gameplay/asset/gameData'
 import { CharacterData, parseCharacter } from './gameplay/asset/character'
 import { ItemData, parseItem } from './gameplay/inventory/item'
 import AllCharactersData from '../public/assets/data/characters.json'
 import AllItemData from '../public/assets/data/items.json'
+import ShopData from '../public/assets/data/shop.json'
 
 SetCharacters((AllCharactersData as CharacterData[]).map(parseCharacter))
 SetItems((AllItemData as ItemData[]).map(parseItem))
-AddGameSceneData([TestData, TeamController, GlobalScene, BattleData as any])
+SetShopItems(ShopData)
+AddGameSceneData([
+  TestData,
+  TeamController,
+  GlobalScene,
+  ShopScene,
+  BattleData as any,
+])
 globalGameData.startGame()
 
 const engine = createEngine()
