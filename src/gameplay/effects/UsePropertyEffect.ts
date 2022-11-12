@@ -8,6 +8,15 @@ import {
   CommandTriggerWhen,
 } from './buffer'
 
+type PropertyType =
+  | 'power'
+  | 'resilience'
+  | 'speed'
+  | 'maxHP'
+  | 'maxMP'
+  | 'HP'
+  | 'MP'
+
 export default class UsePeropertyEffect
   implements Command, Cloneable<UsePeropertyEffect>
 {
@@ -34,18 +43,9 @@ export default class UsePeropertyEffect
           this.property
         ) >= 0
       ) {
-        Calacute(
+        hero[this.property as PropertyType] = Calacute(
           this.calculateType,
-          hero[
-            this.property as
-              | 'power'
-              | 'resilience'
-              | 'speed'
-              | 'maxHP'
-              | 'maxMP'
-              | 'HP'
-              | 'MP'
-          ],
+          hero[this.property as PropertyType],
           value
         )
       }

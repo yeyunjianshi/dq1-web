@@ -1,6 +1,7 @@
 import { clamp } from '../../engine/math'
-import { DefaultNotEquipItemSlot, ItemSlot } from '../inventory/inventory'
-import Item, { HasType, ItemEquipmentType, ItemType } from '../inventory/item'
+import { Buffer } from '../effects/buffer'
+import { DefaultNoneItemSlot, ItemSlot } from '../inventory/inventory'
+import { HasType, ItemEquipmentType, ItemType } from '../inventory/item'
 import { globalGameData } from './gameData'
 import { GlobalEventEmit, GlobalEventType } from './globaEvents'
 
@@ -41,9 +42,10 @@ export default class Character {
   accessoriesId = 0
 
   lvsAbility?: Partial<Character>[]
+  buffers: Buffer[] = []
 
-  set HP(delta: number) {
-    this._hp += delta
+  set HP(val: number) {
+    this._hp = val
     if (this._hp >= this.maxHP) this._hp = this.maxHP
     else if (this._hp < 0) this._hp = 0
     GlobalEventEmit(GlobalEventType.ChracterStatusChanged, this)
@@ -104,10 +106,11 @@ export default class Character {
     )
   }
 
-  equip(equipment: ItemSlot, type: ItemEquipmentType) {
-    if ((equipment.item.type & type) === 0) return
+  equip(equipment: ItemSlot, type: ItemEquipmentType = ItemType.All) {
+    type = equipment.item.type & type
+    if ((type as number) === 0) return
 
-    let preItemSlot = DefaultNotEquipItemSlot
+    let preItemSlot = DefaultNoneItemSlot
     switch (type) {
       case ItemType.Weapon:
         preItemSlot = this.weapon
@@ -126,8 +129,11 @@ export default class Character {
         this.accessoriesId = equipment.id
         break
     }
-    if (preItemSlot !== DefaultNotEquipItemSlot) preItemSlot.isEquip = false
-    if (equipment !== DefaultNotEquipItemSlot) equipment.isEquip = true
+    if (preItemSlot !== DefaultNoneItemSlot) preItemSlot.isEquip = false
+    if (equipment !== DefaultNoneItemSlot) {
+      equipment.isEquip = true
+      // buffer
+    }
     return preItemSlot
   }
 
@@ -151,6 +157,13 @@ export default class Character {
       attack: this.power + property('attack'),
       defend: this.resilience + property('defend'),
     }
+  }
+
+  removeEquipment(id: number) {
+    if (this.weaponId === id) this.weaponId = 0
+    if (this.bodyId === id) this.weaponId = 0
+    if (this.shieldId === id) this.shieldId = 0
+    if (this.accessoriesId === id) this.accessoriesId = 0
   }
 
   addGold(val: number) {

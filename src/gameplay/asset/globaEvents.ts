@@ -13,7 +13,11 @@ export function GlobalEventAddListener(
   event: string,
   listener: GlobalEventListener
 ) {
-  const listeners = globalEvents.get(event) ?? []
+  let listeners = globalEvents.get(event)
+  if (!listeners) {
+    listeners = []
+    globalEvents.set(event, listeners)
+  }
   listeners.push(listener)
 }
 
@@ -39,7 +43,7 @@ export function GlobalEventRemoveListener(
 }
 
 export function GlobalEventClear(event: string) {
-  globalEvents.set(event, [])
+  globalEvents.delete(event)
 }
 
 export function GlobalEventEmit(event: string, ...args: any[]) {

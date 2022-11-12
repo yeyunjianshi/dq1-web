@@ -1,5 +1,7 @@
+import { CommandTriggerType, CommandTriggerWhen } from '../effects/buffer'
+import inventory from '../inventory/inventory'
 import Inventory, {
-  DefaultNotEquipItemSlot,
+  DefaultNoneItemSlot,
   DefaultRemoveEquipItemSlot,
   ItemSlot,
 } from '../inventory/inventory'
@@ -56,6 +58,7 @@ export enum InputType {
   Move,
   Menu,
   Battle,
+  Message,
 }
 
 export class GameData {
@@ -76,18 +79,38 @@ export class GameData {
     this.startGame()
   }
 
-  heroEquip(equipment: ItemSlot, type: ItemEquipmentType) {
+  heroEquip(equipment: ItemSlot, type: ItemEquipmentType = ItemType.All) {
     if (
       equipment !== DefaultRemoveEquipItemSlot &&
-      this.inventory.getItemSlot(equipment.id) === DefaultNotEquipItemSlot
+      this.inventory.getItemSlot(equipment.id) === DefaultNoneItemSlot
     )
       return
 
     if (equipment === DefaultRemoveEquipItemSlot) {
-      equipment = DefaultNotEquipItemSlot
+      equipment = DefaultNoneItemSlot
     }
     this.hero.equip(equipment, type)
     this.inventory.sort()
+  }
+
+  inventoryUseItem(
+    id: number,
+    when: CommandTriggerWhen,
+    type: CommandTriggerType
+  ) {
+    const useItemSlot = this.inventory.getItemSlot(id)
+    if (useItemSlot === DefaultNoneItemSlot) return
+    useItemSlot.item.useEffects.forEach((effect) => {
+      effect.execute(when, type, this.hero)
+    })
+    if (useItemSlot.item.useCount > 0) {
+      this.inventory.removeSlotId(id)
+    }
+  }
+
+  inventoryRemoveItemSlotById(id: number) {
+    this.inventory.removeSlotId(id)
+    this.hero.removeEquipment(id)
   }
 
   public get hero() {

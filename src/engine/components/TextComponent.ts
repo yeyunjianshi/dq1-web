@@ -32,11 +32,12 @@ export default class TextComponent extends Component {
     if (!this.showTextLineInfo) this.setText(this._text)
   }
 
-  setText(text: string) {
-    const lineInfos =
-      text.trim().length === 0
-        ? [undefined]
-        : this.renderer.measureText(text, this.textMaxWidth, this.font)
+  setText(text = '') {
+    const lineInfos = this.renderer.measureText(
+      text,
+      this.textMaxWidth,
+      this.font
+    )
     this.showTextLineInfo = lineInfos[0]
   }
 

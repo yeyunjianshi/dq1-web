@@ -1,9 +1,8 @@
 import Character from '../asset/character'
-import { Command, CommandTriggerWhen, CommandTriggerType } from './buffer'
+import { CommandTriggerWhen, CommandTriggerType, Buffer } from './buffer'
 
-export default class MoveAddHPBuffer
-  implements Command, Cloneable<MoveAddHPBuffer>
-{
+export default class MoveAddHPBuffer implements Buffer {
+  owner = 0
   step = 4
   currentStep = 0
 

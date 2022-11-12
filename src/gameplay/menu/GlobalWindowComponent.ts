@@ -13,6 +13,7 @@ import BaseWindow from '../../engine/components/BaseWindow'
 import { globalGameData, InputType } from '../asset/gameData'
 import MenuStatusWindow from './MenuStatusWindow'
 import MenuEquipmentWindow from './MenuEquipmentWindow'
+import MenuItemWindow from './MenuItemWindow'
 
 interface IWindowStack {
   pushWindow(w: BaseWindow | string): void
@@ -30,6 +31,7 @@ export default class GlobalWindowComponent
   private _commonGoldWindow?: CommonGoldWindow
   private _menuStatusWindow?: MenuStatusWindow
   private _menuEquipmentWindow?: MenuEquipmentWindow
+  private _menuItemWindow?: MenuItemWindow
   private _windowStack: BaseWindow[] = []
   private _pressedFrame = 0
 
@@ -69,6 +71,11 @@ export default class GlobalWindowComponent
       MenuEquipmentWindow
     ) as MenuEquipmentWindow
 
+    this._menuItemWindow = this.root.getComponentInChildByName(
+      'menuItemWindow',
+      MenuItemWindow
+    ) as MenuItemWindow
+
     this.engine.setVariable(GlobalWindowMarker, this)
 
     this._messageWindow.awake()
@@ -102,6 +109,8 @@ export default class GlobalWindowComponent
       window = this._menuStatusWindow!
     } else if (w === 'equip') {
       window = this._menuEquipmentWindow!
+    } else if (w === 'item') {
+      window = this._menuItemWindow!
     }
     if (window) {
       window.show()
@@ -119,7 +128,11 @@ export default class GlobalWindowComponent
   }
 
   update(): void {
-    if (this.time.currentFrame === this._pressedFrame) return
+    if (
+      globalGameData.inputType !== InputType.Menu ||
+      this.time.currentFrame === this._pressedFrame
+    )
+      return
 
     if (this.input.isCancelPressed()) {
       if (!this.activeWindow?.interceptCancel()) {

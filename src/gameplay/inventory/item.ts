@@ -1,4 +1,5 @@
-import { Command, CommandCalacuteType } from '../effects/buffer'
+import { ChangeWhen, Command, CommandCalacuteType } from '../effects/buffer'
+import UsePeropertyEffect from '../effects/UsePropertyEffect'
 
 export enum ItemType {
   Weapon = 0b000001,
@@ -16,6 +17,7 @@ export type ItemEquipmentType =
   | ItemType.Body
   | ItemType.Shield
   | ItemType.Accessories
+  | ItemType.All
 
 export function HasType(type: ItemType, filterType: ItemType) {
   return (type & filterType) > 0
@@ -31,6 +33,7 @@ export default class Item {
   useCount = 1
   isCanCommonUse = false
   isCanBattleUse = false
+  isCanDiscard = true
   useEffects: Command[] = []
 
   get isCanEquip(): boolean {
@@ -55,19 +58,22 @@ export default class Item {
   }
 
   get isItem() {
-    return (this.type & ItemType.Item) > 0
+    return HasType(this.type, ItemType.Item)
   }
   get isWeapon() {
-    return (this.type & ItemType.Weapon) > 0
+    return HasType(this.type, ItemType.Weapon)
   }
   get isBody() {
-    return (this.type & ItemType.Body) > 0
+    return HasType(this.type, ItemType.Body)
   }
   get isShield() {
-    return (this.type & ItemType.Shield) > 0
+    return HasType(this.type, ItemType.Shield)
   }
   get isAccessories() {
-    return (this.type & ItemType.Accessories) > 0
+    return HasType(this.type, ItemType.Accessories)
+  }
+  get isEquipment() {
+    return HasType(this.type, ItemType.Equipment)
   }
 }
 
@@ -78,8 +84,10 @@ export function parseItem(data: ItemData): Item {
   item.type = data.type
   item.price = data.price
   item.sellPrice = data.sellPrice ?? data.price >> 1
-  item.isCanCommonUse = ((data.canUse ?? 0) & 0x01) > 0
-  item.isCanBattleUse = ((data.canUse ?? 0) & 0x02) > 0
+  item.isCanDiscard =
+    typeof data.isCanDiscard === 'undefined' ? true : data.isCanDiscard
+  item.isCanCommonUse = ((data.canUse ?? 0) & 0b01) > 0
+  item.isCanBattleUse = ((data.canUse ?? 0) & 0b10) > 0
   item.useCount = typeof data.useCount === 'number' ? data.useCount : 1
   if (data.effect && data.effect.length > 0)
     parseEffect(data.effect ?? '', item)
@@ -111,28 +119,30 @@ export function parseNumberValue(
 
 export function parseEffect(effectString: string, item: Item) {
   const effectCommands = effectString.split(';').filter((s) => s.length > 0)
+  console.log(item.id + '   ' + effectString)
   effectCommands.map((effectCommand) => {
     const [command, ...args] = effectCommand.split(':')
-    // if (command === 'u') {
-    //   if (args.length >= 2) {
-    //     const when = ChangeWhen(args[0])
-    //     if (when > 0) {
-    //       if (args[1] === 'light') {
-    //         return
-    //       } else {
-    //         item.useEffects.push(
-    //           new UsePeropertyEffect(
-    //             when,
-    //             args[1],
-    //             ...parseNumberValue(args[2])
-    //           )
-    //         )
-    //       }
-    //     }
-    //   }
-    //   return
-    // } else if (command === 'e') {
-    if (command === 'e') {
+    if (command === 'u') {
+      if (args.length >= 2) {
+        const when = ChangeWhen(args[0])
+        if (when > 0) {
+          if (args[1] === 'light') {
+            return
+          } else if (args[1] === 'move') {
+            return
+          } else {
+            item.useEffects.push(
+              new UsePeropertyEffect(
+                when,
+                args[1],
+                ...parseNumberValue(args[2])
+              )
+            )
+          }
+        }
+      }
+      return
+    } else if (command === 'e') {
       if (args.length >= 2) {
         if (args[0] === 'attack') item.ability.attack = parseInt(args[1], 10)
         else if (args[0] === 'defend')
@@ -154,4 +164,5 @@ export type ItemData = {
   canUse?: number
   effect?: string
   useCount?: number
+  isCanDiscard?: boolean
 }

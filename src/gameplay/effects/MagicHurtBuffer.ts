@@ -1,13 +1,12 @@
 import {
-  Command,
   CommandTriggerWhen,
   CommandTriggerType,
   CommandCalacuteType,
+  Buffer,
 } from './buffer'
 
-export class MagicHurtValueBuffer
-  implements Command, Cloneable<MagicHurtValueBuffer>
-{
+export class MagicHurtValueBuffer implements Buffer {
+  owner = 0
   value = 0
   calcType: CommandCalacuteType = CommandCalacuteType.Add
 

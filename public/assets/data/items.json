@@ -266,7 +266,8 @@
     "price": 0,
     "sellPrice": 15,
     "canUse": 0,
-    "type": 64
+    "type": 64,
+    "isCanDiscard": false
   },
   {
     "id": 502,
@@ -275,6 +276,7 @@
     "sellPrice": -1,
     "canUse": 1,
     "type": 64,
+    "isCanDiscard": false,
     "effect": "u:commonScript:meetEnemy"
   },
   {
@@ -283,7 +285,8 @@
     "price": 0,
     "sellPrice": -1,
     "canUse": 0,
-    "type": 64
+    "type": 64,
+    "isCanDiscard": false
   },
   {
     "id": 504,
@@ -291,7 +294,8 @@
     "price": 0,
     "sellPrice": -1,
     "canUse": 0,
-    "type": 64
+    "type": 64,
+    "isCanDiscard": false
   },
   {
     "id": 505,
@@ -299,12 +303,14 @@
     "price": 0,
     "sellPrice": -1,
     "canUse": 1,
+    "isCanDiscard": false,
     "type": 64,
     "effect": "u:commonScript:catExp"
   },
   {
     "id": 506,
     "name": "洛特之证",
+    "isCanDiscard": false,
     "price": 0,
     "type": 64
   },
@@ -313,6 +319,7 @@
     "name": "虹之水滴",
     "price": 0,
     "sellPrice": -1,
+    "isCanDiscard": false,
     "type": 64
   },
   {
@@ -320,6 +327,7 @@
     "name": "光之珠",
     "price": 0,
     "sellPrice": -1,
+    "isCanDiscard": false,
     "type": 64
   }
 ]

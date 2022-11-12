@@ -33,6 +33,10 @@ const eventQueue: QuestEvent[] = []
 let executingEvent: QuestEvent | null = null
 let executingEventStatus = EventStatus.Pending
 
+export function setEventEngine(engine: Engine) {
+  executingEngine = engine
+}
+
 export function generateEventId(id: string | number): string {
   return `event_${id}`
 }
@@ -65,19 +69,19 @@ function isExecutingEventFinishOrCancel() {
 }
 
 // --------------------- Bridge Function ----------------------------------
-async function task(callback: (...args: unknown[]) => Promise<unknown>) {
+export async function task(callback: (...args: unknown[]) => Promise<unknown>) {
   await nextFrame() // 该方法还是会执行当前帧，下次调用才会执行等待下一帧
   await callback()
   executingEventStatus = EventStatus.Finish
 }
 
-async function talk(characterName: string, text: string, clear = false) {
+export async function talk(characterName: string, text: string, clear = false) {
   const globalWindow =
     executingEngine!.getVariable<GlobalWindowComponent>(GlobalWindowMarker)
 
   await globalWindow.messageWindow.talk(characterName, text, clear)
 }
 
-async function message(text: string) {
+export async function message(text: string) {
   await talk('', text, true)
 }

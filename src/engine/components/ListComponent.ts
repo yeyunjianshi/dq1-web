@@ -56,7 +56,7 @@ export default class ListComponent extends Component {
   }
 
   update(): void {
-    if (!this._selecting || !this._isCanSelect || this._items.length === 0)
+    if (!this._selecting || !this._isCanSelect || this.renderLength === 0)
       return
 
     if (this.input.isConfirmPressed()) {
@@ -97,7 +97,7 @@ export default class ListComponent extends Component {
   refreshHover() {
     if (!this._isCanSelect) return
 
-    this._currentIndex = clamp(this._currentIndex, 0, this.renderLength)
+    this._currentIndex = clamp(this._currentIndex, 0, this.renderLength - 1)
 
     if (this._items.length === 0) return
     for (let i = 0; i < this._items.length; i++) {
@@ -117,8 +117,13 @@ export default class ListComponent extends Component {
   refresh(layout = true) {
     if (layout) this.layout()
     if (this._adapter) {
-      for (let i = 0; i < this.renderLength; i++) {
-        this._adapter.getView(this._items[i], this._adapter.getData(i), i)
+      for (let i = 0; i < this._items.length; i++) {
+        if (i < this.renderLength) {
+          this._items[i].root.active = true
+          this._adapter.getView(this._items[i], this._adapter.getData(i), i)
+        } else {
+          this._items[i].root.active = false
+        }
       }
       this.refreshHover()
     }

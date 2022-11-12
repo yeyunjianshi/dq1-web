@@ -7,7 +7,10 @@ import TeamController from './data/team_controller.json'
 import './gameplay/componentConfig'
 import { AddGameSceneData } from './engine/sceneManager'
 import { AssetLoader } from './engine/resource'
-import { SetGameEventScript } from './engine/components/events/EventExector'
+import {
+  setEventEngine,
+  SetGameEventScript,
+} from './engine/components/events/EventExector'
 import {
   globalGameData,
   SetCharacters,
@@ -24,6 +27,7 @@ AddGameSceneData([TestData, TeamController, GlobalScene, BattleData as any])
 globalGameData.startGame()
 
 const engine = createEngine()
+setEventEngine(engine)
 
 const assetLoader = new AssetLoader()
 assetLoader.addAssets(

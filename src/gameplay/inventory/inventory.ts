@@ -8,33 +8,33 @@ export type ItemSlot = {
 }
 
 // 显示装备无的插槽
-export const DefaultNotEquipItemSlot: ItemSlot = {
+export const DefaultNoneItemSlot: ItemSlot = {
   id: 0,
   item: parseItem({ id: 0, name: '无', price: 0, sellPrice: 0, type: 15 }),
   isEquip: false,
 }
 
 // 显示装备卸下装备的插槽
-export const [
-  DefaultRemoveWeaponItemSlot,
-  DefaultRemoveBodyItemSlot,
-  DefaultRemoveShieldItemSlot,
-  DefaultRemoveAccessoriesItemSlot,
-] = [ItemType.Weapon, ItemType.Body, ItemType.Shield, ItemType.Accessories].map(
-  (itemType: ItemType, i: number) => {
-    return {
-      id: 1 + i,
-      item: parseItem({
-        id: 10000,
-        name: '卸下',
-        price: 0,
-        sellPrice: 0,
-        type: itemType,
-      }),
-      isEquip: false,
-    }
-  }
-)
+// export const [
+//   DefaultRemoveWeaponItemSlot,
+//   DefaultRemoveBodyItemSlot,
+//   DefaultRemoveShieldItemSlot,
+//   DefaultRemoveAccessoriesItemSlot,
+// ] = [ItemType.Weapon, ItemType.Body, ItemType.Shield, ItemType.Accessories].map(
+//   (itemType: ItemType, i: number) => {
+//     return {
+//       id: 1 + i,
+//       item: parseItem({
+//         id: 10000,
+//         name: '卸下',
+//         price: 0,
+//         sellPrice: 0,
+//         type: itemType,
+//       }),
+//       isEquip: false,
+//     }
+//   }
+// )
 export const DefaultRemoveEquipItemSlot = {
   id: 1,
   item: parseItem({
@@ -69,7 +69,7 @@ export default class inventory {
   }
 
   getItemSlot(id: number) {
-    return this._slots.find((slot) => slot.id === id) ?? DefaultNotEquipItemSlot
+    return this._slots.find((slot) => slot.id === id) ?? DefaultNoneItemSlot
   }
 
   filterItemType(type: ItemType) {
@@ -86,6 +86,11 @@ export default class inventory {
 
   removeSlotIndex(index: number) {
     this._slots.splice(index, 1)
+  }
+
+  removeSlotId(id: number) {
+    const removeIndex = this._slots.findIndex((slot) => slot.id === id)
+    if (removeIndex >= 0) this.removeSlotIndex(removeIndex)
   }
 
   sort() {

@@ -19,6 +19,11 @@ export interface Command {
   ): any
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface Buffer extends Command, Cloneable<Buffer> {
+  owner: number
+}
+
 export enum CommandCalacuteType {
   Add,
   Mul,
