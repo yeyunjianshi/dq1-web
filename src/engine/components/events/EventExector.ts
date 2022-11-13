@@ -1,8 +1,12 @@
-import Engine, { GlobalWindowMarker } from '../../engine'
+import Engine, { GlobalBattleInfo, GlobalWindowMarker } from '../../engine'
 import { nextFrame } from '../../time'
 import GlobalWindowComponent from '../../../gameplay/menu/GlobalWindowComponent'
 import { QuestEvent } from './QuestEvent'
 import { globalGameData, InputType } from '../../../gameplay/asset/gameData'
+import {
+  BattleFinishStatus,
+  GenerateBattleInfo,
+} from '../../../gameplay/battle/BattleData'
 
 const gameEvents = new Map<string, string>()
 
@@ -92,4 +96,20 @@ export async function messageCachePreviousInputType(text: string) {
   globalGameData.inputType = InputType.Message
   await message(text)
   globalGameData.inputType = previouseInputType
+}
+
+let _isBattleStatus: BattleFinishStatus = BattleFinishStatus.Pending
+
+export async function battle(wait = true) {
+  const battleInfo = GenerateBattleInfo(1)
+  executingEngine!.setVariable(GlobalBattleInfo, battleInfo)
+  executingEngine!.sceneManager.loadScene('Battle')
+  _isBattleStatus = BattleFinishStatus.Pending
+  while (wait && _isBattleStatus === BattleFinishStatus.Pending) {
+    await nextFrame()
+  }
+}
+
+export async function setBattleFinishStatus(val: BattleFinishStatus) {
+  _isBattleStatus = val
 }

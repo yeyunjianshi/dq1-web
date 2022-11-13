@@ -3,17 +3,19 @@
   "bgm": "PeacefulVillage.mp3",
   "width": -2,
   "height": -2,
+  "loadType": 1,
+  "hasCamera": false,
   "root": {
     "x": 0,
     "y": 0,
     "width": -2,
     "height": -2,
     "active": true,
-    "background": "world_map.png",
     "alpha": 1,
+    "useScreenPosition": true,
     "components": [
       {
-        "type": "$SceneComponent"
+        "type": "BattleSystem"
       }
     ],
     "children": [
@@ -71,7 +73,7 @@
         ]
       },
       {
-        "name": "characterStatus",
+        "name": "characterStatusText",
         "x": -354,
         "y": -228,
         "width": 160,
@@ -86,7 +88,7 @@
         "active": true,
         "children": [
           {
-            "name": "characterName",
+            "name": "characterNameText",
             "x": 0,
             "y": 8,
             "width": -2,
@@ -122,7 +124,7 @@
             ]
           },
           {
-            "name": "characterHP",
+            "name": "characterHPText",
             "x": -20,
             "y": 50,
             "width": -2,
@@ -160,7 +162,7 @@
             ]
           },
           {
-            "name": "characterHP",
+            "name": "characterMPText",
             "x": -20,
             "y": 90,
             "width": -2,
@@ -198,7 +200,7 @@
             ]
           },
           {
-            "name": "characterLV",
+            "name": "characterLVText",
             "x": -20,
             "y": 130,
             "width": -2,
@@ -219,42 +221,12 @@
           }
         ]
       },
+
       {
-        "x": -350,
-        "y": 120,
-        "width": 700,
-        "height": 190,
-        "pivot": [0, 0],
-        "layoutGravity": ["center", "center"],
-        "background": {
-          "sprite": "",
-          "backgroundColor": "#222",
-          "borderWidth": 4
-        },
-        "active": true,
-        "children": [
-          {
-            "x": 0,
-            "y": 0,
-            "width": 680,
-            "height": 200,
-            "pivot": [0, 0],
-            "active": true,
-            "components": [
-              {
-                "type": "$ScrollTextComponent",
-                "text": "ありがとう,这是什么情况水电费水电费水电费水电费师傅的说法所发生的粉丝水电费第三方水电费水电费水电费似懂非懂舒服\n不知道的人啊\n命中的神啊\n来测试以下吧\n勇者啊，赶快杀死魔王吧\n....\n获得道具 药草",
-                "padding": [16, 30, 10, 30]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "characterCommands",
+        "name": "commandsWindow",
         "x": -354,
         "y": 110,
-        "width": 180,
+        "width": 160,
         "height": 180,
         "pivot": [0, 0],
         "layoutGravity": ["center", "center"],
@@ -264,20 +236,25 @@
           "borderWidth": 4
         },
         "active": true,
+        "components": [
+          {
+            "type": "$ListComponent"
+          }
+        ],
         "layout": {
           "type": "GridLayout",
           "row": 4,
           "col": 1,
-          "cell": [180, 40],
+          "cell": [160, 40],
           "gravity": ["left", "top"],
-          "template": "test_text_item.json"
+          "template": "text_item.json"
         }
       },
       {
-        "name": "enemyInfo",
-        "x": -170,
+        "name": "enemyInfoText",
+        "x": -190,
         "y": 110,
-        "width": 400,
+        "width": 380,
         "height": 60,
         "pivot": [0, 0],
         "layoutGravity": ["center", "center"],
@@ -292,6 +269,38 @@
             "type": "$TextComponent",
             "text": "龙王",
             "padding": [0, 0, 0, 26]
+          }
+        ]
+      },
+      {
+        "x": 0,
+        "y": 205,
+        "width": 710,
+        "height": 190,
+        "layoutGravity": ["center", "center"],
+        "pivot": [0.5, 0.5],
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borderWidth": 4
+        },
+        "active": true,
+        "children": [
+          {
+            "name": "messageWindow",
+            "x": 0,
+            "y": 0,
+            "width": 680,
+            "height": 200,
+            "pivot": [0, 0],
+            "active": true,
+            "components": [
+              {
+                "type": "$ScrollTextComponent",
+                "text": "ありがとう,这是什么情况水电费水电费水电费水电费师傅的说法所发生的粉丝水电费第三方水电费水电费水电费似懂非懂舒服\n不知道的人啊\n命中的神啊\n来测试以下吧\n勇者啊，赶快杀死魔王吧\n....\n获得道具 药草",
+                "padding": [16, 30, 10, 30]
+              }
+            ]
           }
         ]
       }

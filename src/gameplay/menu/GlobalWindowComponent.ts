@@ -201,7 +201,7 @@ class MessageWindow extends BaseWindow {
     if (name.length !== 0) name += ':'
     this._isShowingMessage = true
     if (clear) messageWindow.clearText()
-    await messageWindow.showText(text, name)
+    await messageWindow.showTextScroll(text, name)
     await this.InputConfirmOrCancel()
     if (clear) await messageWindow.scrollClearText()
     this._isShowingMessage = false

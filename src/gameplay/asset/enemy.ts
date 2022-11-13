@@ -1,4 +1,1 @@
-export default class Enemy {
-  id = 0
-  attack = 0
-}
+import Character from './character'

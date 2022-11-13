@@ -20,23 +20,21 @@ type TextLine = LineInfo & { prefix: string; prefixWidth: number }
 
 @InnerGameComponent
 export default class ScrollTextComponent extends Component {
-  text = ''
+  initText = ''
   screenSpeed = DefaultScreenScrollSpeed
   textSpeed = DefaultTextSpeed
   font: Required<Font> = DefaultFont
-  isShowing = false
   textLines: TextLine[] = []
   lineHeight = DefaultLineHeightScale
   padding: Vector4 = [0, 0, 0, 0]
 
   start() {
-    this.showText(this.text)
+    if (this.textLines.length === 0) this.showTextScroll(this.initText)
   }
 
-  async showText(text: string, prefix = '', callback?: () => void) {
+  async showTextScroll(text: string, prefix = '', callback?: () => void) {
     if (text.length === 0) return
 
-    this.isShowing = true
     const prefixInfo = this.renderer.measureText(
       prefix,
       this.textMaxWidth,
@@ -76,6 +74,29 @@ export default class ScrollTextComponent extends Component {
     if (callback) callback()
   }
 
+  showText(text: string, prefix = '') {
+    this.textLines = []
+    this.appendText(text, prefix)
+  }
+
+  appendText(text: string, prefix = '') {
+    const prefixInfo = this.renderer.measureText(
+      prefix,
+      this.textMaxWidth,
+      this.font
+    )[0]
+    this.textLines.push(
+      ...this.renderer
+        .measureText(text, this.textMaxWidth - prefixInfo.width, this.font)
+        .map((currentLine, i) => ({
+          ...currentLine,
+          prefix: i == 0 ? prefix : '',
+          prefixWidth: prefixInfo.width,
+        }))
+    )
+    console.dir(this.textLines)
+  }
+
   clearText() {
     this.textLines = []
   }
@@ -103,8 +124,6 @@ export default class ScrollTextComponent extends Component {
   }
 
   render() {
-    if (!this.isShowing) return
-
     const lineHeight = this.lineHeight * this.font.size
     const offsetY =
       (this.padding[0] + Math.max(1, this.lineHeight - 1) * this.font.size) >> 1
@@ -141,7 +160,7 @@ export default class ScrollTextComponent extends Component {
   }
 
   parseData(_: AssetLoader, data: ScrollTextData): void {
-    this.text = data.text ?? this.text
+    this.initText = data.text ?? this.initText
     this.screenSpeed = data.screenScrollSpeed ?? this.screenSpeed
     this.textSpeed = data.textSpeed ?? this.textSpeed
     if (data.font) this.font = { ...this.font, ...data.font }

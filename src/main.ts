@@ -15,6 +15,7 @@ import {
 import {
   globalGameData,
   SetCharacters,
+  SetEneies,
   SetItems,
   SetShopItems,
 } from './gameplay/asset/gameData'
@@ -23,10 +24,12 @@ import { ItemData, parseItem } from './gameplay/inventory/item'
 import AllCharactersData from '../public/assets/data/characters.json'
 import AllItemData from '../public/assets/data/items.json'
 import ShopData from '../public/assets/data/shop.json'
+import EnemyData from '../public/assets/data/enemies.json'
 
 SetCharacters((AllCharactersData as CharacterData[]).map(parseCharacter))
 SetItems((AllItemData as ItemData[]).map(parseItem))
 SetShopItems(ShopData)
+SetEneies(EnemyData)
 AddGameSceneData([
   TestData,
   TeamController,
@@ -46,10 +49,10 @@ assetLoader.addAssets(
     .then((events) => SetGameEventScript(events))
 )
 
-engine.sceneManager.loadScene('Global')
+// engine.sceneManager.loadScene('Global')
 engine.sceneManager.loadScene('TeamController')
 engine.sceneManager.loadScene('NPCScene')
-// engine.sceneManager.loadScene('Battle')
+engine.sceneManager.loadScene('Battle')
 
 engine.init()
 engine.run()

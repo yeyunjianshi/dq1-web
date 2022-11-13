@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "name": "史莱姆",
+    "maxHP": 3,
+    "maxMP": 0,
+    "power": 5,
+    "res": 3,
+    "speed": 2,
+    "sprite": "",
+    "AI": "attack:8",
+    "gold": 2,
+    "exp": 2
+  }
+]

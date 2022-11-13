@@ -6,7 +6,6 @@ import Inventory, {
 } from '../inventory/inventory'
 import Item, { ItemEquipmentType, ItemType } from '../inventory/item'
 import Character from './character'
-import Enemy from './enemy'
 
 const DefaultInitGameCharacter = {
   id: 1,
@@ -53,14 +52,21 @@ export function GetShopItems(id: number) {
   return gameShopItems.get(id)!
 }
 
-const gameAllEneies: Map<number, Enemy> = new Map()
-export function SetEneies(enies: Enemy[]) {
-  enies.forEach((enemy) => {
+export type EnemyData = Partial<Character> & {
+  id: number
+  exp: number
+  gold: number
+  AI: string
+}
+
+const gameAllEneies: Map<number, EnemyData> = new Map()
+export function SetEneies(enimies: EnemyData[]) {
+  enimies.forEach((enemy) => {
     gameAllEneies.set(enemy.id, enemy)
   })
 }
 
-export function GetEnemy(id: number): Enemy {
+export function GetEnemyData(id: number): EnemyData {
   const enemy = gameAllEneies.get(id)
   if (!enemy) throw new Error('未找到id等于${id}的Enemy')
   return enemy
@@ -76,7 +82,7 @@ export enum InputType {
 export class GameData {
   teamCharactes: Character[] = []
   npcCharacters: { roldId: number }[] = []
-  inputType: InputType = InputType.Move
+  inputType: InputType = InputType.Battle
   inventory = new Inventory()
 
   startGame() {

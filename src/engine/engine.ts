@@ -11,6 +11,7 @@ import SceneManger from './sceneManager'
 export const GlobalTeamControllerMarker = '$TeamController'
 export const GlobalSceneComponentMarker = '$GlobalSceneComponent'
 export const GlobalWindowMarker = '$GlobalWindow'
+export const GlobalBattleInfo = '$GlobalBattleInfo'
 
 class Engine {
   renderer: IRenderer
