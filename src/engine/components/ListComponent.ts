@@ -56,15 +56,14 @@ export default class ListComponent extends Component {
   }
 
   update(): void {
-    if (!this._selecting || !this._isCanSelect || this.renderLength === 0)
-      return
+    if (!this._selecting || !this._isCanSelect) return
 
-    if (this.input.isConfirmPressed()) {
+    if (this.input.isConfirmPressed() && this.renderLength > 0) {
       this._items[this._currentIndex].select()
       this.trigger('select')
     } else if (this.input.isCancelPressed()) {
       this.trigger('cancel')
-    } else {
+    } else if (this.renderLength > 0) {
       const hor = this.input.getHorizontalValue(DefaultInputCheckDelay)
       const ver = this.input.getVerticalValue(DefaultInputCheckDelay)
       let index = this._currentIndex

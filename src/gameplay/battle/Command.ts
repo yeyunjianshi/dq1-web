@@ -1,4 +1,3 @@
-import Character from '../asset/character'
 import BattleCharacter from './BattleCharacter'
 import BattleData from './BattleData'
 import BattleUI from './BattleUI'

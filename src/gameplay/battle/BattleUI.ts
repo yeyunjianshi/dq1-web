@@ -1,4 +1,8 @@
 import BaseWindow from '../../engine/components/BaseWindow'
+import {
+  message,
+  messageCachePreviousInputType,
+} from '../../engine/components/events/EventExector'
 import ListComponent, {
   TextAdapter,
 } from '../../engine/components/ListComponent'
@@ -7,11 +11,12 @@ import TextComponent from '../../engine/components/TextComponent'
 import GameObject from '../../engine/gameObject'
 import { delay, nextFrame } from '../../engine/time'
 import { globalGameData } from '../asset/gameData'
-import BattleData from './BattleData'
+import { ItemSlot } from '../inventory/inventory'
 import { BattleCharacterCommand, BattleCommand } from './Command'
 
 export default class BattleUI extends BaseWindow {
   private _commandsWindow: ListComponent
+  private _itemsWindow: ListComponent
   private _nameText: TextComponent
   private _enemyNameText: TextComponent
   private _lvText: TextComponent
@@ -42,6 +47,10 @@ export default class BattleUI extends BaseWindow {
       'commandsWindow',
       ListComponent
     ) as ListComponent
+    this._itemsWindow = root.getComponentInChildByName(
+      'itemMenuWindow',
+      ListComponent
+    ) as ListComponent
     this._messageText = root.getComponentInChildByName(
       'messageWindow',
       ScrollTextComponent
@@ -69,10 +78,30 @@ export default class BattleUI extends BaseWindow {
     this._commandsWindow.addSelectListener((_, pos) => {
       if (this._commandSelecting) {
         this._characterCommand = pos
-        this._commandSelecting = false
+        if (
+          this._characterCommand === BattleCharacterCommand.Item ||
+          this._characterCommand === BattleCharacterCommand.Magic
+        ) {
+          this.refreshItems()
+          nextFrame().then(() => {
+            this.changeSelectWindowShow(false)
+          })
+        } else {
+          this._commandSelecting = false
+        }
       }
     })
 
+    this._itemsWindow.setAdapter(new TextAdapter([]))
+    this._itemsWindow.addSelectListener((_, pos) => {
+      this._commandArgs = [this._items[pos]]
+      this._commandSelecting = false
+    })
+    this._itemsWindow.addCancelListener(() => {
+      this.changeSelectWindowShow(true)
+    })
+
+    this._itemsWindow.root.active = false
     this._commandsWindow.enable = false
   }
 
@@ -82,22 +111,47 @@ export default class BattleUI extends BaseWindow {
     this._lvText.setText(`${this.hero.lv}`)
   }
 
+  refreshItems() {
+    if (this._characterCommand === BattleCharacterCommand.Item) {
+      const slots = globalGameData.inventory.all()
+      this._itemsWindow.adapter<TextAdapter>()!.setData(
+        slots.map((slot) => ({
+          text: slot.item.name,
+        }))
+      )
+      this._items = slots
+    } else if (this._characterCommand === BattleCharacterCommand.Magic) {
+      const slots = globalGameData.inventory.all()
+      this._itemsWindow.adapter<TextAdapter>()!.setData(
+        slots.map((slot) => ({
+          text: slot.item.name,
+        }))
+      )
+      this._items = slots
+    }
+  }
+
   private _commandSelecting = false
+  private _commandArgs: any[] = []
   private _characterCommand: BattleCharacterCommand =
     BattleCharacterCommand.Attack
+  private _items = [] as ItemSlot[]
 
   async selectCommand(): Promise<BattleCommand> {
     this._commandSelecting = true
-    this._commandsWindow.enable = true
+
+    this.changeSelectWindowShow(true)
+    this._commandsWindow.setCursorIndex(0)
     while (this._commandSelecting) {
       await nextFrame()
     }
+    this._itemsWindow.root.active = false
     this._commandsWindow.enable = false
     this._commandSelecting = false
 
     return Promise.resolve({
       command: this._characterCommand,
-      commandArgs: [],
+      commandArgs: this._commandArgs,
     })
   }
 
@@ -108,11 +162,26 @@ export default class BattleUI extends BaseWindow {
     this._messageText.root.parent.active = false
   }
 
-  update() {
-    this._commandsWindow.update()
-  }
-
   get hero() {
     return globalGameData.hero
+  }
+
+  changeSelectWindowShow(command: boolean) {
+    this._itemsWindow.root.active = !command
+    this._commandsWindow.enable = command
+    if (!command) {
+      this._itemsWindow.setCursorIndex(0)
+    }
+  }
+
+  interceptCancel(): boolean {
+    if (
+      this._characterCommand === BattleCharacterCommand.Item ||
+      this._characterCommand === BattleCharacterCommand.Magic
+    ) {
+      this.changeSelectWindowShow(true)
+      return true
+    }
+    return false
   }
 }

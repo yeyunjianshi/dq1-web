@@ -15,7 +15,7 @@
       "components": [
         {
           "type": "$TextComponent",
-          "text": "攻击",
+          "text": "诅咒戒指",
           "lineHeight": 1,
           "font": {
             "size": "26",
