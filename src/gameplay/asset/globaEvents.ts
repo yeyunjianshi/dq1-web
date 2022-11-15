@@ -19,6 +19,9 @@ export function GlobalEventAddListener(
     globalEvents.set(event, listeners)
   }
   listeners.push(listener)
+  return () => {
+    GlobalEventRemoveListener(event, listener)
+  }
 }
 
 export function GlobalEventOnce(event: string, listener: GlobalEventListener) {

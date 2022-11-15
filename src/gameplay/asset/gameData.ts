@@ -1,3 +1,4 @@
+import Magic, { MagicData, parseMagic } from './magic'
 import { CommandTriggerType, CommandTriggerWhen } from '../effects/buffer'
 import Inventory, {
   DefaultNoneItemSlot,
@@ -11,6 +12,7 @@ const DefaultInitGameCharacter = {
   id: 1,
   lv: 1,
   inventory: [1, 102, 201, 202, 301, 302, 401, 402, 501],
+  magics: [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010],
 }
 
 const gameAllCharacters: Map<number, Character> = new Map()
@@ -72,6 +74,19 @@ export function GetEnemyData(id: number): EnemyData {
   return enemy
 }
 
+const gameAllMagics: Map<number, Magic> = new Map()
+export function SetMagics(magicData: MagicData[]) {
+  magicData.map((data) => {
+    gameAllMagics.set(data.id, parseMagic(data))
+  })
+}
+
+export function GetMagic(id: number): Magic {
+  const magic = gameAllMagics.get(id)
+  if (!magic) throw new Error('未找到id等于${id}的Magic')
+  return magic
+}
+
 export enum InputType {
   Move,
   Menu,
@@ -86,10 +101,13 @@ export class GameData {
   inventory = new Inventory()
 
   startGame() {
-    const initCharacter = GetCharacter(DefaultInitGameCharacter.id)
+    const initCharacter = GetCharacter(DefaultInitGameCharacter.id).clone()
     this.teamCharactes = [initCharacter]
     DefaultInitGameCharacter.inventory.forEach((itemId) =>
       this.inventory.addItem(itemId)
+    )
+    initCharacter.magics = DefaultInitGameCharacter.magics.map((id) =>
+      GetMagic(id)
     )
   }
 

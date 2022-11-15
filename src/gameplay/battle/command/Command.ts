@@ -1,6 +1,6 @@
-import BattleCharacter from './BattleCharacter'
-import BattleData from './BattleData'
-import BattleUI from './BattleUI'
+import BattleCharacter from '../BattleCharacter'
+import BattleData from '../BattleData'
+import BattleUI from '../BattleUI'
 
 export enum BattleCharacterCommand {
   Attack = 0,
@@ -10,15 +10,19 @@ export enum BattleCharacterCommand {
 }
 
 export type BattleCommand = {
-  character?: BattleCharacter
   command: BattleCharacterCommand
-  commandArgs: any[]
+  commandArgs: unknown[]
+}
+export const DefaultBattleCommand: BattleCommand = {
+  command: BattleCharacterCommand.Attack,
+  commandArgs: [],
 }
 
 export default class ExecuteCommand {
   constructor(
     protected ui: BattleUI,
     protected data: BattleData,
+    protected args: unknown[],
     protected character: BattleCharacter,
     protected targetIsEnemy = true
   ) {}

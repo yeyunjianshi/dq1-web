@@ -64,3 +64,7 @@ export function range(values: number[]) {
   if (values.length === 1) return values[0]
   return random(values[1] - values[0], values[0])
 }
+
+export function HasType(type: number, checkType: number) {
+  return (type & checkType) > 0
+}

@@ -1,8 +1,4 @@
 import BaseWindow from '../../engine/components/BaseWindow'
-import {
-  message,
-  messageCachePreviousInputType,
-} from '../../engine/components/events/EventExector'
 import ListComponent, {
   TextAdapter,
 } from '../../engine/components/ListComponent'
@@ -12,7 +8,9 @@ import GameObject from '../../engine/gameObject'
 import { delay, nextFrame } from '../../engine/time'
 import { globalGameData } from '../asset/gameData'
 import { ItemSlot } from '../inventory/inventory'
-import { BattleCharacterCommand, BattleCommand } from './Command'
+import { BattleCharacterCommand, BattleCommand } from './command/Command'
+import Magic from '../asset/magic'
+import { GlobalEventAddListener, GlobalEventType } from '../asset/globaEvents'
 
 export default class BattleUI extends BaseWindow {
   private _commandsWindow: ListComponent
@@ -23,6 +21,7 @@ export default class BattleUI extends BaseWindow {
   private _hpText: TextComponent
   private _mpText: TextComponent
   private _messageText: ScrollTextComponent
+  private _removeStatusListener?: () => void
 
   constructor(root: GameObject, enemyName: string) {
     super(root)
@@ -69,6 +68,13 @@ export default class BattleUI extends BaseWindow {
     this._enemyNameText.setText(`${enemyName}`)
     this.refreshHero()
 
+    this._removeStatusListener = GlobalEventAddListener(
+      GlobalEventType.ChracterStatusChanged,
+      () => {
+        this.refreshHero()
+      }
+    )
+
     // init command window
     this._commandsWindow.setAdapter(
       new TextAdapter(
@@ -113,7 +119,10 @@ export default class BattleUI extends BaseWindow {
 
   refreshItems() {
     if (this._characterCommand === BattleCharacterCommand.Item) {
-      const slots = globalGameData.inventory.all()
+      const slots = globalGameData.inventory
+        .all()
+        .filter((slot) => slot.item.isCanBattleUse)
+
       this._itemsWindow.adapter<TextAdapter>()!.setData(
         slots.map((slot) => ({
           text: slot.item.name,
@@ -121,21 +130,21 @@ export default class BattleUI extends BaseWindow {
       )
       this._items = slots
     } else if (this._characterCommand === BattleCharacterCommand.Magic) {
-      const slots = globalGameData.inventory.all()
+      const magics = this.hero.magicsInBattle
       this._itemsWindow.adapter<TextAdapter>()!.setData(
-        slots.map((slot) => ({
-          text: slot.item.name,
+        magics.map((magic) => ({
+          text: magic.name,
         }))
       )
-      this._items = slots
+      this._items = magics
     }
   }
 
   private _commandSelecting = false
-  private _commandArgs: any[] = []
+  private _commandArgs: unknown[] = []
   private _characterCommand: BattleCharacterCommand =
     BattleCharacterCommand.Attack
-  private _items = [] as ItemSlot[]
+  private _items = [] as (ItemSlot | Magic)[]
 
   async selectCommand(): Promise<BattleCommand> {
     this._commandSelecting = true
@@ -155,9 +164,10 @@ export default class BattleUI extends BaseWindow {
     })
   }
 
-  async showMessage(text: string, delayTime = 500) {
+  async showMessage(text: string, append = false, delayTime = 800) {
     this._messageText.root.parent.active = true
-    this._messageText.showText(text)
+    if (!append) this._messageText.showText(text)
+    else this._messageText.appendText(text)
     if (delayTime > 0) await delay(delayTime)
     this._messageText.root.parent.active = false
   }
@@ -183,5 +193,9 @@ export default class BattleUI extends BaseWindow {
       return true
     }
     return false
+  }
+
+  destroy() {
+    this._removeStatusListener && this._removeStatusListener()
   }
 }

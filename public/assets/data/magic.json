@@ -1,0 +1,83 @@
+[
+  {
+    "id": 2001,
+    "name": "荷伊米",
+    "cost": 4,
+    "type": 1,
+    "useType": 3,
+    "effect": "u:all:HP:20-35"
+  },
+  {
+    "id": 2002,
+    "name": "基拉",
+    "cost": 2,
+    "type": 2,
+    "useType": 2,
+    "effect": "u:battle:damage:5-12"
+  },
+  {
+    "id": 2003,
+    "name": "拉里荷",
+    "cost": 2,
+    "type": 2,
+    "useType": 2,
+    "effect": "u:battle:marker:sleep:2-5"
+  },
+  {
+    "id": 2004,
+    "name": "雷米拉",
+    "cost": 3,
+    "type": 0,
+    "useType": 1,
+    "effect": "u:common:light"
+  },
+  {
+    "id": 2005,
+    "name": "马荷顿",
+    "cost": 2,
+    "type": 4,
+    "useType": 2,
+    "effect": "u:battle:marker:sealingMagic:2-5"
+  },
+  {
+    "id": 2006,
+    "name": "里雷米拉",
+    "cost": 6,
+    "type": 0,
+    "useType": 1,
+    "effect": "u:common:entrance"
+  },
+
+  {
+    "id": 2007,
+    "name": "鲁拉",
+    "cost": 8,
+    "type": 0,
+    "useType": 1,
+    "effect": "u:common:home"
+  },
+  {
+    "id": 2008,
+    "name": "托黑洛斯",
+    "cost": 2,
+    "type": 0,
+    "useType": 1,
+    "effect": "u:common:meetEnemy:127"
+  },
+  {
+    "id": 2009,
+    "name": "贝荷伊米",
+    "cost": 5,
+    "type": 1,
+    "useType": 3,
+    "effect": "u:all:HP:58-60"
+  },
+  {
+    "id": 2010,
+    "name": "贝基拉玛",
+    "cost": 5,
+    "type": 2,
+    "useType": 2,
+    "effect": "u:battle:damage:58-65"
+  }
+]

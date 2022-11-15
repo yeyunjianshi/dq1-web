@@ -35,6 +35,7 @@ export default class Item {
   isCanBattleUse = false
   isCanDiscard = true
   useEffects: Command[] = []
+  targetIsEnemy = true
 
   get isCanEquip(): boolean {
     return (

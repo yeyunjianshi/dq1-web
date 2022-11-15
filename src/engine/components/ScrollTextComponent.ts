@@ -94,7 +94,6 @@ export default class ScrollTextComponent extends Component {
           prefixWidth: prefixInfo.width,
         }))
     )
-    console.dir(this.textLines)
   }
 
   clearText() {

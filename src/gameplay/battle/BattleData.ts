@@ -56,4 +56,8 @@ export default class BattleData {
       this.escapeMarker === BattleEscapeMarker.Success
     )
   }
+
+  buffersTurnDown() {
+    return [this.hero.calcBufferEveryTurn(), this.enemy.calcBufferEveryTurn()]
+  }
 }

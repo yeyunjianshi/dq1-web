@@ -17,6 +17,7 @@ import {
   SetCharacters,
   SetEneies,
   SetItems,
+  SetMagics,
   SetShopItems,
 } from './gameplay/asset/gameData'
 import { CharacterData, parseCharacter } from './gameplay/asset/character'
@@ -25,11 +26,13 @@ import AllCharactersData from '../public/assets/data/characters.json'
 import AllItemData from '../public/assets/data/items.json'
 import ShopData from '../public/assets/data/shop.json'
 import EnemyData from '../public/assets/data/enemies.json'
+import MagicData from '../public/assets/data/magic.json'
 
 SetCharacters((AllCharactersData as CharacterData[]).map(parseCharacter))
 SetItems((AllItemData as ItemData[]).map(parseItem))
 SetShopItems(ShopData)
 SetEneies(EnemyData)
+SetMagics(MagicData)
 AddGameSceneData([
   TestData,
   TeamController,

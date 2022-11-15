@@ -1,5 +1,6 @@
-import { range } from '../../engine/math'
+import { HasType, range } from '../../engine/math'
 import Character from '../asset/character'
+import BattleCharacter from '../battle/BattleCharacter'
 import {
   Calacute,
   Command,
@@ -36,8 +37,12 @@ export default class UsePeropertyEffect
       (when & CommandTriggerWhen.All) > 0 &&
       type === CommandTriggerType.Use
     ) {
-      const hero = args[0] as Character
+      const hero = HasType(this.when, CommandTriggerWhen.Battle)
+        ? (args[0] as BattleCharacter).character
+        : (args[0] as Character)
+
       const value = range(this.values)
+      const previouseValue = hero[this.property as PropertyType]
       if (
         ['power', 'resilience', 'speed', 'maxHP', 'maxMP', 'HP', 'MP'].indexOf(
           this.property
@@ -49,6 +54,9 @@ export default class UsePeropertyEffect
           value
         )
       }
+      return `${this.property}增加了${
+        hero[this.property as PropertyType] - previouseValue
+      }`
     }
   }
 

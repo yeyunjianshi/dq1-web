@@ -1,4 +1,5 @@
 import { clamp } from '../../engine/math'
+import Magic from './magic'
 import { Buffer } from '../effects/buffer'
 import { DefaultNoneItemSlot, ItemSlot } from '../inventory/inventory'
 import { HasType, ItemEquipmentType, ItemType } from '../inventory/item'
@@ -43,6 +44,15 @@ export default class Character {
 
   lvsAbility?: Partial<Character>[]
   buffers: Buffer[] = []
+  magics: Magic[] = []
+
+  get magicsInCommon() {
+    return this.magics.filter((m) => m.isCanCommonUse)
+  }
+
+  get magicsInBattle() {
+    return this.magics.filter((m) => m.isCanBattleUse)
+  }
 
   set HP(val: number) {
     this._hp = val
@@ -216,6 +226,10 @@ export default class Character {
     }
     GlobalEventEmit(GlobalEventType.ChracterStatusChanged, this)
     return ability
+  }
+
+  clone() {
+    return Object.assign(new Character(), { ...this })
   }
 }
 

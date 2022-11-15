@@ -2,14 +2,17 @@ import Component from '../../engine/component'
 import { GameplayComponent } from '../../engine/components'
 import { GlobalBattleInfo } from '../../engine/engine'
 import { globalGameData } from '../asset/gameData'
-import AttackExectuteCommand from './AttackExecuteCommand'
+import AttackExectuteCommand from './command/AttackExecuteCommand'
 import BattleCharacter from './BattleCharacter'
 import BattleData, { BattleInfo, GenerateBattleInfo } from './BattleData'
 import BattleUI from './BattleUI'
 import ExecuteCommand, {
   BattleCommand,
   BattleCharacterCommand,
-} from './Command'
+  DefaultBattleCommand,
+} from './command/Command'
+import MagicExecuteCommand from './command/MagicExecuteCommand'
+import ItemExecuteCommand from './command/ItemExecuteCommand'
 
 @GameplayComponent
 export default class BattleSystem extends Component {
@@ -41,29 +44,42 @@ export default class BattleSystem extends Component {
   }
 
   private async battleStart() {
-    await this.ui.showMessage(`${this.data.enemy.character.name} 出现了`)
+    await this.ui.showMessage(`${this.data.enemy.character.name}出现了`)
   }
 
   private _selectCommandToExecuteCommand: Map<
     BattleCharacterCommand,
     typeof ExecuteCommand
-  > = new Map([[BattleCharacterCommand.Attack, AttackExectuteCommand]])
+  > = new Map([
+    [BattleCharacterCommand.Attack, AttackExectuteCommand],
+    [BattleCharacterCommand.Item, ItemExecuteCommand],
+    [BattleCharacterCommand.Magic, MagicExecuteCommand],
+  ])
 
   private async battleExecuting() {
-    // select command
-    const heroCommand = await this.ui.selectCommand()
-    // execute command
-    const enemyCommand = this.enemySelectCommand()
+    // 选择指令
+    const heroCommand = this.data.hero.isSleep
+      ? DefaultBattleCommand
+      : await this.ui.selectCommand()
+    const enemyCommand = this.data.hero.isSleep
+      ? DefaultBattleCommand
+      : this.enemySelectCommand()
+
     const commands = [
-      { ...heroCommand, battleCharacter: this.data.hero },
-      { ...enemyCommand, battleCharacter: this.data.enemy },
+      { ...heroCommand, character: this.data.hero },
+      { ...enemyCommand, character: this.data.enemy },
     ]
-    commands.sort((a, b) => b.battleCharacter.speed - a.battleCharacter.speed)
+    commands.sort((a, b) => b.character.speed - a.character.speed)
 
+    // 执行指令
     for (let i = 0; i < commands.length; i++) {
-      if (this.data.isFinish) break
-
+      if (this.data.isFinish) return
+      if (commands[i].character.isSleep) {
+        await this.ui.showMessage(`${commands[i].character.name}睡着了`)
+        continue
+      }
       const command = commands[i]
+
       if (this._selectCommandToExecuteCommand.has(command.command)) {
         const executeCommandClass = this._selectCommandToExecuteCommand.get(
           command.command
@@ -71,9 +87,19 @@ export default class BattleSystem extends Component {
         const executeCommand = new executeCommandClass(
           this.ui,
           this.data,
-          command.battleCharacter
+          command.commandArgs,
+          command.character
         )
         await executeCommand.execute()
+      }
+    }
+
+    // 每回合后计算一下buff的持续时间
+    if (!this.data.isFinish) {
+      const showTexts = this.data.buffersTurnDown()
+      for (let i = 0; i < showTexts.length; i++) {
+        if (showTexts[i].length > 0)
+          await this.ui.showMessage(showTexts[i], false, 800)
       }
     }
   }
@@ -88,8 +114,6 @@ export default class BattleSystem extends Component {
       commandArgs: [],
     }
   }
-
-  private async executingCommand(command: BattleCommand) {}
 
   private get ui() {
     return this._ui!

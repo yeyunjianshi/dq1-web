@@ -8,7 +8,10 @@ export enum CommandTriggerWhen {
 export enum CommandTriggerType {
   Use,
   Move,
-  MagicHurt,
+
+  Attack,
+  MagicDamage,
+  MagicFire,
 }
 
 export interface Command {
@@ -19,9 +22,10 @@ export interface Command {
   ): any
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface Buffer extends Command, Cloneable<Buffer> {
   owner: number
+  turns: number
+  turnsDownEveryTurn(): string
 }
 
 export enum CommandCalacuteType {
@@ -43,4 +47,27 @@ export function ChangeWhen(when: string) {
   if (when === 'battle') return CommandTriggerWhen.Battle
   if (when === 'all') return CommandTriggerWhen.All
   return CommandTriggerWhen.None
+}
+
+export function parseNumberValue(
+  value: string
+): [CommandCalacuteType, number[]] {
+  const sign = value.startsWith('-') ? -1 : 1
+  if (value.startsWith('-') || value.startsWith('+')) {
+    value = value.slice(1, value.length)
+  }
+  const ret = []
+  let type = CommandCalacuteType.Add
+  const nums = value.split('-')
+  for (let i = 0; i < Math.min(nums.length, 2); i++) {
+    if (nums[i].endsWith('%')) {
+      const delta = parseInt(nums[i].slice(0, -1), 10) / 100
+      ret.push(1 + sign * delta)
+      type = CommandCalacuteType.Mul
+    } else {
+      const delta = parseInt(nums[i])
+      ret.push(sign * delta)
+    }
+  }
+  return [type, ret]
 }

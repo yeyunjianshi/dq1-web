@@ -277,7 +277,7 @@
         "x": -190,
         "y": 110,
         "width": 380,
-        "height": 216,
+        "height": -1,
         "pivot": [0, 0],
         "layoutGravity": ["center", "center"],
         "background": {
@@ -288,7 +288,9 @@
         "active": true,
         "components": [
           {
-            "type": "$ListComponent"
+            "type": "$ListComponent",
+            "wrapLayout": 1,
+            "wrapLayoutOffset": 12
           }
         ],
         "layout": {
