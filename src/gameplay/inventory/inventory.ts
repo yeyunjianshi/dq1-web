@@ -31,7 +31,7 @@ export default class inventory {
 
   private _slots = [] as ItemSlot[]
 
-  addItem(item: number | Item) {
+  addItem(item: number | Item): ItemSlot {
     if (typeof item === 'number') {
       item = GetItem(item)
     }
@@ -41,23 +41,23 @@ export default class inventory {
     return slot
   }
 
-  hasItem(itemId: number) {
+  hasItem(itemId: number): boolean {
     return this._slots.some((slot) => slot.item.id === itemId)
   }
 
-  getItem(id: number) {
+  getItem(id: number): Item {
     return this.getItemSlot(id).item
   }
 
-  getItemSlot(id: number) {
+  getItemSlot(id: number): ItemSlot {
     return this._slots.find((slot) => slot.id === id) ?? DefaultNoneItemSlot
   }
 
-  filterItemType(type: ItemType) {
+  filterItemType(type: ItemType): ItemSlot[] {
     return this._slots.filter((slot) => (slot.item.type & type) > 0)
   }
 
-  generateSlotId() {
+  generateSlotId(): number {
     let newId = 0
     do {
       newId = Math.floor(Math.random() * 1000000) + 10000
@@ -65,16 +65,16 @@ export default class inventory {
     return newId
   }
 
-  removeSlotIndex(index: number) {
+  removeSlotIndex(index: number): void {
     this._slots.splice(index, 1)
   }
 
-  removeSlotId(id: number) {
+  removeSlotId(id: number): void {
     const removeIndex = this._slots.findIndex((slot) => slot.id === id)
     if (removeIndex >= 0) this.removeSlotIndex(removeIndex)
   }
 
-  sort() {
+  sort(): void {
     this._slots.sort((a, b) => {
       if (a.isEquip === b.isEquip) {
         return a.item.id - b.item.id
@@ -83,7 +83,7 @@ export default class inventory {
     })
   }
 
-  itemCount(itemId: number) {
+  itemCount(itemId: number): number {
     return this._slots.filter((slot) => slot.item.id === itemId).length
   }
 

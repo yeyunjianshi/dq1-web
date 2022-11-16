@@ -8,7 +8,7 @@
     "width": 640,
     "height": 768,
     "active": true,
-    "background": "TantegelCastle.png",
+    "background": "map/TantegelCastle.png",
     "alpha": 1,
     "components": [
       {
@@ -97,11 +97,51 @@
         "height": 32,
         "active": true,
         "alpha": 1,
+        "background": {
+          "sprite": "system/MapChest.png"
+        },
         "components": [
           {
-            "type": "$NPCControllerComponent",
-            "roleIndex": 2,
-            "moveSpeed": 0
+            "id": "Tangegel1",
+            "type": "MapChest",
+            "items": [],
+            "money": 120
+          }
+        ]
+      },
+      {
+        "x": 320,
+        "y": 288,
+        "width": 32,
+        "height": 32,
+        "active": true,
+        "alpha": 1,
+        "background": {
+          "sprite": "system/MapChest.png"
+        },
+        "components": [
+          {
+            "id": "Tangegel2",
+            "type": "MapChest",
+            "items": [2]
+          }
+        ]
+      },
+      {
+        "x": 352,
+        "y": 288,
+        "width": 32,
+        "height": 32,
+        "active": true,
+        "alpha": 1,
+        "background": {
+          "sprite": "system/MapChest.png"
+        },
+        "components": [
+          {
+            "id": "Tangegel3",
+            "type": "MapChest",
+            "items": [50]
           }
         ]
       }

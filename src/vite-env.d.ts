@@ -229,3 +229,7 @@ type GridLayoutConfig = {
 interface Cloneable<T> {
   clone(init?: boolean = true): T
 }
+
+interface Interaction {
+  interactive(): void
+}

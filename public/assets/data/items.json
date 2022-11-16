@@ -81,6 +81,14 @@
     "effect": "u:common:maxMP:3-5"
   },
   {
+    "id": 50,
+    "name": "魔法钥匙",
+    "price": 24,
+    "sellPrice": 12,
+    "canUse": 0,
+    "type": 16
+  },
+  {
     "id": 101,
     "name": "竹枪",
     "price": 10,

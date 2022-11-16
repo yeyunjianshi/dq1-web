@@ -12,19 +12,19 @@ import {
 
 const gameEvents = new Map<string, string>()
 
-export function GetGameEventScript(eventId: string) {
-  const script = gameEvents.get(eventId)
+export function GetGameEventScript(eventId: string | number) {
+  const script = gameEvents.get(generateEventId(eventId))
   if (!script) throw new Error(`GetGameEventScript Error: not found ${eventId}`)
   return script
 }
 
-export function AddGameEvent(key: string, val: string) {
-  gameEvents.set(key, val)
+export function AddGameEvent(key: string | number, val: string) {
+  gameEvents.set(generateEventId(key), val)
 }
 
 export function SetGameEventScript(events: Record<string, string>) {
   for (const key in events) {
-    gameEvents.set(key, events[key])
+    gameEvents.set(generateEventId(key), events[key])
   }
 }
 
@@ -45,7 +45,13 @@ export function setEventEngine(engine: Engine) {
 }
 
 export function generateEventId(id: string | number): string {
-  return `event_${id}`
+  if (typeof id === 'string' && id.startsWith('e_')) return id
+  return `e_${id}`
+}
+
+export function generateMapChestId(id: string | number): string {
+  if (typeof id === 'string' && id.startsWith('c_')) return id
+  return `c_${id}`
 }
 
 export function AddExecuteEvent(event: QuestEvent) {

@@ -11,7 +11,7 @@ const object = {}
 for (const filename of eventsDir) {
   const file = fs.readFileSync(path.resolve(eventsDirPath, filename))
   const eventId = filename.slice(0, -3)
-  object[`event_${eventId}`] = file.toString()
+  object[`${eventId}`] = file.toString()
 }
 const json = JSON.stringify(object)
 fs.writeFileSync(writeDataPath, json)

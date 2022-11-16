@@ -2,7 +2,7 @@ import { InnerGameComponent } from '..'
 import { globalGameData } from '../../../gameplay/asset/gameData'
 import Component from '../../component'
 import { AssetLoader } from '../../resource'
-import { Execute, generateEventId } from './EventExector'
+import { AddExecuteEvent, Execute, generateEventId } from './EventExector'
 
 export enum EventTriggerWhen {
   Auto = 0, // 场景切换自动触发
@@ -22,7 +22,7 @@ type QuestEventData = {
 }
 
 @InnerGameComponent
-export class QuestEvent extends Component {
+export class QuestEvent extends Component implements Interaction {
   eventId = ''
   when: EventTriggerWhen = EventTriggerWhen.InteractiveEnter
   args: any[] = []
@@ -34,17 +34,16 @@ export class QuestEvent extends Component {
 
   canTrigger(when: EventTriggerWhen) {
     return (
+      !globalGameData.hasEvent(this.eventId) &&
       this.when === when &&
       this.predecessorId.every((id) => globalGameData.hasEvent(id)) &&
       this.predecessorItem.every((id) => globalGameData.inventory.hasItem(id))
     )
   }
 
-  execute(triggerWhen: EventTriggerWhen) {
-    if (this.canTrigger(triggerWhen)) {
-      // eslint-disable-next-line @typescript-eslint/no-this-alias
-      Execute(this.engine)
-    }
+  interactive(): void {
+    AddExecuteEvent(this)
+    Execute(this.engine)
   }
 
   parseData(_: AssetLoader, data: QuestEventData): void {

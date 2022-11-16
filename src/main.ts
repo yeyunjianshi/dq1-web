@@ -1,6 +1,6 @@
 import './style.css'
 import { createEngine } from './engine/engine'
-import TestData from './data/test_npc.json'
+import TestData from './data/TantegelCastle2.json'
 import BattleData from './data/test_battle.json'
 import GlobalScene from './data/globalWindow.json'
 import TeamController from './data/team_controller.json'

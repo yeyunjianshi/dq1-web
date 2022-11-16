@@ -169,17 +169,31 @@ export default class TeamControllerComponent extends MoveComponent {
     const nextPosition = CoordToPosition(
       nextCoordByDirection(this._head.coord, this._head.direction)
     )
-
-    // 对话
-    const questEvent = sceneComponent.triggerQuestEvent(
-      playerCenterPosition(nextPosition),
+    const playerNextCenterPosition = playerCenterPosition(nextPosition)
+    const interaction = sceneComponent.triggerInteractive(
+      playerNextCenterPosition,
       EventTriggerWhen.InteractiveConfirm
     )
-    if (questEvent) {
-      AddExecuteEvent(questEvent)
-      Execute(this.engine)
-      return true
+    if (interaction) {
+      interaction.interactive()
     }
+    // 宝箱
+    // const mapChest = sceneComponent.triggerMapChest(playerNextCenterPosition)
+    // if (mapChest) {
+    //   mapChest.open()
+    //   return true
+    // }
+
+    // // 对话
+    // const questEvent = sceneComponent.triggerQuestEvent(
+    //   playerNextCenterPosition,
+    //   EventTriggerWhen.InteractiveConfirm
+    // )
+    // if (questEvent) {
+    //   AddExecuteEvent(questEvent)
+    //   Execute(this.engine)
+    //   return true
+    // }
     return false
   }
 

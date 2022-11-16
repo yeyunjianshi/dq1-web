@@ -1,6 +1,6 @@
 {
-  "event_1": "task(async () => {\n  await talk('国王', '勇者的后代')\n  await talk('国王', '这个你拿去吧')\n  await message('获得了钥匙')\n  await talk('国王', '祝你旅途愉快!')\n})\n",
-  "event_1001": "task(async () => {\n  await talk(\n    '国王',\n    '相传许久以前，\\n传说中的勇者洛特\\n获得神所赐予的光之珠，\\n封印了遍布世界的怪物们。'\n  )\n  await talk(\n    '国王',\n    '然而恶魔的化身龙王\\n突然不知从何处现身，\\n将那颗珠子封闭在黑暗中！'\n  )\n  await talk('国王', '再这样下去\\n世界将会被黑暗吞没，\\n最后走向毁灭。')\n  await talk(\n    '国王',\n    `勇者${heroName()}！\\n去打倒魔王，\\n将光之珠由其手中夺回吧！`\n  )\n  await talk(\n    '国王',\n    '我要送你一些礼物!\\n那边的宝箱你打开看看。\\n里面应该放有几件\\n有助你冒险的东西。'\n  )\n  await talk(\n    '国王',\n    '还有，这房间里的人，\\n了解一些旅行的知识，\\n不妨向他们请教一番。'\n  )\n  await talk('国王', `那么，再会了！\\n勇者${heroName()}！`)\n\n  finishCurrentEvent()\n})\n",
-  "event_1002": "task(async () => {\n  await talk('国王', '赶快去吧！ ')\n})\n",
-  "event_5": "task(async () => {\n  await shop()\n})\n"
+  "1": "task(async () => {\n  await talk('国王', '勇者的后代')\n  await talk('国王', '这个你拿去吧')\n  await message('获得了钥匙')\n  await talk('国王', '祝你旅途愉快!')\n})\n",
+  "5": "task(async () => {\n  await shop()\n})\n",
+  "1001": "task(async () => {\n  await talk(\n    '国王',\n    '相传许久以前，\\n传说中的勇者洛特\\n获得神所赐予的光之珠，\\n封印了遍布世界的怪物们。'\n  )\n  await talk(\n    '国王',\n    '然而恶魔的化身龙王\\n突然不知从何处现身，\\n将那颗珠子封闭在黑暗中！'\n  )\n  await talk('国王', '再这样下去\\n世界将会被黑暗吞没，\\n最后走向毁灭。')\n  await talk(\n    '国王',\n    `勇者${heroName()}！\\n去打倒魔王，\\n将光之珠由其手中夺回吧！`\n  )\n  await talk(\n    '国王',\n    '我要送你一些礼物!\\n那边的宝箱你打开看看。\\n里面应该放有几件\\n有助你冒险的东西。'\n  )\n  await talk(\n    '国王',\n    '还有，这房间里的人，\\n了解一些旅行的知识，\\n不妨向他们请教一番。'\n  )\n  await talk('国王', `那么，再会了！\\n勇者${heroName()}！`)\n\n  finishCurrentEvent()\n})\n",
+  "1002": "task(async () => {\n  await talk('国王', '赶快去吧！ ')\n})\n"
 }
