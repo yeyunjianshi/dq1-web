@@ -22,6 +22,12 @@ interface IWindowStack {
   popWindow(): void
 }
 
+export enum WindowMarker {
+  None = 0x00,
+  Menu = 0b01,
+  Shop = 0b10,
+}
+
 @GameplayComponent
 export default class GlobalWindowComponent
   extends Component
@@ -38,6 +44,7 @@ export default class GlobalWindowComponent
   private _alertWindow?: AlertWindow
   private _windowStack: BaseWindow[] = []
   private _pressedFrame = 0
+  public windowMarker = WindowMarker.None
 
   awake(): void {
     this._messageWindow = new MessageWindow(
@@ -102,7 +109,9 @@ export default class GlobalWindowComponent
   }
 
   showMenu() {
+    this.windowMarker = WindowMarker.Menu
     this._pressedFrame = this.time.currentFrame
+
     this.menuWindow.show()
     this._commonStatusWindow?.show()
     this._commonGoldWindow?.show()
@@ -117,8 +126,10 @@ export default class GlobalWindowComponent
   }
 
   showShop(shopId: number) {
-    this._commonGoldWindow?.show()
+    this.windowMarker = WindowMarker.Shop
     this._pressedFrame = this.time.currentFrame
+
+    this._commonGoldWindow?.show()
     this._shopWindow!.show(true, shopId)
     this._windowStack.push(this._shopWindow!)
   }
@@ -152,6 +163,7 @@ export default class GlobalWindowComponent
     if (this._windowStack.length == 0) {
       globalGameData.inputType = InputType.Move
       this.hideMenu()
+      this.windowMarker = WindowMarker.None
     }
   }
 

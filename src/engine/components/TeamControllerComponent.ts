@@ -155,8 +155,7 @@ export default class TeamControllerComponent extends MoveComponent {
     const globalWindow = this.engine.getVariable(
       GlobalWindowMarker
     ) as GlobalWindowComponent
-    // globalWindow.showMenu()
-    globalWindow.showShop(1)
+    globalWindow.showMenu()
 
     return true
   }

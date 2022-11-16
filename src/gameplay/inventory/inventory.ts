@@ -41,6 +41,10 @@ export default class inventory {
     return slot
   }
 
+  hasItem(itemId: number) {
+    return this._slots.some((slot) => slot.item.id === itemId)
+  }
+
   getItem(id: number) {
     return this.getItemSlot(id).item
   }

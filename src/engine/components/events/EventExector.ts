@@ -1,6 +1,8 @@
 import Engine, { GlobalBattleInfo, GlobalWindowMarker } from '../../engine'
 import { nextFrame } from '../../time'
-import GlobalWindowComponent from '../../../gameplay/menu/GlobalWindowComponent'
+import GlobalWindowComponent, {
+  WindowMarker,
+} from '../../../gameplay/menu/GlobalWindowComponent'
 import { QuestEvent } from './QuestEvent'
 import { globalGameData, InputType } from '../../../gameplay/asset/gameData'
 import {
@@ -84,7 +86,10 @@ export async function talk(characterName: string, text: string, clear = false) {
   const globalWindow =
     executingEngine!.getVariable<GlobalWindowComponent>(GlobalWindowMarker)
 
+  const previouseInputType = globalGameData.inputType
+  globalGameData.inputType = InputType.Message
   await globalWindow.messageWindow.talk(characterName, text, clear)
+  globalGameData.inputType = previouseInputType
 }
 
 export async function message(text: string) {
@@ -112,4 +117,37 @@ export async function battle(wait = true) {
 
 export async function setBattleFinishStatus(val: BattleFinishStatus) {
   _isBattleStatus = val
+}
+
+export async function shop(id: number | undefined) {
+  const globalWindow =
+    executingEngine!.getVariable<GlobalWindowComponent>(GlobalWindowMarker)
+
+  if (typeof id === 'undefined') {
+    id = executingEvent!.args[1]
+  }
+
+  const shopType = executingEvent!.args[0]
+  await talk(
+    '*',
+    `这里是${shopType === 0 ? '武器店和防具店' : '道具店'}，请问有什么需要的？`,
+    true
+  )
+  const previouseInputType = globalGameData.inputType
+  globalGameData.inputType = InputType.Menu
+  await globalWindow.showShop(id!)
+  while (globalWindow.windowMarker === WindowMarker.Shop) {
+    await nextFrame()
+  }
+  globalGameData.inputType = previouseInputType
+
+  await talk('*', `欢迎再来!`, true)
+}
+
+export function heroName() {
+  return globalGameData.hero.name
+}
+
+export function finishCurrentEvent() {
+  return globalGameData.finishEvent(executingEvent!.eventId)
 }

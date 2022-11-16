@@ -88,6 +88,7 @@ export function GetMagic(id: number): Magic {
 }
 
 export enum InputType {
+  None,
   Move,
   Menu,
   Battle,
@@ -97,8 +98,9 @@ export enum InputType {
 export class GameData {
   teamCharactes: Character[] = []
   npcCharacters: { roldId: number }[] = []
-  inputType: InputType = InputType.Battle
+  inputType: InputType = InputType.Move
   inventory = new Inventory()
+  events: Set<string> = new Set()
 
   startGame() {
     const initCharacter = GetCharacter(DefaultInitGameCharacter.id).clone()
@@ -147,6 +149,14 @@ export class GameData {
   inventoryRemoveItemSlotById(id: number) {
     this.inventory.removeSlotId(id)
     this.hero.removeEquipment(id)
+  }
+
+  finishEvent(id: string) {
+    this.events.add(id)
+  }
+
+  hasEvent(id: string) {
+    return this.events.has(id)
   }
 
   public get hero() {

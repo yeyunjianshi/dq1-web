@@ -1,4 +1,5 @@
 import { InnerGameComponent } from '.'
+import { globalGameData } from '../../gameplay/asset/gameData'
 import Component from '../component'
 import { GlobalSceneComponentMarker } from '../engine'
 import { vector2Include } from '../math'
@@ -37,7 +38,9 @@ export default class SceneComponent extends Component {
   triggerQuestEvent(position: Vector2, when: EventTriggerWhen) {
     return this._questEvents.find((event) => {
       return (
-        vector2Include(position, event.root.boundingBox) && event.when === when
+        !globalGameData.hasEvent(event.eventId) &&
+        event.canTrigger(when) &&
+        vector2Include(position, event.root.boundingBox)
       )
     })
   }

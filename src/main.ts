@@ -3,7 +3,6 @@ import { createEngine } from './engine/engine'
 import TestData from './data/test_npc.json'
 import BattleData from './data/test_battle.json'
 import GlobalScene from './data/globalWindow.json'
-import ShopScene from './data/shop.json'
 import TeamController from './data/team_controller.json'
 import './gameplay/componentConfig'
 import { AddGameSceneData } from './engine/sceneManager'
@@ -33,13 +32,7 @@ SetItems((AllItemData as ItemData[]).map(parseItem))
 SetShopItems(ShopData)
 SetEneies(EnemyData)
 SetMagics(MagicData)
-AddGameSceneData([
-  TestData,
-  TeamController,
-  GlobalScene,
-  ShopScene,
-  BattleData as any,
-])
+AddGameSceneData([TestData, TeamController, GlobalScene, BattleData as any])
 globalGameData.startGame()
 
 const engine = createEngine()
@@ -52,10 +45,10 @@ assetLoader.addAssets(
     .then((events) => SetGameEventScript(events))
 )
 
-// engine.sceneManager.loadScene('Global')
+engine.sceneManager.loadScene('Global')
 engine.sceneManager.loadScene('TeamController')
 engine.sceneManager.loadScene('NPCScene')
-engine.sceneManager.loadScene('Battle')
+// engine.sceneManager.loadScene('Battle')
 
 engine.init()
 engine.run()

@@ -31,8 +31,15 @@
           },
           {
             "type": "$QuestEvent",
-            "eventId": 1,
-            "when": 2
+            "eventId": 1001,
+            "when": 2,
+            "args": [1, 2]
+          },
+          {
+            "type": "$QuestEvent",
+            "eventId": 1002,
+            "when": 2,
+            "predecessorId": [1001]
           }
         ]
       },

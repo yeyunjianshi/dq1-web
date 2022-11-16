@@ -1,4 +1,5 @@
 import { InnerGameComponent } from '..'
+import { globalGameData } from '../../../gameplay/asset/gameData'
 import Component from '../../component'
 import { AssetLoader } from '../../resource'
 import { Execute, generateEventId } from './EventExector'
@@ -15,20 +16,32 @@ type QuestEventData = {
   type: string
   eventId: string
   when?: EventTriggerWhen
+  args?: any[]
+  predecessorId: string[]
+  predecessorItem: number[]
 }
 
 @InnerGameComponent
 export class QuestEvent extends Component {
   eventId = ''
   when: EventTriggerWhen = EventTriggerWhen.InteractiveEnter
+  args: any[] = []
   isHideAfterFinish = true
   isStartHide = false
-  showCondition = ''
-  hideCondition = ''
   priority = 10
+  predecessorId: string[] = []
+  predecessorItem: number[] = []
 
-  execute(triggerWhen: EventTriggerWhen, callback: () => void) {
-    if (this.when === triggerWhen) {
+  canTrigger(when: EventTriggerWhen) {
+    return (
+      this.when === when &&
+      this.predecessorId.every((id) => globalGameData.hasEvent(id)) &&
+      this.predecessorItem.every((id) => globalGameData.inventory.hasItem(id))
+    )
+  }
+
+  execute(triggerWhen: EventTriggerWhen) {
+    if (this.canTrigger(triggerWhen)) {
       // eslint-disable-next-line @typescript-eslint/no-this-alias
       Execute(this.engine)
     }
@@ -37,5 +50,10 @@ export class QuestEvent extends Component {
   parseData(_: AssetLoader, data: QuestEventData): void {
     this.eventId = generateEventId(data.eventId)
     this.when = data.when === undefined ? this.when : data.when
+    this.args = data.args || []
+    this.predecessorId = data.predecessorId
+      ? data.predecessorId.map(generateEventId)
+      : []
+    this.predecessorItem = data.predecessorItem || []
   }
 }

@@ -12,8 +12,8 @@ type ScrollTextData = {
   textSpeed?: number
 } & TextData
 
-const DefaultTextSpeed = 30
-const DefaultScreenScrollSpeed = 1800
+const DefaultTextSpeed = 40
+const DefaultScreenScrollSpeed = 3000
 const DefaultShowMaxLines = 4
 
 type TextLine = LineInfo & { prefix: string; prefixWidth: number }

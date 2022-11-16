@@ -1,0 +1,3 @@
+task(async () => {
+  await shop()
+})
