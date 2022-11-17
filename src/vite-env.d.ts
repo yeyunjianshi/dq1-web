@@ -233,3 +233,7 @@ interface Cloneable<T> {
 interface Interaction {
   interactive(): void
 }
+
+interface ICollider {
+  collider(point: Vector2, layer: ColliderLayerType): boolean
+}

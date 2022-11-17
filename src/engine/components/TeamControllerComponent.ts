@@ -1,16 +1,16 @@
 import { InnerGameComponent } from '.'
 import { globalGameData, InputType } from '../../gameplay/asset/gameData'
 import GlobalWindowComponent from '../../gameplay/menu/GlobalWindowComponent'
-import {
+import Engine, {
   GlobalSceneComponentMarker,
   GlobalTeamControllerMarker,
   GlobalWindowMarker,
 } from '../engine'
 import GameObject from '../gameObject'
 import { Direction, DirectionToCoord, oppsiteDirection } from '../input'
-import { distance, lerpVector2, vector2Add } from '../math'
+import { distance, lerpVector2, vector2Add, vector2Include } from '../math'
 import { AssetLoader } from '../resource'
-import { AddExecuteEvent, Execute } from './events/EventExector'
+import { ColliderLayerType } from './Collider'
 import { EventTriggerWhen } from './events/QuestEvent'
 import MoveComponent, {
   CoordToPosition,
@@ -28,7 +28,7 @@ type TeamControllerData = {
   maxTeamCount?: number
 } & MoveComponentData
 
-const DefaultMaxTeamCount = 1
+const DefaultMaxTeamCount = 3
 const DefaultMoveSpeed = 64
 const DefaultTileSize = 32
 
@@ -40,8 +40,18 @@ export function nextCoordByDirection(
   return [coord[0] + delta[0], coord[1] + delta[1]]
 }
 
-export function checkNextCoordCanMove(coord: Vector2): boolean {
-  return true
+export function checkNextCoordCanMove(
+  coord: Vector2,
+  engine: Engine,
+  layer: ColliderLayerType
+): boolean {
+  const sceneComponent = engine.getVariable(
+    GlobalSceneComponentMarker
+  ) as SceneComponent
+  return !sceneComponent.collider(
+    playerCenterPosition(CoordToPosition(coord)),
+    layer
+  )
 }
 
 function playerCenterPosition(pos: Vector2): Vector2 {
@@ -49,7 +59,10 @@ function playerCenterPosition(pos: Vector2): Vector2 {
 }
 
 @InnerGameComponent
-export default class TeamControllerComponent extends MoveComponent {
+export default class TeamControllerComponent
+  extends MoveComponent
+  implements ICollider
+{
   characterSpriteName = ''
   playerMoveComponents: MoveComponent[] = []
   playerStats: MoveState[] = []
@@ -81,7 +94,20 @@ export default class TeamControllerComponent extends MoveComponent {
       this.playerMoveComponents.push(moveComponent)
       this.playerStats.push({ ...this._head })
     }
+    this.initTeam()
     this.inited = true
+  }
+
+  initTeam() {
+    const moveRoles = globalGameData.teamMoves
+    for (let i = 0; i < this.maxTeamCount; i++) {
+      if (i < moveRoles.length) {
+        this.playerMoveComponents[i].roleIndex = moveRoles[i].roleId
+        this.playerMoveComponents[i].root.active = true
+      } else {
+        this.playerMoveComponents[i].root.active = false
+      }
+    }
   }
 
   update() {
@@ -114,7 +140,9 @@ export default class TeamControllerComponent extends MoveComponent {
           pressedDirection
         )
 
-        if (checkNextCoordCanMove(nextCoord)) {
+        if (
+          checkNextCoordCanMove(nextCoord, this.engine, ColliderLayerType.Hero)
+        ) {
           this._head.targetCoord = nextCoord
           this._head.targetPosition = CoordToPosition(nextCoord)
 
@@ -275,6 +303,14 @@ export default class TeamControllerComponent extends MoveComponent {
   changeHeadDirection(direciton: Direction) {
     this._head.direction = direciton
     this.playerMoveComponents[0].direction = direciton
+  }
+
+  collider(point: Vector2, layer: ColliderLayerType): boolean {
+    if (layer === ColliderLayerType.Hero) return false
+
+    return this.root.children.some((child) => {
+      return child.active && vector2Include(point, child.boundingBox)
+    })
   }
 
   public moveTo(worldPostion: Vector2, dir: Direction, isPermutation = true) {

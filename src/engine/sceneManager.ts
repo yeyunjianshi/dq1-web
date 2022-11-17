@@ -86,6 +86,10 @@ export default class SceneManger {
     this._renderScenes = this._renderScenes.filter((s) => s.name !== sceneName)
   }
 
+  get scenes() {
+    return this._scenes
+  }
+
   // popScene() {
   //   if (!this.currentScene || this._scenes.length)
   //     throw new Error(`Pop Scene Error`)

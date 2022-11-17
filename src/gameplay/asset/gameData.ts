@@ -13,6 +13,7 @@ const DefaultInitGameCharacter = {
   lv: 1,
   inventory: [1, 102, 201, 202, 301, 302, 401, 402, 501],
   magics: [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010],
+  npcs: [2, 3],
 }
 
 const gameAllCharacters: Map<number, Character> = new Map()
@@ -97,7 +98,7 @@ export enum InputType {
 
 export class GameData {
   teamCharactes: Character[] = []
-  npcCharacters: { roldId: number }[] = []
+  npcCharacters: { roleId: number }[] = []
   inputType: InputType = InputType.Move
   inventory = new Inventory()
   events: Set<string> = new Set()
@@ -111,6 +112,9 @@ export class GameData {
     initCharacter.magics = DefaultInitGameCharacter.magics.map((id) =>
       GetMagic(id)
     )
+    this.npcCharacters = DefaultInitGameCharacter.npcs.map((roleId) => ({
+      roleId,
+    }))
   }
 
   init() {
@@ -159,8 +163,16 @@ export class GameData {
     return this.events.has(id)
   }
 
-  public get hero() {
+  get hero() {
     return this.teamCharactes[0]!
+  }
+
+  get teamMoves(): { roleId: number }[] {
+    return this.teamCharactes
+      .map((c) => ({
+        roleId: c.roleId,
+      }))
+      .concat(this.npcCharacters)
   }
 }
 

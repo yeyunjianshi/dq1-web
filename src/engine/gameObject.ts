@@ -3,7 +3,7 @@ import Engine from './engine'
 import AbsoluteLayout from './layout/AbsoluteLayout'
 import { LayoutMatchParent, LayoutFitContent } from './layout/layout'
 import { vector2Add } from './math'
-import { supportSpriteExt } from './resource'
+import { AssetLoader, supportSpriteExt } from './resource'
 
 class GameObject implements LifeCycle {
   private _localX = 0
@@ -328,6 +328,17 @@ class GameObject implements LifeCycle {
       queue.push(...node.children)
     }
     return undefined
+  }
+
+  addComponent<T extends typeof Component>(
+    componentConstructor: T,
+    data: ComponentData,
+    assertLoader = new AssetLoader()
+  ) {
+    const component = new (componentConstructor as any)(this)
+    component.parseData(assertLoader, data)
+    this.components.push(component)
+    return component
   }
 
   set localX(val: number) {

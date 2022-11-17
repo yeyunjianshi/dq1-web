@@ -9,9 +9,12 @@ import {
   vector2Minus,
 } from '../math'
 import { AssetLoader } from '../resource'
+import { BoxCollider, BoxColliderData, ColliderLayerType } from './Collider'
 import MoveComponent, {
   CoordToPosition,
+  DefalutMoveTileWidth,
   DefaultMoveState,
+  DefaultMoveTileHeight,
   MoveComponentData,
   MoveState,
   PositionToCoord,
@@ -38,6 +41,7 @@ type NPCData = {
   moveSpeed?: number
   moveWaitTime?: number
   path?: NPCFixedPathData | NPCRandomPathData
+  colliderSize?: Vector2
 } & MoveComponentData
 
 const DefaultMoveSpeed = 96
@@ -82,7 +86,7 @@ export class NPCControllerComponent extends MoveComponent {
       return vector2Include(
         nextCooord,
         (this.path as NPCRandomPathData).scope as [Vector2, Vector2]
-      ) && checkNextCoordCanMove(nextCooord)
+      ) && checkNextCoordCanMove(nextCooord, this.engine, ColliderLayerType.NPC)
         ? [nextCooord, direction]
         : [this.moveState.targetCoord, Direction.none]
     } else {
@@ -111,6 +115,8 @@ export class NPCControllerComponent extends MoveComponent {
       const nextDireciton = getDirectionByCoord(
         vector2Minus(nextCoord, this.moveState.targetCoord)
       )
+      if (!checkNextCoordCanMove(nextCoord, this.engine, ColliderLayerType.NPC))
+        return [this.moveState.targetCoord, Direction.none]
       return [nextCoord, nextDireciton]
     }
   }
@@ -155,6 +161,14 @@ export class NPCControllerComponent extends MoveComponent {
     }
   }
 
+  private initMoveState(coord: Vector2) {
+    this.moveState.coord = this.moveState.targetCoord = coord
+    this.moveState.position = this.moveState.targetPosition = CoordToPosition(
+      this.moveState.coord
+    )
+    this.localPosition = this.moveState.position
+  }
+
   parseData(assetLoader: AssetLoader, data: NPCData): void {
     super.parseData(assetLoader, data)
 
@@ -178,13 +192,8 @@ export class NPCControllerComponent extends MoveComponent {
         this.path = { ...dataPath }
       }
     }
-  }
-
-  private initMoveState(coord: Vector2) {
-    this.moveState.coord = this.moveState.targetCoord = coord
-    this.moveState.position = this.moveState.targetPosition = CoordToPosition(
-      this.moveState.coord
-    )
-    this.localPosition = this.moveState.position
+    this.root.addComponent(BoxCollider, {
+      size: data.colliderSize ?? [DefalutMoveTileWidth, DefaultMoveTileHeight],
+    } as BoxColliderData)
   }
 }

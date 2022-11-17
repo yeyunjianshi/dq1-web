@@ -1061,7 +1061,7 @@
         "height": 560,
         "layoutGravity": ["center", "center"],
         "pivot": [0.5, 0.5],
-        "active": true,
+        "active": false,
         "enable": false,
         "components": [
           {

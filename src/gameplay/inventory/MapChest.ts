@@ -1,5 +1,6 @@
 import Component from '../../engine/component'
 import { GameplayComponent } from '../../engine/components'
+import { BoxCollider, BoxColliderData } from '../../engine/components/Collider'
 import {
   generateMapChestId,
   messageCachePreviousInputType,
@@ -12,6 +13,7 @@ type MapChestData = {
   id: string
   items: number[]
   money?: number
+  colliderSize: Vector2
 }
 
 @GameplayComponent
@@ -19,6 +21,7 @@ export default class MapChest extends Component implements Interaction {
   id = ''
   itemsId: number[] = []
   money = 0
+  colliderSize: Vector2 = [32, 32]
 
   start() {
     this.refreshStatus()
@@ -28,13 +31,17 @@ export default class MapChest extends Component implements Interaction {
     return !globalGameData.hasEvent(this.id)
   }
 
-  refreshStatus() {
-    this.background.pivotOffset = [this.canTrigger() ? 0 : 32, 0]
+  refreshStatus(openStatus?: boolean) {
+    if (typeof openStatus === 'undefined') {
+      openStatus = !this.canTrigger()
+    }
+    this.background.pivotOffset = [openStatus ? 32 : 0, 0]
   }
 
   async open() {
     if (!this.canTrigger()) return
 
+    this.refreshStatus(true)
     const itemsName = this.itemsId.map((id) => {
       return globalGameData.inventory.addItem(id).item.name
     })
@@ -50,9 +57,15 @@ export default class MapChest extends Component implements Interaction {
     this.open()
   }
 
-  parseData(_: AssetLoader, data: MapChestData): void {
+  parseData(assertLoader: AssetLoader, data: MapChestData): void {
     this.id = generateMapChestId(data.id)
     this.itemsId = data.items
     this.money = data.money || 0
+    this.colliderSize = data.colliderSize || this.colliderSize
+    this.colliderSize = this.root.addComponent(
+      BoxCollider,
+      { size: this.colliderSize } as BoxColliderData,
+      assertLoader
+    )
   }
 }

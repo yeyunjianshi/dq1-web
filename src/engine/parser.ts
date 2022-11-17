@@ -129,6 +129,7 @@ export function parseGameObject(
         com.parseData(assetLoader, script)
         return com
       })
+      .concat(gameObject.components)
   }
 
   return gameObject

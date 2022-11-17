@@ -1,13 +1,18 @@
 import { InnerGameComponent } from '.'
 import MapChest from '../../gameplay/inventory/MapChest'
 import Component from '../component'
-import { GlobalSceneComponentMarker } from '../engine'
+import {
+  GlobalSceneComponentMarker,
+  GlobalTeamControllerMarker,
+} from '../engine'
 import { vector2Include } from '../math'
+import Collider, { ColliderLayerType } from './Collider'
 import { EventTriggerWhen, QuestEvent } from './events/QuestEvent'
 import {
   SceneTransition,
   SceneTransitionDestination,
 } from './events/Transition'
+import TeamControllerComponent from './TeamControllerComponent'
 
 @InnerGameComponent
 export default class SceneComponent extends Component {
@@ -15,6 +20,7 @@ export default class SceneComponent extends Component {
   private _transitionDestinations: SceneTransitionDestination[] = []
   private _questEvents: QuestEvent[] = []
   private _mapChests: MapChest[] = []
+  private _colliders: Collider[] = []
 
   awake(): void {
     this.engine.setVariable(GlobalSceneComponentMarker, this)
@@ -29,6 +35,7 @@ export default class SceneComponent extends Component {
       QuestEvent
     ) as QuestEvent[]
     this._mapChests = this.root.getComponentsInChildren(MapChest) as MapChest[]
+    this._colliders = this.root.getComponentsInChildren(Collider) as Collider[]
   }
 
   triggerTransition(position: Vector2): SceneTransition | undefined {
@@ -62,5 +69,18 @@ export default class SceneComponent extends Component {
         vector2Include(position, mapChest.root.boundingBox)
       )
     })
+  }
+
+  collider(position: Vector2, layer: ColliderLayerType) {
+    const teamController = this.engine.getVariable(
+      GlobalTeamControllerMarker
+    ) as TeamControllerComponent
+
+    return (
+      teamController.collider(position, layer) ||
+      this._colliders.some(
+        (c) => c.root.active && c.active && c.collider(position, layer)
+      )
+    )
   }
 }
