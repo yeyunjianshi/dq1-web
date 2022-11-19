@@ -155,7 +155,7 @@ export function parseScene(data: SceneData, engine: Engine) {
   if (data.bgm) {
     assetLoader.addAssets(engine.resource.loadAudio(data.bgm))
   }
-  assetLoader.assetEvent.addListener((status) => {
+  assetLoader.assetEvent.register((status) => {
     if (status === AssetLoadStatus.SUCCESS) {
       scene.show()
       scene.awake()

@@ -3,19 +3,19 @@ type EventListener<T> = (t: T) => void
 export default class EventEmitter<T> {
   private _listeners = new Array<EventListener<T>>()
 
-  addListener(listener: EventListener<T>) {
+  register(listener: EventListener<T>) {
     this._listeners.push(listener)
   }
 
   once(listener: EventListener<T>) {
     const handler = (t: T) => {
       listener(t)
-      this.removeListener(handler)
+      this.remove(handler)
     }
-    this.addListener(handler)
+    this.register(handler)
   }
 
-  removeListener(listener: EventListener<T>) {
+  remove(listener: EventListener<T>) {
     const index = this._listeners.indexOf(listener)
     if (index != -1) {
       this._listeners.splice(index, 1)

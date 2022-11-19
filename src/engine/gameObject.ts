@@ -1,5 +1,6 @@
 import Component from './component'
 import Engine from './engine'
+import EventEmitter from './eventEmitter'
 import AbsoluteLayout from './layout/AbsoluteLayout'
 import { LayoutMatchParent, LayoutFitContent } from './layout/layout'
 import { vector2Add } from './math'
@@ -38,6 +39,7 @@ class GameObject implements LifeCycle {
   layoutGravity: [HorizontalGravity, VerticalGaravity] = ['left', 'top']
   useScreenPosition = false
   useScreenPositionInRender = false
+  events = new EventEmitter<symbol>()
 
   constructor(
     parent: GameObject | null,

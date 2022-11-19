@@ -1,5 +1,11 @@
 import { InnerGameComponent } from '.'
-import { Direction, DirectionToCoord, getDirectionByCoord } from '../input'
+import { GlobalTeamControllerMarker } from '../engine'
+import {
+  Direction,
+  DirectionToCoord,
+  getDirectionByCoord,
+  oppsiteDirection,
+} from '../input'
 import {
   distance,
   lerpVector2,
@@ -10,6 +16,7 @@ import {
 } from '../math'
 import { AssetLoader } from '../resource'
 import { BoxCollider, BoxColliderData, ColliderLayerType } from './Collider'
+import { IntercativeMarker } from './events/QuestEvent'
 import MoveComponent, {
   CoordToPosition,
   DefalutMoveTileWidth,
@@ -19,7 +26,9 @@ import MoveComponent, {
   MoveState,
   PositionToCoord,
 } from './MoveComponent'
-import { checkNextCoordCanMove } from './TeamControllerComponent'
+import TeamControllerComponent, {
+  checkNextCoordCanMove,
+} from './TeamControllerComponent'
 
 type NPCPathType = 'fixed' | 'random'
 
@@ -69,6 +78,15 @@ export class NPCControllerComponent extends MoveComponent {
     reverse: false,
   }
   private _moveDelta = 0
+
+  start() {
+    super.start()
+
+    this.root.events.register((marker) => {
+      if (marker !== IntercativeMarker) return
+      this.talk()
+    })
+  }
 
   update() {
     if (!this.inited) return
@@ -167,6 +185,15 @@ export class NPCControllerComponent extends MoveComponent {
       this.moveState.coord
     )
     this.localPosition = this.moveState.position
+  }
+
+  talk() {
+    const teamController = this.engine.getVariable(
+      GlobalTeamControllerMarker
+    ) as TeamControllerComponent
+
+    this.direction = oppsiteDirection(teamController.headDirection)
+    this.refreshAnimationSprite()
   }
 
   parseData(assetLoader: AssetLoader, data: NPCData): void {

@@ -21,6 +21,8 @@ type QuestEventData = {
   predecessorItem: number[]
 }
 
+export const IntercativeMarker = Symbol('Intercative')
+
 @InnerGameComponent
 export class QuestEvent extends Component implements Interaction {
   eventId = ''
@@ -42,6 +44,8 @@ export class QuestEvent extends Component implements Interaction {
   }
 
   interactive(): void {
+    this.root.events.emit(IntercativeMarker)
+
     AddExecuteEvent(this)
     Execute(this.engine)
   }

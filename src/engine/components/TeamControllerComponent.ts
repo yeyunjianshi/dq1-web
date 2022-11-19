@@ -339,6 +339,10 @@ export default class TeamControllerComponent
     this.refreshAnimationSprite()
   }
 
+  get headDirection() {
+    return this._head.direction
+  }
+
   get headPosition() {
     return vector2Add(this._head.position, this.worldPosition)
   }
