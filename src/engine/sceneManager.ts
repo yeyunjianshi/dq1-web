@@ -68,7 +68,6 @@ export default class SceneManger {
 
     scene.loadType = loadType ?? scene.loadType
 
-    this._currentScene = scene
     if (scene.loadType === SceneLoadType.Replace) {
       this._currentScene = scene
       this._scenes = this._scenes.filter(

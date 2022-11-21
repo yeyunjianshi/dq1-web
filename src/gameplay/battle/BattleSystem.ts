@@ -4,7 +4,11 @@ import { GlobalBattleInfo } from '../../engine/engine'
 import { globalGameData } from '../asset/gameData'
 import AttackExectuteCommand from './command/AttackExecuteCommand'
 import BattleCharacter from './BattleCharacter'
-import BattleData, { BattleInfo, GenerateBattleInfo } from './BattleData'
+import BattleData, {
+  BattleFinishStatus,
+  BattleInfo,
+  GenerateBattleInfo,
+} from './BattleData'
 import BattleUI from './BattleUI'
 import ExecuteCommand, {
   BattleCommand,
@@ -13,6 +17,7 @@ import ExecuteCommand, {
 } from './command/Command'
 import MagicExecuteCommand from './command/MagicExecuteCommand'
 import ItemExecuteCommand from './command/ItemExecuteCommand'
+import { setBattleFinishStatus } from '../../engine/components/events/EventExector'
 
 @GameplayComponent
 export default class BattleSystem extends Component {
@@ -106,6 +111,15 @@ export default class BattleSystem extends Component {
 
   private async battleEnd() {
     console.log(this.data.isVictory ? '胜利了' : '战败了')
+    setBattleFinishStatus(
+      this.data.isEscape
+        ? BattleFinishStatus.Escape
+        : this.data.isVictory
+        ? BattleFinishStatus.Victory
+        : this.data.isFailed
+        ? BattleFinishStatus.Faield
+        : BattleFinishStatus.Event
+    )
   }
 
   private enemySelectCommand(): BattleCommand {

@@ -1,10 +1,4 @@
-import {
-  ChangeWhen,
-  Command,
-  CommandCalacuteType,
-  parseUseEffect,
-} from '../effects/buffer'
-import UsePeropertyEffect from '../effects/UsePropertyEffect'
+import { Command, CommandCalacuteType, parseUseEffect } from '../effects/buffer'
 
 export enum ItemType {
   Weapon = 0b000001,

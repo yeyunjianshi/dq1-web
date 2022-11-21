@@ -1,4 +1,4 @@
-import CanvasRenderer, { RenderOrder } from '../../engine/canvasRenderer'
+import CanvasRenderer, { RenderLayer } from '../../engine/canvasRenderer'
 import TeamControllerComponent, {
   PlayerCenterPosition,
 } from '../../engine/components/TeamControllerComponent'
@@ -53,8 +53,9 @@ export default class TorchPostProcess implements IPostProcess {
       }
 
       renderer.cacheInfos.forEach((info) => {
-        if (clip && info.renderOrder === RenderOrder.Window) {
+        if (clip && info.renderOrder === RenderLayer.Window) {
           renderer.context.restore()
+          clip = false
         }
         renderer.context.drawImage(
           info.canvas,
@@ -71,8 +72,7 @@ export default class TorchPostProcess implements IPostProcess {
     } catch (e) {
       console.log(e)
     }
-    renderer.context.restore()
 
-    // }
+    renderer.context.restore()
   }
 }

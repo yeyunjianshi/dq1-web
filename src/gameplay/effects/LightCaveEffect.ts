@@ -1,23 +1,19 @@
 import { lightCave } from '../../engine/components/events/EventExector'
-import { Command, CommandTriggerWhen, CommandTriggerType } from './buffer'
+import { Command, CommandTriggerType, CommandTriggerWhen } from './buffer'
 
 export default class LightCaveEffect
   implements Command, Cloneable<LightCaveEffect>
 {
   constructor(public radius: number, public time: number) {}
 
-  execute(
-    when: CommandTriggerWhen,
-    type: CommandTriggerType,
-    ...args: unknown[]
-  ) {
-    if (when === CommandTriggerWhen.Common) {
+  execute(when: CommandTriggerWhen, type: CommandTriggerType) {
+    if (when === CommandTriggerWhen.Common && type === CommandTriggerType.Use) {
       lightCave(this.radius, this.time)
     }
     return ''
   }
 
-  clone(init = true) {
+  clone() {
     return new LightCaveEffect(this.radius, this.time)
   }
 }

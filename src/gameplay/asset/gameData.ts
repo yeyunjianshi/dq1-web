@@ -11,7 +11,7 @@ import Character from './character'
 const DefaultInitGameCharacter = {
   id: 1,
   lv: 1,
-  inventory: [1, 2, 201, 202, 301, 302, 401, 402, 501],
+  inventory: [1, 2, 4, 202, 301, 302, 401, 402, 501],
   magics: [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010],
   npcs: [2, 3],
 }
@@ -104,6 +104,7 @@ export class GameData {
   events: Set<string> = new Set()
   lightRadius = 0
   lightTime = 0
+  notMeetEnemyStep = 0
 
   startGame() {
     const initCharacter = GetCharacter(DefaultInitGameCharacter.id).clone()

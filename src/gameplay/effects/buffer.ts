@@ -2,6 +2,7 @@ import DamageEffect from './DamageEffect'
 import LightCaveEffect from './LightCaveEffect'
 import { SleepBufferMaker, SealingMagicBufferMaker } from './MarkerBuffer'
 import { MarkerBufferEffect } from './MarkerBufferEffect'
+import NotMeetEnemyEffect from './NotMeetEnemyEffect'
 import UsePeropertyEffect from './UsePropertyEffect'
 
 export enum CommandTriggerWhen {
@@ -107,6 +108,12 @@ export function parseUseEffect(
                   return new LightCaveEffect(value[0], value[1])
                 }
                 break
+              case 'notMeetEnemy': // 不遇敌
+                if (args.length >= 3) {
+                  const [_, value] = parseNumberValue(args[2])
+                  return new NotMeetEnemyEffect(value[0])
+                }
+                return
               case 'move': // 移动buff
                 break
               case 'damage': // 伤害

@@ -34,7 +34,8 @@
     "sellPrice": 19,
     "canUse": 3,
     "type": 16,
-    "effect": "u:common:meetEnemy:127;u:battle:damage:16-20"
+    "effect": "u:common:notMeetEnemy:127;u:battle:damage:16-20",
+    "useCommonText": "{name}使用了圣水\n暂时不会遭遇敌人了。"
   },
   {
     "id": 5,

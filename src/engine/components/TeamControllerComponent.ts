@@ -11,6 +11,7 @@ import { Direction, DirectionToCoord, oppsiteDirection } from '../input'
 import { distance, lerpVector2, vector2Add, vector2Include } from '../math'
 import { AssetLoader } from '../resource'
 import { ColliderLayerType } from './Collider'
+import { battle, checkMeetEnemy } from './events/EventExector'
 import { EventTriggerWhen } from './events/QuestEvent'
 import MoveComponent, {
   CoordToPosition,
@@ -166,6 +167,10 @@ export default class TeamControllerComponent
         if (this.checkDestination()) {
           return
         }
+        if (checkMeetEnemy()) {
+          battle()
+          return
+        }
         if (moveDistance - moveDelta > 0.01) {
           this.updateDistance(moveDistance - moveDelta)
         }
@@ -205,23 +210,6 @@ export default class TeamControllerComponent
     if (interaction) {
       interaction.interactive()
     }
-    // 宝箱
-    // const mapChest = sceneComponent.triggerMapChest(playerNextCenterPosition)
-    // if (mapChest) {
-    //   mapChest.open()
-    //   return true
-    // }
-
-    // // 对话
-    // const questEvent = sceneComponent.triggerQuestEvent(
-    //   playerNextCenterPosition,
-    //   EventTriggerWhen.InteractiveConfirm
-    // )
-    // if (questEvent) {
-    //   AddExecuteEvent(questEvent)
-    //   Execute(this.engine)
-    //   return true
-    // }
     return false
   }
 

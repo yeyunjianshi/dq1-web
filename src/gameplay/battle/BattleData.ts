@@ -49,11 +49,13 @@ export default class BattleData {
     return this.hero.character.isDead
   }
 
+  get isEscape() {
+    return this.escapeMarker === BattleEscapeMarker.Success
+  }
+
   get isFinish() {
     return (
-      this.hero.character.isDead ||
-      this.enemy.character.isDead ||
-      this.escapeMarker === BattleEscapeMarker.Success
+      this.hero.character.isDead || this.enemy.character.isDead || this.isEscape
     )
   }
 

@@ -111,6 +111,9 @@ export async function message(text: string, callback?: () => void) {
 let _isBattleStatus: BattleFinishStatus = BattleFinishStatus.Pending
 
 export async function battle(wait = true) {
+  const previousInputType = globalGameData.inputType
+  globalGameData.inputType = InputType.Battle
+
   const battleInfo = GenerateBattleInfo(1)
   executingEngine!.setVariable(GlobalBattleInfo, battleInfo)
   executingEngine!.sceneManager.loadScene('Battle')
@@ -118,6 +121,16 @@ export async function battle(wait = true) {
   while (wait && _isBattleStatus === BattleFinishStatus.Pending) {
     await nextFrame()
   }
+  executingEngine!.sceneManager.unloadScene('Battle')
+  if (checkBattleFinishStatus()) return
+  globalGameData.inputType = previousInputType
+}
+
+function checkBattleFinishStatus(): boolean {
+  if (_isBattleStatus === BattleFinishStatus.Faield) {
+    // back to tantegel castle
+  }
+  return false
 }
 
 export async function setBattleFinishStatus(val: BattleFinishStatus) {
@@ -161,4 +174,31 @@ export function lightCave(radius: number, time: number) {
   if (executingEngine!.sceneManager.currentScene.isCave) {
     globalGameData.light(radius, time)
   }
+}
+
+let meetEnemyStep = 0
+const meetEnemyRatio = 10
+
+export function checkMeetEnemy() {
+  if (globalGameData.notMeetEnemyStep > 0) {
+    globalGameData.notMeetEnemyStep--
+    console.log('-' + globalGameData.notMeetEnemyStep)
+  } else if (currentScene().isMeetEnemy) {
+    meetEnemyStep++
+    console.log(meetEnemyStep)
+    if (meetEnemyStep > 30) {
+      const ratio = Math.min(meetEnemyStep, meetEnemyRatio)
+      const isMeetEnemy = Math.random() * 100 < ratio
+      if (isMeetEnemy) meetEnemyStep = 0
+      return isMeetEnemy
+    } else if (meetEnemyRatio > 90) {
+      meetEnemyStep = 0
+      return true
+    }
+  }
+  return false
+}
+
+export function currentScene() {
+  return executingEngine!.sceneManager.currentScene
 }

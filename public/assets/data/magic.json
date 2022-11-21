@@ -62,7 +62,7 @@
     "cost": 2,
     "type": 0,
     "useType": 1,
-    "effect": "u:common:meetEnemy:127"
+    "effect": "u:common:notMeetEnemy:127"
   },
   {
     "id": 2009,
