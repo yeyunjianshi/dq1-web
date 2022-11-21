@@ -1,10 +1,24 @@
+export enum RenderLayer {
+  Default = 0,
+  Foreground = 10,
+  Window = 20,
+  Battle = 50,
+}
+
+type CanvasInfo = {
+  renderOrder: RenderLayer
+  canvas: HTMLCanvasElement
+  context: CanvasRenderingContext2D
+}
+
 export default class implements IRenderer {
   private _canvas: HTMLCanvasElement
   private _canvasContext: CanvasRenderingContext2D
-  private _cacheCanvas: HTMLCanvasElement
   private _cacheContext: CanvasRenderingContext2D
+  private _postProcesses: IPostProcess[] = []
+  private _cacheInfos: CanvasInfo[]
 
-  constructor(canvasId: string) {
+  constructor(canvasId: string, postProcesses: IPostProcess[] = []) {
     const canvas = document.getElementById(canvasId)
     if (!canvas) throw new Error(`Engine Error: 未找到对应的Canvas Id`)
     this._canvas = canvas as HTMLCanvasElement
@@ -12,12 +26,24 @@ export default class implements IRenderer {
       '2d'
     ) as CanvasRenderingContext2D
 
-    this._cacheCanvas = document.createElement('canvas')
-    this._cacheCanvas.width = this.width
-    this._cacheCanvas.height = this.height
-    this._cacheContext = this._cacheCanvas.getContext(
-      '2d'
-    ) as CanvasRenderingContext2D
+    this._cacheInfos = [
+      RenderLayer.Default,
+      RenderLayer.Foreground,
+      RenderLayer.Window,
+      RenderLayer.Battle,
+    ].map((renderOrder) => {
+      const cacheCanvas = document.createElement('canvas')
+      cacheCanvas.width = this.width
+      cacheCanvas.height = this.height
+      const cacheContext = cacheCanvas.getContext(
+        '2d'
+      ) as CanvasRenderingContext2D
+      return { renderOrder, canvas: cacheCanvas, context: cacheContext }
+    })
+    this._cacheInfos.sort((a, b) => a.renderOrder - b.renderOrder)
+    this._cacheContext = this._cacheInfos[0].context
+
+    this._postProcesses = postProcesses
   }
 
   get width() {
@@ -187,41 +213,6 @@ export default class implements IRenderer {
     this._cacheContext.restore()
   }
 
-  // drawText(
-  //   width: number,
-  //   text: string,
-  //   size = 20,
-  //   bold = false,
-  //   italic = false,
-  //   color = '#eee',
-  //   fontFamily = 'serif'
-  // ) {
-  //   if (text.length === 0) return
-
-  //   this._cacheContext.save()
-  //   this._cacheContext.font = `${italic} ${bold} ${size}px ${fontFamily}`
-  //   this._cacheContext.fillStyle = color
-  //   let currentLine = ''
-  //   const textLines: string[] = []
-
-  //   for (let i = 0; i < text.length; i++) {
-  //     const char = text[i]
-  //     if (char === '\n') {
-  //       textLines.push(currentLine)
-  //       currentLine = ''
-  //     } else {
-  //       const textMetrics = this._cacheContext.measureText(currentLine + char)
-  //       if (textMetrics.width > width) {
-  //         textLines.push(currentLine)
-  //         currentLine = char
-  //       }
-  //     }
-  //   }
-  //   textLines.push(currentLine)
-  // }
-
-  drawText() {}
-
   measureText(text: string, width: number, font: Required<Font>): LineInfo[] {
     if (text.length === 0) return [{ text: '', width: 0 }]
 
@@ -258,27 +249,59 @@ export default class implements IRenderer {
   }
 
   renderBegin(): void {
-    this._cacheContext.clearRect(0, 0, this.width, this.height)
+    this._cacheInfos.forEach((info) => {
+      info.context.clearRect(0, 0, this.width, this.height)
+    })
   }
 
   renderEnd(): void {
-    this._canvasContext.clearRect(0, 0, this.width, this.height)
-    this._canvasContext.drawImage(
-      this._cacheCanvas,
-      0,
-      0,
-      this.width,
-      this.height,
-      0,
-      0,
-      this.width,
-      this.height
-    )
+    if (this._postProcesses.length !== 0) {
+      this._postProcesses.forEach((p) => p.render(this))
+    } else {
+      this._canvasContext.clearRect(0, 0, this.width, this.height)
+      this._cacheInfos.forEach((ctx) => {
+        this._canvasContext.drawImage(
+          ctx.canvas,
+          0,
+          0,
+          this.width,
+          this.height,
+          0,
+          0,
+          this.width,
+          this.height
+        )
+      })
+    }
   }
 
   render(fn: () => void) {
     this.renderBegin()
     fn()
     this.renderEnd()
+  }
+
+  registerPostProcess(postProcess: IPostProcess): () => void {
+    this._postProcesses.push(postProcess)
+
+    return () => {
+      const index = this._postProcesses.indexOf(postProcess)
+      if (index >= 0) this._postProcesses.splice(index, 1)
+    }
+  }
+
+  selectRenderLayer(order: RenderLayer = RenderLayer.Default) {
+    const cacheInfo = this._cacheInfos.find(
+      (info) => info.renderOrder === order
+    )
+    this._cacheContext = cacheInfo?.context ?? this._cacheInfos[0].context
+  }
+
+  get selectedRendererContext(): CanvasRenderingContext2D {
+    return this._cacheContext
+  }
+
+  get cacheInfos(): CanvasInfo[] {
+    return this._cacheInfos
   }
 }

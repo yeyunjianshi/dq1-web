@@ -49,6 +49,10 @@ type Background = {
 
 type Audio = HTMLAudioElement
 
+interface IPostProcess {
+  render(renderer: IRenderer)
+}
+
 // load sprite, audio, json
 interface IResource {
   loadSprite(path: string): Promise<Sprite>
@@ -66,6 +70,8 @@ interface IRenderer {
   get width(): number
   get height(): number
   get context(): CanvasRenderingContext2D
+
+  registerPostProcess(postProcess: IPostProcess): () => void
 
   render(fn: () => void)
 
@@ -110,8 +116,6 @@ interface IRenderer {
     alpha?: number
   ): void
 
-  drawText(): void
-
   drawTextOneLine(
     text: string,
     x: number,
@@ -122,6 +126,9 @@ interface IRenderer {
   )
 
   measureText(text: string, width: number, font: Required<Font>): LineInfo[]
+
+  get selectedRendererContext(): CanvasRenderingContext2D
+  selectRenderLayer(layer: number)
 }
 
 interface ILayout {
@@ -184,6 +191,7 @@ type GameObjectData = {
   layoutGravity?: [HorizontalGravity, VerticalGaravity]
   pivot?: Vector2
   useScreenPosition?: boolean // 是否使用屏幕坐标，屏幕坐标开始时使用本身的相对坐标。当当前对象设置为true，所有子物体在渲染时都会转化为屏幕坐标
+  renderLayer?: number
 }
 
 type SceneData = {
@@ -195,6 +203,8 @@ type SceneData = {
   loadType?: number
   priority?: number // 场景渲染顺序
   hasCamera?: boolean // 是否有摄像机
+  isCave?: boolean
+  isMeetEnemy: boolean
 }
 
 type LayoutGravity = HorizontalGravity | VerticalGaravity

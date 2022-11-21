@@ -9,7 +9,7 @@ export enum GlobalEventType {
 
 const globalEvents = new Map<string, GlobalEventListener[]>()
 
-export function GlobalEventAddListener(
+export function GlobalEventRegisterListener(
   event: string,
   listener: GlobalEventListener
 ) {
@@ -29,7 +29,7 @@ export function GlobalEventOnce(event: string, listener: GlobalEventListener) {
     listener(args)
     GlobalEventRemoveListener(event, handler)
   }
-  GlobalEventAddListener(event, handler)
+  GlobalEventRegisterListener(event, handler)
 }
 
 export function GlobalEventRemoveListener(

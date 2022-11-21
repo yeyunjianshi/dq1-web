@@ -40,6 +40,8 @@ class GameObject implements LifeCycle {
   useScreenPosition = false
   useScreenPositionInRender = false
   events = new EventEmitter<symbol>()
+  configRenderLayer = -1
+  _renderLayer = -1
 
   constructor(
     parent: GameObject | null,
@@ -154,6 +156,7 @@ class GameObject implements LifeCycle {
 
   render() {
     if (this.active) {
+      this.engine.renderer.selectRenderLayer(this.renderOrder)
       this.renderBackground()
       this.renderComponents()
       this.renderChildrens()
@@ -377,6 +380,16 @@ class GameObject implements LifeCycle {
     const worldPosition: Vector2 = [this.worldX, this.worldY]
     const include: Vector2 = [this.measureWidth, this.measureHeight]
     return [worldPosition, vector2Add(worldPosition, include)]
+  }
+
+  get renderOrder() {
+    if (this.configRenderLayer === -1) {
+      if (this.parent)
+        this._renderLayer = this.parent === this ? 0 : this.parent._renderLayer
+    } else {
+      this._renderLayer = this.configRenderLayer
+    }
+    return this._renderLayer
   }
 }
 

@@ -3,7 +3,7 @@ import { GameplayComponent } from '../../engine/components'
 import { BoxCollider, BoxColliderData } from '../../engine/components/Collider'
 import {
   generateMapChestId,
-  messageCachePreviousInputType,
+  message,
 } from '../../engine/components/events/EventExector'
 import { AssetLoader } from '../../engine/resource'
 import { globalGameData } from '../asset/gameData'
@@ -47,7 +47,7 @@ export default class MapChest extends Component implements Interaction {
     })
     if (this.money > 0) itemsName.push(`${this.money}G`)
 
-    await messageCachePreviousInputType(`获得了${itemsName.join('、')}`)
+    await message(`获得了${itemsName.join('、')}`)
 
     globalGameData.finishEvent(this.id)
     this.refreshStatus()

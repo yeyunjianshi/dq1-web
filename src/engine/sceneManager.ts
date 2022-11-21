@@ -28,7 +28,7 @@ export function GetGameSceneData(sceneName: string): SceneData {
 }
 
 export default class SceneManger {
-  currentScene?: Scene
+  _currentScene?: Scene
 
   gameScenes: Map<string, Scene> = new Map<string, Scene>()
   loadingScene?: Scene
@@ -68,9 +68,9 @@ export default class SceneManger {
 
     scene.loadType = loadType ?? scene.loadType
 
-    this.currentScene = scene
+    this._currentScene = scene
     if (scene.loadType === SceneLoadType.Replace) {
-      this.currentScene = scene
+      this._currentScene = scene
       this._scenes = this._scenes.filter(
         (s) => s.loadType === SceneLoadType.Global
       )
@@ -88,6 +88,10 @@ export default class SceneManger {
 
   get scenes() {
     return this._scenes
+  }
+
+  get currentScene() {
+    return this._currentScene!
   }
 
   // popScene() {

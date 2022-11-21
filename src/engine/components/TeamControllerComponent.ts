@@ -49,12 +49,12 @@ export function checkNextCoordCanMove(
     GlobalSceneComponentMarker
   ) as SceneComponent
   return !sceneComponent.collider(
-    playerCenterPosition(CoordToPosition(coord)),
+    PlayerCenterPosition(CoordToPosition(coord)),
     layer
   )
 }
 
-function playerCenterPosition(pos: Vector2): Vector2 {
+export function PlayerCenterPosition(pos: Vector2): Vector2 {
   return vector2Add(pos, [DefaultTileSize >> 1, DefaultTileSize >> 1])
 }
 
@@ -197,7 +197,7 @@ export default class TeamControllerComponent
     const nextPosition = CoordToPosition(
       nextCoordByDirection(this._head.coord, this._head.direction)
     )
-    const playerNextCenterPosition = playerCenterPosition(nextPosition)
+    const playerNextCenterPosition = PlayerCenterPosition(nextPosition)
     const interaction = sceneComponent.triggerInteractive(
       playerNextCenterPosition,
       EventTriggerWhen.InteractiveConfirm
@@ -345,6 +345,10 @@ export default class TeamControllerComponent
 
   get headPosition() {
     return vector2Add(this._head.position, this.worldPosition)
+  }
+
+  get headCameraPosition() {
+    return vector2Add(this.cameraPosition, this.headPosition)
   }
 
   parseData(assetLoader: AssetLoader, data: TeamControllerData): void {

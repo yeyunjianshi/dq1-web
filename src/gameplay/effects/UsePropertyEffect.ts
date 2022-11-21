@@ -1,5 +1,6 @@
 import { HasType, range } from '../../engine/math'
 import Character from '../asset/character'
+import { globalGameData } from '../asset/gameData'
 import BattleCharacter from '../battle/BattleCharacter'
 import {
   Calacute,
@@ -33,14 +34,22 @@ export default class UsePeropertyEffect
     type: CommandTriggerType,
     ...args: unknown[]
   ) {
+    let hero
     if (
-      (when & CommandTriggerWhen.All) > 0 &&
+      (when & CommandTriggerWhen.Battle) > 0 &&
       type === CommandTriggerType.Use
     ) {
-      const hero = HasType(this.when, CommandTriggerWhen.Battle)
+      hero = HasType(this.when, CommandTriggerWhen.Battle)
         ? (args[0] as BattleCharacter).character
         : (args[0] as Character)
+    } else if (
+      HasType(when, CommandTriggerWhen.Common) &&
+      type === CommandTriggerType.Use
+    ) {
+      hero = globalGameData.hero
+    }
 
+    if (hero) {
       const value = range(this.values)
       const previouseValue = hero[this.property as PropertyType]
       if (
@@ -58,6 +67,8 @@ export default class UsePeropertyEffect
         hero[this.property as PropertyType] - previouseValue
       }`
     }
+
+    return ''
   }
 
   clone(init = true) {

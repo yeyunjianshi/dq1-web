@@ -1,5 +1,5 @@
 import { InnerGameComponent } from '.'
-import MapChest from '../../gameplay/inventory/MapChest'
+import MapChest from '../../gameplay/map/MapChest'
 import Component from '../component'
 import {
   GlobalSceneComponentMarker,

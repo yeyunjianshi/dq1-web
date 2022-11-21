@@ -1,4 +1,5 @@
 import { InnerGameComponent } from '..'
+import { globalGameData } from '../../../gameplay/asset/gameData'
 import Component from '../../component'
 import Engine, { GlobalTeamControllerMarker } from '../../engine'
 import { Direction } from '../../input'
@@ -20,8 +21,11 @@ async function transitionToScene(
 ) {
   const sceneManager = engine.sceneManager
   let nextScene = sceneManager.currentScene
-  if (sceneManager.currentScene?.name ?? '__$$$$__' !== nextSceneName) {
+  let isSameScene = true
+
+  if (sceneManager.currentScene.name ?? '__$$$$__' !== nextSceneName) {
     nextScene = sceneManager.loadScene(nextSceneName, SceneLoadType.Replace)
+    isSameScene = false
     while (engine.sceneManager.loading) {
       await nextFrame()
     }
@@ -35,6 +39,8 @@ async function transitionToScene(
     throw new Error(
       `Transition to next scene error: not find ${nextSceneName}-${tag}`
     )
+
+  globalGameData.reinitWhenChangeScene(!isSameScene)
 
   const moveDestination = destination as SceneTransitionDestination
   const teamController = engine.getVariable<TeamControllerComponent>(

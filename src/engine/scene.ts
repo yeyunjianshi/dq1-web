@@ -17,6 +17,8 @@ export default class implements LifeCycle {
   isAsync = false
   priority = 10
   loadType: SceneLoadType = SceneLoadType.Replace
+  isMeetEnemy = false
+  isCave = false
 
   constructor(name = '', rootObject: GameObject, engine: Engine) {
     this.name = name

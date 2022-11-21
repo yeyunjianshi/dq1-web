@@ -88,25 +88,24 @@ export async function task(callback: (...args: unknown[]) => Promise<unknown>) {
   executingEventStatus = EventStatus.Finish
 }
 
-export async function talk(characterName: string, text: string, clear = false) {
+export async function talk(
+  characterName: string,
+  text: string,
+  clear = false,
+  callback?: () => void
+) {
   const globalWindow =
     executingEngine!.getVariable<GlobalWindowComponent>(GlobalWindowMarker)
 
   const previouseInputType = globalGameData.inputType
   globalGameData.inputType = InputType.Message
   await globalWindow.messageWindow.talk(characterName, text, clear)
+  callback && (await callback())
   globalGameData.inputType = previouseInputType
 }
 
-export async function message(text: string) {
-  await talk('', text, true)
-}
-
-export async function messageCachePreviousInputType(text: string) {
-  const previouseInputType = globalGameData.inputType
-  globalGameData.inputType = InputType.Message
-  await message(text)
-  globalGameData.inputType = previouseInputType
+export async function message(text: string, callback?: () => void) {
+  await talk('', text, true, callback)
 }
 
 let _isBattleStatus: BattleFinishStatus = BattleFinishStatus.Pending
@@ -156,4 +155,10 @@ export function heroName() {
 
 export function finishCurrentEvent() {
   return globalGameData.finishEvent(executingEvent!.eventId)
+}
+
+export function lightCave(radius: number, time: number) {
+  if (executingEngine!.sceneManager.currentScene.isCave) {
+    globalGameData.light(radius, time)
+  }
 }

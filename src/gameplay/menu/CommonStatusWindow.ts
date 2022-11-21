@@ -2,7 +2,10 @@ import { GameplayComponent } from '../../engine/components'
 import BaseWindow from '../../engine/components/BaseWindow'
 import TextComponent from '../../engine/components/TextComponent'
 import { globalGameData } from '../asset/gameData'
-import { GlobalEventType, GlobalEventAddListener } from '../asset/globaEvents'
+import {
+  GlobalEventType,
+  GlobalEventRegisterListener,
+} from '../asset/globaEvents'
 
 @GameplayComponent
 export default class CommonStatusWindow extends BaseWindow {
@@ -31,7 +34,7 @@ export default class CommonStatusWindow extends BaseWindow {
 
     this.refresh()
 
-    GlobalEventAddListener(GlobalEventType.ChracterStatusChanged, () => {
+    GlobalEventRegisterListener(GlobalEventType.ChracterStatusChanged, () => {
       this.refresh()
     })
   }

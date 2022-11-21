@@ -75,7 +75,10 @@ export default class BattleCharacter {
 
   calcBufferEveryTurn() {
     const showText = this._buffers
-      .map((buff) => buff.turnsDownEveryTurn())
+      .map(
+        (buff) => (buff.turnsDownEveryTurn && buff.turnsDownEveryTurn()) || ''
+      )
+      .filter((s) => s.trim().length > 0)
       .join('\n')
     this._buffers = this._buffers.filter((b) => b.turns !== 0)
     return showText.length > 0 ? this.name + showText : ''

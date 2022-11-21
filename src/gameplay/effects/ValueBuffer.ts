@@ -33,10 +33,6 @@ export class ValueBuffer implements Buffer {
     return damage
   }
 
-  turnsDownEveryTurn(): string {
-    return ''
-  }
-
   clone(init = true) {
     return Object.assign(
       new ValueBuffer(

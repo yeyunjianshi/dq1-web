@@ -15,7 +15,8 @@
     "sellPrice": 4,
     "canUse": 3,
     "type": 16,
-    "effect": "u:common:light;use:battle:damage:4-6"
+    "effect": "u:common:light:120-0;use:battle:damage:4-6",
+    "useCommonText": "{name}点燃了火把"
   },
   {
     "id": 3,

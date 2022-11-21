@@ -10,7 +10,10 @@ import { globalGameData } from '../asset/gameData'
 import { ItemSlot } from '../inventory/inventory'
 import { BattleCharacterCommand, BattleCommand } from './command/Command'
 import Magic from '../asset/magic'
-import { GlobalEventAddListener, GlobalEventType } from '../asset/globaEvents'
+import {
+  GlobalEventRegisterListener,
+  GlobalEventType,
+} from '../asset/globaEvents'
 
 export default class BattleUI extends BaseWindow {
   private _commandsWindow: ListComponent
@@ -68,7 +71,7 @@ export default class BattleUI extends BaseWindow {
     this._enemyNameText.setText(`${enemyName}`)
     this.refreshHero()
 
-    this._removeStatusListener = GlobalEventAddListener(
+    this._removeStatusListener = GlobalEventRegisterListener(
       GlobalEventType.ChracterStatusChanged,
       () => {
         this.refreshHero()

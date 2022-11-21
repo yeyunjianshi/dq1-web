@@ -5,6 +5,7 @@
   "height": -2,
   "loadType": 1,
   "hasCamera": false,
+  "priority": 1000,
   "root": {
     "x": 0,
     "y": 0,
@@ -13,6 +14,7 @@
     "active": true,
     "alpha": 1,
     "useScreenPosition": true,
+    "renderLayer": 50,
     "components": [
       {
         "type": "BattleSystem"

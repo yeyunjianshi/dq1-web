@@ -13,6 +13,7 @@
     "active": true,
     "alpha": 1,
     "useScreenPosition": true,
+    "renderLayer": 20,
     "components": [
       {
         "type": "GlobalWindowComponent"

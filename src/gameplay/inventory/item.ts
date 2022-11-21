@@ -1,4 +1,9 @@
-import { ChangeWhen, Command, CommandCalacuteType } from '../effects/buffer'
+import {
+  ChangeWhen,
+  Command,
+  CommandCalacuteType,
+  parseUseEffect,
+} from '../effects/buffer'
 import UsePeropertyEffect from '../effects/UsePropertyEffect'
 
 export enum ItemType {
@@ -36,6 +41,8 @@ export default class Item {
   isCanDiscard = true
   useEffects: Command[] = []
   targetIsEnemy = true
+  useCommonText = ''
+  useBattleText = ''
 
   get isCanEquip(): boolean {
     return (
@@ -97,6 +104,8 @@ export function parseItem(data: ItemData): Item {
   item.isCanCommonUse = ((data.canUse ?? 0) & 0b01) > 0
   item.isCanBattleUse = ((data.canUse ?? 0) & 0b10) > 0
   item.useCount = typeof data.useCount === 'number' ? data.useCount : 1
+  item.useCommonText = data.useCommonText || item.useCommonText
+  item.useBattleText = data.useBattleText || item.useBattleText
   if (data.effect && data.effect.length > 0)
     parseEffect(data.effect ?? '', item)
   return item
@@ -126,30 +135,13 @@ export function parseNumberValue(
 }
 
 export function parseEffect(effectString: string, item: Item) {
+  if (effectString.trim().length === 0) return
   const effectCommands = effectString.split(';').filter((s) => s.length > 0)
-  console.log(item.id + '   ' + effectString)
+
   effectCommands.map((effectCommand) => {
     const [command, ...args] = effectCommand.split(':')
     if (command === 'u') {
-      if (args.length >= 2) {
-        const when = ChangeWhen(args[0])
-        if (when > 0) {
-          if (args[1] === 'light') {
-            return
-          } else if (args[1] === 'move') {
-            return
-          } else {
-            item.useEffects.push(
-              new UsePeropertyEffect(
-                when,
-                args[1],
-                ...parseNumberValue(args[2])
-              )
-            )
-          }
-        }
-      }
-      return
+      return parseUseEffect(effectString, item)
     } else if (command === 'e') {
       if (args.length >= 2) {
         if (args[0] === 'attack') item.ability.attack = parseInt(args[1], 10)
@@ -173,4 +165,6 @@ export type ItemData = {
   effect?: string
   useCount?: number
   isCanDiscard?: boolean
+  useCommonText?: string
+  useBattleText?: string
 }

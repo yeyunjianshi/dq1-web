@@ -2,7 +2,10 @@ import { GameplayComponent } from '../../engine/components'
 import BaseWindow from '../../engine/components/BaseWindow'
 import TextComponent from '../../engine/components/TextComponent'
 import { globalGameData } from '../asset/gameData'
-import { GlobalEventAddListener, GlobalEventType } from '../asset/globaEvents'
+import {
+  GlobalEventRegisterListener,
+  GlobalEventType,
+} from '../asset/globaEvents'
 
 @GameplayComponent
 export default class CommonGoldWindow extends BaseWindow {
@@ -16,7 +19,7 @@ export default class CommonGoldWindow extends BaseWindow {
 
     this.refresh()
 
-    GlobalEventAddListener(GlobalEventType.GoldChanged, () => {
+    GlobalEventRegisterListener(GlobalEventType.GoldChanged, () => {
       this.refresh()
     })
   }

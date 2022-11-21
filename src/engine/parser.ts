@@ -65,14 +65,16 @@ export function parseGameObject(
   gameObject.configWidth = data.width
   gameObject.configHeight = data.height
   gameObject.active = data.active
-  gameObject.alpha = data.alpha ?? 1
+  gameObject.alpha = data.alpha === undefined ? 1 : data.alpha
   gameObject.layoutGravity = data.layoutGravity ?? ['left', 'top']
-  gameObject.pivot = data.pivot ?? [0, 0]
+  gameObject.pivot = data.pivot || [0, 0]
   gameObject.useScreenPosition =
     typeof data.useScreenPosition === 'boolean' ? data.useScreenPosition : false
   gameObject.useScreenPositionInRender =
     (parent !== null && parent.useScreenPositionInRender) ||
     gameObject.useScreenPosition
+  gameObject.configRenderLayer =
+    data.renderLayer === undefined ? -1 : data.renderLayer
 
   if (
     typeof data.background === 'string' &&
@@ -150,6 +152,10 @@ export function parseScene(data: SceneData, engine: Engine) {
   scene.bgm = data.bgm
   scene.loadType = data.loadType ?? SceneLoadType.Replace
   scene.priority = data.priority ?? DefaultScenePriority
+  scene.isCave = typeof data.isCave === 'boolean' ? data.isCave : false
+  scene.isMeetEnemy =
+    typeof data.isMeetEnemy === 'boolean' ? data.isMeetEnemy : false
+
   scene.isSetCamera =
     typeof data.hasCamera === 'boolean' ? data.hasCamera : true
   if (data.bgm) {

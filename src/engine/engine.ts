@@ -86,10 +86,12 @@ type EngineConfig = {
   componentContainer?: Map<string, ComponentConstruct>
   sceneManager?: SceneManger
   audios?: AudioManager
+  postProcess?: IPostProcess[]
 }
 
-export function createEngine(config: EngineConfig | undefined = {}) {
-  const renderer = config.renderer ?? new CanvasRenderer('core')
+export function createEngine(config: EngineConfig = {}) {
+  const renderer =
+    config.renderer ?? new CanvasRenderer('core', config.postProcess || [])
   const resources = config.resources ?? new Resources()
   const audios = new AudioManager(resources)
   const time = config.time ?? new Time()

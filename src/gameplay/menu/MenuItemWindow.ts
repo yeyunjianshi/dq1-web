@@ -1,9 +1,11 @@
 import { GameplayComponent } from '../../engine/components'
 import BaseWindow from '../../engine/components/BaseWindow'
+import { message } from '../../engine/components/events/EventExector'
 import ListComponent, {
   KeyValueAdapter,
   TextAdapter,
 } from '../../engine/components/ListComponent'
+import { useTextPostProcessing } from '../../engine/helper'
 import { globalGameData } from '../asset/gameData'
 import { CommandTriggerType, CommandTriggerWhen } from '../effects/buffer'
 import { DefaultRemoveEquipItemSlot, ItemSlot } from '../inventory/inventory'
@@ -74,11 +76,29 @@ export default class MenuItemWindow extends BaseWindow {
         this.setSelectItem(true)
         this.refreshItemData()
       } else if (command === 'use') {
-        globalGameData.inventoryUseItem(
-          this._selectedItem.id,
-          CommandTriggerWhen.Common,
-          CommandTriggerType.Use
-        )
+        const item = globalGameData.inventory.getItem(this._selectedItem.id)
+        const useText =
+          item.useEffects
+            .map((effect) => {
+              return effect.execute(
+                CommandTriggerWhen.Common,
+                CommandTriggerType.Use
+              )
+            })
+            .filter((s) => s.trim().length > 0)
+            .join('\n') || item.useCommonText.trim()
+
+        if (useText.length > 0) {
+          message(
+            useTextPostProcessing(useText, globalGameData.hero.name),
+            async () => {
+              globalGameData.inventory.removeSlotId(this._selectedItem!.id)
+              this.setSelectItem(true)
+              this.refreshDealData()
+              this.refreshItemData()
+            }
+          )
+        }
       }
       this.setSelectItem(true)
       this.refreshDealData()
