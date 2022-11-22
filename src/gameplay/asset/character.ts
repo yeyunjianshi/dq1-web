@@ -1,6 +1,10 @@
 import { clamp } from '../../engine/math'
 import Magic from './magic'
-import { Buffer } from '../effects/buffer'
+import {
+  Buffer,
+  CommandTriggerType,
+  CommandTriggerWhen,
+} from '../effects/buffer'
 import { DefaultNoneItemSlot, ItemSlot } from '../inventory/inventory'
 import { HasType, ItemEquipmentType, ItemType } from '../inventory/item'
 import { globalGameData } from './gameData'
@@ -139,10 +143,19 @@ export default class Character {
         this.accessoriesId = equipment.id
         break
     }
-    if (preItemSlot !== DefaultNoneItemSlot) preItemSlot.isEquip = false
+    if (preItemSlot !== DefaultNoneItemSlot) {
+      preItemSlot.isEquip = false
+      this.buffers = this.buffers.filter((b) => b.owner !== equipment.id)
+    }
     if (equipment !== DefaultNoneItemSlot) {
       equipment.isEquip = true
-      // buffer
+      this.buffers.push(
+        ...equipment.item.buffers.map((b) => {
+          const buff = b.clone()
+          buff.owner = equipment.id
+          return buff
+        })
+      )
     }
     return preItemSlot
   }
@@ -226,6 +239,12 @@ export default class Character {
     }
     GlobalEventEmit(GlobalEventType.ChracterStatusChanged, this)
     return ability
+  }
+
+  triggerMoveBuffers() {
+    this.buffers.forEach((b) =>
+      b.execute(CommandTriggerWhen.Common, CommandTriggerType.Move)
+    )
   }
 
   clone() {

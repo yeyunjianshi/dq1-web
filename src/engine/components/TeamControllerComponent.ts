@@ -163,6 +163,8 @@ export default class TeamControllerComponent
 
       if (moveDistance <= moveDelta) {
         this.moveToTarget() // 移动到目标坐标
+        // 检查毒池和回复Buff检测
+        globalGameData.hero.triggerMoveBuffers()
         // 检查是否有事件发生
         if (this.checkDestination()) {
           return

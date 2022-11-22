@@ -2,8 +2,8 @@
   "name": "TantegelCastle2",
   "width": 640,
   "height": 768,
-  "isMeetEnemy": true,
-  "isCave": true,
+  "isMeetEnemy": false,
+  "isCave": false,
   "root": {
     "x": 0,
     "y": 0,

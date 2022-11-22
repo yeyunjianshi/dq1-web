@@ -1,32 +1,27 @@
-import Character from '../asset/character'
+import { globalGameData } from '../asset/gameData'
 import { CommandTriggerWhen, CommandTriggerType, Buffer } from './buffer'
 
 export default class MoveAddHPBuffer implements Buffer {
   owner = 0
-  step = 4
+  turns = 0
   currentStep = 0
 
-  execute(
-    when: CommandTriggerWhen,
-    type: CommandTriggerType,
-    ...args: unknown[]
-  ): any {
+  constructor(public step: number) {}
+
+  execute(when: CommandTriggerWhen, type: CommandTriggerType) {
     if (
       when === CommandTriggerWhen.Common &&
       type === CommandTriggerType.Move
     ) {
-      const hero = args[0] as Character
       if (++this.currentStep >= this.step) {
         this.currentStep = 0
-        hero.HP += 1
+        globalGameData.hero.HP += 1
       }
     }
+    return ''
   }
 
-  clone(init = false): MoveAddHPBuffer {
-    return Object.assign(new MoveAddHPBuffer(), {
-      ...this,
-      currentStep: init ? 0 : this.currentStep,
-    })
+  clone(): Buffer {
+    return new MoveAddHPBuffer(this.step)
   }
 }

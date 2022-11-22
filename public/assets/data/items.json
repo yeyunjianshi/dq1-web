@@ -35,7 +35,7 @@
     "canUse": 3,
     "type": 16,
     "effect": "u:common:notMeetEnemy:127;u:battle:damage:16-20",
-    "useCommonText": "{name}使用了圣水\n暂时不会遭遇敌人了。"
+    "useCommonText": "{name}使用了圣水\n暂时不会遭遇敌人了"
   },
   {
     "id": 5,
@@ -206,7 +206,7 @@
     "sellPrice": 7700,
     "canUse": 0,
     "type": 2,
-    "effect": "e:defend:24;e:buffer:magicHurt:-25%;e:buffer:move:4:1"
+    "effect": "e:defend:24;e:buffer:magicHurt:-25%;e:buffer:moveAddHP:4:1"
   },
   {
     "id": 207,
@@ -215,7 +215,7 @@
     "sellPrice": -1,
     "canUse": 0,
     "type": 2,
-    "effect": "e:defend:40;e:buffer:magicHurt:-25%;e:buffer:move:1:1;e:buffer:posionResistance"
+    "effect": "e:defend:40;e:buffer:magicHurt:-25%;e:buffer:moveAddHP:1:1;e:buffer:posionResistance"
   },
 
   {

@@ -1,4 +1,10 @@
-import { Command, CommandCalacuteType, parseUseEffect } from '../effects/buffer'
+import {
+  Buffer,
+  Command,
+  CommandCalacuteType,
+  parseUseEffect,
+} from '../effects/buffer'
+import MoveAddHPBuffer from '../effects/MoveAddHPBuffer'
 
 export enum ItemType {
   Weapon = 0b000001,
@@ -37,6 +43,7 @@ export default class Item {
   targetIsEnemy = true
   useCommonText = ''
   useBattleText = ''
+  buffers: Buffer[] = []
 
   get isCanEquip(): boolean {
     return (
@@ -142,6 +149,9 @@ export function parseEffect(effectString: string, item: Item) {
         else if (args[0] === 'defend')
           item.ability.defend = parseInt(args[1], 10)
         else if (args[0] === 'buffer') {
+          if (args[1] === 'moveAddHP') {
+            item.buffers.push(new MoveAddHPBuffer(parseInt(args[2])))
+          }
           return
         }
       }
