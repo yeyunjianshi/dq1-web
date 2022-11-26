@@ -50,6 +50,7 @@ export function checkNextCoordCanMove(
     GlobalSceneComponentMarker
   ) as SceneComponent
   return !sceneComponent.collider(
+    coord,
     PlayerCenterPosition(CoordToPosition(coord)),
     layer
   )

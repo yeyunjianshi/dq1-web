@@ -14,7 +14,8 @@
     "alpha": 1,
     "components": [
       {
-        "type": "$SceneComponent"
+        "type": "$SceneComponent",
+        "mapData": "map/TantegelCastle2.json"
       }
     ],
     "children": [

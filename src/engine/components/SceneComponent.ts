@@ -5,7 +5,8 @@ import {
   GlobalSceneComponentMarker,
   GlobalTeamControllerMarker,
 } from '../engine'
-import { vector2Include } from '../math'
+import { HasType, vector2Include } from '../math'
+import { AssetLoader } from '../resource'
 import Collider, { ColliderLayerType } from './Collider'
 import { EventTriggerWhen, QuestEvent } from './events/QuestEvent'
 import {
@@ -14,6 +15,22 @@ import {
 } from './events/Transition'
 import TeamControllerComponent from './TeamControllerComponent'
 
+type SceneComponentData = {
+  type: string
+  mapData: string
+}
+
+type MapData = {
+  data: number[]
+  width: number
+  height: number
+}
+
+enum TileMapType {
+  None = 0b00,
+  Collider = 0b01,
+}
+
 @InnerGameComponent
 export default class SceneComponent extends Component {
   private _transitions: SceneTransition[] = []
@@ -21,6 +38,7 @@ export default class SceneComponent extends Component {
   private _questEvents: QuestEvent[] = []
   private _mapChests: MapChest[] = []
   private _colliders: Collider[] = []
+  private _mapData: { name?: string; data?: MapData } = {}
 
   awake(): void {
     this.engine.setVariable(GlobalSceneComponentMarker, this)
@@ -71,7 +89,9 @@ export default class SceneComponent extends Component {
     })
   }
 
-  collider(position: Vector2, layer: ColliderLayerType) {
+  collider(coord: Vector2, position: Vector2, layer: ColliderLayerType) {
+    if (this.colliderMapBlock(coord)) return true
+
     const teamController = this.engine.getVariable(
       GlobalTeamControllerMarker
     ) as TeamControllerComponent
@@ -82,5 +102,30 @@ export default class SceneComponent extends Component {
         (c) => c.root.active && c.active && c.collider(position, layer)
       )
     )
+  }
+
+  colliderMapBlock(coord: Vector2) {
+    if (!this._mapData.name) return false
+    if (!this._mapData.data) return true
+
+    return (
+      coord[0] >= this._mapData.data.width ||
+      coord[1] >= this._mapData.data.height ||
+      (coord[0] < 0 && coord[1] < 0) ||
+      HasType(
+        this._mapData.data.data[coord[0] + coord[1] * this._mapData.data.width],
+        TileMapType.Collider
+      )
+    )
+  }
+
+  parseData(assetLoader: AssetLoader, data: SceneComponentData): void {
+    const mapDataAsset = this.resource
+      .loadJson<MapData>(data.mapData)
+      .then((mapData) => {
+        this._mapData.name = data.mapData
+        this._mapData.data = mapData
+      })
+    assetLoader.addAssets(mapDataAsset)
   }
 }
