@@ -41,6 +41,8 @@ export class BoxCollider extends Collider {
 
   collider(point: Vector2, layer: ColliderLayerType): boolean {
     return (
+      this.root.active &&
+      this.active &&
       GetColliderLayerInteractive(this.layer, layer) &&
       vector2Include(point, [
         this.worldPosition,

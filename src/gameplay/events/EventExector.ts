@@ -1,14 +1,15 @@
-import Engine, { GlobalBattleInfo, GlobalWindowMarker } from '../../engine'
-import { nextFrame } from '../../time'
+import Engine, {
+  GlobalBattleInfo,
+  GlobalWindowMarker,
+} from '../../engine/engine'
+import { nextFrame } from '../../engine/time'
 import GlobalWindowComponent, {
   WindowMarker,
-} from '../../../gameplay/menu/GlobalWindowComponent'
+} from '../menu/GlobalWindowComponent'
 import { QuestEvent } from './QuestEvent'
-import { globalGameData, InputType } from '../../../gameplay/asset/gameData'
-import {
-  BattleFinishStatus,
-  GenerateBattleInfo,
-} from '../../../gameplay/battle/BattleData'
+import { globalGameData, InputType } from '../asset/gameData'
+import { BattleFinishStatus, GenerateBattleInfo } from '../battle/BattleData'
+import { useTextPostProcessing } from '../../engine/helper'
 
 const gameEvents = new Map<string, string>()
 
@@ -59,18 +60,23 @@ export function AddExecuteEvent(event: QuestEvent) {
   eventQueue.sort((a, b) => a.priority - b.priority)
 }
 
+export const EventExecuteStartMarker = Symbol()
+export const EventExecuteEndMarker = Symbol()
+
 export async function Execute(engine: Engine) {
   executingEngine = engine
   executingEventStatus = EventStatus.Pending
   // 高优先级先执行
   while (eventQueue.length > 0) {
     executingEvent = eventQueue.pop() as QuestEvent
+    executingEvent.root.events.emit(EventExecuteStartMarker)
     const eventScript = GetGameEventScript(executingEvent.eventId)
     executingEventStatus = EventStatus.Executing
     eval(eventScript)
     while (isExecutingEventFinishOrCancel) {
       await nextFrame()
     }
+    executingEvent.root.events.emit(EventExecuteEndMarker)
   }
 }
 
@@ -92,6 +98,32 @@ export async function talk(
   characterName: string,
   text: string,
   clear = false,
+  select = false,
+  callback?: () => void
+): Promise<boolean> {
+  const globalWindow =
+    executingEngine!.getVariable<GlobalWindowComponent>(GlobalWindowMarker)
+
+  const previouseInputType = globalGameData.inputType
+  globalGameData.inputType = InputType.Message
+
+  const ret = await globalWindow.messageWindow.talk(
+    generateMessageText(characterName),
+    generateMessageText(text),
+    clear,
+    select
+  )
+  callback && (await callback())
+  globalGameData.inputType = previouseInputType
+
+  return ret
+}
+
+export async function talkWithJudge(
+  characterName: string,
+  text: string,
+  clear = false,
+  select = true,
   callback?: () => void
 ) {
   const globalWindow =
@@ -101,16 +133,17 @@ export async function talk(
   globalGameData.inputType = InputType.Message
 
   await globalWindow.messageWindow.talk(
-    executingEngine!.i18n.getValue(characterName),
-    executingEngine!.i18n.getValue(text),
-    clear
+    generateMessageText(characterName),
+    generateMessageText(text),
+    clear,
+    select
   )
   callback && (await callback())
   globalGameData.inputType = previouseInputType
 }
 
 export async function message(text: string, callback?: () => void) {
-  await talk('', text, true, callback)
+  await talk('', text, true, false, callback)
 }
 
 let _isBattleStatus: BattleFinishStatus = BattleFinishStatus.Pending
@@ -187,10 +220,8 @@ const meetEnemyRatio = 10
 export function checkMeetEnemy() {
   if (globalGameData.notMeetEnemyStep > 0) {
     globalGameData.notMeetEnemyStep--
-    console.log('-' + globalGameData.notMeetEnemyStep)
   } else if (currentScene().isMeetEnemy) {
     meetEnemyStep++
-    console.log(meetEnemyStep)
     if (meetEnemyStep > 30) {
       const ratio = Math.min(meetEnemyStep, meetEnemyRatio)
       const isMeetEnemy = Math.random() * 100 < ratio
@@ -206,4 +237,8 @@ export function checkMeetEnemy() {
 
 export function currentScene() {
   return executingEngine!.sceneManager.currentScene
+}
+
+export function generateMessageText(text: string) {
+  return useTextPostProcessing(executingEngine!.i18n.getValue(text), heroName())
 }

@@ -1,31 +1,39 @@
-import { InnerGameComponent } from '.'
-import { GlobalTeamControllerMarker } from '../engine'
+import { GameplayComponent } from '../../engine/components'
+import {
+  ColliderLayerType,
+  BoxCollider,
+  BoxColliderData,
+} from '../../engine/components/Collider'
+import MoveComponent, {
+  MoveComponentData,
+  MoveState,
+  DefaultMoveState,
+  CoordToPosition,
+  PositionToCoord,
+  DefalutMoveTileWidth,
+  DefaultMoveTileHeight,
+} from '../../engine/components/MoveComponent'
+import { GlobalTeamControllerMarker } from '../../engine/engine'
 import {
   Direction,
   DirectionToCoord,
   getDirectionByCoord,
   oppsiteDirection,
-} from '../input'
+} from '../../engine/input'
 import {
-  distance,
-  lerpVector2,
   random,
   vector2Add,
   vector2Include,
   vector2Minus,
-} from '../math'
-import { AssetLoader } from '../resource'
-import { BoxCollider, BoxColliderData, ColliderLayerType } from './Collider'
-import { IntercativeMarker } from './events/QuestEvent'
-import MoveComponent, {
-  CoordToPosition,
-  DefalutMoveTileWidth,
-  DefaultMoveState,
-  DefaultMoveTileHeight,
-  MoveComponentData,
-  MoveState,
-  PositionToCoord,
-} from './MoveComponent'
+  range,
+  distance,
+  lerpVector2,
+} from '../../engine/math'
+import { AssetLoader } from '../../engine/resource'
+import {
+  EventExecuteStartMarker,
+  EventExecuteEndMarker,
+} from '../events/EventExector'
 import TeamControllerComponent, {
   checkNextCoordCanMove,
 } from './TeamControllerComponent'
@@ -48,13 +56,13 @@ type NPCRandomPathData = {
 type NPCData = {
   type: string
   moveSpeed?: number
-  moveWaitTime?: number
+  moveWaitTime?: number | Vector2
   path?: NPCFixedPathData | NPCRandomPathData
   colliderSize?: Vector2
 } & MoveComponentData
 
 const DefaultMoveSpeed = 32
-const DefaultMoveWaitTime = 1000
+const DefaultMoveWaitTime: Vector2 = [2000, 4000]
 const DefaultPathData: Required<NPCRandomPathData> = {
   type: 'random',
   centerCoord: [0, 0] as Vector2,
@@ -65,12 +73,14 @@ const DefaultPathData: Required<NPCRandomPathData> = {
   ],
 }
 
-@InnerGameComponent
+@GameplayComponent
 export class NPCControllerComponent extends MoveComponent {
   moveSpeed = DefaultMoveSpeed
-  moveWaitTime = DefaultMoveWaitTime
+  moveWaitTime = 2000
+  configMoveWaitTime: Vector2 = DefaultMoveWaitTime
   path: Required<NPCFixedPathData | NPCRandomPathData> = DefaultPathData
 
+  isTalking = false
   isMoving = false
   moveState: MoveState & { pathIndex: number; reverse: boolean } = {
     ...DefaultMoveState,
@@ -83,14 +93,17 @@ export class NPCControllerComponent extends MoveComponent {
     super.start()
 
     this.root.events.register((marker) => {
-      if (marker !== IntercativeMarker) return
-      this.talk()
+      if (marker === EventExecuteStartMarker) {
+        this.talk()
+      } else if (marker === EventExecuteEndMarker) {
+        this.isTalking = false
+      }
     })
   }
 
   update() {
     if (!this.inited) return
-    if (this.moveSpeed > 0) this.move()
+    if (this.moveSpeed > 0 && !this.isTalking) this.move()
     super.update()
   }
 
@@ -143,6 +156,8 @@ export class NPCControllerComponent extends MoveComponent {
     if (!this.isMoving) {
       this._moveDelta += this.time.scaleDeltaTime
       if (this._moveDelta < this.moveWaitTime) return
+
+      this.moveWaitTime = range(this.configMoveWaitTime)
       this._moveDelta = 0
 
       const [nextCoord, nextDirection] = this.findNextCoord()
@@ -188,6 +203,8 @@ export class NPCControllerComponent extends MoveComponent {
   }
 
   talk() {
+    this.isTalking = true
+
     const teamController = this.engine.getVariable(
       GlobalTeamControllerMarker
     ) as TeamControllerComponent
@@ -200,7 +217,13 @@ export class NPCControllerComponent extends MoveComponent {
     super.parseData(assetLoader, data)
 
     this.moveSpeed = data.moveSpeed ?? this.moveSpeed
-    this.moveWaitTime = data.moveWaitTime ?? this.moveWaitTime
+    this.configMoveWaitTime =
+      typeof data.moveWaitTime === 'undefined'
+        ? this.configMoveWaitTime
+        : typeof data.moveWaitTime === 'number'
+        ? [data.moveWaitTime, data.moveWaitTime]
+        : data.moveWaitTime
+    this.moveWaitTime = range(this.configMoveWaitTime)
     if (data.path) {
       if (data.path.type === 'random') {
         const dataPath = data.path as NPCRandomPathData

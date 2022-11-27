@@ -86,7 +86,6 @@ export function parseUseEffect(
   if (effectString.trim().length === 0) return
 
   const effectCommands = effectString.split(';').filter((s) => s.length > 0)
-  console.log(owner.id + '   ' + effectString)
   owner.useEffects = effectCommands
     .map((effectCommand) => {
       const [command, ...args] = effectCommand.split(':')

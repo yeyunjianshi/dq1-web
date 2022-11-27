@@ -1,8 +1,6 @@
 import { GameplayComponent } from '../../engine/components'
 import Component from '../../engine/component'
 import { GlobalWindowMarker } from '../../engine/engine'
-import { delay } from '../../engine/time'
-import ScrollTextComponent from '../../engine/components/ScrollTextComponent'
 import GameObject from '../../engine/gameObject'
 import ListComponent, {
   TextAdapter,
@@ -16,6 +14,7 @@ import MenuEquipmentWindow from './MenuEquipmentWindow'
 import MenuItemWindow from './MenuItemWindow'
 import ShopWindow from './ShopWindow'
 import AlertWindow from './AlertWindow'
+import MessageWindow from './MessageWindow'
 
 interface IWindowStack {
   pushWindow(w: BaseWindow | string): void
@@ -47,13 +46,10 @@ export default class GlobalWindowComponent
   public windowMarker = WindowMarker.None
 
   awake(): void {
-    this._messageWindow = new MessageWindow(
-      this.root.getComponentInChildByName(
-        'messageWindow',
-        ScrollTextComponent
-      ) as ScrollTextComponent,
-      this.root
-    )
+    this._messageWindow = this.root.getComponentInChildByName(
+      'messageWindow',
+      MessageWindow
+    ) as MessageWindow
     this._menuWindow = new MenuWindow(
       this.root.getComponentInChildByName(
         'menuWindow',
@@ -99,12 +95,10 @@ export default class GlobalWindowComponent
 
     this.engine.setVariable(GlobalWindowMarker, this)
 
-    this._messageWindow.awake()
     this._menuWindow.awake()
   }
 
   start() {
-    this.messageWindow.start()
     this.menuWindow.start()
   }
 
@@ -196,42 +190,6 @@ export default class GlobalWindowComponent
 
   get menuWindow() {
     return this._menuWindow!
-  }
-}
-
-class MessageWindow extends BaseWindow {
-  constructor(private _messageWindow: ScrollTextComponent, root: GameObject) {
-    super(root)
-  }
-
-  private _isShowingMessage = false
-
-  async talk(name: string, text: string, clear = false) {
-    const messageWindow = this._messageWindow
-    messageWindow.root.parent.active = true
-    if (name.length === 0 && text.trim().length === 0) return
-    if (name.length !== 0) name += ':'
-    this._isShowingMessage = true
-    if (clear) messageWindow.clearText()
-    await messageWindow.showTextScroll(text, name)
-    await this.InputConfirmOrCancel()
-    if (clear) await messageWindow.scrollClearText()
-    this._isShowingMessage = false
-
-    delay(50).then(() => {
-      if (!this._isShowingMessage) {
-        this.hide()
-      }
-    })
-  }
-
-  hide() {
-    this._messageWindow!.root.parent.active = false
-    this._messageWindow!.clearText()
-  }
-
-  clearMessage() {
-    this._messageWindow!.clearText()
   }
 }
 

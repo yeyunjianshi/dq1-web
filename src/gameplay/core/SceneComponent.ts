@@ -1,18 +1,18 @@
-import { InnerGameComponent } from '.'
-import MapChest from '../../gameplay/map/MapChest'
-import Component from '../component'
+import { GameplayComponent } from '../../engine/components'
+import MapChest from '../map/MapChest'
+import Component from '../../engine/component'
 import {
   GlobalSceneComponentMarker,
   GlobalTeamControllerMarker,
-} from '../engine'
-import { HasType, vector2Include } from '../math'
-import { AssetLoader } from '../resource'
-import Collider, { ColliderLayerType } from './Collider'
-import { EventTriggerWhen, QuestEvent } from './events/QuestEvent'
+} from '../../engine/engine'
+import { HasType, vector2Include } from '../../engine/math'
+import { AssetLoader } from '../../engine/resource'
+import Collider, { ColliderLayerType } from '../../engine/components/Collider'
+import { EventTriggerWhen, QuestEvent } from '../events/QuestEvent'
 import {
   SceneTransition,
   SceneTransitionDestination,
-} from './events/Transition'
+} from '../events/Transition'
 import TeamControllerComponent from './TeamControllerComponent'
 
 type SceneComponentData = {
@@ -31,7 +31,7 @@ enum TileMapType {
   Collider = 0b01,
 }
 
-@InnerGameComponent
+@GameplayComponent
 export default class SceneComponent extends Component {
   private _transitions: SceneTransition[] = []
   private _transitionDestinations: SceneTransitionDestination[] = []
@@ -98,9 +98,7 @@ export default class SceneComponent extends Component {
 
     return (
       teamController.collider(position, layer) ||
-      this._colliders.some(
-        (c) => c.root.active && c.active && c.collider(position, layer)
-      )
+      this._colliders.some((c) => c.collider(position, layer))
     )
   }
 

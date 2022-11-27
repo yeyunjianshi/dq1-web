@@ -17,7 +17,7 @@ import ExecuteCommand, {
 } from './command/Command'
 import MagicExecuteCommand from './command/MagicExecuteCommand'
 import ItemExecuteCommand from './command/ItemExecuteCommand'
-import { setBattleFinishStatus } from '../../engine/components/events/EventExector'
+import { setBattleFinishStatus } from '../events/EventExector'
 
 @GameplayComponent
 export default class BattleSystem extends Component {

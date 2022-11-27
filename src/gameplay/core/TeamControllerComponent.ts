@@ -1,27 +1,36 @@
-import { InnerGameComponent } from '.'
-import { globalGameData, InputType } from '../../gameplay/asset/gameData'
-import GlobalWindowComponent from '../../gameplay/menu/GlobalWindowComponent'
+import { GameplayComponent } from '../../engine/components'
+import { ColliderLayerType } from '../../engine/components/Collider'
+import MoveComponent, {
+  MoveComponentData,
+  CoordToPosition,
+  MoveState,
+  DefaultMoveState,
+  PositionToCoord,
+  DefaultAnimationDuration,
+  DefaultRoleSprite,
+} from '../../engine/components/MoveComponent'
 import Engine, {
   GlobalSceneComponentMarker,
   GlobalTeamControllerMarker,
   GlobalWindowMarker,
-} from '../engine'
-import GameObject from '../gameObject'
-import { Direction, DirectionToCoord, oppsiteDirection } from '../input'
-import { distance, lerpVector2, vector2Add, vector2Include } from '../math'
-import { AssetLoader } from '../resource'
-import { ColliderLayerType } from './Collider'
-import { battle, checkMeetEnemy } from './events/EventExector'
-import { EventTriggerWhen } from './events/QuestEvent'
-import MoveComponent, {
-  CoordToPosition,
-  DefaultAnimationDuration,
-  DefaultMoveState,
-  DefaultRoleSprite,
-  MoveComponentData,
-  MoveState,
-  PositionToCoord,
-} from './MoveComponent'
+} from '../../engine/engine'
+import GameObject from '../../engine/gameObject'
+import {
+  Direction,
+  DirectionToCoord,
+  oppsiteDirection,
+} from '../../engine/input'
+import {
+  vector2Add,
+  distance,
+  lerpVector2,
+  vector2Include,
+} from '../../engine/math'
+import { AssetLoader } from '../../engine/resource'
+import { globalGameData, InputType } from '../asset/gameData'
+import { checkMeetEnemy, battle } from '../events/EventExector'
+import { EventTriggerWhen } from '../events/QuestEvent'
+import GlobalWindowComponent from '../menu/GlobalWindowComponent'
 import SceneComponent from './SceneComponent'
 
 type TeamControllerData = {
@@ -61,7 +70,7 @@ export function PlayerCenterPosition(pos: Vector2): Vector2 {
   return vector2Add(pos, [DefaultTileSize >> 1, DefaultTileSize >> 1])
 }
 
-@InnerGameComponent
+@GameplayComponent
 export default class TeamControllerComponent
   extends MoveComponent
   implements ICollider

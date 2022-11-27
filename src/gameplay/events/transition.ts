@@ -1,12 +1,12 @@
-import { InnerGameComponent } from '..'
-import { globalGameData } from '../../../gameplay/asset/gameData'
-import Component from '../../component'
-import Engine, { GlobalTeamControllerMarker } from '../../engine'
-import { Direction } from '../../input'
-import { AssetLoader } from '../../resource'
-import { SceneLoadType } from '../../sceneManager'
-import { nextFrame } from '../../time'
-import TeamControllerComponent from '../TeamControllerComponent'
+import Component from '../../engine/component'
+import { GameplayComponent } from '../../engine/components'
+import Engine, { GlobalTeamControllerMarker } from '../../engine/engine'
+import { Direction } from '../../engine/input'
+import { AssetLoader } from '../../engine/resource'
+import { SceneLoadType } from '../../engine/sceneManager'
+import { nextFrame } from '../../engine/time'
+import { globalGameData } from '../asset/gameData'
+import TeamControllerComponent from '../core/TeamControllerComponent'
 
 type SceneTransitionData = {
   type: string
@@ -53,7 +53,7 @@ async function transitionToScene(
   )
 }
 
-@InnerGameComponent
+@GameplayComponent
 export class SceneTransition extends Component {
   tag = 'A'
   nextScene = 'A'
@@ -75,7 +75,7 @@ type SceneTransitionDestinationData = {
   isPremutation?: boolean
 }
 
-@InnerGameComponent
+@GameplayComponent
 export class SceneTransitionDestination extends Component {
   tag = 'A'
   direciton: Direction = Direction.down

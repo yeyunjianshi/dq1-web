@@ -4,11 +4,18 @@ import ListComponent, {
   TextAdapter,
 } from '../../engine/components/ListComponent'
 import TextComponent from '../../engine/components/TextComponent'
+import { nextFrame } from '../../engine/time'
 
+enum AlertStatus {
+  Select,
+  Yes,
+  No,
+}
 @GameplayComponent
 export default class AlertWindow extends BaseWindow {
   private _contentText?: TextComponent
   private _judgeComponent?: ListComponent
+  private _status = AlertStatus.Select
 
   start() {
     this._contentText = this.root.getComponentInChildByName(
@@ -31,10 +38,12 @@ export default class AlertWindow extends BaseWindow {
       new TextAdapter([{ text: '是' }, { text: '否' }])
     )
     this._judgeComponent?.addSelectListener(() => {
+      this._status = AlertStatus.Yes
       this._listeners.forEach((l) => l(true))
       console.log('alert confirm')
     })
     this._judgeComponent?.addCancelListener(() => {
+      this._status = AlertStatus.No
       this._listeners.forEach((l) => l(false))
       console.log('alert cancel')
     })
@@ -42,6 +51,14 @@ export default class AlertWindow extends BaseWindow {
 
   update(): void {
     this._judgeComponent?.update()
+  }
+
+  async select() {
+    while (this._status === AlertStatus.Select) {
+      await nextFrame()
+      this._judgeComponent?.update()
+    }
+    return this._status === AlertStatus.Yes
   }
 
   private _listeners: ListenerFunction[] = []
@@ -56,6 +73,7 @@ export default class AlertWindow extends BaseWindow {
 
   show(init = true, content = '') {
     super.show(init)
+    this._status = AlertStatus.Select
     this._contentText?.setText(content)
     this._judgeComponent?.setCursorIndex(0)
   }

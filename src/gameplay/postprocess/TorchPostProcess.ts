@@ -1,7 +1,7 @@
 import CanvasRenderer, { RenderLayer } from '../../engine/canvasRenderer'
 import TeamControllerComponent, {
   PlayerCenterPosition,
-} from '../../engine/components/TeamControllerComponent'
+} from '../core/TeamControllerComponent'
 import Engine, { GlobalTeamControllerMarker } from '../../engine/engine'
 import { globalGameData } from '../asset/gameData'
 

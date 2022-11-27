@@ -59,7 +59,8 @@ export function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value))
 }
 
-export function range(values: number[]) {
+export function range(values: Vector2): number
+export function range(values: number[]): number {
   if (values.length === 0) return 0
   if (values.length === 1) return values[0]
   return random(values[1] - values[0], values[0])

@@ -1,28 +1,47 @@
 import { GameplayComponent } from '../../engine/components'
-import { talk } from '../../engine/components/events/EventExector'
 import {
-  QuestEvent,
-  IntercativeMarker,
-} from '../../engine/components/events/QuestEvent'
+  EventExecuteEndMarker,
+  EventExecuteStartMarker,
+  talk,
+} from './EventExector'
 import { TalkGetAll } from '../asset/gameData'
+import NPCQuestEvent from './NPCQuestEvent'
+import { EventTriggerWhen } from './QuestEvent'
 
 @GameplayComponent
-export default class TalkQuestEvent extends QuestEvent {
+export default class TalkQuestEvent extends NPCQuestEvent {
   interactive(): void {
-    this.root.events.emit(IntercativeMarker)
     this.talk()
   }
 
-  private async talk() {
-    const talks = TalkGetAll(this.questId)
-    const judge = true
-    for (const t of talks) {
-      if (!judge && !t.key.startsWith(`${this.questId}_N`)) continue
+  awake(): void {
+    super.awake()
+    this.when = EventTriggerWhen.InteractiveConfirm
+  }
 
-      const select = t.text.indexOf('--select--')
-      // if (select > 0) {
-      // }
-      await talk(t.name, t.text.replaceAll('\\n', '\n'))
+  private async talk() {
+    this.root.events.emit(EventExecuteStartMarker)
+    const talks = TalkGetAll(this.questId)
+    let select = true
+
+    for (const t of talks) {
+      if (
+        (select && t.key.startsWith(`${this.questId}_N`)) ||
+        (!select && !t.key.startsWith(`${this.questId}_N`))
+      )
+        continue
+
+      console.log(t.key)
+      const isSelectTalk = t.text.indexOf('[select]') >= 0
+      let text = t.text
+      if (isSelectTalk) {
+        text = t.text.slice('[select]'.length)
+        select = await talk(t.name, text.replaceAll('\\n', '\n'), false, true)
+        console.log(select)
+      } else {
+        await talk(t.name, text.replaceAll('\\n', '\n'))
+      }
     }
+    this.root.events.emit(EventExecuteEndMarker)
   }
 }

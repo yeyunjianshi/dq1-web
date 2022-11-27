@@ -138,6 +138,21 @@ export enum Direction {
   left,
   right,
 }
+
+export function parseDirection(
+  dir: string | number | undefined | null
+): Direction {
+  if (typeof dir === 'undefined' && dir === null) return Direction.none
+  if (typeof dir === 'string') {
+    if (dir === 'down') return Direction.down
+    if (dir === 'up') return Direction.up
+    if (dir === 'left') return Direction.left
+    if (dir === 'right') return Direction.right
+    return Direction.none
+  }
+  return dir as Direction
+}
+
 export function getDirectionByCoord(coord: Vector2) {
   if (coord[0] < 0) return Direction.left
   if (coord[0] > 0) return Direction.right

@@ -1,10 +1,7 @@
 import Component from '../../engine/component'
 import { GameplayComponent } from '../../engine/components'
 import { BoxCollider, BoxColliderData } from '../../engine/components/Collider'
-import {
-  generateMapChestId,
-  message,
-} from '../../engine/components/events/EventExector'
+import { generateMapChestId, message } from '../events/EventExector'
 import { AssetLoader } from '../../engine/resource'
 import { globalGameData } from '../asset/gameData'
 

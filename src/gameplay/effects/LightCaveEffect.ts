@@ -1,4 +1,4 @@
-import { lightCave } from '../../engine/components/events/EventExector'
+import { lightCave } from '../events/EventExector'
 import { Command, CommandTriggerType, CommandTriggerWhen } from './buffer'
 
 export default class LightCaveEffect

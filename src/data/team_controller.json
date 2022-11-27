@@ -13,7 +13,7 @@
     "active": true,
     "components": [
       {
-        "type": "$TeamControllerComponent",
+        "type": "TeamControllerComponent",
         "moveSpeed": 96,
         "coord": [8, 7]
       }

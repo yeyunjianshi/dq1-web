@@ -1,6 +1,6 @@
 import { InnerGameComponent } from '.'
 import Component from '../component'
-import { Direction } from '../input'
+import { Direction, parseDirection } from '../input'
 import { AssetLoader } from '../resource'
 
 export type MoveComponentData = {
@@ -10,6 +10,7 @@ export type MoveComponentData = {
   aniamtionDuration?: number
   animationDiretions?: Direction[]
   animtionOffset: [number, number]
+  initDirection: string | number
 }
 
 export type MoveState = {
@@ -91,7 +92,9 @@ class MoveComponent extends Component {
     this.animationDuration = data.aniamtionDuration ?? DefaultAnimationDuration
     if (!data.animationDiretions || data.animationDiretions.length == 0)
       data.animationDiretions = [Direction.down]
-    this.direction = data.animationDiretions[0]
+    this.direction = parseDirection(
+      data.initDirection ?? data.animationDiretions[0]
+    )
     this.animationDirections = new Set(this.animationDirections)
     this.roleIndex = data.roleIndex
     if (!data.sprite) data.sprite = DefaultRoleSprite

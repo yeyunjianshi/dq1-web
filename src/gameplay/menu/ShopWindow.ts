@@ -1,6 +1,6 @@
 import { GameplayComponent } from '../../engine/components'
 import BaseWindow from '../../engine/components/BaseWindow'
-import { message } from '../../engine/components/events/EventExector'
+import { message } from '../events/EventExector'
 import ListComponent, {
   KeyValueAdapter,
   TextAdapter,

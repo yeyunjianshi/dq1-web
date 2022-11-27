@@ -10,7 +10,7 @@ import { AssetLoader } from './engine/resource'
 import {
   setEventEngine,
   SetGameEventScript,
-} from './engine/components/events/EventExector'
+} from './gameplay/events/EventExector'
 import {
   globalGameData,
   SetCharacters,

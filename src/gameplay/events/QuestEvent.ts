@@ -1,8 +1,13 @@
-import { InnerGameComponent } from '..'
-import { globalGameData } from '../../../gameplay/asset/gameData'
-import Component from '../../component'
-import { AssetLoader } from '../../resource'
-import { AddExecuteEvent, Execute, generateEventId } from './EventExector'
+import Component from '../../engine/component'
+import { GameplayComponent } from '../../engine/components'
+import { AssetLoader } from '../../engine/resource'
+import { globalGameData } from '../asset/gameData'
+import {
+  AddExecuteEvent,
+  EventExecuteEndMarker,
+  Execute,
+  generateEventId,
+} from './EventExector'
 
 export enum EventTriggerWhen {
   Auto = 0, // 场景切换自动触发
@@ -12,28 +17,29 @@ export enum EventTriggerWhen {
   InteractiveEnter, // 入口
 }
 
-type QuestEventData = {
+export type QuestEventData = {
   type: string
   eventId: string
   when?: EventTriggerWhen
   args?: any[]
   predecessorId: string[]
   predecessorItem: number[]
+  insertGlobalAfterFinish?: boolean
+  hideAfterFinish?: boolean
 }
 
-export const IntercativeMarker = Symbol('Intercative')
-
-@InnerGameComponent
+@GameplayComponent
 export class QuestEvent extends Component implements Interaction {
   questId = ''
   eventId = ''
   when: EventTriggerWhen = EventTriggerWhen.InteractiveEnter
   args: any[] = []
-  isHideAfterFinish = true
+  isHideAfterFinish = false
   isStartHide = false
   priority = 10
   predecessorId: string[] = []
   predecessorItem: number[] = []
+  isInsertGlobalAfterFinish = false
 
   canTrigger(when: EventTriggerWhen) {
     return (
@@ -44,9 +50,25 @@ export class QuestEvent extends Component implements Interaction {
     )
   }
 
-  interactive(): void {
-    this.root.events.emit(IntercativeMarker)
+  awake() {
+    if (
+      this.isStartHide ||
+      (this.isInsertGlobalAfterFinish && globalGameData.hasEvent(this.eventId))
+    ) {
+      this.root.active = false
+    }
 
+    this.root.events.register((marker) => {
+      if (marker === EventExecuteEndMarker) {
+        if (this.isHideAfterFinish) this.root.active = false
+        if (this.isInsertGlobalAfterFinish) {
+          return globalGameData.finishEvent(this.eventId)
+        }
+      }
+    })
+  }
+
+  interactive(): void {
     AddExecuteEvent(this)
     Execute(this.engine)
   }
@@ -60,5 +82,8 @@ export class QuestEvent extends Component implements Interaction {
       ? data.predecessorId.map(generateEventId)
       : []
     this.predecessorItem = data.predecessorItem || []
+    this.isHideAfterFinish = data.hideAfterFinish ?? this.isHideAfterFinish
+    this.isInsertGlobalAfterFinish =
+      data.insertGlobalAfterFinish ?? this.isHideAfterFinish
   }
 }

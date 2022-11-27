@@ -1303,6 +1303,7 @@
         ]
       },
       {
+        "name": "messageWindow",
         "x": -350,
         "y": 120,
         "width": 700,
@@ -1315,9 +1316,13 @@
           "backgroundColor": "#222",
           "borderWidth": 4
         },
+        "components": [
+          {
+            "type": "MessageWindow"
+          }
+        ],
         "children": [
           {
-            "name": "messageWindow",
             "x": 0,
             "y": 0,
             "width": 680,
@@ -1328,6 +1333,51 @@
               {
                 "type": "$ScrollTextComponent",
                 "padding": [16, 30, 10, 30]
+              }
+            ]
+          },
+          {
+            "name": "messageAlertWindow",
+            "x": 0,
+            "y": 0,
+            "width": 130,
+            "height": 92,
+            "pivot": [1, 1],
+            "layoutGravity": ["right", "top"],
+            "active": false,
+            "background": {
+              "sprite": "",
+              "backgroundColor": "#222",
+              "borderWidth": 4
+            },
+            "components": [
+              {
+                "type": "AlertWindow"
+              }
+            ],
+            "children": [
+              {
+                "name": "alertJudgeComponent",
+                "x": 0,
+                "y": 0,
+                "width": -1,
+                "height": -1,
+                "layoutGravity": ["center", "top"],
+                "pivot": [0.5, 0],
+                "active": true,
+                "components": [
+                  {
+                    "type": "$ListComponent"
+                  }
+                ],
+                "layout": {
+                  "type": "GridLayout",
+                  "row": 2,
+                  "col": 1,
+                  "cell": [130, 40],
+                  "gravity": ["center", "center"],
+                  "template": "text_item.json"
+                }
               }
             ]
           }
