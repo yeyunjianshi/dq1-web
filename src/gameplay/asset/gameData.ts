@@ -7,6 +7,7 @@ import Inventory, {
 } from '../inventory/inventory'
 import Item, { ItemEquipmentType, ItemType } from '../inventory/item'
 import Character from './character'
+import TalkChinese from '../../data/i18n/talk_chinese.json'
 
 const DefaultInitGameCharacter = {
   id: 1,
@@ -86,6 +87,23 @@ export function GetMagic(id: number): Magic {
   const magic = gameAllMagics.get(id)
   if (!magic) throw new Error('未找到id等于${id}的Magic')
   return magic
+}
+
+export const talkQuests = TalkChinese as {
+  key: string
+  name: string
+  text: string
+}[]
+
+export function TalkGetAll(id: string) {
+  if (id.length === 0) return []
+
+  return talkQuests.filter((v) => v.key.startsWith(id))
+}
+
+export function TalkGet(id: string) {
+  if (id.length === 0) return []
+  return talkQuests.find((v) => v.key.startsWith(id))
 }
 
 export enum InputType {

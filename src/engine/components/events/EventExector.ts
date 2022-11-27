@@ -99,7 +99,12 @@ export async function talk(
 
   const previouseInputType = globalGameData.inputType
   globalGameData.inputType = InputType.Message
-  await globalWindow.messageWindow.talk(characterName, text, clear)
+
+  await globalWindow.messageWindow.talk(
+    executingEngine!.i18n.getValue(characterName),
+    executingEngine!.i18n.getValue(text),
+    clear
+  )
   callback && (await callback())
   globalGameData.inputType = previouseInputType
 }

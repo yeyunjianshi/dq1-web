@@ -25,6 +25,7 @@ export const IntercativeMarker = Symbol('Intercative')
 
 @InnerGameComponent
 export class QuestEvent extends Component implements Interaction {
+  questId = ''
   eventId = ''
   when: EventTriggerWhen = EventTriggerWhen.InteractiveEnter
   args: any[] = []
@@ -51,6 +52,7 @@ export class QuestEvent extends Component implements Interaction {
   }
 
   parseData(_: AssetLoader, data: QuestEventData): void {
+    this.questId = data.eventId
     this.eventId = generateEventId(data.eventId)
     this.when = data.when === undefined ? this.when : data.when
     this.args = data.args || []

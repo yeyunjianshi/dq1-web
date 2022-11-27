@@ -7,6 +7,7 @@ import Input from './input'
 import Camera from './camera'
 import AudioManager from './audio'
 import SceneManger from './sceneManager'
+import I18N from './i18n'
 
 export const GlobalTeamControllerMarker = '$TeamController'
 export const GlobalSceneComponentMarker = '$GlobalSceneComponent'
@@ -20,6 +21,7 @@ class Engine {
   input: Input
   camera: Camera
   audios: AudioManager
+  i18n: I18N
   sceneManager: SceneManger
   componentContainer: Map<string, ComponentConstruct>
   private _globalVariables: Map<string, any> = new Map<string, any>()
@@ -31,6 +33,7 @@ class Engine {
     time: Time,
     input: Input,
     camera: Camera,
+    i18n: I18N,
     componentContainer: Map<string, ComponentConstruct>
   ) {
     this.renderer = renderer
@@ -40,6 +43,7 @@ class Engine {
     this.input = input
     this.camera = camera
     this.sceneManager = new SceneManger(this)
+    this.i18n = i18n
     this.componentContainer = new Map<string, ComponentConstruct>([
       ...innerContainer,
       ...componentContainer,
@@ -86,6 +90,7 @@ type EngineConfig = {
   componentContainer?: Map<string, ComponentConstruct>
   sceneManager?: SceneManger
   audios?: AudioManager
+  i18n?: I18N
   postProcess?: IPostProcess[]
 }
 
@@ -97,6 +102,7 @@ export function createEngine(config: EngineConfig = {}) {
   const time = config.time ?? new Time()
   const input = config.input ?? new Input(time)
   const camera = config.camera ?? new Camera(renderer.width, renderer.height)
+  const i18n = config.i18n ?? new I18N()
   const componentContainer =
     config.componentContainer ?? new Map<string, ComponentConstruct>()
 
@@ -107,6 +113,7 @@ export function createEngine(config: EngineConfig = {}) {
     time,
     input,
     camera,
+    i18n,
     componentContainer
   )
 }

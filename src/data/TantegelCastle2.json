@@ -39,8 +39,8 @@
             "nextScene": "Battle"
           },
           {
-            "type": "$QuestEvent",
-            "eventId": 1001,
+            "type": "TalkQuestEvent",
+            "eventId": "Q1001",
             "when": 2,
             "args": [1, 2]
           },
