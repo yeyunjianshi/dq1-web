@@ -53,7 +53,7 @@ type NPCData = {
   colliderSize?: Vector2
 } & MoveComponentData
 
-const DefaultMoveSpeed = 96
+const DefaultMoveSpeed = 32
 const DefaultMoveWaitTime = 1000
 const DefaultPathData: Required<NPCRandomPathData> = {
   type: 'random',

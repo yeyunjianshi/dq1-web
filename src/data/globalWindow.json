@@ -1309,7 +1309,7 @@
         "height": 190,
         "pivot": [0, 0],
         "layoutGravity": ["center", "center"],
-        "active": true,
+        "active": false,
         "background": {
           "sprite": "",
           "backgroundColor": "#222",

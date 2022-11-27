@@ -4,13 +4,14 @@
   "height": 768,
   "isMeetEnemy": false,
   "isCave": false,
+  "bgm": "PeacefulVillage.mp3",
   "root": {
     "x": 0,
     "y": 0,
     "width": 640,
     "height": 768,
     "active": true,
-    "background": "map/TantegelCastle.png",
+    "background": "map/TantegelCastle2.png",
     "alpha": 1,
     "components": [
       {
@@ -20,8 +21,8 @@
     ],
     "children": [
       {
-        "x": 0,
-        "y": 32,
+        "x": 256,
+        "y": 192,
         "width": 32,
         "height": 32,
         "active": true,
@@ -62,8 +63,6 @@
           {
             "type": "$NPCControllerComponent",
             "roleIndex": 3,
-            "moveSpeed": 32,
-            "moveWaitTime": 100,
             "path": {
               "type": "random",
               "radius": 1,
@@ -75,21 +74,6 @@
                 [8, 0]
               ]
             }
-          }
-        ]
-      },
-      {
-        "x": 256,
-        "y": 192,
-        "width": 32,
-        "height": 32,
-        "active": true,
-        "alpha": 1,
-        "components": [
-          {
-            "type": "$NPCControllerComponent",
-            "roleIndex": 2,
-            "moveSpeed": 0
           }
         ]
       },

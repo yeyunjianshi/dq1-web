@@ -27,6 +27,7 @@ import SceneComponent from './SceneComponent'
 type TeamControllerData = {
   moveSpeed?: number
   maxTeamCount?: number
+  coord: Vector2
 } & MoveComponentData
 
 const DefaultMaxTeamCount = 3
@@ -73,6 +74,7 @@ export default class TeamControllerComponent
   moveSpeed = DefaultMoveSpeed
   isMoving = false
   maxTeamCount: number = DefaultMaxTeamCount
+  startCoord: Vector2 = [0, 0]
 
   constructor(root: GameObject) {
     super(root)
@@ -97,6 +99,7 @@ export default class TeamControllerComponent
       this.playerStats.push({ ...this._head })
     }
     this.initTeam()
+    this.moveToCoord(this.startCoord, Direction.down, false)
     this.inited = true
   }
 
@@ -304,9 +307,8 @@ export default class TeamControllerComponent
     })
   }
 
-  public moveTo(worldPostion: Vector2, dir: Direction, isPermutation = true) {
+  public moveToCoord(coord: Vector2, dir: Direction, isPermutation = true) {
     this.isMoving = false
-    const coord = PositionToCoord(worldPostion)
     this._head.targetCoord = this._head.coord = coord
     this._head.direction = dir
     for (let i = 0; i < this.playerStats.length; i++) {
@@ -328,6 +330,10 @@ export default class TeamControllerComponent
       component.direction = stat.direction
     })
     this.refreshAnimationSprite()
+  }
+
+  public moveTo(worldPostion: Vector2, dir: Direction, isPermutation = true) {
+    this.moveToCoord(PositionToCoord(worldPostion), dir, isPermutation)
   }
 
   get headDirection() {
@@ -354,6 +360,7 @@ export default class TeamControllerComponent
     this.offset = data.animtionOffset ?? [0, 0]
     this.moveSpeed = data.moveSpeed ?? DefaultMoveSpeed
     this.maxTeamCount = data.maxTeamCount ?? DefaultMaxTeamCount
+    this.startCoord = data.coord ?? this.startCoord
 
     const spriteAsset = this.resource.loadSprite(data.sprite).then(() => {
       this.inited = true

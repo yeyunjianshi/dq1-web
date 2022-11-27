@@ -58,6 +58,12 @@ export default class implements LifeCycle {
 
     this.rootObject.layout()
     this.rootObject.awake()
+    this.init()
+  }
+
+  private init() {
+    if (this.loadType === SceneLoadType.Replace && this.bgm)
+      this.engine.audios.playBGM(this.bgm)
   }
 
   start() {
