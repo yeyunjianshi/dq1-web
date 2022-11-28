@@ -2,6 +2,7 @@ import { GameplayComponent } from '../../engine/components'
 import {
   EventExecuteEndMarker,
   EventExecuteStartMarker,
+  ExecuteCommands,
   talk,
 } from './EventExector'
 import { TalkGetAll } from '../asset/gameData'
@@ -31,15 +32,16 @@ export default class TalkQuestEvent extends NPCQuestEvent {
       )
         continue
 
-      console.log(t.key)
       const isSelectTalk = t.text.indexOf('[select]') >= 0
       let text = t.text
       if (isSelectTalk) {
         text = t.text.slice('[select]'.length)
-        select = await talk(t.name, text.replaceAll('\\n', '\n'), false, true)
-        console.log(select)
+      }
+      if (text.startsWith('[script]')) {
+        const commands = text.slice('[script]'.length)
+        await ExecuteCommands(this, commands)
       } else {
-        await talk(t.name, text.replaceAll('\\n', '\n'))
+        select = await talk(t.name, text.replaceAll('\\n', '\n'), false, true)
       }
     }
     this.root.events.emit(EventExecuteEndMarker)

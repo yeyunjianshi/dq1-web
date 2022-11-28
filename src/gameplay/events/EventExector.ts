@@ -249,3 +249,35 @@ export function currentScene() {
 export function generateMessageText(text: string) {
   return useTextPostProcessing(executingEngine!.i18n.getValue(text), heroName())
 }
+
+export async function ExecuteCommands(
+  executeQuestEvent: QuestEvent,
+  command: string
+) {
+  executingEvent = executeQuestEvent
+  const commands = command.split(';').filter((s) => s.length > 0)
+  for (const command of commands) {
+    const [com, args] = command.split(':').map((s) => s.trim())
+    if (com === 'HealHP') {
+      if (args.length > 0) HealHP(parseInt(args[0]))
+      else HealHP()
+    } else if (com === 'HealMP') {
+      if (args.length > 0) HealMP(parseInt(args[0]))
+      else HealMP()
+    }
+  }
+}
+
+export function HealHP(val?: number) {
+  val = val ?? hero().maxHP
+  hero().HP = val
+}
+
+export function HealMP(val?: number) {
+  val = val ?? hero().maxMP
+  hero().MP = val
+}
+
+export function hero() {
+  return globalGameData.hero
+}
