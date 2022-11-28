@@ -59,7 +59,7 @@ export default class MapChest extends Component implements Interaction {
     this.itemsId = data.items
     this.money = data.money || 0
     this.colliderSize = data.colliderSize || this.colliderSize
-    this.colliderSize = this.root.addComponent(
+    this.root.addComponent(
       BoxCollider,
       { size: this.colliderSize } as BoxColliderData,
       assertLoader

@@ -171,15 +171,16 @@
         "y": 510,
         "width": 96,
         "height": 64,
-        "active": false,
+        "active": true,
         "alpha": 1,
         "background": {
           "sprite": "map/TantegelCastle2_Door.png"
         },
         "components": [
           {
-            "type": "$BoxCollider",
-            "size": [96, 64]
+            "type": "Door",
+            "id": "Tangegel2_Door",
+            "colliderSize": [96, 64]
           }
         ]
       },

@@ -74,6 +74,11 @@ export default class inventory {
     if (removeIndex >= 0) this.removeSlotIndex(removeIndex)
   }
 
+  removeItemId(id: number) {
+    const removeIndex = this._slots.findIndex((slot) => slot.item.id === id)
+    if (removeIndex >= 0) this.removeSlotIndex(removeIndex)
+  }
+
   sort(): void {
     this._slots.sort((a, b) => {
       if (a.isEquip === b.isEquip) {

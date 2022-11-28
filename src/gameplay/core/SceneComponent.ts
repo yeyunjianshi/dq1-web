@@ -14,6 +14,7 @@ import {
   SceneTransitionDestination,
 } from '../events/Transition'
 import TeamControllerComponent from './TeamControllerComponent'
+import Door from '../map/Door'
 
 type SceneComponentData = {
   type: string
@@ -36,6 +37,7 @@ export default class SceneComponent extends Component {
   private _transitions: SceneTransition[] = []
   private _transitionDestinations: SceneTransitionDestination[] = []
   private _questEvents: QuestEvent[] = []
+  private _doors: Door[] = []
   private _mapChests: MapChest[] = []
   private _colliders: Collider[] = []
   private _mapData: { name?: string; data?: MapData } = {}
@@ -52,6 +54,7 @@ export default class SceneComponent extends Component {
     this._questEvents = this.root.getComponentsInChildren(
       QuestEvent
     ) as QuestEvent[]
+    this._doors = this.root.getComponentsInChildren(Door) as Door[]
     this._mapChests = this.root.getComponentsInChildren(MapChest) as MapChest[]
     this._colliders = this.root.getComponentsInChildren(Collider) as Collider[]
   }
@@ -66,9 +69,19 @@ export default class SceneComponent extends Component {
     position: Vector2,
     when: EventTriggerWhen
   ): Interaction | undefined {
-    const interaction = this.triggerMapChest(position)
-    if (interaction) return interaction
-    return this.triggerQuestEvent(position, when)
+    return (
+      this.triggerMapChest(position) ||
+      this.triggerDoor(position) ||
+      this.triggerQuestEvent(position, when)
+    )
+  }
+
+  triggerDoor(position: Vector2) {
+    return this._doors.find((door) => {
+      return (
+        door.canTrigger() && vector2Include(position, door.root.boundingBox)
+      )
+    })
   }
 
   triggerQuestEvent(position: Vector2, when: EventTriggerWhen) {

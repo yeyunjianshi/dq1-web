@@ -46,13 +46,20 @@ export function setEventEngine(engine: Engine) {
 }
 
 export function generateEventId(id: string | number): string {
-  if (typeof id === 'string' && id.startsWith('e_')) return id
-  return `e_${id}`
+  return generateId(id, 'e_')
 }
 
 export function generateMapChestId(id: string | number): string {
-  if (typeof id === 'string' && id.startsWith('c_')) return id
-  return `c_${id}`
+  return generateId(id, 'c_')
+}
+
+export function generateDoorId(id: string | number): string {
+  return generateId(id, 'd_')
+}
+
+export function generateId(id: string | number, prefix: string) {
+  if (typeof id === 'string' && id.startsWith(prefix)) return id
+  return `${prefix}${id}`
 }
 
 export function AddExecuteEvent(event: QuestEvent) {
