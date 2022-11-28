@@ -18,7 +18,7 @@ import Door from '../map/Door'
 
 type SceneComponentData = {
   type: string
-  mapData: string
+  mapData?: string
 }
 
 type MapData = {
@@ -131,12 +131,14 @@ export default class SceneComponent extends Component {
   }
 
   parseData(assetLoader: AssetLoader, data: SceneComponentData): void {
-    const mapDataAsset = this.resource
-      .loadJson<MapData>(data.mapData)
-      .then((mapData) => {
-        this._mapData.name = data.mapData
-        this._mapData.data = mapData
-      })
-    assetLoader.addAssets(mapDataAsset)
+    if (data.mapData) {
+      const mapDataAsset = this.resource
+        .loadJson<MapData>(data.mapData)
+        .then((mapData) => {
+          this._mapData.name = data.mapData
+          this._mapData.data = mapData
+        })
+      assetLoader.addAssets(mapDataAsset)
+    }
   }
 }

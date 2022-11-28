@@ -1,49 +1,39 @@
 {
-  "name": "TantegelCastle2",
-  "width": 640,
-  "height": 768,
+  "name": "TantegelCastle",
+  "width": 1344,
+  "height": 1312,
   "isMeetEnemy": false,
   "isCave": false,
   "bgm": "PeacefulVillage.mp3",
   "root": {
     "x": 0,
     "y": 0,
-    "width": 640,
-    "height": 768,
+    "width": 1344,
+    "height": 1312,
     "active": true,
-    "background": "map/TantegelCastle2.png",
+    "background": "map/TantegelCastle.png",
     "alpha": 1,
     "components": [
       {
-        "type": "SceneComponent",
-        "mapData": "map/TantegelCastle2.json"
+        "type": "SceneComponent"
       }
     ],
     "children": [
       {
-        "name": "transitions",
-        "x": 0,
-        "y": 0,
-        "width": -2,
-        "height": -2,
-        "children": [
+        "x": 640,
+        "y": 416,
+        "width": 32,
+        "height": 32,
+        "components": [
           {
-            "x": 320,
-            "y": 608,
-            "width": 32,
-            "height": 32,
-            "components": [
-              {
-                "type": "SceneTransition",
-                "tag": "floor_down",
-                "nextScene": "TantegelCastle"
-              },
-              {
-                "type": "SceneTransitionDestination",
-                "tag": "floor_up",
-                "direction": "down"
-              }
-            ]
+            "type": "SceneTransition",
+            "tag": "floor_up",
+            "nextScene": "TantegelCastle2"
+          },
+          {
+            "type": "SceneTransitionDestination",
+            "tag": "floor_down",
+            "direction": "left"
           }
         ]
       },

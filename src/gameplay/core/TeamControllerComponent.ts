@@ -318,8 +318,7 @@ export default class TeamControllerComponent
 
   public moveToCoord(coord: Vector2, dir: Direction, isPermutation = true) {
     this.isMoving = false
-    this._head.targetCoord = this._head.coord = coord
-    this._head.direction = dir
+
     for (let i = 0; i < this.playerStats.length; i++) {
       const playerState = this.playerStats[i]
       playerState.coord = playerState.targetCoord =
@@ -334,11 +333,16 @@ export default class TeamControllerComponent
       )
       playerState.direction = this.direction
     }
+
+    this._head = { ...this.playerStats[0] }
+
     this.refreshAllMoveComponent((stat, component) => {
       component.localPosition = stat.position
       component.direction = stat.direction
     })
     this.refreshAnimationSprite()
+
+    this.camera.refresh(this.headPosition)
   }
 
   public moveTo(worldPostion: Vector2, dir: Direction, isPermutation = true) {

@@ -1,6 +1,5 @@
 import './style.css'
 import { createEngine } from './engine/engine'
-import TantegelCastle2Scene from './data/TantegelCastle2.json'
 import BattleData from './data/test_battle.json'
 import GlobalScene from './data/globalWindow.json'
 import TeamController from './data/team_controller.json'
@@ -28,12 +27,16 @@ import EnemyData from '../public/assets/data/enemies.json'
 import MagicData from '../public/assets/data/magic.json'
 import TorchPostProcess from './gameplay/postprocess/TorchPostProcess'
 
+import TantegelCastleScene from './data/TantegelCastle.json'
+import TantegelCastle2Scene from './data/TantegelCastle2.json'
+
 SetCharacters((AllCharactersData as CharacterData[]).map(parseCharacter))
 SetItems((AllItemData as ItemData[]).map(parseItem))
 SetShopItems(ShopData)
 SetEneies(EnemyData)
 SetMagics(MagicData)
 AddGameSceneData([
+  TantegelCastleScene,
   TantegelCastle2Scene,
   TeamController,
   GlobalScene,

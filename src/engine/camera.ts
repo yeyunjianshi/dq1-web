@@ -24,6 +24,7 @@ export class Camera {
       this._previousCenter[1] === pos[1]
     )
       return
+
     this._previousCenter = [...pos]
 
     this.x =
@@ -44,8 +45,8 @@ export class Camera {
         : pos[1] - this._halfHeight
   }
 
-  refresh() {
-    this.moveToCenter([0, 0], false)
+  refresh(pos: Vector2 = [0, 0]) {
+    this.moveToCenter(pos, false)
   }
 
   set width(val: number) {
