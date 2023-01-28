@@ -182,7 +182,7 @@ type GameObjectData = {
   y: number
   width: number
   height: number
-  layout?: LayoutData
+  layout?: LayoutConfig
   active: boolean
   background?: BackgroundData
   alpha?: number

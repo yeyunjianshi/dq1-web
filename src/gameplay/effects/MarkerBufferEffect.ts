@@ -37,6 +37,7 @@ export class MarkerBufferEffect
         return `但是失败了`
       }
     }
+    return null
   }
 
   clone(init = true) {

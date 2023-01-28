@@ -61,7 +61,11 @@ engine.sceneManager.loadScene('TantegelCastle2')
 // engine.sceneManager.loadScene('Battle')
 
 engine.init()
-engine.run()
+engine.run({
+  afterTime: (engine) => {
+    globalGameData.gameplayTime += engine.time.deltaTime
+  },
+})
 
 document.getElementById('startBtn')?.addEventListener('click', () => {
   engine.audios.replayBGM()

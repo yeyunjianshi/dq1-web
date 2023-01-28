@@ -25,6 +25,7 @@ class Engine {
   sceneManager: SceneManger
   componentContainer: Map<string, ComponentConstruct>
   private _globalVariables: Map<string, any> = new Map<string, any>()
+  private _hoosTick?: Partial<Record<TickHook, HookFunc>>
 
   constructor(
     renderer: IRenderer,
@@ -56,17 +57,30 @@ class Engine {
     this.sceneManager.init()
   }
 
-  run() {
+  run(hooksTick: Partial<Record<TickHook, HookFunc>>) {
+    this._hoosTick = hooksTick
     this.init()
     requestAnimationFrame(() => this.tick())
   }
 
   tick() {
+    this._hoosTick?.start && this._hoosTick.start(this)
+
+    this._hoosTick?.beforeTime && this._hoosTick.beforeTime(this)
     this.time.tick()
+    this._hoosTick?.afterTime && this._hoosTick.afterTime(this)
+
+    this._hoosTick?.beforeInput && this._hoosTick.beforeInput(this)
     this.input.tick()
+    this._hoosTick?.afterInput && this._hoosTick.afterInput(this)
+
+    this._hoosTick?.beforeRender && this._hoosTick.beforeRender(this)
     this.renderer.render(() => {
       this.sceneManager.tick()
     })
+    this._hoosTick?.afterRender && this._hoosTick.afterRender(this)
+    this._hoosTick?.end && this._hoosTick.end(this)
+
     requestAnimationFrame(() => this.tick())
   }
 
@@ -119,3 +133,14 @@ export function createEngine(config: EngineConfig = {}) {
 }
 
 export default Engine
+
+type TickHook =
+  | 'start'
+  | 'beforeTime'
+  | 'afterTime'
+  | 'beforeInput'
+  | 'afterInput'
+  | 'beforeRender'
+  | 'afterRender'
+  | 'end'
+type HookFunc = (engine: Engine) => void

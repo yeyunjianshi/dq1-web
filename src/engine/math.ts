@@ -60,6 +60,7 @@ export function clamp(value: number, min: number, max: number) {
 }
 
 export function range(values: Vector2): number
+export function range(values: number[]): number
 export function range(values: number[]): number {
   if (values.length === 0) return 0
   if (values.length === 1) return values[0]

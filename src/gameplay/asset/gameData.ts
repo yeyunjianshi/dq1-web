@@ -123,6 +123,7 @@ export class GameData {
   lightRadius = 0
   lightTime = 0
   notMeetEnemyStep = 0
+  gameplayTime = 0
 
   startGame() {
     const initCharacter = GetCharacter(DefaultInitGameCharacter.id).clone()

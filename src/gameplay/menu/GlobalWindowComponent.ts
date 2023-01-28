@@ -15,6 +15,7 @@ import MenuItemWindow from './MenuItemWindow'
 import ShopWindow from './ShopWindow'
 import AlertWindow from './AlertWindow'
 import MessageWindow from './MessageWindow'
+import SaveWindow from './SaveWindow'
 
 interface IWindowStack {
   pushWindow(w: BaseWindow | string): void
@@ -40,6 +41,7 @@ export default class GlobalWindowComponent
   private _menuEquipmentWindow?: MenuEquipmentWindow
   private _menuItemWindow?: MenuItemWindow
   private _shopWindow?: ShopWindow
+  private _saveWindow?: SaveWindow
   private _alertWindow?: AlertWindow
   private _windowStack: BaseWindow[] = []
   private _pressedFrame = 0
@@ -87,6 +89,11 @@ export default class GlobalWindowComponent
       'shopWindow',
       ShopWindow
     ) as ShopWindow
+
+    this._saveWindow = this.root.getComponentInChildByName(
+      'saveWindow',
+      SaveWindow
+    ) as SaveWindow
 
     this._alertWindow = this.root.getComponentInChildByName(
       'alertWindow',
@@ -136,14 +143,19 @@ export default class GlobalWindowComponent
   }
 
   pushWindow(w: BaseWindow | string) {
-    let window = w instanceof BaseWindow ? w : undefined
-    if (w === 'status') {
-      window = this._menuStatusWindow!
-    } else if (w === 'equip') {
-      window = this._menuEquipmentWindow!
-    } else if (w === 'item') {
-      window = this._menuItemWindow!
-    }
+    const window =
+      w instanceof BaseWindow
+        ? w
+        : w === 'status'
+        ? this._menuStatusWindow!
+        : w === 'equip'
+        ? this._menuEquipmentWindow!
+        : w === 'item'
+        ? this._menuItemWindow!
+        : w === 'save'
+        ? this._saveWindow
+        : undefined
+
     if (window) {
       window.show()
       this._windowStack.push(window)

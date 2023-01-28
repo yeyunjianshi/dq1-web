@@ -12,6 +12,21 @@ export const nextFrame = () => {
   })
 }
 
+export const timestampToTime = (timestamp: number) => {
+  const timestampSeconds = Math.floor(timestamp / 1000)
+  const s = timestampSeconds % 60
+  const m = Math.floor(timestampSeconds / 60) % 60
+  const h = Math.floor(timestampSeconds / 3600)
+  return { h, m, s }
+}
+
+export const timestampToTimeFormat = (timestamp: number) => {
+  const { h, m, s } = timestampToTime(timestamp)
+  return `${h}:${m.toString().padStart(2, '0')}:${s
+    .toString()
+    .padStart(2, '0')}`
+}
+
 export class Time implements ITime {
   private _deltaTime = 0
   private _currentFrameTime = 0
@@ -24,8 +39,8 @@ export class Time implements ITime {
 
   init() {
     this._deltaTime = 0
-    this._currentFrameTime = 0
-    this._previousFrameTime = 0
+    this._currentFrameTime = Date.now()
+    this._previousFrameTime = Date.now()
     this.gameplayTime = 0
     this._runningTime = 0
   }

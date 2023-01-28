@@ -1446,6 +1446,50 @@
             }
           }
         ]
+      },
+      {
+        "name": "saveWindow",
+        "x": 0,
+        "y": 0,
+        "width": -2,
+        "height": -2,
+        "active": false,
+        "alpha": 1,
+        "useScreenPosition": true,
+        "components": [
+          {
+            "type": "SaveWindow"
+          }
+        ],
+        "children": [
+          {
+            "x": 0,
+            "y": -100,
+            "width": 360,
+            "height": 136,
+            "pivot": [0.5, 0.5],
+            "layoutGravity": ["center", "center"],
+            "background": {
+              "sprite": "",
+              "backgroundColor": "#222",
+              "borderWidth": 4
+            },
+            "active": true,
+            "components": [
+              {
+                "type": "$ListComponent"
+              }
+            ],
+            "layout": {
+              "type": "GridLayout",
+              "row": 3,
+              "col": 1,
+              "cell": [360, 40],
+              "gravity": ["center", "center"],
+              "template": "key_value_item.json"
+            }
+          }
+        ]
       }
     ]
   }
