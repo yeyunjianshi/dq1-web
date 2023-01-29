@@ -1,13 +1,11 @@
-import { GameplayComponent } from '../../engine/components'
-import Component from '../../engine/component'
-import { GlobalWindowMarker } from '../../engine/engine'
-import GameObject from '../../engine/gameObject'
-import ListComponent, {
-  TextAdapter,
-} from '../../engine/components/ListComponent'
+import { GameplayComponent } from '@engine/components'
+import Component from '@engine/component'
+import { GlobalWindowMarker } from '@engine/engine'
+import GameObject from '@engine/gameObject'
+import ListComponent, { TextAdapter } from '@engine/components/ListComponent'
+import BaseWindow from '@engine/components/BaseWindow'
 import CommonStatusWindow from './CommonStatusWindow'
 import CommonGoldWindow from './CommonGoldWindow'
-import BaseWindow from '../../engine/components/BaseWindow'
 import { globalGameData, InputType } from '../asset/gameData'
 import MenuStatusWindow from './MenuStatusWindow'
 import MenuEquipmentWindow from './MenuEquipmentWindow'
@@ -16,6 +14,7 @@ import ShopWindow from './ShopWindow'
 import AlertWindow from './AlertWindow'
 import MessageWindow from './MessageWindow'
 import SaveWindow from './SaveWindow'
+import ConfigWindow from './ConfigWindow'
 
 interface IWindowStack {
   pushWindow(w: BaseWindow | string): void
@@ -42,6 +41,7 @@ export default class GlobalWindowComponent
   private _menuItemWindow?: MenuItemWindow
   private _shopWindow?: ShopWindow
   private _saveWindow?: SaveWindow
+  private _configWindow?: ConfigWindow
   private _alertWindow?: AlertWindow
   private _windowStack: BaseWindow[] = []
   private _pressedFrame = 0
@@ -94,6 +94,11 @@ export default class GlobalWindowComponent
       'saveWindow',
       SaveWindow
     ) as SaveWindow
+
+    this._configWindow = this.root.getComponentInChildByName(
+      'configWindow',
+      ConfigWindow
+    ) as ConfigWindow
 
     this._alertWindow = this.root.getComponentInChildByName(
       'alertWindow',
@@ -154,6 +159,8 @@ export default class GlobalWindowComponent
         ? this._menuItemWindow!
         : w === 'save'
         ? this._saveWindow
+        : w === 'config'
+        ? this._configWindow
         : undefined
 
     if (window) {
