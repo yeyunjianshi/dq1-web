@@ -1,9 +1,9 @@
-import { GameplayComponent } from '../../engine/components'
-import BaseWindow from '../../engine/components/BaseWindow'
+import { GameplayComponent } from '@engine/components'
+import BaseWindow from '@engine/components/BaseWindow'
 import ListComponent, {
   KeyValueAdapter,
-} from '../../engine/components/ListComponent'
-import TextComponent from '../../engine/components/TextComponent'
+} from '@engine/components/ListComponent'
+import TextComponent from '@engine/components/TextComponent'
 import { globalGameData } from '../asset/gameData'
 import { DefaultRemoveEquipItemSlot, ItemSlot } from '../inventory/inventory'
 import { ItemEquipmentType, ItemType } from '../inventory/item'
@@ -153,6 +153,7 @@ export default class MenuEquipmentWindow extends BaseWindow {
     if (s) {
       this._leftWindow!.setSelecting(true)
       this._rightWindow!.setCanSelect(false)
+      this._leftWindow?.setCursorIndex(this._leftWindow.cursorIndex)
     } else {
       this._leftWindow!.setSelecting(false)
       this._rightWindow!.setCanSelect(true)

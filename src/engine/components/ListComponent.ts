@@ -93,6 +93,10 @@ export default class ListComponent extends Component {
     this.refreshHover()
   }
 
+  get cursorIndex() {
+    return this._currentIndex
+  }
+
   refreshHover() {
     if (!this._isCanSelect) return
 
