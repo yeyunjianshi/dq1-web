@@ -1,44 +1,77 @@
 import EventEmitter from './eventEmitter'
+import { Resource } from './resource'
 
-const DefaultLanguage = 'chinese'
+export const LanguageSimplifiedChinese = 'simplified_chinese'
+export const DefaultLanguage = LanguageSimplifiedChinese
+export const DefaultSuppoertLanguage = [LanguageSimplifiedChinese]
 
-export default class i18n {
-  language: string
-  values: Map<string, Map<string, string>>
-  supportLanguages: string[]
+export interface I18NEntry {
+  key: string
+  value: string
+  infos?: Record<string, string>
+}
+
+export default class I18N {
+  language: string = DefaultLanguage
+  values: Map<string, I18NEntry> = new Map()
+  supportLanguages: string[] = [DefaultLanguage]
   events = new EventEmitter()
-  prefix: string
+  prefix = ''
 
   constructor(
     defaultLanguage = DefaultLanguage,
     suppertLaunguages: string[] = [DefaultLanguage],
-    values: { language: string; data: { key: string; value: string }[] }[] = [],
-    prefix = 'S_'
+    values: I18NEntry[] = [],
+    prefix = ''
   ) {
     this.supportLanguages = suppertLaunguages
-    this.language = defaultLanguage
     this.prefix = prefix
-    this.values = new Map()
-
-    values.forEach((v) => {
-      if (this.values.has(v.language)) {
-        this.values.set(this.language, new Map())
-      }
-      const markers = this.values.get(this.language)!
-      v.data.forEach((d) => markers.set(d.key, d.value))
-    })
+    this.setLanguageAndEntries(defaultLanguage, values)
   }
 
-  changeLanguage(language: string): void {
-    if (this.supportLanguages.indexOf(language) < 0)
-      console.error(`i18n Error: 不支持该语言`)
+  async changeLanguage(language: string) {
+    if (this.supportLanguages.indexOf(language) === -1) {
+      throw new Error(`i18n Error: 不支持 ${language}`)
+    }
+    const entries = await this.loadLanguageEntries(language)
+    this.setLanguageAndEntries(language, entries)
+  }
+
+  async loadLanguageEntries(
+    language: string,
+    resouce?: Resource
+  ): Promise<I18NEntry[]> {
+    return await (resouce ?? new Resource()).loadJson<I18NEntry[]>(
+      `i18n/${language}.json`
+    )
+  }
+
+  setLanguageAndEntries(language: string, values: I18NEntry[]) {
+    if (this.supportLanguages.indexOf(language) === -1) {
+      throw new Error(`i18n Error: 不支持 ${language}`)
+    }
+
     this.language = language
+    values.forEach((v) => {
+      if (v.key) {
+        this.values.set(v.key, v)
+      }
+    })
     this.events.emit(this)
   }
 
-  getValue(key: string): string {
-    if (!key.startsWith(this.prefix)) return key
+  getEntryValue(key: string): I18NEntry {
+    const defaultEntry = { key, value: key }
+    if (!key.startsWith(this.prefix)) return defaultEntry
+    return this.values.get(key) ?? defaultEntry
+  }
 
-    return this.values.get(this.language)?.get(key.slice(key.length)) || key
+  getTextValue(key: string): string {
+    return this.getEntryValue(key).value
+  }
+
+  getEntriesByStartWith(key: string): I18NEntry[] {
+    if (!key.startsWith(this.prefix)) return []
+    return Array.from(this.values.values()).filter((v) => v.key.startsWith(key))
   }
 }

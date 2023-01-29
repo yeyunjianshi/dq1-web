@@ -52,7 +52,10 @@ const assetLoader = new AssetLoader()
 assetLoader.addAssets(
   engine.resource
     .loadJson<Record<string, string>>('events.json')
-    .then((events) => SetGameEventScript(events))
+    .then((events) => SetGameEventScript(events)),
+  engine.i18n.loadLanguageEntries(engine.i18n.language).then((entries) => {
+    engine.i18n.setLanguageAndEntries(engine.i18n.language, entries)
+  })
 )
 
 engine.sceneManager.loadScene('Global')
