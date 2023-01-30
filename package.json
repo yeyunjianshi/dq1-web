@@ -7,10 +7,10 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "build:i18n": "node ./scripts/buildi18n.mjs",
+    "build:events": "node ./scripts/eventPack.mjs",
     "preview": "vite preview",
     "format": "prettier --write \"**/*.+(ts)\"",
     "lint": "eslint . --fix --ext .ts",
-    "event:pack": "node ./scripts/eventPack.js",
     "prepare": "husky install"
   },
   "keywords": [],
