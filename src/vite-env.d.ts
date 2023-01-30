@@ -1,4 +1,10 @@
 /// <reference types="vite/client" />
+//----------------- Plugins -------------------
+declare module '*.tmj' {
+  const classes: GameObjectData
+  export default classes
+}
+// --------------------------------------------
 
 type ListenerFunction = (...args: any[]) => void
 

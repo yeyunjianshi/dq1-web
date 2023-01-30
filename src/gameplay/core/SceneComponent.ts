@@ -18,10 +18,11 @@ import Door from '../map/Door'
 
 type SceneComponentData = {
   type: string
-  mapData?: string
+  mapData?: string | MapData
 }
 
 type MapData = {
+  name?: string
   data: number[]
   width: number
   height: number
@@ -131,14 +132,17 @@ export default class SceneComponent extends Component {
   }
 
   parseData(assetLoader: AssetLoader, data: SceneComponentData): void {
-    if (data.mapData) {
+    if (typeof data.mapData === 'string') {
       const mapDataAsset = this.resource
         .loadJson<MapData>(data.mapData)
         .then((mapData) => {
-          this._mapData.name = data.mapData
+          this._mapData.name = data.mapData as string
           this._mapData.data = mapData
         })
       assetLoader.addAssets(mapDataAsset)
+    } else {
+      this._mapData.name = data.mapData?.name
+      this._mapData.data = data.mapData
     }
   }
 }

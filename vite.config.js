@@ -1,11 +1,12 @@
 import { defineConfig } from 'vite'
 import { dirname, resolve } from 'path'
 import { fileURLToPath } from 'url'
+import tmj from './plugins/rollup-plugin-tmj'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-console.log(resolve(__dirname, './src/engine'))
 
 export default defineConfig({
+  plugins: [tmj()],
   resolve: {
     alias: {
       '@data': resolve(__dirname, './src/data'),

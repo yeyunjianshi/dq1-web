@@ -27,8 +27,10 @@ import EnemyData from '../public/assets/data/enemies.json'
 import MagicData from '../public/assets/data/magic.json'
 import TorchPostProcess from './gameplay/postprocess/TorchPostProcess'
 
-import TantegelCastleScene from './data/TantegelCastle.json'
+import TantegelCastleScene from './data/scenes/TantegelCastle.tmj'
+// import TantegelCastleScene from './data/TantegelCastle.json'
 import TantegelCastle2Scene from './data/TantegelCastle2.json'
+console.log(TantegelCastleScene)
 
 SetCharacters((AllCharactersData as CharacterData[]).map(parseCharacter))
 SetItems((AllItemData as ItemData[]).map(parseItem))
@@ -60,7 +62,7 @@ assetLoader.addAssets(
 
 engine.sceneManager.loadScene('Global')
 engine.sceneManager.loadScene('TeamController')
-engine.sceneManager.loadScene('TantegelCastle2')
+engine.sceneManager.loadScene('TantegelCastle')
 // engine.sceneManager.loadScene('Battle')
 
 engine.init()
