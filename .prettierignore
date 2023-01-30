@@ -1,4 +1,5 @@
 node_modules
 .husky
 .git
-distn
+dist
+public/assets/data/i18n

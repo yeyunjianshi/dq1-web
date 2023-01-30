@@ -3,6 +3,7 @@ const fs = require('fs')
 
 const writeDataPath = path.resolve('public/assets/data/events.json')
 const eventsDirPath = path.resolve('src/data/events')
+
 if (!fs.existsSync(eventsDirPath)) {
   throw new Error(`未找到文件夹: ${eventsDirPath}`)
 }
