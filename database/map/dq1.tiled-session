@@ -1,0 +1,83 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "automapping.whileDrawing": false,
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "全部文件 (*)",
+    "fileStates": {
+        "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj": {
+            "expandedGroupLayers": [
+                28
+            ],
+            "scale": 0.75,
+            "selectedLayer": 11,
+            "viewCenter": {
+                "x": 943.3333333333333,
+                "y": 653.3333333333333
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Tiles.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Map/characters.tsx": {
+            "dynamicWrapping": false
+        },
+        "Tiles/Tiles.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tmx/TantegelCastle.json": {
+            "scale": 0.5365472560975609,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -44.73044960579591,
+                "y": 764.1451807656795
+            }
+        },
+        "Tmx/TantegelCastle.tmj": {
+            "expandedGroupLayers": [
+                7
+            ],
+            "scale": 1,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 726,
+                "y": 397
+            }
+        },
+        "Tmx/TantegelCastle.tmx": {
+            "scale": 0.4417782738095238,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 1220.069052631579,
+                "y": 878.2686315789474
+            }
+        }
+    },
+    "last.exportedFilePath": "E:/projects/web/DQ1-Map/Tmx",
+    "last.externalTilesetPath": "E:/projects/web/dq1-web-pre/database/map/Tiles",
+    "last.imagePath": "E:/projects/web/dq1-web-pre/database/map/Tiles",
+    "map.height": 41,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.width": 42,
+    "openFiles": [
+    ],
+    "project": "dq1.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj",
+        "Tiles/Tiles.tsx",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Tiles.tsx"
+    ],
+    "textEdit.monospace": true,
+    "tileset.lastUsedFilter": "Tiled 图块集文件 (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx"
+}

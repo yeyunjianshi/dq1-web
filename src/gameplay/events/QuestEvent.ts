@@ -68,15 +68,15 @@ export class QuestEvent extends Component implements Interaction {
     })
   }
 
-  interactive(): void {
+  async interactive() {
     AddExecuteEvent(this)
-    Execute(this.engine)
+    await Execute(this.engine)
   }
 
   parseData(_: AssetLoader, data: QuestEventData): void {
     this.questId = data.eventId
     this.eventId = generateEventId(data.eventId)
-    this.when = data.when === undefined ? this.when : data.when
+    this.when = this.parseWhen(data.when)
     this.args = data.args || []
     this.predecessorId = data.predecessorId
       ? data.predecessorId.map(generateEventId)
@@ -85,5 +85,26 @@ export class QuestEvent extends Component implements Interaction {
     this.isHideAfterFinish = data.hideAfterFinish ?? this.isHideAfterFinish
     this.isInsertGlobalAfterFinish =
       data.insertGlobalAfterFinish ?? this.isHideAfterFinish
+  }
+
+  parseWhen(when: string | EventTriggerWhen | undefined): EventTriggerWhen {
+    if (when === undefined) return this.when
+    else if (typeof when === 'string') {
+      switch (when) {
+        case 'auto':
+          return EventTriggerWhen.Auto
+        case 'trigger':
+          return EventTriggerWhen.Trigger
+        case 'confirm':
+          return EventTriggerWhen.InteractiveConfirm
+        case 'enter':
+          return EventTriggerWhen.InteractiveEnter
+        case 'exit':
+          return EventTriggerWhen.InteractiveExit
+        default:
+          throw new Error(`QuestEvent Error: 未找到when的值${when}。`)
+      }
+    }
+    return when as EventTriggerWhen
   }
 }

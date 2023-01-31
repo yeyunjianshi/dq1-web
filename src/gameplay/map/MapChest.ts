@@ -11,6 +11,7 @@ type MapChestData = {
   items: number[]
   money?: number
   colliderSize: Vector2
+  hidden: boolean
 }
 
 @GameplayComponent
@@ -19,8 +20,13 @@ export default class MapChest extends Component implements Interaction {
   itemsId: number[] = []
   money = 0
   colliderSize: Vector2 = [32, 32]
+  hidden = false
 
   start() {
+    if (this.hidden) {
+      this.background.name = ''
+      this.background.sprite = undefined
+    }
     this.refreshStatus()
   }
 
@@ -29,6 +35,8 @@ export default class MapChest extends Component implements Interaction {
   }
 
   refreshStatus(openStatus?: boolean) {
+    if (this.hidden) return
+
     if (typeof openStatus === 'undefined') {
       openStatus = !this.canTrigger()
     }
@@ -59,6 +67,7 @@ export default class MapChest extends Component implements Interaction {
     this.itemsId = data.items
     this.money = data.money || 0
     this.colliderSize = data.colliderSize || this.colliderSize
+    this.hidden = data.hidden ?? this.hidden
     this.root.addComponent(
       BoxCollider,
       { size: this.colliderSize } as BoxColliderData,

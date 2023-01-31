@@ -85,6 +85,12 @@ export default class SceneComponent extends Component {
     })
   }
 
+  triggerQuestEventByWhen(when: EventTriggerWhen) {
+    return this._questEvents.find((event) => {
+      return event.canTrigger(when)
+    })
+  }
+
   triggerQuestEvent(position: Vector2, when: EventTriggerWhen) {
     return this._questEvents.find((event) => {
       return (

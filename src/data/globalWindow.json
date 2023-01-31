@@ -33,7 +33,7 @@
           "backgroundColor": "#222",
           "borderWidth": 4
         },
-        "active": true,
+        "active": false,
         "components": [
           {
             "type": "$ListComponent"

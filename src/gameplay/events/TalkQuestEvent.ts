@@ -10,13 +10,14 @@ import { EventTriggerWhen } from './QuestEvent'
 
 @GameplayComponent
 export default class TalkQuestEvent extends NPCQuestEvent {
-  interactive(): void {
-    this.talk()
+  when = EventTriggerWhen.InteractiveConfirm
+
+  async interactive() {
+    await this.talk()
   }
 
   awake(): void {
     super.awake()
-    this.when = EventTriggerWhen.InteractiveConfirm
   }
 
   private async talk() {

@@ -28,7 +28,6 @@ import MagicData from '../public/assets/data/magic.json'
 import TorchPostProcess from './gameplay/postprocess/TorchPostProcess'
 
 import TantegelCastleScene from './data/scenes/TantegelCastle.tmj'
-// import TantegelCastleScene from './data/TantegelCastle.json'
 import TantegelCastle2Scene from './data/TantegelCastle2.json'
 console.log(TantegelCastleScene)
 

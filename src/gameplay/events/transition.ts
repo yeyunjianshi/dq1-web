@@ -1,17 +1,32 @@
 import Component from '../../engine/component'
 import { GameplayComponent } from '../../engine/components'
 import Engine, { GlobalTeamControllerMarker } from '../../engine/engine'
-import { Direction } from '../../engine/input'
+import { Direction, parseDirection } from '../../engine/input'
 import { AssetLoader } from '../../engine/resource'
 import { SceneLoadType } from '../../engine/sceneManager'
 import { nextFrame } from '../../engine/time'
 import { globalGameData } from '../asset/gameData'
 import TeamControllerComponent from '../core/TeamControllerComponent'
+import { EventTriggerWhen, QuestEvent } from './QuestEvent'
 
 type SceneTransitionData = {
   type: string
   tag: string
   nextScene: string
+}
+
+async function transitionToSceneByTransition(transition: SceneTransition) {
+  // 触发出口事件
+  const exitEvent = (
+    transition.root.getComponents(QuestEvent) as QuestEvent[]
+  ).find((event) => event.canTrigger(EventTriggerWhen.InteractiveExit))
+  if (exitEvent) await exitEvent.interactive()
+
+  transitionToScene(
+    transition.root.engine,
+    transition.nextScene,
+    transition.tag
+  )
 }
 
 async function transitionToScene(
@@ -51,6 +66,12 @@ async function transitionToScene(
     moveDestination.direciton,
     moveDestination.isPremutation
   )
+
+  // 触发入口事件
+  const enterEvent = (
+    moveDestination.root.getComponents(QuestEvent) as QuestEvent[]
+  ).find((event) => event.canTrigger(EventTriggerWhen.InteractiveEnter))
+  if (enterEvent) await enterEvent.interactive()
 }
 
 @GameplayComponent
@@ -59,7 +80,7 @@ export class SceneTransition extends Component {
   nextScene = 'A'
 
   transitionTo() {
-    transitionToScene(this.root.engine, this.nextScene, this.tag)
+    transitionToSceneByTransition(this)
   }
 
   parseData(_: AssetLoader, data: SceneTransitionData): void {
@@ -83,8 +104,7 @@ export class SceneTransitionDestination extends Component {
 
   parseData(_: AssetLoader, data: SceneTransitionDestinationData) {
     this.tag = data.tag
-    this.direciton =
-      data.direction === undefined ? this.direciton : data.direction
+    this.direciton = parseDirection(data.direction ?? this.direciton)
     this.isPremutation =
       typeof data.isPremutation === 'boolean'
         ? data.isPremutation

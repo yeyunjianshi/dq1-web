@@ -305,6 +305,14 @@ class GameObject implements LifeCycle {
     )
   }
 
+  getComponents<T extends typeof Component>(
+    componentConstructor: T
+  ): Component[] {
+    return this.components.filter(
+      (component) => component instanceof componentConstructor
+    )
+  }
+
   getComponentInChildByName<T extends typeof Component>(
     name: string,
     componentConstructor: T

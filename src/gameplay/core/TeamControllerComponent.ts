@@ -176,16 +176,9 @@ export default class TeamControllerComponent
 
       if (moveDistance <= moveDelta) {
         this.moveToTarget() // 移动到目标坐标
-        // 检查毒池和回复Buff检测
-        globalGameData.hero.triggerMoveBuffers()
-        // 检查是否有事件发生
-        if (this.checkDestination()) {
-          return
-        }
-        if (checkMeetEnemy()) {
-          battle()
-          return
-        }
+
+        if (this.checkTargetEvent()) return
+
         if (moveDistance - moveDelta > 0.01) {
           this.updateDistance(moveDistance - moveDelta)
         }
@@ -193,6 +186,34 @@ export default class TeamControllerComponent
         this.move(moveDelta)
       }
     }
+  }
+
+  private checkTargetEvent() {
+    const sceneComponent = this.engine.getVariable(
+      GlobalSceneComponentMarker
+    ) as SceneComponent
+    // 检查是否有事件发生
+    const interaction = sceneComponent.triggerQuestEvent(
+      this._head.coord,
+      EventTriggerWhen.Trigger
+    )
+    if (interaction) {
+      interaction.interactive()
+      return true
+    }
+
+    // 检查毒池和回复Buff检测
+    globalGameData.hero.triggerMoveBuffers()
+    // 检查是否出入口
+    if (this.checkDestination()) {
+      return true
+    }
+    if (checkMeetEnemy()) {
+      battle()
+      return true
+    }
+
+    return false
   }
 
   private checkCancelPressed(): boolean {
@@ -224,6 +245,7 @@ export default class TeamControllerComponent
     )
     if (interaction) {
       interaction.interactive()
+      return true
     }
     return false
   }
@@ -331,7 +353,7 @@ export default class TeamControllerComponent
       playerState.position = playerState.targetPosition = CoordToPosition(
         playerState.coord
       )
-      playerState.direction = this.direction
+      playerState.direction = dir
     }
 
     this._head = { ...this.playerStats[0] }

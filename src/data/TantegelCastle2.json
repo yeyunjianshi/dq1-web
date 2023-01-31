@@ -35,12 +35,12 @@
             "components": [
               {
                 "type": "SceneTransition",
-                "tag": "floor_down",
+                "tag": "middle",
                 "nextScene": "TantegelCastle"
               },
               {
                 "type": "SceneTransitionDestination",
-                "tag": "floor_up",
+                "tag": "middle",
                 "direction": "down"
               }
             ]
@@ -146,7 +146,7 @@
         "active": true,
         "alpha": 1,
         "background": {
-          "sprite": "system/MapChest.png"
+          "sprite": "map/MapChest.png"
         },
         "components": [
           {
@@ -165,7 +165,7 @@
         "active": true,
         "alpha": 1,
         "background": {
-          "sprite": "system/MapChest.png"
+          "sprite": "map/MapChest.png"
         },
         "components": [
           {
@@ -183,7 +183,7 @@
         "active": true,
         "alpha": 1,
         "background": {
-          "sprite": "system/MapChest.png"
+          "sprite": "map/MapChest.png"
         },
         "components": [
           {

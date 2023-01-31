@@ -1,0 +1,116 @@
+{
+    "automappingRulesFile": "",
+    "commands": [
+    ],
+    "extensionsPath": "extensions",
+    "folders": [
+        ".",
+        "../../src/data/scenes"
+    ],
+    "propertyTypes": [
+        {
+            "id": 2,
+            "name": "Direction",
+            "storageType": "int",
+            "type": "enum",
+            "values": [
+            ],
+            "valuesAsFlags": false
+        },
+        {
+            "color": "#ffa0a0a4",
+            "id": 4,
+            "members": [
+                {
+                    "name": "door_collider_height",
+                    "type": "int",
+                    "value": -1
+                },
+                {
+                    "name": "door_collider_width",
+                    "type": "int",
+                    "value": -1
+                },
+                {
+                    "name": "door_id",
+                    "type": "string",
+                    "value": ""
+                }
+            ],
+            "name": "Door",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "id": 3,
+            "members": [
+                {
+                    "name": "d_direction",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "name": "d_isPremutation",
+                    "type": "bool",
+                    "value": false
+                },
+                {
+                    "name": "d_tag",
+                    "type": "string",
+                    "value": "__$$$__"
+                },
+                {
+                    "name": "height",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "t_nextScene",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "name": "t_tag",
+                    "type": "string",
+                    "value": "__$$$__"
+                },
+                {
+                    "name": "width",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "x",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "y",
+                    "type": "int",
+                    "value": 0
+                }
+            ],
+            "name": "Entrace",
+            "type": "class",
+            "useAs": [
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        }
+    ]
+}
