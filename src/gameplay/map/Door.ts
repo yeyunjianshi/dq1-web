@@ -4,6 +4,7 @@ import { generateDoorId } from '../events/EventExector'
 import { AssetLoader } from '../../engine/resource'
 import { globalGameData } from '../asset/gameData'
 import { BoxCollider, BoxColliderData } from '../../engine/components/Collider'
+import { Audios } from '@gameplay/audio/AudioConfig'
 
 type DoorData = {
   type: string
@@ -37,6 +38,9 @@ export default class Door extends Component implements Interaction {
 
   async open() {
     if (!this.canTrigger()) return
+
+    this.audios.playME(Audios.Door)
+
     globalGameData.inventory.removeItemId(50)
     globalGameData.finishEvent(this.id)
     this.refreshStatus(true)

@@ -6,6 +6,7 @@ import TeamController from './data/team_controller.json'
 import './gameplay/componentConfig'
 import { AddGameSceneData } from './engine/sceneManager'
 import { AssetLoader } from './engine/resource'
+import { audioInitLoad } from './gameplay/audio/AudioConfig'
 import {
   setEventEngine,
   SetGameEventScript,
@@ -49,14 +50,18 @@ const engine = createEngine()
 engine.renderer.registerPostProcess(new TorchPostProcess(engine))
 setEventEngine(engine)
 
+const { resource } = engine
 const assetLoader = new AssetLoader()
 assetLoader.addAssets(
-  engine.resource
+  audioInitLoad(resource).then((...args) => console.log(args)),
+  resource
     .loadJson<Record<string, string>>('events.json')
     .then((events) => SetGameEventScript(events)),
-  engine.i18n.loadLanguageEntries(engine.i18n.language).then((entries) => {
-    engine.i18n.setLanguageAndEntries(engine.i18n.language, entries)
-  })
+  engine.i18n
+    .loadLanguageEntries(engine.i18n.language, resource)
+    .then((entries) => {
+      engine.i18n.setLanguageAndEntries(engine.i18n.language, entries)
+    })
 )
 
 engine.sceneManager.loadScene('Global')

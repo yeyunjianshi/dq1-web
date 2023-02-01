@@ -1,3 +1,4 @@
+import { Audios } from '../audio/AudioConfig'
 import Component from '../../engine/component'
 import { GameplayComponent } from '../../engine/components'
 import Engine, { GlobalTeamControllerMarker } from '../../engine/engine'
@@ -78,8 +79,11 @@ async function transitionToScene(
 export class SceneTransition extends Component {
   tag = 'A'
   nextScene = 'A'
+  playAudio = true
 
   transitionTo() {
+    if (this.playAudio) this.engine.audios.playME(Audios.Stairs)
+
     transitionToSceneByTransition(this)
   }
 

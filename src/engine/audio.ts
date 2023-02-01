@@ -23,13 +23,17 @@ export default class AudioManager {
   }
 
   playBGM(bgm?: string, reset = true, loop = true) {
-    if (!bgm) return
+    if (!bgm) {
+      this.pauseBGM()
+      return
+    }
 
-    this.pauseBGM()
     const audio = this.resource.getAudio(bgm)
     if (audio) {
+      if (!reset && audio !== this._bgmAudio && !audio.paused) return
+
       this._bgmAudio = audio
-      if (reset) this._bgmAudio.currentTime = 0
+      this._bgmAudio.currentTime = 0
       this.setAudioVolume('bgm')
       this._bgmAudio.loop = loop
       this._bgmAudio.play()
@@ -45,30 +49,48 @@ export default class AudioManager {
     this.pause(this._bgmAudio)
   }
 
-  playME(me?: string) {
-    if (!me) return
+  playME(me?: string, reset = true, loop = false) {
+    if (!me) {
+      this.pauseME()
+      return
+    }
 
     const audio = this.resource.getAudio(me)
     if (audio) {
+      if (!reset && audio === this._meAudio && !audio.paused) return
+
       this._meAudio = audio
       this._meAudio.currentTime = 0
       this.setAudioVolume('me')
-      this._meAudio.loop = false
+      this._meAudio.loop = loop
       this._meAudio.play()
     }
   }
 
-  playSE(se?: string) {
-    if (!se) return
+  pauseME() {
+    this.pause(this._meAudio)
+  }
+
+  playSE(se?: string, reset = true, loop = false) {
+    if (!se) {
+      this.pauseSE()
+      return
+    }
 
     const audio = this.resource.getAudio(se)
     if (audio) {
+      if (!reset && audio === this._seAudio) return
+
       this._seAudio = audio
       this.setAudioVolume('se')
       this._seAudio.currentTime = 0
-      this._seAudio.loop = false
+      this._seAudio.loop = loop
       this._seAudio.play()
     }
+  }
+
+  pauseSE() {
+    this.pause(this._seAudio)
   }
 
   replay(audio?: Audio) {
@@ -82,6 +104,18 @@ export default class AudioManager {
     if (audio) {
       audio.pause()
     }
+  }
+
+  public get BGMAudio() {
+    return this._bgmAudio
+  }
+
+  public get MEAudio() {
+    return this._meAudio
+  }
+
+  public get SEAudio() {
+    return this._seAudio
   }
 
   public set volume(val: number) {

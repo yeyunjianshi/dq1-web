@@ -55,6 +55,8 @@ export default class MapChest extends Component implements Interaction {
     })
     if (this.money > 0) itemsName.push(`${this.money}G`)
 
+    this.audios.playSE(this.important ? Audios.ImportantItem : Audios.Chest)
+
     await message(`获得了${itemsName.join('、')}`)
 
     globalGameData.finishEvent(this.id)

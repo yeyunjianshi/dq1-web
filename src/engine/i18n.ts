@@ -39,7 +39,7 @@ export default class I18N {
 
   async loadLanguageEntries(
     language: string,
-    resouce?: Resource
+    resouce?: IResource
   ): Promise<I18NEntry[]> {
     return await (resouce ?? new Resource()).loadJson<I18NEntry[]>(
       `i18n/${language}.json`

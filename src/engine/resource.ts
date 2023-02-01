@@ -1,6 +1,6 @@
 import EventEmitter from './eventEmitter'
 
-export const ASSETS_PREFIX = 'public/assets/'
+export const ASSETS_PREFIX = '/assets/'
 export const SPRITES_PREFIX = ASSETS_PREFIX + 'sprites/'
 export const AUDIO_PREFIX = ASSETS_PREFIX + 'audios/'
 export const DATA_PREFIX = ASSETS_PREFIX + 'data/'

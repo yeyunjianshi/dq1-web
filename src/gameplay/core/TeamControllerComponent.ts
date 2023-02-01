@@ -1,3 +1,4 @@
+import { Audios } from '@gameplay/audio/AudioConfig'
 import { GameplayComponent } from '../../engine/components'
 import { ColliderLayerType } from '../../engine/components/Collider'
 import MoveComponent, {
@@ -162,6 +163,10 @@ export default class TeamControllerComponent
 
           this.refreshNextPlayerStats()
           this.isMoving = true
+        } else {
+          if (!this.audios.MEAudio || this.audios.MEAudio.paused) {
+            this.audios.playME(Audios.Bump)
+          }
         }
 
         this.refreshAnimationSprite()

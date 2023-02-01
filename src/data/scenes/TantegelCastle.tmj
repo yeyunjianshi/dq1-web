@@ -38,11 +38,6 @@
                  "value":"map\/TantegelCastle.png"
                 }, 
                 {
-                 "name":"bgm",
-                 "type":"string",
-                 "value":"PeacefulVillage.mp3"
-                }, 
-                {
                  "name":"isCave",
                  "type":"bool",
                  "value":false
@@ -447,6 +442,11 @@
                          "name":"id",
                          "type":"string",
                          "value":"TantgelCastle_Chest1"
+                        }, 
+                        {
+                         "name":"important",
+                         "type":"bool",
+                         "value":true
                         }, 
                         {
                          "name":"items",

@@ -15,6 +15,7 @@ import AlertWindow from './AlertWindow'
 import MessageWindow from './MessageWindow'
 import SaveWindow from './SaveWindow'
 import ConfigWindow from './ConfigWindow'
+import { Audios } from '@gameplay/audio/AudioConfig'
 
 interface IWindowStack {
   pushWindow(w: BaseWindow | string): void
@@ -115,6 +116,8 @@ export default class GlobalWindowComponent
   }
 
   showMenu() {
+    this.audios.playSE(Audios.Confirm)
+
     this.windowMarker = WindowMarker.Menu
     this._pressedFrame = this.time.currentFrame
 
@@ -193,6 +196,9 @@ export default class GlobalWindowComponent
         this.popWindow()
       }
     } else {
+      if (this.input.isConfirmPressed()) {
+        this.audios.playSE(Audios.Select)
+      }
       this.activeWindow?.update()
     }
   }
