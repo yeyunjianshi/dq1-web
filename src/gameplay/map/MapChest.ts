@@ -4,6 +4,7 @@ import { BoxCollider, BoxColliderData } from '../../engine/components/Collider'
 import { generateMapChestId, message } from '../events/EventExector'
 import { AssetLoader } from '../../engine/resource'
 import { globalGameData } from '../asset/gameData'
+import { Audios } from '@gameplay/audio/AudioConfig'
 
 type MapChestData = {
   type: string
@@ -12,6 +13,7 @@ type MapChestData = {
   money?: number
   colliderSize: Vector2
   hidden: boolean
+  important: boolean
 }
 
 @GameplayComponent
@@ -20,6 +22,7 @@ export default class MapChest extends Component implements Interaction {
   itemsId: number[] = []
   money = 0
   colliderSize: Vector2 = [32, 32]
+  important = false
   hidden = false
 
   start() {
@@ -68,6 +71,7 @@ export default class MapChest extends Component implements Interaction {
     this.money = data.money || 0
     this.colliderSize = data.colliderSize || this.colliderSize
     this.hidden = data.hidden ?? this.hidden
+    this.important = data.important ?? this.important
     this.root.addComponent(
       BoxCollider,
       { size: this.colliderSize } as BoxColliderData,

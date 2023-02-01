@@ -198,6 +198,7 @@ function convert({ src, tileSize = DefaultTileSize }) {
       money: property(d, 'money'),
       items: property(d, 'items'),
       hidden: property(d, 'hidden'),
+      important: property(d, 'important'),
     })
     return ret
   })
