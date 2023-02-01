@@ -142,7 +142,7 @@ export enum Direction {
 export function parseDirection(
   dir: string | number | undefined | null
 ): Direction {
-  if (typeof dir === 'undefined' && dir === null) return Direction.none
+  if (dir === undefined || dir === null) return Direction.none
   if (typeof dir === 'string') {
     if (dir === 'down') return Direction.down
     if (dir === 'up') return Direction.up
