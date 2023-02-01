@@ -6,18 +6,22 @@
     "activeFile": "",
     "automapping.whileDrawing": false,
     "expandedProjectPaths": [
+        "E:/projects/web/dq1-web-pre/src/data/scenes"
     ],
     "file.lastUsedOpenFilter": "全部文件 (*)",
     "fileStates": {
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj": {
             "expandedGroupLayers": [
+                22,
+                26,
+                30,
                 28
             ],
-            "scale": 0.75,
-            "selectedLayer": 11,
+            "scale": 4,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 943.3333333333333,
-                "y": 653.3333333333333
+                "x": 609.125,
+                "y": 526.875
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Tiles.tsx": {
@@ -71,7 +75,7 @@
     "openFiles": [
     ],
     "project": "dq1.tiled-project",
-    "property.type": "bool",
+    "property.type": "file",
     "recentFiles": [
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj",
         "Tiles/Tiles.tsx",

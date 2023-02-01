@@ -3,6 +3,30 @@
  "infinite":false,
  "layers":[
         {
+         "class":"BornPoint",
+         "id":31,
+         "image":"..\/..\/..\/database\/map\/Sprites\/npc\/npc_0.png",
+         "name":"BornPoint",
+         "offsetx":602.75,
+         "offsety":419.333333333333,
+         "opacity":1,
+         "properties":[
+                {
+                 "name":"direction",
+                 "type":"string",
+                 "value":"down"
+                }, 
+                {
+                 "name":"isPremutation",
+                 "type":"bool",
+                 "value":false
+                }],
+         "type":"imagelayer",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "id":2,
          "image":"..\/..\/..\/public\/assets\/sprites\/map\/TantegelCastle.png",
          "name":"Map",
@@ -479,7 +503,7 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":31,
+ "nextlayerid":32,
  "nextobjectid":20,
  "orientation":"orthogonal",
  "renderorder":"right-down",

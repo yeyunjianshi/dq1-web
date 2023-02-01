@@ -1,5 +1,9 @@
 const fileRegex = /\.tmj$/
 
+function clamp(value, min = -Infinity, max = Infinity) {
+  return Math.min(max, Math.max(min, value))
+}
+
 function find(arr, property, value) {
   return arr.find((o) => o[property] && o[property] === value)
 }
@@ -218,6 +222,26 @@ function convert({ src, tileSize = DefaultTileSize }) {
     return ret
   })
 
+  const bornPointData = find(layersData, 'name', 'BornPoint')
+  const bornPoint = bornPointData
+    ? {
+        ...DefaultGameObject,
+        ...getGameObjectData(bornPointData),
+        name: 'bornPoint',
+        components: [
+          {
+            type: 'BornPointComponent',
+            position: [
+              clamp(Math.floor(bornPointData.offsetx / tileSize) * tileSize, 0),
+              clamp(Math.floor(bornPointData.offsety / tileSize) * tileSize, 0),
+            ],
+            direciton: property(bornPointData, 'direction') ?? 0,
+            isPremutation: property(bornPointData, 'isPremutation'),
+          },
+        ],
+      }
+    : null
+
   root.children.push(
     {
       ...DefaultGameObject,
@@ -248,7 +272,8 @@ function convert({ src, tileSize = DefaultTileSize }) {
       ...DefaultGameObject,
       name: 'enviroments',
       children: envs,
-    }
+    },
+    ...(bornPoint ? [bornPoint] : [])
   )
   return JSON.stringify(scene)
 }

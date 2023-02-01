@@ -9,13 +9,32 @@
     ],
     "propertyTypes": [
         {
-            "id": 2,
-            "name": "Direction",
-            "storageType": "int",
-            "type": "enum",
-            "values": [
+            "color": "#ffa0a0a4",
+            "id": 5,
+            "members": [
+                {
+                    "name": "direction",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "name": "isPremutation",
+                    "type": "bool",
+                    "value": false
+                }
             ],
-            "valuesAsFlags": false
+            "name": "BornPoint",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
         },
         {
             "color": "#ffa0a0a4",
