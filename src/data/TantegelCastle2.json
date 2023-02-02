@@ -4,7 +4,7 @@
   "height": 768,
   "isMeetEnemy": false,
   "isCave": false,
-  "bgm": "PeacefulVillage.mp3",
+  "bgm": "bgm/castle.mp3",
   "root": {
     "x": 0,
     "y": 0,

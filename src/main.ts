@@ -53,7 +53,7 @@ setEventEngine(engine)
 const { resource } = engine
 const assetLoader = new AssetLoader()
 assetLoader.addAssets(
-  audioInitLoad(resource).then((...args) => console.log(args)),
+  audioInitLoad(resource),
   resource
     .loadJson<Record<string, string>>('events.json')
     .then((events) => SetGameEventScript(events)),

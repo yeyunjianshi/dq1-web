@@ -10,12 +10,6 @@ import { globalGameData } from '../asset/gameData'
 import TeamControllerComponent from '../core/TeamControllerComponent'
 import { EventTriggerWhen, QuestEvent } from './QuestEvent'
 
-type SceneTransitionData = {
-  type: string
-  tag: string
-  nextScene: string
-}
-
 async function transitionToSceneByTransition(transition: SceneTransition) {
   // 触发出口事件
   const exitEvent = (
@@ -75,6 +69,13 @@ async function transitionToScene(
   if (enterEvent) await enterEvent.interactive()
 }
 
+type SceneTransitionData = {
+  type: string
+  tag: string
+  nextScene: string
+  playAudio: boolean
+}
+
 @GameplayComponent
 export class SceneTransition extends Component {
   tag = 'A'
@@ -90,6 +91,7 @@ export class SceneTransition extends Component {
   parseData(_: AssetLoader, data: SceneTransitionData): void {
     this.tag = data.tag
     this.nextScene = data.nextScene
+    this.playAudio = data.playAudio
   }
 }
 

@@ -75,7 +75,7 @@
     "openFiles": [
     ],
     "project": "dq1.tiled-project",
-    "property.type": "int",
+    "property.type": "string",
     "recentFiles": [
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj",
         "Tiles/Tiles.tsx",

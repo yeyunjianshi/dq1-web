@@ -38,6 +38,11 @@
                  "value":"map\/TantegelCastle.png"
                 }, 
                 {
+                 "name":"bgm",
+                 "type":"string",
+                 "value":"bgm\/castle.mp3"
+                }, 
+                {
                  "name":"isCave",
                  "type":"bool",
                  "value":false
@@ -446,7 +451,7 @@
                         {
                          "name":"important",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }, 
                         {
                          "name":"items",
