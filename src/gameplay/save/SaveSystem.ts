@@ -1,6 +1,6 @@
 import storage from './Storage'
 import { GameData, globalGameData } from '../asset/gameData'
-import Character from '@gameplay/asset/character'
+import Character from '../asset/character'
 import { timestampToTimeFormat } from '@engine/time'
 
 export class SaveData {

@@ -7,6 +7,7 @@ export const Audios = {
   Chest: 'se/chest.mp3',
   ImportantItem: 'se/important_item.mp3',
   Type: 'se/type.mp3',
+  Save: 'se/save.mp3',
 }
 
 export function audioInitLoad(resource: IResource) {

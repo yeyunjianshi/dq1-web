@@ -2,14 +2,15 @@ import { GameplayComponent } from '@engine/components'
 import ListComponent, {
   KeyValueAdapter,
 } from '@engine/components/ListComponent'
+import BaseWindow from '@engine/components/BaseWindow'
 import {
   generateSaveData,
   SaveData,
   save,
   loadAll,
   load,
-} from '@gameplay/save/SaveSystem'
-import BaseWindow from '@engine/components/BaseWindow'
+} from '../save/SaveSystem'
+import { Audios } from '../audio/AudioConfig'
 
 @GameplayComponent
 export default class SaveWindow extends BaseWindow {
@@ -35,6 +36,8 @@ export default class SaveWindow extends BaseWindow {
         save(pos, generateSaveData())
         this._saveSlots[pos] = load(pos)
         this.refreshList(true)
+
+        this.audios.playME(Audios.Save)
       })
       this._listComponent.setCursorIndex(0)
     }

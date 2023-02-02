@@ -146,6 +146,7 @@ function convert({ src, tileSize = DefaultTileSize }) {
         type: 'SceneTransition',
         tag: property(d, 't_tag'),
         nextScene: property(d, 't_nextScene'),
+        playAudio: property(d, 't_playAudio'),
       },
       {
         type: 'SceneTransitionDestination',
