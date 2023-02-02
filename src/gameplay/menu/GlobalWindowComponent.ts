@@ -116,7 +116,7 @@ export default class GlobalWindowComponent
   }
 
   showMenu() {
-    this.audios.playSE(Audios.Confirm)
+    this.audios.playSE(Audios.Menu)
 
     this.windowMarker = WindowMarker.Menu
     this._pressedFrame = this.time.currentFrame

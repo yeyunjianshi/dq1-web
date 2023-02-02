@@ -1,3 +1,4 @@
+import { Audios } from '../audio/AudioConfig'
 import { GameplayComponent } from '../../engine/components'
 import BaseWindow from '../../engine/components/BaseWindow'
 import ScrollTextComponent from '../../engine/components/ScrollTextComponent'
@@ -26,7 +27,8 @@ export default class MessageWindow extends BaseWindow {
     name: string,
     text: string,
     clear = false,
-    select = false
+    select = false,
+    playAudio = true
   ): Promise<boolean> {
     let ret = true
 
@@ -37,7 +39,9 @@ export default class MessageWindow extends BaseWindow {
     if (name.length !== 0) name += ':'
     this._isShowingMessage = true
     if (clear) messageWindow.clearText()
-    await messageWindow.showTextScroll(text, name)
+    await messageWindow.showTextScroll(text, name, () => {
+      if (playAudio) this.engine.audios.playME(Audios.Type)
+    })
 
     if (select) {
       this._alertWindow!.show()

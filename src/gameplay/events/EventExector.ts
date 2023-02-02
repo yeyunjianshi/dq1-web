@@ -106,6 +106,7 @@ export async function talk(
   text: string,
   clear = false,
   select = false,
+  playTypeAudio = true,
   callback?: () => void
 ): Promise<boolean> {
   const globalWindow =
@@ -118,7 +119,8 @@ export async function talk(
     generateMessageText(characterName),
     generateMessageText(text),
     clear,
-    select
+    select,
+    playTypeAudio
   )
   callback && (await callback())
   globalGameData.inputType = previouseInputType
@@ -126,31 +128,8 @@ export async function talk(
   return ret
 }
 
-export async function talkWithJudge(
-  characterName: string,
-  text: string,
-  clear = false,
-  select = true,
-  callback?: () => void
-) {
-  const globalWindow =
-    executingEngine!.getVariable<GlobalWindowComponent>(GlobalWindowMarker)
-
-  const previouseInputType = globalGameData.inputType
-  globalGameData.inputType = InputType.Message
-
-  await globalWindow.messageWindow.talk(
-    generateMessageText(characterName),
-    generateMessageText(text),
-    clear,
-    select
-  )
-  callback && (await callback())
-  globalGameData.inputType = previouseInputType
-}
-
 export async function message(text: string, callback?: () => void) {
-  await talk('', text, true, false, callback)
+  await talk('', text, true, false, false, callback)
 }
 
 let _isBattleStatus: BattleFinishStatus = BattleFinishStatus.Pending

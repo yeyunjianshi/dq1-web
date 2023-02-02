@@ -32,7 +32,12 @@ export default class ScrollTextComponent extends Component {
     if (this.textLines.length === 0) this.showTextScroll(this.initText)
   }
 
-  async showTextScroll(text: string, prefix = '', callback?: () => void) {
+  async showTextScroll(
+    text: string,
+    prefix = '',
+    scrollLineCallback?: () => void,
+    callback?: () => void
+  ) {
     if (text.length === 0) return
 
     const prefixInfo = this.renderer.measureText(
@@ -60,6 +65,7 @@ export default class ScrollTextComponent extends Component {
         prefix: i == 0 ? prefix : '',
         prefixWidth: prefixInfo.width,
       })
+      scrollLineCallback && scrollLineCallback()
       for (let i = 0; i < currentLine.text.length; i++) {
         this.textLines[this.textLines.length - 1].text = currentLine.text.slice(
           0,
@@ -71,7 +77,7 @@ export default class ScrollTextComponent extends Component {
     if (previousTextLineLenght > 0) {
       await this.scrollLineLength(previousTextLineLenght)
     }
-    if (callback) callback()
+    callback && callback()
   }
 
   showText(text: string, prefix = '') {
