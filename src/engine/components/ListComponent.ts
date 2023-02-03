@@ -35,7 +35,6 @@ export default class ListComponent extends Component {
   private _wrapLayoutOffset = 0
 
   private _currentIndex = 0
-  private _selecting = true
 
   awake(): void {
     this._items = this.root.getComponentsInChildren(ListItem) as ListItem[]
@@ -56,7 +55,7 @@ export default class ListComponent extends Component {
   }
 
   update(): void {
-    if (!this._selecting || !this._isCanSelect) return
+    if (!this._isCanSelect) return
 
     if (this.input.isConfirmPressed() && this.renderLength > 0) {
       this._items[this._currentIndex].select()
@@ -143,11 +142,6 @@ export default class ListComponent extends Component {
       }
     }
     this._isCanSelect = isCanSelect
-  }
-
-  setSelecting(selecting: boolean) {
-    this._selecting = selecting
-    this.refreshHover()
   }
 
   layout() {
