@@ -58,10 +58,17 @@ export default class implements IRenderer {
     return this._canvasContext
   }
 
-  drawSprite(sprite: Sprite, alpha: number, dx: number, dy: number): void
   drawSprite(
     sprite: Sprite,
     alpha: number,
+    rotate: number,
+    dx: number,
+    dy: number
+  ): void
+  drawSprite(
+    sprite: Sprite,
+    alpha: number,
+    rotate: number,
     dx: number,
     dy: number,
     dw: number,
@@ -70,6 +77,7 @@ export default class implements IRenderer {
   drawSprite(
     sprite: Sprite,
     alpha: number,
+    rotate: number,
     sx: number,
     sy: number,
     sw: number,
@@ -82,14 +90,15 @@ export default class implements IRenderer {
   drawSprite(
     sprite: Sprite,
     alpha: number,
+    rotate: number,
     sx: number,
     sy: number,
-    sw?: unknown,
-    sh?: unknown,
-    dx?: unknown,
-    dy?: unknown,
-    dw?: unknown,
-    dh?: unknown
+    sw?: number,
+    sh?: number,
+    dx?: number,
+    dy?: number,
+    dw?: number,
+    dh?: number
   ): void {
     if (!(typeof sw === 'number')) {
       dx = sx
@@ -110,6 +119,11 @@ export default class implements IRenderer {
     }
     this._cacheContext.save()
     this._cacheContext.globalAlpha = alpha
+    if (rotate !== 0) {
+      this._cacheContext.translate(dx + sw / 2, dy! + sh! / 2)
+      this._cacheContext.rotate((rotate * Math.PI) / 180)
+      this._cacheContext.translate(-dx - sw / 2, -dy! - sh! / 2)
+    }
     this._cacheContext.drawImage(
       sprite,
       sx as number,

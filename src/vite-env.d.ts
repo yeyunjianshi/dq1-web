@@ -51,6 +51,7 @@ type Background = {
   border: Border
   pivotOffset: [number, number]
   alpha: number
+  rotate: number
 }
 
 type Audio = HTMLAudioElement
@@ -81,10 +82,17 @@ interface IRenderer {
 
   render(fn: () => void)
 
-  drawSprite(sprite: Sprite, alpha: number, dx: number, dy: number): void
   drawSprite(
     sprite: Sprite,
     alpha: number,
+    rotate: number,
+    dx: number,
+    dy: number
+  ): void
+  drawSprite(
+    sprite: Sprite,
+    alpha: number,
+    rotate: number,
     dx: number,
     dy: number,
     dw: number,
@@ -93,6 +101,7 @@ interface IRenderer {
   drawSprite(
     sprite: Sprite,
     alpha: number,
+    rotate: number,
     sx: number,
     sy: number,
     sw: number,
@@ -179,6 +188,7 @@ type BackgroundData =
       borderColor?: string
       radius?: number
       alpha?: number
+      rotate?: number
       pivotOffset?: [number, number]
     }
 

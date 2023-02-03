@@ -74,6 +74,7 @@ class GameObject implements LifeCycle {
       },
       pivotOffset: [0, 0],
       alpha: 1,
+      rotate: 0,
     }
     this.configLayout = layout ?? new AbsoluteLayout(this)
   }
@@ -214,6 +215,7 @@ class GameObject implements LifeCycle {
       this.engine.renderer.drawSprite(
         this.background.sprite,
         this.background.alpha,
+        this.background.rotate,
         this.background.pivotOffset[0],
         this.background.pivotOffset[1],
         sourceWidth,

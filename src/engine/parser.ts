@@ -97,6 +97,7 @@ export function parseGameObject(
           data.background.borderColor ?? gameObject.background.border.color,
         radius: data.background.radius ?? gameObject.background.border.radius,
       },
+      rotate: data.background.rotate ?? 0,
       pivotOffset:
         data.background.pivotOffset ?? gameObject.background.pivotOffset,
       alpha: data.background.alpha ?? gameObject.background.alpha,
