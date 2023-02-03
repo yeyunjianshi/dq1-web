@@ -176,10 +176,12 @@ export default class GlobalWindowComponent
     const window = this._windowStack.pop()
     window?.hide()
 
-    if (this._windowStack.length == 0) {
+    if (!this.activeWindow) {
       globalGameData.inputType = InputType.Move
       this.hideMenu()
       this.windowMarker = WindowMarker.None
+    } else {
+      this.activeWindow?.show(false)
     }
   }
 
@@ -192,8 +194,9 @@ export default class GlobalWindowComponent
 
     if (this.input.isCancelPressed()) {
       if (!this.activeWindow?.interceptCancel()) {
-        console.log('cancel')
+        console.log(`pop window: ${this.activeWindow}`)
         this.popWindow()
+        console.log(`current window: ${this.activeWindow}`)
       }
     } else {
       if (this.input.isConfirmPressed()) {
@@ -241,18 +244,17 @@ class MenuWindow extends BaseWindow {
     const adapter = new TextAdapter(this.menuCommands)
     this._menuWindow.setAdapter(adapter)
     this._menuWindow.addSelectListener((item: string, pos: number) => {
-      console.log(item)
-      console.log(pos)
       this._windowStack.pushWindow(this.menuCommands[pos].name)
     })
-    this._menuWindow.addHoverListenner((_, pos) => {
-      console.log('hover ' + pos)
-    })
+    // this._menuWindow.addHoverListenner((_, pos) => {
+    //   console.log('hover ' + pos)
+    // })
   }
 
   show(init = true) {
     this._menuWindow.root.active = true
     if (init) this._menuWindow.setCursorIndex(0)
+    this._menuWindow.refreshHover()
   }
 
   hide() {

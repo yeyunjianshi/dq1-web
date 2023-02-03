@@ -35,6 +35,11 @@
         "spriteWidth": 8,
         "spriteHeight": 13
       },
+      "components": [
+        {
+          "type": "$Cursor"
+        }
+      ],
       "layoutGravity": ["left", "center"],
       "pivot": [0, 0.5],
       "active": false

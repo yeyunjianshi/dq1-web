@@ -66,7 +66,7 @@ assetLoader.addAssets(
 
 engine.sceneManager.loadScene('Global')
 engine.sceneManager.loadScene('TeamController')
-engine.sceneManager.loadScene('TantegelCastle')
+engine.sceneManager.loadScene('TantegelCastle2')
 // engine.sceneManager.loadScene('Battle')
 
 engine.init()

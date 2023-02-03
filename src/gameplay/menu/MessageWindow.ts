@@ -4,12 +4,14 @@ import BaseWindow from '../../engine/components/BaseWindow'
 import ScrollTextComponent from '../../engine/components/ScrollTextComponent'
 import { delay } from '../../engine/time'
 import AlertWindow from './AlertWindow'
+import Cursor from '@engine/components/Cursor'
 
 @GameplayComponent
 export default class MessageWindow extends BaseWindow {
   private _isShowingMessage = false
   private _messageTextWindow?: ScrollTextComponent
   private _alertWindow?: AlertWindow
+  private _cursor?: Cursor
 
   start() {
     this._messageTextWindow = this.root.getComponentInChildren(
@@ -18,6 +20,7 @@ export default class MessageWindow extends BaseWindow {
     this._alertWindow = this.root.getComponentInChildren(
       AlertWindow
     ) as AlertWindow
+    this._cursor = this.root.getComponentInChildren(Cursor) as Cursor
 
     this._messageTextWindow.enable = false
     this._alertWindow.enable = false
@@ -43,6 +46,7 @@ export default class MessageWindow extends BaseWindow {
       if (playAudio) this.engine.audios.playME(Audios.Type)
     })
 
+    this._cursor!.setStatus('Hover')
     if (select) {
       this._alertWindow!.show()
       ret = await this._alertWindow!.select()
@@ -50,6 +54,8 @@ export default class MessageWindow extends BaseWindow {
     } else {
       await this.InputConfirmOrCancel()
     }
+    this._cursor!.setStatus('Unselect')
+
     if (clear) await messageWindow.scrollClearText()
     this._isShowingMessage = false
 

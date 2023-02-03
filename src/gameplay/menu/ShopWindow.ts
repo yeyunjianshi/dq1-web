@@ -206,9 +206,8 @@ export default class ShopWindow extends BaseWindow {
     if (select) {
       this._itemsWindow!.root.active = false
       this._messageWindow!.active = false
-      this._selectWindow!.setSelecting(true)
+      this._selectWindow!.refreshHover()
     } else {
-      this._selectWindow!.setSelecting(false)
       this._itemsWindow!.root.active = true
       this._messageWindow!.active = true
     }

@@ -55,6 +55,8 @@ export default class MenuItemWindow extends BaseWindow {
         this.setSelectItem(false)
         this.refreshDealData()
         this._dealWindow?.setCursorIndex(0)
+      } else {
+        this._selectWindow?.refreshHover()
       }
     })
 
@@ -160,10 +162,9 @@ export default class MenuItemWindow extends BaseWindow {
   setSelectItem(select: boolean) {
     this._selecting = select
     if (select) {
-      this._selectWindow!.setSelecting(true)
+      this._selectWindow!.refreshHover()
       this._dealWindow!.root.active = false
     } else {
-      this._selectWindow!.setSelecting(false)
       this._dealWindow!.root.active = true
     }
   }

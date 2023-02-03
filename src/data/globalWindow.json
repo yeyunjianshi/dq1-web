@@ -1337,6 +1337,26 @@
             ]
           },
           {
+            "name": "messageCursor",
+            "x": 0,
+            "y": -6,
+            "width": 12,
+            "height": 24,
+            "background": {
+              "sprite": "system/cursor.png",
+              "scaleType": "fit",
+              "rotate": 90
+            },
+            "components": [
+              {
+                "type": "$Cursor"
+              }
+            ],
+            "layoutGravity": ["center", "bottom"],
+            "pivot": [0.5, 0.5],
+            "active": true
+          },
+          {
             "name": "messageAlertWindow",
             "x": 0,
             "y": 0,

@@ -148,14 +148,12 @@ export default class MenuEquipmentWindow extends BaseWindow {
     else this._rightWindow?.update()
   }
 
-  setSelectEquip(s: boolean) {
-    this._selectEquip = s
-    if (s) {
-      this._leftWindow!.setSelecting(true)
-      this._rightWindow!.setCanSelect(false)
-      this._leftWindow?.setCursorIndex(this._leftWindow.cursorIndex)
+  setSelectEquip(selectEquip: boolean) {
+    this._selectEquip = selectEquip
+    if (selectEquip) {
+      this._leftWindow!.refreshHover()
+      this._rightWindow?.setCanSelect(false)
     } else {
-      this._leftWindow!.setSelecting(false)
       this._rightWindow!.setCanSelect(true)
     }
   }

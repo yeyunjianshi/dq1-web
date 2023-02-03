@@ -21,7 +21,7 @@
             "size": "26",
             "align": "left"
           },
-          "padding": [0, 30, 0, 30]
+          "padding": [0, 30, 0, 32]
         }
       ]
     },
@@ -55,6 +55,11 @@
         "spriteWidth": 8,
         "spriteHeight": 13
       },
+      "components": [
+        {
+          "type": "$Cursor"
+        }
+      ],
       "layoutGravity": ["left", "center"],
       "pivot": [0, 0.5],
       "active": false
