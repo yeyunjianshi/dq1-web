@@ -30,7 +30,6 @@ export default class KeyValueItemComponent extends ListItem {
       this._arrow = this.root.children[1]
     }
     this._arrowCursor = this._arrow.getComponent(Cursor) as Cursor
-    console.log(this._arrowCursor)
     if (this._arrow) this._arrow.alpha = 0
   }
 

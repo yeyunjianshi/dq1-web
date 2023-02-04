@@ -1,6 +1,7 @@
 import { GameplayComponent } from '@engine/components'
 import ListComponent, { TextAdapter } from '@engine/components/ListComponent'
 import BaseWindow from '@engine/components/BaseWindow'
+import { transitionToScene } from '@gameplay/events/Transition'
 
 @GameplayComponent
 export default class ConfigWindow extends BaseWindow {
@@ -25,6 +26,7 @@ export default class ConfigWindow extends BaseWindow {
       this._listComponent.addSelectListener((_, pos: number) => {
         if (pos === 0) {
           // back to title
+          transitionToScene(this.engine, 'Title')
         }
       })
       this._listComponent.setCursorIndex(0)

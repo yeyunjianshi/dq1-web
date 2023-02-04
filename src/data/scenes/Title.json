@@ -1,0 +1,143 @@
+{
+  "name": "Title",
+  "width": -2,
+  "height": -2,
+  "priority": 500,
+  "hasCamera": false,
+  "bgm": "bgm/title.mp3",
+  "root": {
+    "x": 0,
+    "y": 0,
+    "width": -2,
+    "height": -2,
+    "active": true,
+    "alpha": 1,
+    "useScreenPosition": true,
+    "renderLayer": 20,
+    "components": [
+      {
+        "type": "TitleComponent"
+      }
+    ],
+    "children": [
+      {
+        "name": "menuWindow",
+        "x": -354,
+        "y": -280,
+        "width": 260,
+        "height": 136,
+        "pivot": [0, 0],
+        "layoutGravity": ["center", "center"],
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borderWidth": 4
+        },
+        "active": true,
+        "components": [
+          {
+            "type": "$ListComponent"
+          }
+        ],
+        "layout": {
+          "type": "GridLayout",
+          "row": 3,
+          "col": 1,
+          "cell": [260, 40],
+          "gravity": ["left", "top"],
+          "template": "text_item.json"
+        }
+      },
+      {
+        "name": "saveWindow",
+        "x": 0,
+        "y": 0,
+        "width": -2,
+        "height": -2,
+        "active": true,
+        "alpha": 1,
+        "useScreenPosition": true,
+        "components": [
+          {
+            "type": "SaveWindow"
+          }
+        ],
+        "children": [
+          {
+            "x": 0,
+            "y": -100,
+            "width": 360,
+            "height": 136,
+            "pivot": [0.5, 0.5],
+            "layoutGravity": ["center", "center"],
+            "background": {
+              "sprite": "",
+              "backgroundColor": "#222",
+              "borderWidth": 4
+            },
+            "active": true,
+            "components": [
+              {
+                "type": "$ListComponent"
+              }
+            ],
+            "layout": {
+              "type": "GridLayout",
+              "row": 3,
+              "col": 1,
+              "cell": [360, 40],
+              "gravity": ["center", "center"],
+              "template": "key_value_item.json"
+            }
+          }
+        ]
+      },
+      {
+        "name": "configWindow",
+        "x": 0,
+        "y": 0,
+        "width": -2,
+        "height": -2,
+        "active": false,
+        "alpha": 1,
+        "useScreenPosition": true,
+        "components": [
+          {
+            "type": "ConfigWindow"
+          }
+        ],
+        "children": [
+          {
+            "x": 0,
+            "y": -100,
+            "width": 360,
+            "height": -1,
+            "pivot": [0.5, 0.5],
+            "layoutGravity": ["center", "center"],
+            "background": {
+              "sprite": "",
+              "backgroundColor": "#222",
+              "borderWidth": 4
+            },
+            "active": true,
+            "components": [
+              {
+                "type": "$ListComponent",
+                "wrapLayout": 1,
+                "wrapLayoutOffset": 16
+              }
+            ],
+            "layout": {
+              "type": "GridLayout",
+              "row": 1,
+              "col": 1,
+              "cell": [360, 40],
+              "gravity": ["center", "center"],
+              "template": "text_item.json"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

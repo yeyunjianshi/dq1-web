@@ -185,6 +185,15 @@ export default class GlobalWindowComponent
     }
   }
 
+  clearWindows() {
+    this._windowStack.forEach((win) => {
+      win.hide()
+    })
+    this._windowStack.splice(0, this._windowStack.length)
+    this.hideMenu()
+    this.windowMarker = WindowMarker.None
+  }
+
   update(): void {
     if (
       globalGameData.inputType !== InputType.Menu ||

@@ -10,7 +10,9 @@ import { globalGameData } from '../asset/gameData'
 import TeamControllerComponent from '../core/TeamControllerComponent'
 import { EventTriggerWhen, QuestEvent } from './QuestEvent'
 
-async function transitionToSceneByTransition(transition: SceneTransition) {
+export async function transitionToSceneByTransition(
+  transition: SceneTransition
+) {
   // 触发出口事件
   const exitEvent = (
     transition.root.getComponents(QuestEvent) as QuestEvent[]
@@ -24,10 +26,10 @@ async function transitionToSceneByTransition(transition: SceneTransition) {
   )
 }
 
-async function transitionToScene(
+export async function transitionToScene(
   engine: Engine,
   nextSceneName: string,
-  tag: string
+  tag?: string
 ) {
   const sceneManager = engine.sceneManager
   let nextScene = sceneManager.currentScene
@@ -40,17 +42,21 @@ async function transitionToScene(
       await nextFrame()
     }
   }
+
+  globalGameData.reinitWhenChangeScene(!isSameScene)
+
+  if (!tag) return
+
   const destination = nextScene!.rootObject
     .getComponentsInChildren(SceneTransitionDestination)
     .find((com) => {
       return (com as SceneTransitionDestination).tag === tag
     })
+
   if (!destination)
     throw new Error(
       `Transition to next scene error: not find ${nextSceneName}-${tag}`
     )
-
-  globalGameData.reinitWhenChangeScene(!isSameScene)
 
   const moveDestination = destination as SceneTransitionDestination
   const teamController = engine.getVariable<TeamControllerComponent>(
@@ -73,7 +79,7 @@ type SceneTransitionData = {
   type: string
   tag: string
   nextScene: string
-  playAudio: boolean
+  playAudio?: boolean
 }
 
 @GameplayComponent
@@ -91,7 +97,7 @@ export class SceneTransition extends Component {
   parseData(_: AssetLoader, data: SceneTransitionData): void {
     this.tag = data.tag
     this.nextScene = data.nextScene
-    this.playAudio = data.playAudio
+    this.playAudio = data.playAudio ?? true
   }
 }
 

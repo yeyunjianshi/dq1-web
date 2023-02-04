@@ -112,35 +112,44 @@ export enum InputType {
   Menu,
   Battle,
   Message,
+  Title,
 }
 
 export class GameData {
   teamCharactes: Character[] = []
   npcCharacters: { roleId: number }[] = []
-  inputType: InputType = InputType.Move
   inventory = new Inventory()
   events: Set<string> = new Set()
+  inputType: InputType = InputType.Move
   lightRadius = 0
   lightTime = 0
   notMeetEnemyStep = 0
   gameplayTime = 0
 
-  startGame() {
+  init() {
     const initCharacter = GetCharacter(DefaultInitGameCharacter.id).clone()
     this.teamCharactes = [initCharacter]
+    this.npcCharacters = DefaultInitGameCharacter.npcs.map((roleId) => ({
+      roleId,
+    }))
+    this.inventory = new Inventory()
     DefaultInitGameCharacter.inventory.forEach((itemId) =>
       this.inventory.addItem(itemId)
     )
     initCharacter.magics = DefaultInitGameCharacter.magics.map((id) =>
       GetMagic(id)
     )
-    this.npcCharacters = DefaultInitGameCharacter.npcs.map((roleId) => ({
-      roleId,
-    }))
+    this.events = new Set()
+    this.inputType = InputType.Move
+    this.lightRadius =
+      this.lightTime =
+      this.notMeetEnemyStep =
+      this.gameplayTime =
+        0
   }
 
-  init() {
-    this.startGame()
+  startGame() {
+    this.init()
   }
 
   heroEquip(equipment: ItemSlot, type: ItemEquipmentType = ItemType.All) {
@@ -210,4 +219,8 @@ export class GameData {
   }
 }
 
-export const globalGameData = new GameData()
+export function setGlobalGameData(gameData: GameData) {
+  globalGameData = gameData
+}
+
+export let globalGameData = new GameData()

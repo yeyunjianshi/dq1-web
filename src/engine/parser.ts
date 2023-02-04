@@ -153,12 +153,9 @@ export function parseScene(data: SceneData, engine: Engine) {
   scene.bgm = data.bgm
   scene.loadType = data.loadType ?? SceneLoadType.Replace
   scene.priority = data.priority ?? DefaultScenePriority
-  scene.isCave = typeof data.isCave === 'boolean' ? data.isCave : false
-  scene.isMeetEnemy =
-    typeof data.isMeetEnemy === 'boolean' ? data.isMeetEnemy : false
-
-  scene.isSetCamera =
-    typeof data.hasCamera === 'boolean' ? data.hasCamera : true
+  scene.isCave = data.isCave ?? false
+  scene.isMeetEnemy = data.isMeetEnemy ?? false
+  scene.isSetCamera = data.hasCamera ?? true
   if (data.bgm) {
     assetLoader.addAssets(engine.resource.loadAudio(data.bgm))
   }

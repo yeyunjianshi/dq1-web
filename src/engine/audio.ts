@@ -32,6 +32,7 @@ export default class AudioManager {
     if (audio) {
       if (!reset && audio !== this._bgmAudio && !audio.paused) return
 
+      this.pause(this._bgmAudio)
       this._bgmAudio = audio
       this._bgmAudio.currentTime = 0
       this.setAudioVolume('bgm')
@@ -59,6 +60,7 @@ export default class AudioManager {
     if (audio) {
       if (!reset && audio === this._meAudio && !audio.paused) return
 
+      this.pause(this._meAudio)
       this._meAudio = audio
       this._meAudio.currentTime = 0
       this.setAudioVolume('me')
@@ -79,8 +81,9 @@ export default class AudioManager {
 
     const audio = this.resource.getAudio(se)
     if (audio) {
-      if (!reset && audio === this._seAudio) return
+      if (!reset && audio === this._seAudio && !audio.paused) return
 
+      this.pause(this._seAudio)
       this._seAudio = audio
       this.setAudioVolume('se')
       this._seAudio.currentTime = 0

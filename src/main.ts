@@ -30,6 +30,8 @@ import TorchPostProcess from './gameplay/postprocess/TorchPostProcess'
 
 import TantegelCastleScene from './data/scenes/TantegelCastle.tmj'
 import TantegelCastle2Scene from './data/TantegelCastle2.json'
+import TitleScene from '@data/scenes/Title.json'
+
 console.log(TantegelCastleScene)
 
 SetCharacters((AllCharactersData as CharacterData[]).map(parseCharacter))
@@ -40,6 +42,7 @@ SetMagics(MagicData)
 AddGameSceneData([
   TantegelCastleScene,
   TantegelCastle2Scene,
+  TitleScene,
   TeamController,
   GlobalScene,
   BattleData as any,
@@ -66,7 +69,8 @@ assetLoader.addAssets(
 
 engine.sceneManager.loadScene('Global')
 engine.sceneManager.loadScene('TeamController')
-engine.sceneManager.loadScene('TantegelCastle2')
+engine.sceneManager.loadScene('Title')
+// engine.sceneManager.loadScene('TantegelCastle2')
 // engine.sceneManager.loadScene('Battle')
 
 engine.init()

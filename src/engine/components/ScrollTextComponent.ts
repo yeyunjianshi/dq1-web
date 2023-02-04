@@ -12,7 +12,7 @@ type ScrollTextData = {
   textSpeed?: number
 } & TextData
 
-const DefaultTextSpeed = 40
+const DefaultTextSpeed = 30
 const DefaultScreenScrollSpeed = 3000
 const DefaultShowMaxLines = 4
 
