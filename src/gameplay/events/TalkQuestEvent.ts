@@ -21,7 +21,11 @@ export default class TalkQuestEvent extends NPCQuestEvent {
   }
 
   private async talk() {
-    this.root.events.emit(EventExecuteStartMarker)
+    console.log(`===== talk event ${this.questId} execute start =====`)
+    this.root.events.emit({
+      marker: EventExecuteStartMarker,
+      questId: this.questId,
+    })
     const talks = this.getTalks(this.questId)
     let select = true
 
@@ -46,7 +50,11 @@ export default class TalkQuestEvent extends NPCQuestEvent {
         }
       }
     }
-    this.root.events.emit(EventExecuteEndMarker)
+    this.root.events.emit({
+      marker: EventExecuteEndMarker,
+      questId: this.questId,
+    })
+    console.log(`===== talk event ${this.questId} execute end =====`)
   }
 
   private getTalks(id: string) {

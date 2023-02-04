@@ -92,7 +92,7 @@ export class NPCControllerComponent extends MoveComponent {
   start() {
     super.start()
 
-    this.root.events.register((marker) => {
+    this.root.events.register(({ marker }) => {
       if (marker === EventExecuteStartMarker) {
         this.talk()
       } else if (marker === EventExecuteEndMarker) {

@@ -24,7 +24,7 @@ export type QuestEventData = {
   args?: any[]
   predecessorId: string[]
   predecessorItem: number[]
-  insertGlobalAfterFinish?: boolean
+  insertEventTable?: boolean
   hideAfterFinish?: boolean
 }
 
@@ -39,7 +39,7 @@ export class QuestEvent extends Component implements Interaction {
   priority = 10
   predecessorId: string[] = []
   predecessorItem: number[] = []
-  isInsertGlobalAfterFinish = false
+  isInsertGlobalAfterFinish = false // 完成后插入到全局事件表
 
   canTrigger(when: EventTriggerWhen) {
     return (
@@ -53,13 +53,15 @@ export class QuestEvent extends Component implements Interaction {
   awake() {
     if (
       this.isStartHide ||
-      (this.isInsertGlobalAfterFinish && globalGameData.hasEvent(this.eventId))
+      (this.isHideAfterFinish && globalGameData.hasEvent(this.eventId))
     ) {
       this.root.active = false
     }
 
-    this.root.events.register((marker) => {
-      if (marker === EventExecuteEndMarker) {
+    this.root.events.register(({ marker, questId }) => {
+      console.log(`${this.questId} ${marker.toString()}`)
+
+      if (this.questId === questId && marker === EventExecuteEndMarker) {
         if (this.isHideAfterFinish) this.root.active = false
         if (this.isInsertGlobalAfterFinish) {
           return globalGameData.finishEvent(this.eventId)
@@ -84,7 +86,7 @@ export class QuestEvent extends Component implements Interaction {
     this.predecessorItem = data.predecessorItem || []
     this.isHideAfterFinish = data.hideAfterFinish ?? this.isHideAfterFinish
     this.isInsertGlobalAfterFinish =
-      data.insertGlobalAfterFinish ?? this.isHideAfterFinish
+      data.insertEventTable ?? this.isHideAfterFinish
   }
 
   parseWhen(when: string | EventTriggerWhen | undefined): EventTriggerWhen {

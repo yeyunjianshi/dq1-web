@@ -39,7 +39,7 @@ class GameObject implements LifeCycle {
   layoutGravity: [HorizontalGravity, VerticalGaravity] = ['left', 'top']
   useScreenPosition = false
   useScreenPositionInRender = false
-  events = new EventEmitter<symbol>()
+  events = new EventEmitter<{ marker: symbol; questId: string }>()
   configRenderLayer = -1
   _renderLayer = -1
 

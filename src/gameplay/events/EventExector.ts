@@ -67,8 +67,8 @@ export function AddExecuteEvent(event: QuestEvent) {
   eventQueue.sort((a, b) => a.priority - b.priority)
 }
 
-export const EventExecuteStartMarker = Symbol()
-export const EventExecuteEndMarker = Symbol()
+export const EventExecuteStartMarker = Symbol('EventExecuteStartMarker')
+export const EventExecuteEndMarker = Symbol('EventExecuteEndMaker')
 
 export async function Execute(engine: Engine) {
   executingEngine = engine
@@ -76,14 +76,22 @@ export async function Execute(engine: Engine) {
   // 高优先级先执行
   while (eventQueue.length > 0) {
     executingEvent = eventQueue.pop() as QuestEvent
-    executingEvent.root.events.emit(EventExecuteStartMarker)
+    console.log(`event ${executingEvent.questId} execute start`)
+    executingEvent.root.events.emit({
+      marker: EventExecuteStartMarker,
+      questId: executingEvent.questId,
+    })
     const eventScript = GetGameEventScript(executingEvent.eventId)
     executingEventStatus = EventStatus.Executing
     eval(eventScript)
     while (isExecutingEventFinishOrCancel) {
       await nextFrame()
     }
-    executingEvent.root.events.emit(EventExecuteEndMarker)
+    executingEvent.root.events.emit({
+      marker: EventExecuteEndMarker,
+      questId: executingEvent.questId,
+    })
+    console.log(`event ${executingEvent.questId} execute end`)
   }
 }
 
