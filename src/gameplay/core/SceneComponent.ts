@@ -129,7 +129,8 @@ export default class SceneComponent extends Component {
     return (
       coord[0] >= this._mapData.data.width ||
       coord[1] >= this._mapData.data.height ||
-      (coord[0] < 0 && coord[1] < 0) ||
+      coord[0] < 0 ||
+      coord[1] < 0 ||
       HasType(
         this._mapData.data.data[coord[0] + coord[1] * this._mapData.data.width],
         TileMapType.Collider

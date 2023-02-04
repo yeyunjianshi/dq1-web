@@ -1,0 +1,341 @@
+{
+  "name": "Battle",
+  "bgm": "PeacefulVillage.mp3",
+  "width": -2,
+  "height": -2,
+  "loadType": 1,
+  "hasCamera": false,
+  "priority": 1000,
+  "root": {
+    "x": 0,
+    "y": 0,
+    "width": -2,
+    "height": -2,
+    "active": true,
+    "alpha": 1,
+    "useScreenPosition": true,
+    "renderLayer": 50,
+    "components": [
+      {
+        "type": "BattleSystem"
+      }
+    ],
+    "children": [
+      {
+        "x": 320,
+        "y": 160,
+        "width": 32,
+        "height": 32,
+        "active": true,
+        "alpha": 1,
+        "components": [
+          {
+            "type": "$SceneTransitionDestination",
+            "tag": "floor_down",
+            "direction": 2
+          }
+        ]
+      },
+      {
+        "name": "background",
+        "x": 0,
+        "y": -60,
+        "width": 384,
+        "height": 336,
+        "pivot": [0.5, 0.5],
+        "layoutGravity": ["center", "center"],
+        "background": {
+          "sprite": "bg-battle.png",
+          "spriteWidth": 256,
+          "spriteHeight": 224,
+          "backgroundColor": "#000",
+          "scaleType": "fit",
+          "borderWidth": 4,
+          "pivotOffset": [260, 228]
+        },
+        "active": true,
+        "children": [
+          {
+            "name": "enemy",
+            "x": 0,
+            "y": 10,
+            "width": 300,
+            "height": 300,
+            "pivot": [0.5, 0.5],
+            "layoutGravity": ["center", "center"],
+            "background": {
+              "sprite": "enemy.png",
+              "spriteWidth": 100,
+              "spriteHeight": 100,
+              "scaleType": "fit",
+              "pivotOffset": [300, 0]
+            },
+            "active": true
+          }
+        ]
+      },
+      {
+        "name": "characterStatusText",
+        "x": -354,
+        "y": -228,
+        "width": 160,
+        "height": 190,
+        "pivot": [0, 0],
+        "layoutGravity": ["center", "center"],
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borderWidth": 4
+        },
+        "active": true,
+        "children": [
+          {
+            "name": "characterNameText",
+            "x": 0,
+            "y": 8,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "勇者洛特",
+                "font": {
+                  "size": 26,
+                  "align": "center"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterHPLable",
+            "x": 20,
+            "y": 50,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "H",
+                "font": {
+                  "size": 26,
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterHPText",
+            "x": -20,
+            "y": 50,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "layoutGravity": ["right", "top"],
+            "pivot": [1, 0],
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "150",
+                "font": {
+                  "size": 26,
+                  "align": "right"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterMPLable",
+            "x": 20,
+            "y": 90,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "M",
+                "font": {
+                  "size": 26,
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterMPText",
+            "x": -20,
+            "y": 90,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "layoutGravity": ["right", "top"],
+            "pivot": [1, 0],
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "150",
+                "font": {
+                  "size": 26,
+                  "align": "right"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterLVLable",
+            "x": 20,
+            "y": 130,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "LV",
+                "font": {
+                  "size": 26,
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "name": "characterLVText",
+            "x": -20,
+            "y": 130,
+            "width": -2,
+            "height": 40,
+            "active": true,
+            "layoutGravity": ["right", "top"],
+            "pivot": [1, 0],
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "30",
+                "font": {
+                  "size": 26,
+                  "align": "right"
+                }
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "name": "commandsWindow",
+        "x": -354,
+        "y": 110,
+        "width": 160,
+        "height": 180,
+        "pivot": [0, 0],
+        "layoutGravity": ["center", "center"],
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borderWidth": 4
+        },
+        "active": true,
+        "components": [
+          {
+            "type": "$ListComponent"
+          }
+        ],
+        "layout": {
+          "type": "GridLayout",
+          "row": 4,
+          "col": 1,
+          "cell": [160, 40],
+          "gravity": ["left", "top"],
+          "template": "text_item.json"
+        }
+      },
+      {
+        "name": "enemyInfoText",
+        "x": -190,
+        "y": 110,
+        "width": 380,
+        "height": 60,
+        "pivot": [0, 0],
+        "layoutGravity": ["center", "center"],
+        "active": true,
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borderWidth": 4
+        },
+        "components": [
+          {
+            "type": "$TextComponent",
+            "text": "龙王",
+            "padding": [0, 0, 0, 26]
+          }
+        ]
+      },
+      {
+        "name": "itemMenuWindow",
+        "x": -190,
+        "y": 110,
+        "width": 380,
+        "height": -1,
+        "pivot": [0, 0],
+        "layoutGravity": ["center", "center"],
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borderWidth": 4
+        },
+        "active": true,
+        "components": [
+          {
+            "type": "$ListComponent",
+            "wrapLayout": 1,
+            "wrapLayoutOffset": 12
+          }
+        ],
+        "layout": {
+          "type": "GridLayout",
+          "row": 5,
+          "col": 2,
+          "cell": [190, 40],
+          "gravity": ["left", "top"],
+          "template": "text_item.json"
+        }
+      },
+      {
+        "x": 0,
+        "y": 205,
+        "width": 710,
+        "height": 190,
+        "layoutGravity": ["center", "center"],
+        "pivot": [0.5, 0.5],
+        "background": {
+          "sprite": "",
+          "backgroundColor": "#222",
+          "borderWidth": 4
+        },
+        "active": true,
+        "children": [
+          {
+            "name": "messageWindow",
+            "x": 0,
+            "y": 0,
+            "width": 680,
+            "height": 200,
+            "pivot": [0, 0],
+            "active": true,
+            "components": [
+              {
+                "type": "$ScrollTextComponent",
+                "text": "ありがとう,这是什么情况水电费水电费水电费水电费师傅的说法所发生的粉丝水电费第三方水电费水电费水电费似懂非懂舒服\n不知道的人啊\n命中的神啊\n来测试以下吧\n勇者啊，赶快杀死魔王吧\n....\n获得道具 药草",
+                "padding": [16, 30, 10, 30]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

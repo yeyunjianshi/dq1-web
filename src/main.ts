@@ -1,10 +1,6 @@
 import './style.css'
 import { createEngine } from './engine/engine'
-import BattleData from './data/test_battle.json'
-import GlobalScene from './data/globalWindow.json'
-import TeamController from './data/team_controller.json'
 import './gameplay/componentConfig'
-import { AddGameSceneData } from './engine/sceneManager'
 import { AssetLoader } from './engine/resource'
 import { audioInitLoad } from './gameplay/audio/AudioConfig'
 import {
@@ -27,26 +23,13 @@ import ShopData from '../public/assets/data/shop.json'
 import EnemyData from '../public/assets/data/enemies.json'
 import MagicData from '../public/assets/data/magic.json'
 import TorchPostProcess from './gameplay/postprocess/TorchPostProcess'
-
-import TantegelCastleScene from './data/scenes/TantegelCastle.tmj'
-import TantegelCastle2Scene from './data/TantegelCastle2.json'
-import TitleScene from '@data/scenes/Title.json'
-
-console.log(TantegelCastleScene)
+import { initScene } from '@gameplay/init'
 
 SetCharacters((AllCharactersData as CharacterData[]).map(parseCharacter))
 SetItems((AllItemData as ItemData[]).map(parseItem))
 SetShopItems(ShopData)
 SetEneies(EnemyData)
 SetMagics(MagicData)
-AddGameSceneData([
-  TantegelCastleScene,
-  TantegelCastle2Scene,
-  TitleScene,
-  TeamController,
-  GlobalScene,
-  BattleData as any,
-])
 globalGameData.startGame()
 
 const engine = createEngine()
@@ -67,11 +50,7 @@ assetLoader.addAssets(
     })
 )
 
-engine.sceneManager.loadScene('Global')
-engine.sceneManager.loadScene('TeamController')
-engine.sceneManager.loadScene('Title')
-// engine.sceneManager.loadScene('TantegelCastle2')
-// engine.sceneManager.loadScene('Battle')
+initScene(engine)
 
 engine.init()
 engine.run({

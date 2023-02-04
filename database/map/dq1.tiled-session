@@ -3,31 +3,254 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "E:/projects/web/dq1-web-pre/src/data/scenes/Maira.tmj",
     "automapping.whileDrawing": false,
     "expandedProjectPaths": [
+        ".",
         "E:/projects/web/dq1-web-pre/src/data/scenes"
     ],
     "file.lastUsedOpenFilter": "全部文件 (*)",
     "fileStates": {
-        "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj": {
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Domdora.tmj": {
+            "scale": 1.2903459821428571,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 880.3840332136833,
+                "y": 447.94187605414527
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle5.tmj": {
+            "scale": 0.8681982633863965,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 691.0863857982248,
+                "y": 536.7437596366212
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Garais1.tmj": {
+            "scale": 0.8211292613636364,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 705.1264974268046,
+                "y": 705.1264974268045
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Garais3.tmj": {
+            "scale": 1.4900841346153846,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 416.08388788062115,
+                "y": 384.54204476709015
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/HolyShrine1.tmj": {
+            "scale": 2.4086458333333334,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 240.38403321368335,
+                "y": 240.38403321368332
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Maira.tmj": {
             "expandedGroupLayers": [
                 22,
+                14
+            ],
+            "expandedObjectLayers": [
+                21,
+                14
+            ],
+            "scale": 0.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 846,
+                "y": 212
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado.tmj": {
+            "scale": 0.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": -187,
+                "y": 223
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado1 - 副本 (2).tmj": {
+            "expandedGroupLayers": [
                 26,
-                30,
+                7
+            ],
+            "scale": 0.7995504840940525,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 175.0983868875146,
+                "y": 1271.339359079704
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado1 - 副本 (3).tmj": {
+            "expandedGroupLayers": [
+                28,
+                14,
+                26,
+                7,
+                22
+            ],
+            "scale": 4,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 224.75,
+                "y": 316
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado1 - 副本 (5).tmj": {
+            "scale": 0.7995504840940525,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 659.1203563551444,
+                "y": 724.1569000562212
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado1 - 副本.tmj": {
+            "expandedGroupLayers": [
+                28,
+                14,
+                26,
+                22,
+                7
+            ],
+            "scale": 2,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 255,
+                "y": 918.5
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado1.tmj": {
+            "scale": 0.7995504840940525,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 680.3823033343424,
+                "y": 721.6554945292567
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado2.tmj": {
+            "expandedGroupLayers": [
+                28,
+                14,
+                26,
+                7,
+                22
+            ],
+            "scale": 0.8807291666666667,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 350.8456534594914,
+                "y": 49.958604376108724
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado3.tmj": {
+            "expandedGroupLayers": [
+                28,
+                14,
+                26,
+                22,
+                7
+            ],
+            "scale": 8,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 158.5,
+                "y": 93.75
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Radatome.tmj": {
+            "expandedGroupLayers": [
                 28
+            ],
+            "scale": 0.95078125,
+            "selectedLayer": -1,
+            "viewCenter": {
+                "x": 608.9728841413312,
+                "y": 608.9728841413312
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine1 - 副本 (2).tmj": {
+            "scale": 2.7792067307692307,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 1412.9931237296198,
+                "y": 359.09527310470094
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine1 - 副本 (3).tmj": {
+            "scale": 2.7792067307692307,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 208.33282878519222,
+                "y": 208.33282878519225
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine1 - 副本.tmj": {
+            "scale": 2.7792067307692307,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 207.2533840764607,
+                "y": 270.58080698871254
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine1.tmj": {
+            "scale": 2.7792067307692307,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 208.33282878519222,
+                "y": 208.33282878519225
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine2.tmj": {
+            "scale": 2.7792067307692307,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 208.33282878519222,
+                "y": 208.33282878519225
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Rimuldar.tmj": {
+            "scale": 0.9764780405405405,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 610.3567876140639,
+                "y": 591.9231933572632
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj": {
+            "expandedGroupLayers": [
+                26,
+                22,
+                28,
+                30
             ],
             "scale": 4,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 609.125,
-                "y": 526.875
+                "x": 649.75,
+                "y": 526.25
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Tiles.tsx": {
             "dynamicWrapping": true,
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/World.tmj": {
+            "expandedGroupLayers": [
+                14
+            ],
+            "scale": 4,
+            "selectedLayer": 9,
+            "viewCenter": {
+                "x": 276.75,
+                "y": 218.75
+            }
         },
         "Map/characters.tsx": {
             "dynamicWrapping": false
@@ -68,19 +291,28 @@
     "last.exportedFilePath": "E:/projects/web/DQ1-Map/Tmx",
     "last.externalTilesetPath": "E:/projects/web/dq1-web-pre/database/map/Tiles",
     "last.imagePath": "E:/projects/web/dq1-web-pre/database/map/Tiles",
-    "map.height": 41,
+    "map.height": 40,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
-    "map.lastUsedFormat": "tmx",
-    "map.width": 42,
+    "map.lastUsedFormat": "json",
+    "map.width": 40,
     "openFiles": [
+        "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Maira.tmj"
     ],
     "project": "dq1.tiled-project",
-    "property.type": "string",
+    "property.type": "int",
     "recentFiles": [
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Garais3.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Maira.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine1 - 副本.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado1 - 副本.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado2.tmj",
         "Tiles/Tiles.tsx",
         "E:/projects/web/dq1-web-pre/src/data/scenes/Tiles.tsx"
     ],
+    "resizeMap.removeObjects": true,
     "textEdit.monospace": true,
     "tileset.lastUsedFilter": "Tiled 图块集文件 (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx"
