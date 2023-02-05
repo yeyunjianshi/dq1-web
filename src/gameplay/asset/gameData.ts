@@ -8,6 +8,7 @@ import Inventory, {
 import Item, { ItemEquipmentType, ItemType } from '../inventory/item'
 import Character from './character'
 import TalkChinese from '../../data/i18n/talk_chinese.json'
+import { generateEventId } from '@gameplay/events/EventExector'
 
 const DefaultInitGameCharacter = {
   id: 1,
@@ -15,6 +16,7 @@ const DefaultInitGameCharacter = {
   inventory: [1, 2, 4, 206, 207, 302, 401, 402, 501, 50],
   magics: [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010],
   npcs: [2, 3],
+  events: [generateEventId('Q888')],
 }
 
 const gameAllCharacters: Map<number, Character> = new Map()
@@ -139,7 +141,7 @@ export class GameData {
     initCharacter.magics = DefaultInitGameCharacter.magics.map((id) =>
       GetMagic(id)
     )
-    this.events = new Set()
+    this.events = new Set(DefaultInitGameCharacter.events)
     this.inputType = InputType.Move
     this.lightRadius =
       this.lightTime =
