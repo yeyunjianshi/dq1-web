@@ -32,7 +32,7 @@ export type QuestEventData = {
 export class QuestEvent extends Component implements Interaction {
   questId = ''
   eventId = ''
-  when: EventTriggerWhen = EventTriggerWhen.InteractiveEnter
+  when: EventTriggerWhen = EventTriggerWhen.InteractiveConfirm
   args: any[] = []
   isHideAfterFinish = false
   isStartHide = false
