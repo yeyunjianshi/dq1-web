@@ -78,7 +78,7 @@ export class NPCControllerComponent extends MoveComponent {
   moveSpeed = DefaultMoveSpeed
   moveWaitTime = 2000
   configMoveWaitTime: Vector2 = DefaultMoveWaitTime
-  path: Required<NPCFixedPathData | NPCRandomPathData> = DefaultPathData
+  path: Required<NPCFixedPathData | NPCRandomPathData> = { ...DefaultPathData }
 
   isTalking = false
   isMoving = false
@@ -231,7 +231,7 @@ export class NPCControllerComponent extends MoveComponent {
         path.radius = dataPath.radius ?? path.radius
         path.centerCoord =
           dataPath.centerCoord ?? PositionToCoord(this.worldPosition)
-        path.scope = [
+        path.scope = dataPath.scope ?? [
           vector2Minus(path.centerCoord, [path.radius, path.radius]),
           vector2Add(path.centerCoord, [path.radius, path.radius]),
         ]
@@ -244,6 +244,7 @@ export class NPCControllerComponent extends MoveComponent {
     }
     this.root.addComponent(BoxCollider, {
       size: data.colliderSize ?? [DefalutMoveTileWidth, DefaultMoveTileHeight],
+      layer: ColliderLayerType.NPC,
     } as BoxColliderData)
   }
 }
