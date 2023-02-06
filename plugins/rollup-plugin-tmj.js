@@ -143,20 +143,28 @@ function convert({ src, tileSize = DefaultTileSize }) {
       ...DefaultGameObject,
       ...getGameObjectData(d),
     }
-    ret.components.push(
-      {
+
+    const coordX = property(d, 'coordX')
+    const coordY = property(d, 'coordY')
+    if (coordX) ret.x = coordX * tileSize
+    if (coordY) ret.y = coordY * tileSize
+
+    if (property(d, 't_nextScene')) {
+      ret.components.push({
         type: 'SceneTransition',
         tag: property(d, 't_tag'),
         nextScene: property(d, 't_nextScene'),
         playAudio: property(d, 't_playAudio'),
-      },
-      {
+      })
+    }
+    if (property(d, 'd_tag')) {
+      ret.components.push({
         type: 'SceneTransitionDestination',
         tag: property(d, 'd_tag'),
         direction: property(d, 'd_direction'),
         isPremutation: property(d, 'd_isPremutation'),
-      }
-    )
+      })
+    }
     return ret
   })
 
