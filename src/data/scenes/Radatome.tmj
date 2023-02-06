@@ -7,8 +7,8 @@
          "id":31,
          "image":"..\/..\/..\/database\/map\/Sprites\/npc\/npc_0.png",
          "name":"BornPoint",
-         "offsetx":349.607230895645,
-         "offsety":768.657354149548,
+         "offsetx":803.97041906327,
+         "offsety":223.842235004108,
          "opacity":1,
          "properties":[
                 {
@@ -329,7 +329,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n\t\t\"type\": \"QuestEvent\",\n\t\t\"eventId\": \"5\",\n\t\t\"args\": [1]\n          }\n]"
+                         "value":"[\n          {\n\t\t\"type\": \"QuestEvent\",\n\t\t\"eventId\": \"Q10\",\n\t\t\"args\": [80]\n          }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -358,14 +358,14 @@
                  "id":46,
                  "image":"..\/..\/..\/database\/map\/Sprites\/npc\/npc_10.png",
                  "name":"\u53f3\u4e0b\u9752\u5e74",
-                 "offsetx":805.626951520132,
-                 "offsety":991.474116680361,
+                 "offsetx":769.866885784717,
+                 "offsety":990.422350041084,
                  "opacity":1,
                  "properties":[
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n\t   \"initDirection\": \"left\",\n            \"path\": {\n\t\t\"type\": \"random\"\t\n\t   }\n          },\n      \t {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q2614\",\n\t   \"predecessorId\": [\"Q888\"]\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q2014\"\n          }\n    \n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 10,\n\t   \"initDirection\": \"left\",\n            \"path\": {\n\t\t\"type\": \"fixed\",\n\t\t\"datas\": [[0, 0],[4, 0]],\n\t\t\"reverse\": true\n\t   }\n          },\n      \t {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q2614\",\n\t   \"predecessorId\": [\"Q888\"]\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q2014\"\n          }\n    \n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -563,7 +563,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 9,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          },\n      \t {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q2604\",\n\t   \"predecessorId\": [\"Q888\"]\n          },\n      \t {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q2301\",\n\t   \"predecessorId\": [\"Q666\"]\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q2004\"\n          }\n    \n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 9,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"up\"\n          },\n      \t {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q2604\",\n\t   \"predecessorId\": [\"Q888\"]\n          },\n      \t {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q2301\",\n\t   \"predecessorId\": [\"Q666\"]\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q2004\"\n          }\n    \n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
