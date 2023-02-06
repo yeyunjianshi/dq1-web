@@ -211,29 +211,17 @@ export async function setBattleFinishStatus(val: BattleFinishStatus) {
   _isBattleStatus = val
 }
 
-export async function shop(id: number | undefined) {
+export async function shop(id: number) {
   const globalWindow =
     executingEngine!.getVariable<GlobalWindowComponent>(GlobalWindowMarker)
 
-  if (typeof id === 'undefined') {
-    id = executingEvent!.args[1]
-  }
-
-  const shopType = executingEvent!.args[0]
-  await talk(
-    '*',
-    `这里是${shopType === 0 ? '武器店和防具店' : '道具店'}，请问有什么需要的？`,
-    true
-  )
   const previouseInputType = globalGameData.inputType
   globalGameData.inputType = InputType.Menu
-  await globalWindow.showShop(id!)
+  await globalWindow.showShop(id)
   while (globalWindow.windowMarker === WindowMarker.Shop) {
     await nextFrame()
   }
   globalGameData.inputType = previouseInputType
-
-  await talk('*', `欢迎再来!`, true)
 }
 
 export function heroName() {
