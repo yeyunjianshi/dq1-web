@@ -1,15 +1,13 @@
-import Engine, {
-  GlobalBattleInfo,
-  GlobalWindowMarker,
-} from '../../engine/engine'
-import { nextFrame } from '../../engine/time'
+import Engine, { GlobalBattleInfo, GlobalWindowMarker } from '@engine/engine'
+import { nextFrame } from '@engine/time'
 import GlobalWindowComponent, {
   WindowMarker,
 } from '../menu/GlobalWindowComponent'
+import { useTextPostProcessing } from '@engine/helper'
+import { delay as timeDelay } from '@engine/time'
 import { QuestEvent } from './QuestEvent'
 import { globalGameData, InputType } from '../asset/gameData'
 import { BattleFinishStatus, GenerateBattleInfo } from '../battle/BattleData'
-import { useTextPostProcessing } from '../../engine/helper'
 
 const gameEvents = new Map<string, string>()
 
@@ -104,9 +102,48 @@ function isExecutingEventFinishOrCancel() {
 
 // --------------------- Bridge Function ----------------------------------
 export async function task(callback: (...args: unknown[]) => Promise<unknown>) {
+  const previouseInputType = globalGameData.inputType
+  globalGameData.inputType = InputType.Task
   await nextFrame() // 该方法还是会执行当前帧，下次调用才会执行等待下一帧
-  await callback()
+  await callback(executingEvent)
   executingEventStatus = EventStatus.Finish
+  globalGameData.inputType = previouseInputType
+}
+
+export async function talkWithArgs({
+  characterName,
+  text,
+  clear = false,
+  select = false,
+  callback,
+  playTypeAudio = true,
+  textArgs,
+}: {
+  characterName: string
+  text: string
+  clear: boolean
+  select: boolean
+  playTypeAudio: boolean
+  callback?: () => void
+  textArgs?: [string, string][]
+}) {
+  const globalWindow =
+    executingEngine!.getVariable<GlobalWindowComponent>(GlobalWindowMarker)
+
+  const previouseInputType = globalGameData.inputType
+  globalGameData.inputType = InputType.Message
+
+  const ret = await globalWindow.messageWindow.talk(
+    generateMessageText(characterName),
+    generateMessageText(text, textArgs),
+    clear,
+    select,
+    playTypeAudio
+  )
+  callback && (await callback())
+  globalGameData.inputType = previouseInputType
+
+  return ret
 }
 
 export async function talk(
@@ -233,10 +270,11 @@ export function currentScene() {
   return executingEngine!.sceneManager.currentScene
 }
 
-export function generateMessageText(text: string) {
+export function generateMessageText(text: string, args?: [string, string][]) {
   return useTextPostProcessing(
     executingEngine!.i18n.getTextValue(text),
-    heroName()
+    heroName(),
+    args
   )
 }
 
@@ -249,21 +287,21 @@ export async function ExecuteCommands(
   for (const command of commands) {
     const [com, ...args] = command.split(':').map((s) => s.trim())
     if (com === 'HealHP') {
-      if (args.length > 0) HealHP(parseInt(args[0]))
-      else HealHP()
+      if (args.length > 0) healHP(parseInt(args[0]))
+      else healHP()
     } else if (com === 'HealMP') {
-      if (args.length > 0) HealMP(parseInt(args[0]))
-      else HealMP()
+      if (args.length > 0) healMP(parseInt(args[0]))
+      else healMP()
     }
   }
 }
 
-export function HealHP(val?: number) {
+export function healHP(val?: number) {
   val = val ?? hero().maxHP
   hero().HP = val
 }
 
-export function HealMP(val?: number) {
+export function healMP(val?: number) {
   val = val ?? hero().maxMP
   hero().MP = val
 }
@@ -271,3 +309,5 @@ export function HealMP(val?: number) {
 export function hero() {
   return globalGameData.hero
 }
+
+export const delay = timeDelay
