@@ -9,18 +9,18 @@ import MoveComponent, {
   PositionToCoord,
   DefaultAnimationDuration,
   DefaultRoleSprite,
+  DefaultTileSize,
+  nextCoordByDirection,
+  checkNextCoordCanMove,
+  playerCenterPosition,
 } from '../../engine/components/MoveComponent'
-import Engine, {
+import {
   GlobalSceneComponentMarker,
   GlobalTeamControllerMarker,
   GlobalWindowMarker,
 } from '../../engine/engine'
 import GameObject from '../../engine/gameObject'
-import {
-  Direction,
-  DirectionToCoord,
-  oppsiteDirection,
-} from '../../engine/input'
+import { Direction, oppsiteDirection } from '../../engine/input'
 import {
   vector2Add,
   distance,
@@ -42,34 +42,6 @@ type TeamControllerData = {
 
 const DefaultMaxTeamCount = 3
 const DefaultMoveSpeed = 64
-const DefaultTileSize = 32
-
-export function nextCoordByDirection(
-  coord: Vector2,
-  direction: Direction
-): Vector2 {
-  const delta = DirectionToCoord.get(direction) as Vector2
-  return [coord[0] + delta[0], coord[1] + delta[1]]
-}
-
-export function checkNextCoordCanMove(
-  coord: Vector2,
-  engine: Engine,
-  layer: ColliderLayerType
-): boolean {
-  const sceneComponent = engine.getVariable(
-    GlobalSceneComponentMarker
-  ) as SceneComponent
-  return !sceneComponent.collider(
-    coord,
-    PlayerCenterPosition(CoordToPosition(coord)),
-    layer
-  )
-}
-
-export function PlayerCenterPosition(pos: Vector2): Vector2 {
-  return vector2Add(pos, [DefaultTileSize >> 1, DefaultTileSize >> 1])
-}
 
 @GameplayComponent
 export default class TeamControllerComponent
@@ -243,7 +215,7 @@ export default class TeamControllerComponent
     const nextPosition = CoordToPosition(
       nextCoordByDirection(this._head.coord, this._head.direction)
     )
-    const playerNextCenterPosition = PlayerCenterPosition(nextPosition)
+    const playerNextCenterPosition = playerCenterPosition(nextPosition)
     const interaction = sceneComponent.triggerInteractive(
       playerNextCenterPosition,
       EventTriggerWhen.InteractiveConfirm

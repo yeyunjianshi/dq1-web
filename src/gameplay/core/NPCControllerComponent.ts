@@ -12,6 +12,8 @@ import MoveComponent, {
   PositionToCoord,
   DefalutMoveTileWidth,
   DefaultMoveTileHeight,
+  nextCoordByDirection,
+  checkNextCoordCanMove,
 } from '../../engine/components/MoveComponent'
 import { GlobalTeamControllerMarker } from '../../engine/engine'
 import {
@@ -34,16 +36,14 @@ import {
   EventExecuteStartMarker,
   EventExecuteEndMarker,
 } from '../events/EventExector'
-import TeamControllerComponent, {
-  checkNextCoordCanMove,
-} from './TeamControllerComponent'
+import TeamControllerComponent from './TeamControllerComponent'
 
 type NPCPathType = 'fixed' | 'random'
 
 type NPCFixedPathData = {
   type: NPCPathType
   datas: Vector2[]
-  alternate: boolean
+  reverse: boolean
 }
 
 type NPCRandomPathData = {
@@ -126,25 +126,36 @@ export class NPCControllerComponent extends MoveComponent {
       if (path.datas.length === 1) return [path.datas[0], Direction.none]
 
       if (
-        this.moveState.pathIndex === 0 &&
-        this.moveState.reverse &&
-        path.alternate
-      )
-        this.moveState.reverse = false
-      else if (
-        this.moveState.pathIndex === path.datas.length - 1 &&
-        !this.moveState.reverse &&
-        path.alternate
-      )
-        this.moveState.reverse = true
+        this.moveState.targetCoord[0] ===
+          path.datas[this.moveState.pathIndex][0] &&
+        this.moveState.targetCoord[1] ===
+          path.datas[this.moveState.pathIndex][1]
+      ) {
+        if (
+          this.moveState.pathIndex === 0 &&
+          this.moveState.reverse &&
+          path.reverse
+        )
+          this.moveState.reverse = false
+        else if (
+          this.moveState.pathIndex === path.datas.length - 1 &&
+          !this.moveState.reverse &&
+          path.reverse
+        )
+          this.moveState.reverse = true
 
-      if (this.moveState.reverse) this.moveState.pathIndex--
-      else this.moveState.pathIndex++
-      this.moveState.pathIndex = this.moveState.pathIndex % path.datas.length
+        if (this.moveState.reverse) this.moveState.pathIndex--
+        else this.moveState.pathIndex++
+        this.moveState.pathIndex = this.moveState.pathIndex % path.datas.length
+      }
 
-      const nextCoord = path.datas[this.moveState.pathIndex]
+      const nextFinialCoord = path.datas[this.moveState.pathIndex]
       const nextDireciton = getDirectionByCoord(
-        vector2Minus(nextCoord, this.moveState.targetCoord)
+        vector2Minus(nextFinialCoord, this.moveState.targetCoord)
+      )
+      const nextCoord = nextCoordByDirection(
+        this.moveState.targetCoord,
+        nextDireciton
       )
       if (!checkNextCoordCanMove(nextCoord, this.engine, ColliderLayerType.NPC))
         return [this.moveState.targetCoord, Direction.none]
@@ -238,7 +249,13 @@ export class NPCControllerComponent extends MoveComponent {
         this.initMoveState(path.centerCoord)
       } else if (data.path.type === 'fixed') {
         const dataPath = data.path as NPCFixedPathData
-        if (dataPath.datas.length > 0) this.initMoveState(dataPath.datas[0])
+        const initCoord = PositionToCoord(this.worldPosition)
+        if (dataPath.datas.length > 0) {
+          dataPath.datas = dataPath.datas.map((d) => vector2Add(d, initCoord))
+          this.initMoveState(dataPath.datas[0])
+        } else {
+          this.initMoveState(this.worldPosition)
+        }
         this.path = { ...dataPath }
       }
     }

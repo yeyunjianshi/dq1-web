@@ -3,30 +3,6 @@
  "infinite":false,
  "layers":[
         {
-         "class":"BornPoint",
-         "id":31,
-         "image":"..\/..\/..\/database\/map\/Sprites\/npc\/npc_0.png",
-         "name":"BornPoint",
-         "offsetx":803.97041906327,
-         "offsety":223.842235004108,
-         "opacity":1,
-         "properties":[
-                {
-                 "name":"direction",
-                 "type":"string",
-                 "value":"down"
-                }, 
-                {
-                 "name":"isPremutation",
-                 "type":"bool",
-                 "value":false
-                }],
-         "type":"imagelayer",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
          "id":2,
          "image":"..\/..\/..\/public\/assets\/sprites\/map\/Radatome.png",
          "name":"Map",
@@ -56,6 +32,30 @@
                  "name":"name",
                  "type":"string",
                  "value":"Radatome"
+                }],
+         "type":"imagelayer",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "class":"BornPoint",
+         "id":31,
+         "image":"..\/..\/..\/database\/map\/Sprites\/npc\/npc_0.png",
+         "name":"BornPoint",
+         "offsetx":748.226787181594,
+         "offsety":924.318816762531,
+         "opacity":1,
+         "properties":[
+                {
+                 "name":"direction",
+                 "type":"string",
+                 "value":"down"
+                }, 
+                {
+                 "name":"isPremutation",
+                 "type":"bool",
+                 "value":false
                 }],
          "type":"imagelayer",
          "visible":true,

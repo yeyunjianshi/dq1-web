@@ -1,7 +1,40 @@
+import Engine, { GlobalSceneComponentMarker } from '@engine/engine'
+import { vector2Add } from '@engine/math'
+import SceneComponent from '@gameplay/core/SceneComponent'
 import { InnerGameComponent } from '.'
 import Component from '../component'
-import { Direction, parseDirection } from '../input'
+import { Direction, DirectionToCoord, parseDirection } from '../input'
 import { AssetLoader } from '../resource'
+import { ColliderLayerType } from './Collider'
+
+export const DefaultTileSize = 32
+
+export function nextCoordByDirection(
+  coord: Vector2,
+  direction: Direction
+): Vector2 {
+  const delta = DirectionToCoord.get(direction) as Vector2
+  return [coord[0] + delta[0], coord[1] + delta[1]]
+}
+
+export function checkNextCoordCanMove(
+  coord: Vector2,
+  engine: Engine,
+  layer: ColliderLayerType
+): boolean {
+  const sceneComponent = engine.getVariable(
+    GlobalSceneComponentMarker
+  ) as SceneComponent
+  return !sceneComponent.collider(
+    coord,
+    playerCenterPosition(CoordToPosition(coord)),
+    layer
+  )
+}
+
+export function playerCenterPosition(pos: Vector2): Vector2 {
+  return vector2Add(pos, [DefaultTileSize >> 1, DefaultTileSize >> 1])
+}
 
 export type MoveComponentData = {
   type: string

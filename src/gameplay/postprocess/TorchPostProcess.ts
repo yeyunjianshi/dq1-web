@@ -1,9 +1,8 @@
+import TeamControllerComponent from '../core/TeamControllerComponent'
 import CanvasRenderer, { RenderLayer } from '../../engine/canvasRenderer'
-import TeamControllerComponent, {
-  PlayerCenterPosition,
-} from '../core/TeamControllerComponent'
 import Engine, { GlobalTeamControllerMarker } from '../../engine/engine'
 import { globalGameData } from '../asset/gameData'
+import { playerCenterPosition } from '@engine/components/MoveComponent'
 
 export default class TorchPostProcess implements IPostProcess {
   private _engine: Engine
@@ -38,7 +37,7 @@ export default class TorchPostProcess implements IPostProcess {
 
         if (teamController !== null) {
           renderer.context.save()
-          const [x, y] = PlayerCenterPosition(teamController.headCameraPosition)
+          const [x, y] = playerCenterPosition(teamController.headCameraPosition)
           renderer.context.beginPath()
           renderer.context.arc(
             x,
