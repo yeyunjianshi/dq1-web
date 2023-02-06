@@ -41,9 +41,9 @@ export default class AudioManager {
     }
   }
 
-  replayBGM() {
+  replayBGM(reset = true) {
     this.setAudioVolume('bgm')
-    this.replay(this._bgmAudio)
+    this.replay(this._bgmAudio, reset)
   }
 
   pauseBGM() {
@@ -96,9 +96,9 @@ export default class AudioManager {
     this.pause(this._seAudio)
   }
 
-  replay(audio?: Audio) {
+  replay(audio?: Audio, reset = true) {
     if (audio) {
-      audio.currentTime = 0
+      if (reset) audio.currentTime = 0
       audio.play()
     }
   }
