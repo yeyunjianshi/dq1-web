@@ -21,6 +21,7 @@ function convertToJson(xls) {
       header: ['A', 'B', 'C'],
       blankrows: false,
     })
+    .filter((row) => row['A'])
     .map((row) => ({
       key: row['A'],
       value: row['B'].replaceAll('\\n', '\n'),
