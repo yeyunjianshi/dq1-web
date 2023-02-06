@@ -99,6 +99,11 @@ export class PropertyAnimationComponent extends Component {
     }
   }
 
+  setAnimation(animation: Animation) {
+    this.stop()
+    this._animation = animation
+  }
+
   parseAnimationData(assetLoader: AssetLoader, data: PropertyAnimationData) {
     if (!data.keys) data.keys = {}
     for (const [prop, keys] of Object.entries(data.keys)) {
