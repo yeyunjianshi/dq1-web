@@ -340,3 +340,9 @@ export async function flashing(t: {
     await fadingComponent.flashing(t)
   }
 }
+
+export function showGoldWindow(show = true) {
+  const globalWindow =
+    executingEngine!.getVariable<GlobalWindowComponent>(GlobalWindowMarker)
+  globalWindow.showGold(show)
+}

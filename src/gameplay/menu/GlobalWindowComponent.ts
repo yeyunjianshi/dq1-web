@@ -143,6 +143,11 @@ export default class GlobalWindowComponent
     this._windowStack.push(this._shopWindow!)
   }
 
+  showGold(show = true) {
+    if (show) this._commonGoldWindow?.show()
+    else this._commonGoldWindow?.hide()
+  }
+
   alert(content: string, callback: ListenerFunction) {
     this._pressedFrame = this.time.currentFrame
     this._alertWindow!.addListener(callback)

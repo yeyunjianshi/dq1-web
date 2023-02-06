@@ -1,4 +1,5 @@
 task(async (event) => {
+  showGoldWindow(true)
   const money = event.args[0]
   await talk('*', 'Q4_0')
   const select = await talkWithArgs({
@@ -27,4 +28,5 @@ task(async (event) => {
       await talk('*', 'Q4_Y1')
     }
   }
+  showGoldWindow(false)
 })
