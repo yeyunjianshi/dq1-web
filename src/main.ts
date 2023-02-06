@@ -61,12 +61,12 @@ engine.run({
 })
 
 document.getElementById('startBtn')?.addEventListener('click', () => {
-  // engine.audios.replayBGM()
-  const fadingComponent =
-    engine.getVariable<FadingComponent>(GlobalFadingMarker)
+  engine.audios.replayBGM()
+  // const fadingComponent =
+  //   engine.getVariable<FadingComponent>(GlobalFadingMarker)
   // fadingComponent.fading({
   //   type: 'in',
   //   duration: 2000,
   // })
-  fadingComponent.flashing({ duration: 1000, times: 5, color: '#F53838' })
+  // fadingComponent.flashing({ duration: 1000, times: 5, color: '#F53838' })
 })

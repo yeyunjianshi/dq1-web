@@ -3,7 +3,7 @@ task(async (event) => {
   const money = event.args[0]
   let select = await talkWithArgs({
     characterName: '*',
-    text: 'Q10_0',
+    text: 'Q11_0',
     select: true,
     textArgs: [['{money}', money]],
   })
@@ -13,8 +13,8 @@ task(async (event) => {
       break
     }
     hero().gold -= money
-    select = await talk('*', 'Q10_1', false, true)
+    select = await talk('*', 'Q11_1', false, true)
   }
-  await talk('*', 'Q10_2')
+  await talk('*', 'Q11_N')
   showGoldWindow(false)
 })

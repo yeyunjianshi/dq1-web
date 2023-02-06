@@ -99,9 +99,9 @@ export function initScene(engine: Engine) {
   // engine.sceneManager.loadScene('Battle')
   // engine.sceneManager.loadScene('Title')
 
-  // engine.sceneManager.loadScene('TantegelCastle1')
+  engine.sceneManager.loadScene(TantegelCastleScene.name)
   // engine.sceneManager.loadScene('TantegelCastle2')
-  engine.sceneManager.loadScene('Radatome')
+  // engine.sceneManager.loadScene('Radatome')
   // engine.sceneManager.loadScene('Maira')
   // engine.sceneManager.loadScene('Rimuldar')
   // engine.sceneManager.loadScene('Domdora')

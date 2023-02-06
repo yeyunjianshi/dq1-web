@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 //----------------- Plugins -------------------
 declare module '*.tmj' {
-  const classes: GameObjectData
+  const classes: SceneData
   export default classes
 }
 // --------------------------------------------

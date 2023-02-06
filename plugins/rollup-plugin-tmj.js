@@ -90,9 +90,13 @@ function convert({ src, tileSize = DefaultTileSize }) {
     ].forEach((prop) => {
       const value = !property(src, prop)
         ? prop === 'x'
-          ? Math.round(src.offsetx / 32) * 32
+          ? property(src, 'floatPosition')
+            ? src.offsetx
+            : Math.round(src.offsetx / 32) * 32
           : prop === 'y'
-          ? Math.round(src.offsety / 32) * 32
+          ? property(src, 'floatPosition')
+            ? src.offsety
+            : Math.round(src.offsety / 32) * 32
           : prop === 'name'
           ? src.name
           : undefined

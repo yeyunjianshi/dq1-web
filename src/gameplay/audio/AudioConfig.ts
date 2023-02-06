@@ -9,6 +9,7 @@ export const Audios = {
   Type: 'se/type.mp3',
   Save: 'se/save.mp3',
   Inn: 'se/inn.mp3',
+  Revive: 'se/revive.mp3',
 }
 
 export function audioInitLoad(resource: IResource) {
