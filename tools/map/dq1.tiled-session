@@ -40,7 +40,7 @@
             "scale": 0.9881623931623932,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 601.6217618821088,
+                "x": 601.1157721748908,
                 "y": 584.4181118366994
             }
         },
@@ -248,14 +248,14 @@
         "E:/projects/web/dq1-web-pre/src/data/scenes/Radatome.tmj": {
             "expandedGroupLayers": [
                 14,
-                28,
-                7
+                22,
+                26
             ],
-            "scale": 0.95078125,
-            "selectedLayer": 29,
+            "scale": 2,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 607.3952341824158,
-                "y": 607.3952341824158
+                "x": 129,
+                "y": 671.75
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine1 - 副本 (2).tmj": {
@@ -361,11 +361,11 @@
             "expandedGroupLayers": [
                 14
             ],
-            "scale": 4,
+            "scale": 5.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 274.5,
-                "y": 218.5
+                "x": 1705.8181818181818,
+                "y": 1461.3636363636365
             }
         },
         "Map/characters.tsx": {
@@ -436,6 +436,7 @@
     "project": "dq1.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Radatome.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/Maira.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/MarshyCave.tmj",
@@ -446,8 +447,7 @@
         "E:/projects/web/dq1-web-pre/src/data/scenes/Domdora.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle1.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle3.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle4.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle5.tmj"
+        "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle4.tmj"
     ],
     "resizeMap.removeObjects": true,
     "textEdit.monospace": true,

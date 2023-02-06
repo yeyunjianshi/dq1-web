@@ -3,28 +3,6 @@
  "infinite":false,
  "layers":[
         {
-         "class":"BornPoint",
-         "id":31,
-         "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_0.png",
-         "name":"BornPoint",
-         "opacity":1,
-         "properties":[
-                {
-                 "name":"direction",
-                 "type":"string",
-                 "value":"down"
-                }, 
-                {
-                 "name":"isPremutation",
-                 "type":"bool",
-                 "value":false
-                }],
-         "type":"imagelayer",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
          "id":2,
          "image":"..\/..\/..\/public\/assets\/sprites\/map\/World.png",
          "name":"Map",
@@ -200,6 +178,30 @@
          "y":0
         }, 
         {
+         "class":"BornPoint",
+         "id":31,
+         "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_0.png",
+         "name":"BornPoint",
+         "offsetx":1633.27272727273,
+         "offsety":1443.81818181818,
+         "opacity":1,
+         "properties":[
+                {
+                 "name":"direction",
+                 "type":"string",
+                 "value":"down"
+                }, 
+                {
+                 "name":"isPremutation",
+                 "type":"bool",
+                 "value":false
+                }],
+         "type":"imagelayer",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "id":30,
          "layers":[],
          "name":"Objects",
@@ -361,10 +363,9 @@
                  "y":0
                 }, 
                 {
-                 "class":"Entrace",
                  "draworder":"topdown",
                  "id":21,
-                 "name":"\u4e0b\u51fa\u53e3",
+                 "name":"Radatome",
                  "objects":[
                         {
                          "class":"",
@@ -401,9 +402,31 @@
                          "width":0,
                          "x":591.5,
                          "y":1142
+                        }, 
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":20,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":1678.18181818182,
+                         "y":1457.63636363636
                         }],
                  "opacity":1,
                  "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":52
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":45
+                        }, 
                         {
                          "name":"d_direction",
                          "type":"string",
@@ -417,37 +440,27 @@
                         {
                          "name":"d_tag",
                          "type":"string",
-                         "value":"TantegelCastle"
+                         "value":"Radatome"
                         }, 
                         {
                          "name":"height",
                          "type":"int",
-                         "value":64
+                         "value":32
                         }, 
                         {
                          "name":"t_nextScene",
                          "type":"string",
-                         "value":"World"
+                         "value":"Radatome"
                         }, 
                         {
                          "name":"t_tag",
                          "type":"string",
-                         "value":"TantegelCastle"
+                         "value":"Radatome"
                         }, 
                         {
                          "name":"width",
                          "type":"int",
-                         "value":252
-                        }, 
-                        {
-                         "name":"x",
-                         "type":"int",
-                         "value":480
-                        }, 
-                        {
-                         "name":"y",
-                         "type":"int",
-                         "value":1120
+                         "value":32
                         }],
                  "type":"objectgroup",
                  "visible":true,
@@ -535,7 +548,7 @@
          "y":0
         }],
  "nextlayerid":32,
- "nextobjectid":20,
+ "nextobjectid":21,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",
