@@ -5,7 +5,7 @@
         {
          "class":"BornPoint",
          "id":31,
-         "image":"..\/..\/..\/database\/map\/Sprites\/npc\/npc_0.png",
+         "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_0.png",
          "name":"BornPoint",
          "offsetx":602.75,
          "offsety":419.333333333333,
@@ -139,7 +139,7 @@
                 {
                  "class":"Door",
                  "id":24,
-                 "image":"..\/..\/..\/database\/map\/Sprites\/npc\/door.png",
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/door.png",
                  "name":"Door2",
                  "offsetx":832,
                  "offsety":384,
@@ -168,7 +168,7 @@
                 {
                  "class":"Door",
                  "id":23,
-                 "image":"..\/..\/..\/database\/map\/Sprites\/npc\/door.png",
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/door.png",
                  "name":"Door1",
                  "offsetx":352,
                  "offsety":640,
@@ -206,7 +206,7 @@
          "layers":[
                 {
                  "id":13,
-                 "image":"..\/..\/..\/database\/map\/Sprites\/npc\/npc_5.png",
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_5.png",
                  "name":"1",
                  "offsetx":607,
                  "offsety":417.5,
@@ -340,7 +340,7 @@
          "layers":[
                 {
                  "id":29,
-                 "image":"..\/..\/..\/database\/map\/Sprites\/npc\/MapChest.png",
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/MapChest.png",
                  "name":"Chest1",
                  "offsetx":800,
                  "offsety":736,
@@ -440,7 +440,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/..\/database\/map\/Tiles\/Tiles.tsx"
+         "source":"..\/..\/..\/tools\/map\/Tiles\/Tiles.tsx"
         }],
  "tilewidth":32,
  "type":"map",

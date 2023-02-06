@@ -3,11 +3,12 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "E:/projects/web/dq1-web-pre/src/data/scenes/Garais3.tmj",
+    "activeFile": "Tiles/Tiles.tsx",
     "automapping.whileDrawing": false,
     "expandedProjectPaths": [
-        ".",
-        "E:/projects/web/dq1-web-pre/src/data/scenes"
+        "E:/projects/web/dq1-web-pre/src/data/scenes",
+        "Tiles",
+        "."
     ],
     "file.lastUsedOpenFilter": "全部文件 (*)",
     "fileStates": {
@@ -95,8 +96,8 @@
             "scale": 1.4900841346153846,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 416.0838878806211,
-                "y": 384.54204476709015
+                "x": 415.7483363581368,
+                "y": 383.53539019963705
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Garais4.tmj": {
@@ -119,15 +120,15 @@
             "scale": 2.5511458333333334,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 240.28418602752032,
-                "y": 224.21297619533703
+                "x": 239.696214936099,
+                "y": 223.62500510391573
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Maira.tmj": {
             "expandedGroupLayers": [
                 14,
-                22,
-                7
+                7,
+                22
             ],
             "expandedObjectLayers": [
                 14,
@@ -216,11 +217,11 @@
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado2.tmj": {
             "expandedGroupLayers": [
-                28,
                 14,
-                26,
+                28,
+                7,
                 22,
-                7
+                26
             ],
             "scale": 0.8807291666666667,
             "selectedLayer": 1,
@@ -231,11 +232,11 @@
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado3.tmj": {
             "expandedGroupLayers": [
-                28,
                 14,
-                26,
+                28,
+                7,
                 22,
-                7
+                26
             ],
             "scale": 8,
             "selectedLayer": 1,
@@ -246,15 +247,15 @@
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Radatome.tmj": {
             "expandedGroupLayers": [
-                28,
                 14,
+                28,
                 7
             ],
             "scale": 0.95078125,
-            "selectedLayer": 12,
+            "selectedLayer": 29,
             "viewCenter": {
-                "x": 768.8414133114217,
-                "y": 572.1610517666393
+                "x": 607.3952341824158,
+                "y": 607.3952341824158
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine1 - 副本 (2).tmj": {
@@ -301,8 +302,8 @@
             "scale": 0.9764780405405405,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 601.1399904856636,
-                "y": 590.899104787441
+                "x": 607.284521904597,
+                "y": 591.4111490723523
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave1.tmj": {
@@ -339,16 +340,16 @@
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj": {
             "expandedGroupLayers": [
-                28,
                 30,
-                26,
-                22
+                28,
+                22,
+                26
             ],
             "scale": 4,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 671.75,
-                "y": 655.75
+                "x": 671.875,
+                "y": 655.875
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Tiles.tsx": {
@@ -404,8 +405,8 @@
         }
     },
     "last.exportedFilePath": "E:/projects/web/DQ1-Map/Tmx",
-    "last.externalTilesetPath": "E:/projects/web/dq1-web-pre/database/map/Tiles",
-    "last.imagePath": "E:/projects/web/dq1-web-pre/database/map/Tiles",
+    "last.externalTilesetPath": "E:/projects/web/dq1-web-pre/tools/map/Tiles",
+    "last.imagePath": "E:/projects/web/dq1-web-pre/tools/map/Tiles",
     "map.height": 40,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "json",
@@ -427,12 +428,14 @@
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle7.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle8.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/Garais1.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Garais3.tmj"
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Garais3.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Radatome.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/HolyShrine2.tmj",
+        "Tiles/Tiles.tsx"
     ],
     "project": "dq1.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Radatome.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/Maira.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/MarshyCave.tmj",
@@ -443,7 +446,8 @@
         "E:/projects/web/dq1-web-pre/src/data/scenes/Domdora.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle1.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle3.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle4.tmj"
+        "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle4.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle5.tmj"
     ],
     "resizeMap.removeObjects": true,
     "textEdit.monospace": true,

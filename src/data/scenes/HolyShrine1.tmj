@@ -5,7 +5,7 @@
         {
          "class":"BornPoint",
          "id":31,
-         "image":"..\/..\/..\/database\/map\/Sprites\/npc\/npc_0.png",
+         "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_0.png",
          "name":"BornPoint",
          "opacity":1,
          "properties":[
@@ -294,7 +294,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/..\/database\/map\/Tiles\/Tiles.tsx"
+         "source":"..\/..\/..\/tools\/map\/Tiles\/Tiles.tsx"
         }],
  "tilewidth":32,
  "type":"map",

@@ -49,7 +49,7 @@ async function writeFile(file, data, options) {
 async function cli() {
   const targetResolve = (path) =>
     resolve(__dirname, `../public/assets/data/i18n/${path}.json`)
-  const i18nDirPath = resolve(__dirname, '../database/i18n')
+  const i18nDirPath = resolve(__dirname, '../tools/i18n')
   const i18nXlsxs = fs.readdirSync(i18nDirPath)
 
   for (const xls of i18nXlsxs) {
