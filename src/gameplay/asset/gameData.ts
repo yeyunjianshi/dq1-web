@@ -16,7 +16,10 @@ const DefaultInitGameCharacter = {
   inventory: [1, 2, 4, 206, 207, 302, 401, 402, 501, 50],
   magics: [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010],
   npcs: [2, 3],
-  events: [generateEventId('Q888')],
+  events: [
+    // generateEventId('Q666'),
+    // generateEventId('Q888')
+  ],
 }
 
 const gameAllCharacters: Map<number, Character> = new Map()
@@ -114,6 +117,7 @@ export enum InputType {
   Menu,
   Battle,
   Message,
+  Task,
   Title,
 }
 

@@ -8,6 +8,7 @@ export const Audios = {
   ImportantItem: 'se/important_item.mp3',
   Type: 'se/type.mp3',
   Save: 'se/save.mp3',
+  Inn: 'se/inn.mp3',
 }
 
 export function audioInitLoad(resource: IResource) {

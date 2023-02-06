@@ -12,6 +12,32 @@ export const nextFrame = () => {
   })
 }
 
+export const waitUtil = async (
+  f: () => boolean,
+  waitTime: number,
+  time: Time
+) => {
+  let duration = 0
+  while (!f() && waitTime > duration) {
+    duration += time.scaleDeltaTime
+    await nextFrame()
+  }
+  return waitTime <= duration
+}
+
+export const waitWhile = async (
+  f: () => boolean,
+  waitTime: number,
+  time: Time
+) => {
+  let duration = 0
+  while (f() && waitTime > duration) {
+    duration += time.scaleDeltaTime
+    await nextFrame()
+  }
+  return waitTime <= duration
+}
+
 export const timestampToTime = (timestamp: number) => {
   const timestampSeconds = Math.floor(timestamp / 1000)
   const s = timestampSeconds % 60

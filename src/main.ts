@@ -1,5 +1,5 @@
 import './style.css'
-import { createEngine } from './engine/engine'
+import { createEngine, GlobalFadingMarker } from './engine/engine'
 import './gameplay/componentConfig'
 import { AssetLoader } from './engine/resource'
 import { audioInitLoad } from './gameplay/audio/AudioConfig'
@@ -24,6 +24,7 @@ import EnemyData from '../public/assets/data/enemies.json'
 import MagicData from '../public/assets/data/magic.json'
 import TorchPostProcess from './gameplay/postprocess/TorchPostProcess'
 import { initScene } from '@gameplay/init'
+import FadingComponent from '@engine/components/FadingComponent'
 
 SetCharacters((AllCharactersData as CharacterData[]).map(parseCharacter))
 SetItems((AllItemData as ItemData[]).map(parseItem))
@@ -60,5 +61,12 @@ engine.run({
 })
 
 document.getElementById('startBtn')?.addEventListener('click', () => {
-  engine.audios.replayBGM()
+  // engine.audios.replayBGM()
+  const fadingComponent =
+    engine.getVariable<FadingComponent>(GlobalFadingMarker)
+  // fadingComponent.fading({
+  //   type: 'in',
+  //   duration: 2000,
+  // })
+  fadingComponent.flashing({ duration: 1000, times: 5, color: '#F53838' })
 })

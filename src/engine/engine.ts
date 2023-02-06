@@ -12,6 +12,7 @@ import I18N from './i18n'
 export const GlobalTeamControllerMarker = '$TeamController'
 export const GlobalSceneComponentMarker = '$GlobalSceneComponent'
 export const GlobalWindowMarker = '$GlobalWindow'
+export const GlobalFadingMarker = '$GlobalFading'
 export const GlobalBattleInfo = '$GlobalBattleInfo'
 
 class Engine {

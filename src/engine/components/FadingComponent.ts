@@ -50,7 +50,6 @@ export default class FadingComponent extends Component {
         ]),
       })
       this._animaitonComponent.setAnimation(animation)
-      console.log(animation)
       await waitUtil(() => animation.isEnd, duration, this.engine.time)
       if (type === 'out') this.root.active = false
     }

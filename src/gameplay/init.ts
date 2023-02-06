@@ -42,6 +42,8 @@ import TitleScene from '@data/scenes/Title.json'
 import BattleData from '@data/scenes/battle.json'
 import GlobalScene from '@data/scenes/globalWindow.json'
 import TeamController from '@data/scenes/team_controller.json'
+import FadingScene from '@data/scenes/fading.json'
+
 import Engine from '@engine/engine'
 
 AddGameSceneData([
@@ -85,21 +87,23 @@ AddGameSceneData([
   TitleScene,
   TeamController,
   GlobalScene,
+  FadingScene,
   BattleData as any,
 ])
 
 export function initScene(engine: Engine) {
-  engine.sceneManager.loadScene('Global')
-  engine.sceneManager.loadScene('TeamController')
-  engine.sceneManager.loadScene('World')
+  engine.sceneManager.loadScene(FadingScene.name)
+  engine.sceneManager.loadScene(GlobalScene.name)
+  engine.sceneManager.loadScene(TeamController.name)
+  // engine.sceneManager.loadScene('World')
   // engine.sceneManager.loadScene('Battle')
   // engine.sceneManager.loadScene('Title')
 
   // engine.sceneManager.loadScene('TantegelCastle1')
   // engine.sceneManager.loadScene('TantegelCastle2')
+  engine.sceneManager.loadScene('Radatome')
   // engine.sceneManager.loadScene('Maira')
   // engine.sceneManager.loadScene('Rimuldar')
-  // engine.sceneManager.loadScene('Radatome')
   // engine.sceneManager.loadScene('Domdora')
 
   // engine.sceneManager.loadScene('HolyShrine1')

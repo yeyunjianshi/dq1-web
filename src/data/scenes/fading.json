@@ -1,0 +1,23 @@
+{
+  "name": "Fading",
+  "width": -2,
+  "height": -2,
+  "loadType": 2,
+  "priority": 1002,
+  "hasCamera": false,
+  "root": {
+    "x": 0,
+    "y": 0,
+    "width": -2,
+    "height": -2,
+    "active": true,
+    "alpha": 1,
+    "useScreenPosition": true,
+    "renderLayer": 50,
+    "components": [
+      {
+        "type": "$FadingComponent"
+      }
+    ]
+  }
+}

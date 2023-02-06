@@ -1,4 +1,8 @@
-import Engine, { GlobalBattleInfo, GlobalWindowMarker } from '@engine/engine'
+import Engine, {
+  GlobalBattleInfo,
+  GlobalFadingMarker,
+  GlobalWindowMarker,
+} from '@engine/engine'
 import { nextFrame } from '@engine/time'
 import GlobalWindowComponent, {
   WindowMarker,
@@ -8,6 +12,7 @@ import { delay as timeDelay } from '@engine/time'
 import { QuestEvent } from './QuestEvent'
 import { globalGameData, InputType } from '../asset/gameData'
 import { BattleFinishStatus, GenerateBattleInfo } from '../battle/BattleData'
+import FadingComponent from '@engine/components/FadingComponent'
 
 const gameEvents = new Map<string, string>()
 
@@ -311,3 +316,27 @@ export function hero() {
 }
 
 export const delay = timeDelay
+
+export async function fading(t: {
+  type?: 'out' | 'in'
+  duration?: number
+  color?: Color
+}) {
+  const fadingComponent =
+    executingEngine?.getVariable<FadingComponent>(GlobalFadingMarker)
+  if (fadingComponent) {
+    await fadingComponent.fading(t)
+  }
+}
+
+export async function flashing(t: {
+  color: string
+  duration: number
+  times: number
+}) {
+  const fadingComponent =
+    executingEngine?.getVariable<FadingComponent>(GlobalFadingMarker)
+  if (fadingComponent) {
+    await fadingComponent.flashing(t)
+  }
+}
