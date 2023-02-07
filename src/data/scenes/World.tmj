@@ -432,6 +432,87 @@
                 }, 
                 {
                  "draworder":"topdown",
+                 "id":34,
+                 "name":"Maira",
+                 "objects":[
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":29,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":203.25,
+                         "y":210
+                        }, 
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":30,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":3472.5,
+                         "y":469.5
+                        }],
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":108
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":14
+                        }, 
+                        {
+                         "name":"d_direction",
+                         "type":"string",
+                         "value":"down"
+                        }, 
+                        {
+                         "name":"d_isPremutation",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"d_tag",
+                         "type":"string",
+                         "value":"Maira"
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"t_nextScene",
+                         "type":"string",
+                         "value":"Maira"
+                        }, 
+                        {
+                         "name":"t_tag",
+                         "type":"string",
+                         "value":"Maira"
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":32
+                        }],
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "draworder":"topdown",
                  "id":32,
                  "name":"TantegelCastle",
                  "objects":[
@@ -591,8 +672,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":34,
- "nextobjectid":29,
+ "nextlayerid":35,
+ "nextobjectid":31,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",

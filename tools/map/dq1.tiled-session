@@ -21,13 +21,22 @@
             "expandedGroupLayers": [
                 26,
                 14,
+                28,
                 22
             ],
+            "expandedObjectLayers": [
+                58,
+                57,
+                14,
+                56,
+                21,
+                55
+            ],
             "scale": 1,
-            "selectedLayer": 1,
+            "selectedLayer": 32,
             "viewCenter": {
-                "x": 659,
-                "y": 555.5
+                "x": 703,
+                "y": 570.5
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Garais1.tmj": {
@@ -79,11 +88,17 @@
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Maira.tmj": {
+            "expandedGroupLayers": [
+                26,
+                14,
+                28,
+                7
+            ],
             "scale": 1.5,
-            "selectedLayer": 1,
+            "selectedLayer": 19,
             "viewCenter": {
-                "x": 358,
-                "y": 292.99999999999994
+                "x": 708,
+                "y": 1039
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/MarshyCave.tmj": {
@@ -117,8 +132,8 @@
             "scale": 0.7593749999999999,
             "selectedLayer": 28,
             "viewCenter": {
-                "x": 608.3950617283951,
-                "y": 609.0534979423869
+                "x": 410.86419753086426,
+                "y": 485.925925925926
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine1.tmj": {
@@ -133,7 +148,7 @@
             "scale": 2.4046875,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 176.73814165042234,
+                "x": 202.5211176088369,
                 "y": 192.3326835607537
             }
         },
@@ -194,14 +209,15 @@
             ],
             "expandedObjectLayers": [
                 14,
+                33,
                 32,
                 21
             ],
-            "scale": 4,
-            "selectedLayer": 9,
+            "scale": 1.5,
+            "selectedLayer": 10,
             "viewCenter": {
-                "x": 223.25,
-                "y": 195.875
+                "x": 3182,
+                "y": 595
             }
         }
     },

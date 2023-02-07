@@ -291,6 +291,8 @@ export async function ExecuteCommands(
         return globalGameData.inventory.addItem(+id).item.name
       })
       await message(`获得了${itemsName.join('、')}`)
+    } else if (com === 'AddGold') {
+      hero().gold += parseInt(args[0])
     }
   }
 }
