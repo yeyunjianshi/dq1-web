@@ -3,28 +3,6 @@
  "infinite":false,
  "layers":[
         {
-         "class":"BornPoint",
-         "id":31,
-         "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_0.png",
-         "name":"BornPoint",
-         "opacity":1,
-         "properties":[
-                {
-                 "name":"direction",
-                 "type":"string",
-                 "value":"down"
-                }, 
-                {
-                 "name":"isPremutation",
-                 "type":"bool",
-                 "value":false
-                }],
-         "type":"imagelayer",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
          "id":2,
          "image":"..\/..\/..\/public\/assets\/sprites\/map\/Rimuldar.png",
          "name":"Map",
@@ -61,39 +39,63 @@
          "y":0
         }, 
         {
+         "class":"BornPoint",
+         "id":31,
+         "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_0.png",
+         "name":"BornPoint",
+         "offsetx":914.666666666667,
+         "offsety":605.333333333333,
+         "opacity":1,
+         "properties":[
+                {
+                 "name":"direction",
+                 "type":"string",
+                 "value":"down"
+                }, 
+                {
+                 "name":"isPremutation",
+                 "type":"bool",
+                 "value":false
+                }],
+         "type":"imagelayer",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -126,8 +128,8 @@
                  "id":24,
                  "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/door.png",
                  "name":"Door2",
-                 "offsetx":800,
-                 "offsety":384,
+                 "offsetx":864,
+                 "offsety":866.666666666667,
                  "opacity":1,
                  "properties":[
                         {
@@ -143,7 +145,7 @@
                         {
                          "name":"door_id",
                          "type":"string",
-                         "value":"TantegelCastle_Door_2"
+                         "value":"Rimuldar_Door_2"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -155,8 +157,8 @@
                  "id":23,
                  "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/door.png",
                  "name":"Door1",
-                 "offsetx":352,
-                 "offsety":640,
+                 "offsetx":832,
+                 "offsety":801.333333333333,
                  "opacity":1,
                  "properties":[
                         {
@@ -172,7 +174,7 @@
                         {
                          "name":"door_id",
                          "type":"string",
-                         "value":"TantegelCastle_Door_1"
+                         "value":"Rimuldar_Door_1"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -190,17 +192,418 @@
          "id":7,
          "layers":[
                 {
-                 "id":11,
-                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_5.png",
-                 "name":"\u4e2d-\u697c\u68af\u4e0b\u58eb\u5175",
-                 "offsetx":640,
-                 "offsety":448,
+                 "id":50,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/event.png",
+                 "name":"\u65c5\u5e97\u4e8b\u4ef6",
+                 "offsetx":670.666666666667,
+                 "offsety":698,
                  "opacity":1,
                  "properties":[
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1003\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"QuestEvent\",\n            \"eventId\": \"Q4\",\n\t   \"args\": [24]\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":51,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/event.png",
+                 "name":"\u6b66\u5668\u5e97\u4e8b\u4ef6",
+                 "offsetx":894,
+                 "offsety":375.333333333334,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"QuestEvent\",\n            \"eventId\": \"Q5\",\n\t   \"args\": [0, 6]\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":52,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/event.png",
+                 "name":"\u5356\u94a5\u5319\u4e8b\u4ef6",
+                 "offsetx":254,
+                 "offsety":308.666666666667,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"QuestEvent\",\n            \"eventId\": \"Q11\",\n\t   \"args\": [16]\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":53,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_8.png",
+                 "name":"\u9053\u5177\u5e97",
+                 "offsetx":834,
+                 "offsety":253.333333333333,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 8,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          },\n          {\n            \"type\": \"QuestEvent\",\n            \"eventId\": \"Q5\",\n\t   \"args\": [1, 7]\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":47,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_13.png",
+                 "name":"\u65c5\u9986\u8001\u677f",
+                 "offsetx":640,
+                 "offsety":700.666666666666,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 13,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"right\"\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":48,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_8.png",
+                 "name":"\u6b66\u5668\u5e97\u8001\u677f",
+                 "offsetx":896.666666666666,
+                 "offsety":350.666666666666,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 8,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":49,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_7.png",
+                 "name":"\u4e70\u94a5\u5319\u8001\u677f",
+                 "offsetx":255.333333333333,
+                 "offsety":349.333333333333,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 7,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"up\"\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":54,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_9.png",
+                 "name":"\u623f\u95f4\u5185\u9752\u5e74\u7684\u526f\u672c",
+                 "offsetx":613.333333333334,
+                 "offsety":926.666666666666,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 9,\n            \"path\": {\n\t\t\"type\": \"random\"\t\n\t   }\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q5014\"\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":46,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_9.png",
+                 "name":"\u6b66\u5668\u5e97\u524d\u5175\u58eb",
+                 "offsetx":897.333333333334,
+                 "offsety":445.333333333333,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 9,\n            \"path\": {\n\t\t\"type\": \"random\"\t\n\t   }\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q5013\"\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":45,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_10.png",
+                 "name":"\u623f\u95f4\u5185\u9752\u5e74",
+                 "offsetx":482,
+                 "offsety":349.333333333333,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 10,\n            \"path\": {\n\t\t\"type\": \"random\"\t\n\t   }\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q5012\"\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":44,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_11.png",
+                 "name":"\u623f\u95f4\u5185\u5973\u5b50",
+                 "offsetx":638.666666666666,
+                 "offsety":346,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 11,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q5011\"\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":42,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/event.png",
+                 "name":"\u9884\u8a00\u5bb6\u4e8b\u4ef6",
+                 "offsetx":256.666666666667,
+                 "offsety":862.666666666667,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q5009\"\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":40,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_18.png",
+                 "name":"\u9884\u8a00\u5bb6",
+                 "offsetx":223.333333333333,
+                 "offsety":862.666666666667,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 19,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"right\"\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":43,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_9.png",
+                 "name":"\u9884\u8a00\u524d\u5175\u58eb",
+                 "offsetx":308.666666666667,
+                 "offsety":957.333333333333,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 9,\n            \"path\": {\n\t\t\"type\": \"random\"\t\n\t   }\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q5008\"\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":39,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_11.png",
+                 "name":"\u9884\u8a00\u524d\u5973\u5b50",
+                 "offsetx":349.333333333333,
+                 "offsety":863.333333333333,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 11,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"up\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q5007\"\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":38,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_8.png",
+                 "name":"\u9884\u8a00\u524d\u5546\u4eba",
+                 "offsetx":350.666666666667,
+                 "offsety":828,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 8,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q5006\"\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":37,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_5.png",
+                 "name":"\u4e2d\u5175\u58eb",
+                 "offsetx":446,
+                 "offsety":680.666666666667,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"initDirection\": \"right\",\n            \"path\": {\n\t\t\"type\": \"random\"\t\n\t   }\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q5005\"\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":36,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_12.png",
+                 "name":"\u65c5\u5e97\u524d\u5c0f\u5b69",
+                 "offsetx":542.666666666667,
+                 "offsety":537.333333333333,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 12,\n            \"path\": {\n\t\t\"type\": \"random\"\t\n\t   }\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q5004\"\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":32,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/event.png",
+                 "name":"\u65c5\u9986\u5185\u8001\u5934\u4e8b\u4ef6",
+                 "offsetx":770.666666666667,
+                 "offsety":864.666666666667,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q5003\"\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":33,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/event.png",
+                 "name":"\u65c5\u9986\u5185\u8001\u5934\u4e8b\u4ef6",
+                 "offsetx":796.666666666667,
+                 "offsety":863.333333333333,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q5003\"\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":34,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_14.png",
+                 "name":"\u65c5\u9986\u5185\u8001\u5934",
+                 "offsetx":788,
+                 "offsety":861.333333333333,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 14,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"up\"\n          }\n]"
+                        }, 
+                        {
+                         "name":"floatPosition",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":11,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_19.png",
+                 "name":"\u65c5\u9986\u5185\u58ee\u6c49",
+                 "offsetx":928.666666666667,
+                 "offsety":729.333333333333,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 19,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"up\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q5002\"\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":41,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_7.png",
+                 "name":"\u5de6\u4e2d\u6cd5\u5e08",
+                 "offsetx":319.333333333333,
+                 "offsety":541.333333333333,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 7,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q5010\"\n          }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -209,16 +612,16 @@
                 }, 
                 {
                  "id":13,
-                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_5.png",
-                 "name":"\u4e2d-\u697c\u68af\u4e0a\u58eb\u5175",
-                 "offsetx":640,
-                 "offsety":384,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_11.png",
+                 "name":"\u95e8\u524d\u5973\u5b50",
+                 "offsetx":850,
+                 "offsety":606.666666666667,
                  "opacity":1,
                  "properties":[
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1003\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 11,\n            \"path\": {\n\t\t\"type\": \"random\"\t\n\t   }\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q5001\"\n          }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -238,23 +641,44 @@
                 {
                  "class":"Entrace",
                  "draworder":"topdown",
-                 "id":16,
-                 "name":"\u4e2d\u697c\u68af",
+                 "id":21,
+                 "name":"\u5165\u53e3",
                  "objects":[
                         {
                          "class":"",
+                         "height":80,
+                         "id":21,
+                         "name":"",
+                         "rotation":0,
+                         "visible":true,
+                         "width":1194,
+                         "x":18,
+                         "y":1102
+                        }, 
+                        {
+                         "class":"",
                          "height":0,
-                         "id":7,
+                         "id":32,
                          "name":"",
                          "point":true,
                          "rotation":0,
                          "visible":true,
                          "width":0,
-                         "x":653.5,
-                         "y":433
+                         "x":1044,
+                         "y":592.5
                         }],
                  "opacity":1,
                  "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":18
+                        }, 
                         {
                          "name":"d_direction",
                          "type":"string",
@@ -268,7 +692,7 @@
                         {
                          "name":"d_tag",
                          "type":"string",
-                         "value":"middle"
+                         "value":"Rimuldar"
                         }, 
                         {
                          "name":"height",
@@ -278,27 +702,27 @@
                         {
                          "name":"t_nextScene",
                          "type":"string",
-                         "value":"TantegelCastle2"
+                         "value":""
                         }, 
                         {
                          "name":"t_tag",
                          "type":"string",
-                         "value":"middle"
+                         "value":""
                         }, 
                         {
                          "name":"width",
                          "type":"int",
-                         "value":32
+                         "value":2000
                         }, 
                         {
                          "name":"x",
                          "type":"int",
-                         "value":640
+                         "value":0
                         }, 
                         {
                          "name":"y",
                          "type":"int",
-                         "value":416
+                         "value":0
                         }],
                  "type":"objectgroup",
                  "visible":true,
@@ -308,23 +732,32 @@
                 {
                  "class":"Entrace",
                  "draworder":"topdown",
-                 "id":21,
+                 "id":58,
                  "name":"\u4e0b\u51fa\u53e3",
                  "objects":[
                         {
                          "class":"",
-                         "height":0,
-                         "id":17,
+                         "height":80,
+                         "id":30,
                          "name":"",
-                         "point":true,
                          "rotation":0,
                          "visible":true,
-                         "width":0,
-                         "x":653.5,
-                         "y":433
+                         "width":1194,
+                         "x":18,
+                         "y":1102
                         }],
                  "opacity":1,
                  "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":35
+                        }, 
                         {
                          "name":"d_direction",
                          "type":"string",
@@ -338,12 +771,12 @@
                         {
                          "name":"d_tag",
                          "type":"string",
-                         "value":"TantegelCastle"
+                         "value":""
                         }, 
                         {
                          "name":"height",
                          "type":"int",
-                         "value":64
+                         "value":96
                         }, 
                         {
                          "name":"t_nextScene",
@@ -353,22 +786,259 @@
                         {
                          "name":"t_tag",
                          "type":"string",
-                         "value":"TantegelCastle"
+                         "value":"Rimuldar"
                         }, 
                         {
                          "name":"width",
                          "type":"int",
-                         "value":252
+                         "value":2000
                         }, 
                         {
                          "name":"x",
                          "type":"int",
-                         "value":480
+                         "value":0
                         }, 
                         {
                          "name":"y",
                          "type":"int",
-                         "value":1120
+                         "value":0
+                        }],
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "class":"Entrace",
+                 "draworder":"topdown",
+                 "id":55,
+                 "name":"\u4e0a\u51fa\u53e3",
+                 "objects":[
+                        {
+                         "class":"",
+                         "height":68,
+                         "id":24,
+                         "name":"",
+                         "rotation":0,
+                         "visible":true,
+                         "width":1174.66666666667,
+                         "x":22.6666666666667,
+                         "y":9.33333333333333
+                        }],
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"d_direction",
+                         "type":"string",
+                         "value":"down"
+                        }, 
+                        {
+                         "name":"d_isPremutation",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"d_tag",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":96
+                        }, 
+                        {
+                         "name":"t_nextScene",
+                         "type":"string",
+                         "value":"World"
+                        }, 
+                        {
+                         "name":"t_tag",
+                         "type":"string",
+                         "value":"Rimuldar"
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":2000
+                        }, 
+                        {
+                         "name":"x",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"y",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "class":"Entrace",
+                 "draworder":"topdown",
+                 "id":56,
+                 "name":"\u5de6\u51fa\u53e3",
+                 "objects":[
+                        {
+                         "class":"",
+                         "height":1114.66666666667,
+                         "id":26,
+                         "name":"",
+                         "rotation":0,
+                         "visible":true,
+                         "width":61.3333333333333,
+                         "x":18.6666666666667,
+                         "y":14.6666666666667
+                        }],
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"d_direction",
+                         "type":"string",
+                         "value":"down"
+                        }, 
+                        {
+                         "name":"d_isPremutation",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"d_tag",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":2000
+                        }, 
+                        {
+                         "name":"t_nextScene",
+                         "type":"string",
+                         "value":"World"
+                        }, 
+                        {
+                         "name":"t_tag",
+                         "type":"string",
+                         "value":"Rimuldar"
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":96
+                        }, 
+                        {
+                         "name":"x",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"y",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "class":"Entrace",
+                 "draworder":"topdown",
+                 "id":57,
+                 "name":"\u53f3\u51fa\u53e3",
+                 "objects":[
+                        {
+                         "class":"",
+                         "height":1113.33333333333,
+                         "id":29,
+                         "name":"",
+                         "rotation":0,
+                         "visible":true,
+                         "width":68,
+                         "x":1134.66666666667,
+                         "y":10.6666666666667
+                        }],
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":35
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"d_direction",
+                         "type":"string",
+                         "value":"down"
+                        }, 
+                        {
+                         "name":"d_isPremutation",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"d_tag",
+                         "type":"string",
+                         "value":"Rimuldar"
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":2000
+                        }, 
+                        {
+                         "name":"t_nextScene",
+                         "type":"string",
+                         "value":"World"
+                        }, 
+                        {
+                         "name":"t_tag",
+                         "type":"string",
+                         "value":"Rimuldar"
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":96
+                        }, 
+                        {
+                         "name":"x",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"y",
+                         "type":"int",
+                         "value":0
                         }],
                  "type":"objectgroup",
                  "visible":true,
@@ -389,8 +1059,8 @@
                  "id":29,
                  "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/MapChest.png",
                  "name":"Chest1",
-                 "offsetx":800,
-                 "offsety":736,
+                 "offsetx":928.666666666667,
+                 "offsety":834.666666666667,
                  "opacity":1,
                  "properties":[
                         {
@@ -411,12 +1081,12 @@
                         {
                          "name":"hidden",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }, 
                         {
                          "name":"id",
                          "type":"string",
-                         "value":"TantgelCastle_Chest1"
+                         "value":"Rimuldar_Chest_1"
                         }, 
                         {
                          "name":"important",
@@ -447,30 +1117,7 @@
         }, 
         {
          "id":26,
-         "layers":[
-                {
-                 "id":27,
-                 "image":"..\/..\/..\/public\/assets\/sprites\/map\/TantegelCastle_Guardrail.png",
-                 "name":"Env",
-                 "offsetx":512,
-                 "offsety":688,
-                 "opacity":1,
-                 "properties":[
-                        {
-                         "name":"background",
-                         "type":"string",
-                         "value":"map\/TantegelCastle_Guardrail.png"
-                        }, 
-                        {
-                         "name":"renderLayer",
-                         "type":"int",
-                         "value":10
-                        }],
-                 "type":"imagelayer",
-                 "visible":true,
-                 "x":0,
-                 "y":0
-                }],
+         "layers":[],
          "name":"Environments",
          "opacity":1,
          "type":"group",
@@ -478,8 +1125,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":32,
- "nextobjectid":20,
+ "nextlayerid":59,
+ "nextobjectid":33,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",

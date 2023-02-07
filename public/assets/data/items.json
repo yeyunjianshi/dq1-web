@@ -202,8 +202,8 @@
   {
     "id": 206,
     "name": "魔法铠甲",
-    "price": 24,
-    "sellPrice": 7700,
+    "price": 7700,
+    "sellPrice": 3550,
     "canUse": 0,
     "type": 2,
     "effect": "e:defend:24;e:buffer:magicHurt:-25%;e:buffer:moveAddHP:4:1"

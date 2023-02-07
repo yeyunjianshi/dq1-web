@@ -59,6 +59,8 @@ export default class TalkQuestEvent extends NPCQuestEvent {
 
   private getTalks(id: string) {
     if (id.length === 0) return []
-    return this.engine.i18n.getEntriesByStartWith(id)
+    return this.engine.i18n.getEntries(
+      (v) => v.key === id || v.key.startsWith(`${id}_`)
+    )
   }
 }

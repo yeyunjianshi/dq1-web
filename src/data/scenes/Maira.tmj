@@ -233,7 +233,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"QuestEvent\",\n            \"eventId\": \"Q5\",\n\t   \"args\": [1, 2]\n          }\n    \n]"
+                         "value":"[\n          {\n            \"type\": \"QuestEvent\",\n            \"eventId\": \"Q5\",\n\t   \"args\": [1, 5]\n          }\n    \n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,

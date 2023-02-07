@@ -354,7 +354,88 @@
                         {
                          "name":"width",
                          "type":"int",
-                         "value":64
+                         "value":32
+                        }],
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "draworder":"topdown",
+                 "id":35,
+                 "name":"Rimuldar",
+                 "objects":[
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":31,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":1678.18181818182,
+                         "y":1457.63636363636
+                        }, 
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":32,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":3410.66666666667,
+                         "y":2456
+                        }],
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":106
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":76
+                        }, 
+                        {
+                         "name":"d_direction",
+                         "type":"string",
+                         "value":"down"
+                        }, 
+                        {
+                         "name":"d_isPremutation",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"d_tag",
+                         "type":"string",
+                         "value":"Rimuldar"
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"t_nextScene",
+                         "type":"string",
+                         "value":"Rimuldar"
+                        }, 
+                        {
+                         "name":"t_tag",
+                         "type":"string",
+                         "value":"Rimuldar"
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":32
                         }],
                  "type":"objectgroup",
                  "visible":true,
@@ -435,18 +516,6 @@
                  "id":34,
                  "name":"Maira",
                  "objects":[
-                        {
-                         "class":"",
-                         "height":0,
-                         "id":29,
-                         "name":"",
-                         "point":true,
-                         "rotation":0,
-                         "visible":true,
-                         "width":0,
-                         "x":203.25,
-                         "y":210
-                        }, 
                         {
                          "class":"",
                          "height":0,
@@ -585,7 +654,7 @@
                         {
                          "name":"width",
                          "type":"int",
-                         "value":32
+                         "value":64
                         }],
                  "type":"objectgroup",
                  "visible":true,
@@ -672,8 +741,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":35,
- "nextobjectid":31,
+ "nextlayerid":36,
+ "nextobjectid":33,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",

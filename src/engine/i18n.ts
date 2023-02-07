@@ -74,4 +74,10 @@ export default class I18N {
     if (!key.startsWith(this.prefix)) return []
     return Array.from(this.values.values()).filter((v) => v.key.startsWith(key))
   }
+
+  getEntries(pre?: (v: I18NEntry) => boolean): I18NEntry[] {
+    return Array.from(this.values.values()).filter((v) => {
+      return !pre || (pre && pre(v))
+    })
+  }
 }
