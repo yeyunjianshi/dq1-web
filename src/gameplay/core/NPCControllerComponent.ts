@@ -248,7 +248,7 @@ export class NPCControllerComponent extends MoveComponent {
         ]
         this.initMoveState(path.centerCoord)
       } else if (data.path.type === 'fixed') {
-        const dataPath = data.path as NPCFixedPathData
+        const dataPath = { ...(data.path as NPCFixedPathData) }
         const initCoord = PositionToCoord(this.worldPosition)
         if (dataPath.datas.length > 0) {
           dataPath.datas = dataPath.datas.map((d) => vector2Add(d, initCoord))
