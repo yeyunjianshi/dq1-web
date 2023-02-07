@@ -9,7 +9,7 @@ import { Audios } from '@gameplay/audio/AudioConfig'
 type MapChestData = {
   type: string
   id: string
-  items: number[]
+  items?: number[]
   money?: number
   colliderSize: Vector2
   hidden: boolean
@@ -57,7 +57,9 @@ export default class MapChest extends Component implements Interaction {
 
     this.audios.playSE(this.important ? Audios.ImportantItem : Audios.Chest)
 
-    await message(`获得了${itemsName.join('、')}`)
+    if (this.money === 0 && this.itemsId.length === 0)
+      await message(`宝箱里面是空的。`)
+    else await message(`获得了${itemsName.join('、')}`)
 
     globalGameData.finishEvent(this.id)
     this.refreshStatus()
@@ -69,7 +71,7 @@ export default class MapChest extends Component implements Interaction {
 
   parseData(assertLoader: AssetLoader, data: MapChestData): void {
     this.id = generateMapChestId(data.id)
-    this.itemsId = data.items
+    this.itemsId = data.items ?? []
     this.money = data.money || 0
     this.colliderSize = data.colliderSize || this.colliderSize
     this.hidden = data.hidden ?? this.hidden
