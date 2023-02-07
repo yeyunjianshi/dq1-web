@@ -277,6 +277,7 @@ export async function ExecuteCommands(
 ) {
   executingEvent = executeQuestEvent
   const commands = command.split(';').filter((s) => s.length > 0)
+  console.log(commands)
   for (const command of commands) {
     const [com, ...args] = command.split(':').map((s) => s.trim())
     if (com === 'HealHP') {
@@ -285,6 +286,11 @@ export async function ExecuteCommands(
     } else if (com === 'HealMP') {
       if (args.length > 0) healMP(parseInt(args[0]))
       else healMP()
+    } else if (com === 'AddItem') {
+      const itemsName = args.map((id) => {
+        return globalGameData.inventory.addItem(+id).item.name
+      })
+      await message(`获得了${itemsName.join('、')}`)
     }
   }
 }

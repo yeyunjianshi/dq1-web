@@ -2,10 +2,8 @@ import { AddGameSceneData } from '@engine/sceneManager'
 
 import TantegelCastleScene from '@data/scenes/TantegelCastle.tmj'
 import TantegelCastle2Scene from '@data/scenes/TantegelCastle2.json'
+import GaraiScene from '@data/scenes/Garai.tmj'
 import MairaScene from '@data/scenes/Maira.tmj'
-import Mercdo1Scene from '@data/scenes/Mercado1.tmj'
-import Mercdo2Scene from '@data/scenes/Mercado2.tmj'
-import Mercdo3Scene from '@data/scenes/Mercado3.tmj'
 import RimuldarScene from '@data/scenes/Rimuldar.tmj'
 import RadatomeScene from '@data/scenes/Radatome.tmj'
 import DomdoraScene from '@data/scenes/Domdora.tmj'
@@ -20,6 +18,9 @@ import RainShrine2Scene from '@data/scenes/RainShrine2.tmj'
 import RotosCave1Scene from '@data/scenes/RotosCave1.tmj'
 import RotosCave2Scene from '@data/scenes/RotosCave2.tmj'
 import MarshyCaveScene from '@data/scenes/MarshyCave.tmj'
+import Mercdo1Scene from '@data/scenes/Mercado1.tmj'
+import Mercdo2Scene from '@data/scenes/Mercado2.tmj'
+import Mercdo3Scene from '@data/scenes/Mercado3.tmj'
 import Garais1Scene from '@data/scenes/Garais1.tmj'
 import Garais2Scene from '@data/scenes/Garais2.tmj'
 import Garais3Scene from '@data/scenes/Garais3.tmj'
@@ -51,11 +52,9 @@ AddGameSceneData([
   TantegelCastle2Scene,
   RadatomeScene,
   MairaScene,
-  Mercdo1Scene,
-  Mercdo2Scene,
-  Mercdo3Scene,
   RimuldarScene,
   DomdoraScene,
+  GaraiScene,
 
   HolyShrine1Scene,
   HolyShrine2Scene,
@@ -65,6 +64,9 @@ AddGameSceneData([
   RotosCave1Scene,
   RotosCave2Scene,
   MarshyCaveScene,
+  Mercdo1Scene,
+  Mercdo2Scene,
+  Mercdo3Scene,
   Garais1Scene,
   Garais2Scene,
   Garais3Scene,
@@ -99,12 +101,13 @@ export function initScene(engine: Engine) {
   // engine.sceneManager.loadScene('Battle')
   // engine.sceneManager.loadScene('Title')
 
-  engine.sceneManager.loadScene(TantegelCastleScene.name)
+  // engine.sceneManager.loadScene(TantegelCastleScene.name)
   // engine.sceneManager.loadScene('TantegelCastle2')
   // engine.sceneManager.loadScene('Radatome')
   // engine.sceneManager.loadScene('Maira')
   // engine.sceneManager.loadScene('Rimuldar')
   // engine.sceneManager.loadScene('Domdora')
+  engine.sceneManager.loadScene(GaraiScene.name)
 
   // engine.sceneManager.loadScene('HolyShrine1')
   // engine.sceneManager.loadScene('HolyShrine2')

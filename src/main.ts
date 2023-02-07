@@ -1,5 +1,5 @@
 import './style.css'
-import { createEngine, GlobalFadingMarker } from './engine/engine'
+import { createEngine } from './engine/engine'
 import './gameplay/componentConfig'
 import { AssetLoader } from './engine/resource'
 import { audioInitLoad } from './gameplay/audio/AudioConfig'

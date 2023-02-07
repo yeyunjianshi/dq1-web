@@ -28,7 +28,7 @@
         }, 
         {
          "id":2,
-         "image":"..\/..\/..\/public\/assets\/sprites\/map\/Maira.png",
+         "image":"..\/..\/..\/public\/assets\/sprites\/map\/Garai.png",
          "name":"Map",
          "opacity":1,
          "properties":[

@@ -300,42 +300,6 @@
                         {
                          "class":"",
                          "height":0,
-                         "id":17,
-                         "name":"",
-                         "point":true,
-                         "rotation":0,
-                         "visible":true,
-                         "width":0,
-                         "x":653.5,
-                         "y":433
-                        }, 
-                        {
-                         "class":"",
-                         "height":0,
-                         "id":18,
-                         "name":"",
-                         "point":true,
-                         "rotation":0,
-                         "visible":true,
-                         "width":0,
-                         "x":559,
-                         "y":1142
-                        }, 
-                        {
-                         "class":"",
-                         "height":0,
-                         "id":19,
-                         "name":"",
-                         "point":true,
-                         "rotation":0,
-                         "visible":true,
-                         "width":0,
-                         "x":591.5,
-                         "y":1142
-                        }, 
-                        {
-                         "class":"",
-                         "height":0,
                          "id":20,
                          "name":"",
                          "point":true,
@@ -399,57 +363,78 @@
                 }, 
                 {
                  "draworder":"topdown",
-                 "id":32,
-                 "name":"TantegelCastle",
+                 "id":33,
+                 "name":"Garai",
                  "objects":[
                         {
                          "class":"",
                          "height":0,
-                         "id":21,
+                         "id":28,
                          "name":"",
                          "point":true,
                          "rotation":0,
                          "visible":true,
                          "width":0,
-                         "x":653.5,
-                         "y":433
+                         "x":203.25,
+                         "y":210
+                        }],
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":6
                         }, 
                         {
-                         "class":"",
-                         "height":0,
-                         "id":22,
-                         "name":"",
-                         "point":true,
-                         "rotation":0,
-                         "visible":true,
-                         "width":0,
-                         "x":559,
-                         "y":1142
+                         "name":"coordY",
+                         "type":"int",
+                         "value":6
                         }, 
                         {
-                         "class":"",
-                         "height":0,
-                         "id":23,
-                         "name":"",
-                         "point":true,
-                         "rotation":0,
-                         "visible":true,
-                         "width":0,
-                         "x":591.5,
-                         "y":1142
+                         "name":"d_direction",
+                         "type":"string",
+                         "value":"down"
                         }, 
                         {
-                         "class":"",
-                         "height":0,
-                         "id":24,
-                         "name":"",
-                         "point":true,
-                         "rotation":0,
-                         "visible":true,
-                         "width":0,
-                         "x":1678.18181818182,
-                         "y":1457.63636363636
+                         "name":"d_isPremutation",
+                         "type":"bool",
+                         "value":false
                         }, 
+                        {
+                         "name":"d_tag",
+                         "type":"string",
+                         "value":"Garai"
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"t_nextScene",
+                         "type":"string",
+                         "value":"Garai"
+                        }, 
+                        {
+                         "name":"t_tag",
+                         "type":"string",
+                         "value":"Garai"
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":32
+                        }],
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "draworder":"topdown",
+                 "id":32,
+                 "name":"TantegelCastle",
+                 "objects":[
                         {
                          "class":"",
                          "height":0,
@@ -606,8 +591,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":33,
- "nextobjectid":27,
+ "nextlayerid":34,
+ "nextobjectid":29,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",
