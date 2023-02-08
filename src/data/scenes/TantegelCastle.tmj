@@ -43,8 +43,8 @@
          "id":31,
          "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_0.png",
          "name":"BornPoint",
-         "offsetx":595.75,
-         "offsety":415.333333333333,
+         "offsetx":988.416666666667,
+         "offsety":730.666666666666,
          "opacity":1,
          "properties":[
                 {

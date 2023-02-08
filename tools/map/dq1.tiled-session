@@ -271,14 +271,17 @@
                 14
             ],
             "expandedObjectLayers": [
+                36,
+                21,
                 14,
+                32,
                 35
             ],
             "scale": 4,
             "selectedLayer": 9,
             "viewCenter": {
-                "x": 2455.375,
-                "y": 3384.875
+                "x": 1678.125,
+                "y": 1457.625
             }
         },
         "Tiles/Tiles.tsx": {

@@ -1,3 +1,4 @@
+import FadingComponent from '@engine/components/FadingComponent'
 import { Audios } from '@gameplay/audio/AudioConfig'
 import { GameplayComponent } from '../../engine/components'
 import { ColliderLayerType } from '../../engine/components/Collider'
@@ -15,6 +16,7 @@ import MoveComponent, {
   playerCenterPosition,
 } from '../../engine/components/MoveComponent'
 import {
+  GlobalFadingMarker,
   GlobalSceneComponentMarker,
   GlobalTeamControllerMarker,
   GlobalWindowMarker,
@@ -26,13 +28,19 @@ import {
   distance,
   lerpVector2,
   vector2Include,
+  HasType,
 } from '../../engine/math'
 import { AssetLoader } from '../../engine/resource'
 import { globalGameData, InputType } from '../asset/gameData'
-import { checkMeetEnemy, battle } from '../events/EventExector'
+import {
+  checkMeetEnemy,
+  battle,
+  hero,
+  checkDeadToInit,
+} from '../events/EventExector'
 import { EventTriggerWhen } from '../events/QuestEvent'
 import GlobalWindowComponent from '../menu/GlobalWindowComponent'
-import SceneComponent from './SceneComponent'
+import SceneComponent, { TileMapType } from './SceneComponent'
 
 type TeamControllerData = {
   moveSpeed?: number
@@ -179,12 +187,15 @@ export default class TeamControllerComponent
       return true
     }
 
-    // 检查毒池和回复Buff检测
-    globalGameData.hero.triggerMoveBuffers()
     // 检查是否出入口
     if (this.checkDestination()) {
       return true
     }
+    // 检查毒池
+    if (this.checkPoisonPool()) return true
+    // 检查回复Buff检测
+    globalGameData.hero.triggerMoveBuffers()
+    // 检查敌人
     if (checkMeetEnemy()) {
       battle()
       return true
@@ -223,6 +234,24 @@ export default class TeamControllerComponent
     if (interaction) {
       interaction.interactive()
       return true
+    }
+    return false
+  }
+
+  private checkPoisonPool() {
+    const sceneComponent = this.engine.getVariable(
+      GlobalSceneComponentMarker
+    ) as SceneComponent
+    const fadingComponent = this.engine.getVariable(
+      GlobalFadingMarker
+    ) as FadingComponent
+    const tileData = sceneComponent.getMapData(this._head.coord)
+    console.log(hero().isImmunotoxicity)
+    if (HasType(tileData, TileMapType.Poison) && !hero().isImmunotoxicity) {
+      hero().HP -= tileData === TileMapType.Poison ? 15 : 1
+      fadingComponent.flashing({ duration: 300, times: 1 })
+      checkDeadToInit()
+      return hero().isDead
     }
     return false
   }
@@ -341,7 +370,7 @@ export default class TeamControllerComponent
     })
     this.refreshAnimationSprite()
 
-    this.camera.refresh(this.headPosition)
+    this.camera.moveToCenter(this.headPosition, true)
   }
 
   public moveTo(worldPostion: Vector2, dir: Direction, isPermutation = true) {

@@ -9,6 +9,7 @@ import { DefaultNoneItemSlot, ItemSlot } from '../inventory/inventory'
 import { HasType, ItemEquipmentType, ItemType } from '../inventory/item'
 import { globalGameData } from './gameData'
 import { GlobalEventEmit, GlobalEventType } from './globaEvents'
+import ImmunotoxicityBuffer from '@gameplay/effects/ImmunotoxicityBuffer'
 
 const gameAllCharacters: Map<number, Character> = new Map()
 
@@ -120,6 +121,11 @@ export default class Character {
     )
   }
 
+  // 免疫中毒
+  get isImmunotoxicity(): boolean {
+    return !!this.buffers.find((b) => b instanceof ImmunotoxicityBuffer)
+  }
+
   equip(equipment: ItemSlot, type: ItemEquipmentType = ItemType.All) {
     type = equipment.item.type & type
     if ((type as number) === 0) return
@@ -145,7 +151,7 @@ export default class Character {
     }
     if (preItemSlot !== DefaultNoneItemSlot) {
       preItemSlot.isEquip = false
-      this.buffers = this.buffers.filter((b) => b.owner !== equipment.id)
+      this.buffers = this.buffers.filter((b) => b.owner !== preItemSlot.id)
     }
     if (equipment !== DefaultNoneItemSlot) {
       equipment.isEquip = true
@@ -156,6 +162,7 @@ export default class Character {
           return buff
         })
       )
+      console.log(this.buffers)
     }
     return preItemSlot
   }

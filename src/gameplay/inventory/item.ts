@@ -1,3 +1,4 @@
+import ImmunotoxicityBuffer from '@gameplay/effects/ImmunotoxicityBuffer'
 import {
   Buffer,
   Command,
@@ -151,6 +152,8 @@ export function parseEffect(effectString: string, item: Item) {
         else if (args[0] === 'buffer') {
           if (args[1] === 'moveAddHP') {
             item.buffers.push(new MoveAddHPBuffer(parseInt(args[2])))
+          } else if (args[1] === 'immunotoxicity') {
+            item.buffers.push(new ImmunotoxicityBuffer())
           }
           return
         }

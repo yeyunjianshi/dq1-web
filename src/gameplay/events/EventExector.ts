@@ -13,6 +13,8 @@ import { QuestEvent } from './QuestEvent'
 import { globalGameData, InputType } from '../asset/gameData'
 import { BattleFinishStatus, GenerateBattleInfo } from '../battle/BattleData'
 import FadingComponent from '@engine/components/FadingComponent'
+import { transitionToScene } from './Transition'
+import { Audios } from '@gameplay/audio/AudioConfig'
 
 const gameEvents = new Map<string, string>()
 
@@ -135,8 +137,7 @@ export async function talkWithArgs({
   const globalWindow =
     executingEngine!.getVariable<GlobalWindowComponent>(GlobalWindowMarker)
 
-  const previouseInputType = globalGameData.inputType
-  globalGameData.inputType = InputType.Message
+  const previouseInputType = setInputType(InputType.Message)
 
   const ret = await globalWindow.messageWindow.talk(
     generateMessageText(characterName),
@@ -146,7 +147,8 @@ export async function talkWithArgs({
     playTypeAudio
   )
   callback && (await callback())
-  globalGameData.inputType = previouseInputType
+
+  setInputType(previouseInputType)
 
   return ret
 }
@@ -162,8 +164,7 @@ export async function talk(
   const globalWindow =
     executingEngine!.getVariable<GlobalWindowComponent>(GlobalWindowMarker)
 
-  const previouseInputType = globalGameData.inputType
-  globalGameData.inputType = InputType.Message
+  const previouseInputType = setInputType(InputType.Message)
 
   const ret = await globalWindow.messageWindow.talk(
     generateMessageText(characterName),
@@ -173,7 +174,7 @@ export async function talk(
     playTypeAudio
   )
   callback && (await callback())
-  globalGameData.inputType = previouseInputType
+  setInputType(previouseInputType)
 
   return ret
 }
@@ -185,8 +186,7 @@ export async function message(text: string, callback?: () => void) {
 let _isBattleStatus: BattleFinishStatus = BattleFinishStatus.Pending
 
 export async function battle(wait = true) {
-  const previousInputType = globalGameData.inputType
-  globalGameData.inputType = InputType.Battle
+  const previouseInputType = setInputType(InputType.Battle)
 
   const battleInfo = GenerateBattleInfo(1)
   executingEngine!.setVariable(GlobalBattleInfo, battleInfo)
@@ -197,7 +197,7 @@ export async function battle(wait = true) {
   }
   executingEngine!.sceneManager.unloadScene('Battle')
   if (checkBattleFinishStatus()) return
-  globalGameData.inputType = previousInputType
+  setInputType(previouseInputType)
 }
 
 function checkBattleFinishStatus(): boolean {
@@ -215,13 +215,12 @@ export async function shop(id: number) {
   const globalWindow =
     executingEngine!.getVariable<GlobalWindowComponent>(GlobalWindowMarker)
 
-  const previouseInputType = globalGameData.inputType
-  globalGameData.inputType = InputType.Menu
+  const previouseInputType = setInputType(InputType.Menu)
   await globalWindow.showShop(id)
   while (globalWindow.windowMarker === WindowMarker.Shop) {
     await nextFrame()
   }
-  globalGameData.inputType = previouseInputType
+  setInputType(previouseInputType)
 }
 
 export function heroName() {
@@ -244,7 +243,7 @@ const meetEnemyRatio = 10
 export function checkMeetEnemy() {
   if (globalGameData.notMeetEnemyStep > 0) {
     globalGameData.notMeetEnemyStep--
-  } else if (currentScene().isMeetEnemy) {
+  } else if (isMeetEnemy()) {
     meetEnemyStep++
     if (meetEnemyStep > 30) {
       const ratio = Math.min(meetEnemyStep, meetEnemyRatio)
@@ -257,6 +256,10 @@ export function checkMeetEnemy() {
     }
   }
   return false
+}
+
+export function isMeetEnemy() {
+  return currentScene().isMeetEnemy
 }
 
 export function currentScene() {
@@ -311,6 +314,16 @@ export function hero() {
   return globalGameData.hero
 }
 
+export async function checkDeadToInit() {
+  if (hero().isDead) {
+    setInputType(InputType.Transition)
+    executingEngine!.audios.playBGM(Audios.Dead, true, false)
+
+    await delay(3000)
+    await transitionToScene(executingEngine!, 'Title')
+  }
+}
+
 export const delay = timeDelay
 
 export async function fading(t: {
@@ -341,4 +354,10 @@ export function showGoldWindow(show = true) {
   const globalWindow =
     executingEngine!.getVariable<GlobalWindowComponent>(GlobalWindowMarker)
   globalWindow.showGold(show)
+}
+
+export function setInputType(type: InputType) {
+  const previousType = globalGameData.inputType
+  globalGameData.inputType = type
+  return previousType
 }

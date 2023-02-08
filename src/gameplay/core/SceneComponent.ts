@@ -28,9 +28,10 @@ type MapData = {
   height: number
 }
 
-enum TileMapType {
+export enum TileMapType {
   None = 0b00,
   Collider = 0b01,
+  Poison = 0b10,
 }
 
 @GameplayComponent
@@ -131,10 +132,12 @@ export default class SceneComponent extends Component {
       coord[1] >= this._mapData.data.height ||
       coord[0] < 0 ||
       coord[1] < 0 ||
-      HasType(
-        this._mapData.data.data[coord[0] + coord[1] * this._mapData.data.width],
-        TileMapType.Collider
-      )
+      this.getMapData(coord) === TileMapType.Collider
+      // HasType(
+      //   this.getMapData(coord),
+      //   // this._mapData.data.data[coord[0] + coord[1] * this._mapData.data.width],
+      //   TileMapType.Collider
+      // )
     )
   }
 
@@ -151,5 +154,12 @@ export default class SceneComponent extends Component {
       this._mapData.name = data.mapData?.name
       this._mapData.data = data.mapData
     }
+  }
+
+  getMapData(coord: Vector2) {
+    if (!this._mapData.data) return 0
+    return this._mapData.data.data[
+      coord[0] + coord[1] * this._mapData.data.width
+    ]
   }
 }

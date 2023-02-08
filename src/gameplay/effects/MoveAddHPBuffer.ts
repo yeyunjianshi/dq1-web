@@ -6,7 +6,7 @@ export default class MoveAddHPBuffer implements Buffer {
   turns = 0
   currentStep = 0
 
-  constructor(public step: number) {}
+  constructor(public step: number, public healHP = 1) {}
 
   execute(when: CommandTriggerWhen, type: CommandTriggerType) {
     if (
@@ -15,7 +15,7 @@ export default class MoveAddHPBuffer implements Buffer {
     ) {
       if (++this.currentStep >= this.step) {
         this.currentStep = 0
-        globalGameData.hero.HP += 1
+        globalGameData.hero.HP += this.healHP
       }
     }
     return ''
