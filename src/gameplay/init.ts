@@ -55,6 +55,9 @@ AddGameSceneData([
   RimuldarScene,
   DomdoraScene,
   GaraiScene,
+  Mercdo1Scene,
+  Mercdo2Scene,
+  Mercdo3Scene,
 
   HolyShrine1Scene,
   HolyShrine2Scene,
@@ -64,9 +67,6 @@ AddGameSceneData([
   RotosCave1Scene,
   RotosCave2Scene,
   MarshyCaveScene,
-  Mercdo1Scene,
-  Mercdo2Scene,
-  Mercdo3Scene,
   Garais1Scene,
   Garais2Scene,
   Garais3Scene,
@@ -102,12 +102,15 @@ export function initScene(engine: Engine) {
   // engine.sceneManager.loadScene('Title')
 
   // engine.sceneManager.loadScene(TantegelCastleScene.name)
-  // engine.sceneManager.loadScene('TantegelCastle2')
-  // engine.sceneManager.loadScene('Radatome')
+  // engine.sceneManager.loadScene(TantegelCastle2Scene.name)
+  // engine.sceneManager.loadScene(RadatomeScene.name)
   // engine.sceneManager.loadScene(MairaScene.name)
-  engine.sceneManager.loadScene('Rimuldar')
-  // engine.sceneManager.loadScene('Domdora')
+  // engine.sceneManager.loadScene(RimuldarScene.name)
+  // engine.sceneManager.loadScene(DomdoraScene.name)
   // engine.sceneManager.loadScene(GaraiScene.name)
+  engine.sceneManager.loadScene(Mercado1Scene.name)
+  // engine.sceneManager.loadScene(Mercado2Scene.name)
+  // engine.sceneManager.loadScene(Mercado3Scene.name)
 
   // engine.sceneManager.loadScene('HolyShrine1')
   // engine.sceneManager.loadScene('HolyShrine2')
@@ -122,9 +125,6 @@ export function initScene(engine: Engine) {
   // engine.sceneManager.loadScene('Garais2Scene')
   // engine.sceneManager.loadScene('Garais3Scene')
   // engine.sceneManager.loadScene('Garais4Scene')
-  // engine.sceneManager.loadScene('Mercado1Scene')
-  // engine.sceneManager.loadScene('Mercado2Scene')
-  // engine.sceneManager.loadScene('Mercado3Scene')
   // engine.sceneManager.loadScene('RockyCave1Scene')
   // engine.sceneManager.loadScene('RockyCave2Scene')
   // engine.sceneManager.loadScene('DracolordsCastle1Scene')

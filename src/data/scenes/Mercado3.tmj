@@ -38,6 +38,11 @@
                  "value":"map\/Mercado3.png"
                 }, 
                 {
+                 "name":"backgroundColor",
+                 "type":"string",
+                 "value":"#0840f8"
+                }, 
+                {
                  "name":"bgm",
                  "type":"string",
                  "value":"bgm\/castle.mp3"
@@ -63,11 +68,11 @@
          "y":0
         }, 
         {
-         "data":[0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0],
+         "data":[1, 1, 1, 1, 1, 0,
+            1, 0, 0, 0, 1, 0,
+            1, 0, 0, 0, 0, 0,
+            1, 0, 0, 0, 1, 0,
+            1, 1, 1, 1, 1, 0],
          "height":5,
          "id":1,
          "name":"Tiles",
@@ -100,7 +105,25 @@
         }, 
         {
          "id":7,
-         "layers":[],
+         "layers":[
+                {
+                 "id":33,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_5.png",
+                 "name":"\u5175\u58eb",
+                 "offsetx":94.5,
+                 "offsety":30,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q6011\"\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }],
          "name":"NPC",
          "opacity":1,
          "type":"group",
@@ -112,77 +135,6 @@
         {
          "id":14,
          "layers":[
-                {
-                 "class":"Entrace",
-                 "draworder":"topdown",
-                 "id":16,
-                 "name":"\u4e2d\u697c\u68af",
-                 "objects":[
-                        {
-                         "class":"",
-                         "height":0,
-                         "id":7,
-                         "name":"",
-                         "point":true,
-                         "rotation":0,
-                         "visible":true,
-                         "width":0,
-                         "x":653.5,
-                         "y":433
-                        }],
-                 "opacity":1,
-                 "properties":[
-                        {
-                         "name":"d_direction",
-                         "type":"string",
-                         "value":"left"
-                        }, 
-                        {
-                         "name":"d_isPremutation",
-                         "type":"bool",
-                         "value":false
-                        }, 
-                        {
-                         "name":"d_tag",
-                         "type":"string",
-                         "value":"middle"
-                        }, 
-                        {
-                         "name":"height",
-                         "type":"int",
-                         "value":32
-                        }, 
-                        {
-                         "name":"t_nextScene",
-                         "type":"string",
-                         "value":"TantegelCastle2"
-                        }, 
-                        {
-                         "name":"t_tag",
-                         "type":"string",
-                         "value":"middle"
-                        },
-                    
-                        {
-                         "name":"width",
-                         "type":"int",
-                         "value":32
-                        }, 
-                        {
-                         "name":"x",
-                         "type":"int",
-                         "value":640
-                        }, 
-                        {
-                         "name":"y",
-                         "type":"int",
-                         "value":416
-                        }],
-                 "type":"objectgroup",
-                 "visible":true,
-                 "x":0,
-                 "y":0
-                }, 
                 {
                  "class":"Entrace",
                  "draworder":"topdown",
@@ -224,13 +176,35 @@
                          "width":0,
                          "x":591.5,
                          "y":1142
+                        }, 
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":20,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":78.5,
+                         "y":81.5
                         }],
                  "opacity":1,
                  "properties":[
                         {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":2
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":2
+                        }, 
+                        {
                          "name":"d_direction",
                          "type":"string",
-                         "value":"down"
+                         "value":"right"
                         }, 
                         {
                          "name":"d_isPremutation",
@@ -240,28 +214,157 @@
                         {
                          "name":"d_tag",
                          "type":"string",
-                         "value":"TantegelCastle"
+                         "value":"Mercado3"
                         }, 
                         {
                          "name":"height",
                          "type":"int",
-                         "value":64
-                        }, 
+                         "value":32
+                        },
+                    
                         {
                          "name":"t_nextScene",
                          "type":"string",
-                         "value":"World"
+                         "value":"Mercado1"
                         }, 
                         {
                          "name":"t_tag",
                          "type":"string",
-                         "value":"TantegelCastle"
-                        },
-                    
+                         "value":"Mercado3"
+                        }, 
                         {
                          "name":"width",
                          "type":"int",
-                         "value":252
+                         "value":32
+                        }, 
+                        {
+                         "name":"x",
+                         "type":"int",
+                         "value":480
+                        }, 
+                        {
+                         "name":"y",
+                         "type":"int",
+                         "value":1120
+                        }],
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "class":"Entrace",
+                 "draworder":"topdown",
+                 "id":32,
+                 "name":"\u53f3\u51fa\u53e3",
+                 "objects":[
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":22,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":653.5,
+                         "y":433
+                        }, 
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":23,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":559,
+                         "y":1142
+                        }, 
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":24,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":591.5,
+                         "y":1142
+                        }, 
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":25,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":78.5,
+                         "y":81.5
+                        }, 
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":26,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":175,
+                         "y":85
+                        }],
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":5
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":2
+                        }, 
+                        {
+                         "name":"d_direction",
+                         "type":"string",
+                         "value":"right"
+                        }, 
+                        {
+                         "name":"d_isPremutation",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"d_tag",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":32
+                        },
+                    
+                        {
+                         "name":"t_nextScene",
+                         "type":"string",
+                         "value":"Mercado1"
+                        }, 
+                        {
+                         "name":"t_tag",
+                         "type":"string",
+                         "value":"Mercado3_Right"
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":32
                         }, 
                         {
                          "name":"x",
@@ -305,8 +408,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":32,
- "nextobjectid":20,
+ "nextlayerid":34,
+ "nextobjectid":27,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",

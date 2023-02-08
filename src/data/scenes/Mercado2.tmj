@@ -1,5 +1,5 @@
 { "compressionlevel":-1,
- "height":7,
+ "height":6,
  "infinite":false,
  "layers":[
         {
@@ -38,6 +38,11 @@
                  "value":"map\/Mercado2.png"
                 }, 
                 {
+                 "name":"backgroundColor",
+                 "type":"string",
+                 "value":"#0840f8"
+                }, 
+                {
                  "name":"bgm",
                  "type":"string",
                  "value":"bgm\/castle.mp3"
@@ -51,7 +56,8 @@
                  "name":"isMeetEnemy",
                  "type":"bool",
                  "value":false
-                }, 
+                },
+            
                 {
                  "name":"name",
                  "type":"string",
@@ -63,14 +69,13 @@
          "y":0
         }, 
         {
-         "data":[0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0],
-         "height":7,
+         "data":[1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1,
+            1, 0, 0, 0, 1,
+            1, 0, 0, 0, 1,
+            1, 1, 1, 1, 1],
+         "height":6,
          "id":1,
          "name":"Tiles",
          "opacity":1,
@@ -108,8 +113,8 @@
                  "id":11,
                  "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_5.png",
                  "name":"\u4e2d-\u697c\u68af\u4e0b\u58eb\u5175",
-                 "offsetx":640,
-                 "offsety":448,
+                 "offsetx":1905.33333333333,
+                 "offsety":114.666666666667,
                  "opacity":1,
                  "properties":[
                         {
@@ -126,8 +131,8 @@
                  "id":13,
                  "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_5.png",
                  "name":"\u4e2d-\u697c\u68af\u4e0a\u58eb\u5175",
-                 "offsetx":640,
-                 "offsety":384,
+                 "offsetx":1905.33333333333,
+                 "offsety":50.6666666666667,
                  "opacity":1,
                  "properties":[
                         {
@@ -153,118 +158,33 @@
                 {
                  "class":"Entrace",
                  "draworder":"topdown",
-                 "id":16,
-                 "name":"\u4e2d\u697c\u68af",
-                 "objects":[
-                        {
-                         "class":"",
-                         "height":0,
-                         "id":7,
-                         "name":"",
-                         "point":true,
-                         "rotation":0,
-                         "visible":true,
-                         "width":0,
-                         "x":653.5,
-                         "y":433
-                        }],
-                 "opacity":1,
-                 "properties":[
-                        {
-                         "name":"d_direction",
-                         "type":"string",
-                         "value":"left"
-                        }, 
-                        {
-                         "name":"d_isPremutation",
-                         "type":"bool",
-                         "value":false
-                        }, 
-                        {
-                         "name":"d_tag",
-                         "type":"string",
-                         "value":"middle"
-                        }, 
-                        {
-                         "name":"height",
-                         "type":"int",
-                         "value":32
-                        }, 
-                        {
-                         "name":"t_nextScene",
-                         "type":"string",
-                         "value":"TantegelCastle2"
-                        },
-                    
-                        {
-                         "name":"t_tag",
-                         "type":"string",
-                         "value":"middle"
-                        }, 
-                        {
-                         "name":"width",
-                         "type":"int",
-                         "value":32
-                        }, 
-                        {
-                         "name":"x",
-                         "type":"int",
-                         "value":640
-                        }, 
-                        {
-                         "name":"y",
-                         "type":"int",
-                         "value":416
-                        }],
-                 "type":"objectgroup",
-                 "visible":true,
-                 "x":0,
-                 "y":0
-                }, 
-                {
-                 "class":"Entrace",
-                 "draworder":"topdown",
                  "id":21,
                  "name":"\u4e0b\u51fa\u53e3",
                  "objects":[
                         {
                          "class":"",
                          "height":0,
-                         "id":17,
+                         "id":20,
                          "name":"",
                          "point":true,
                          "rotation":0,
                          "visible":true,
                          "width":0,
-                         "x":653.5,
-                         "y":433
-                        }, 
-                        {
-                         "class":"",
-                         "height":0,
-                         "id":18,
-                         "name":"",
-                         "point":true,
-                         "rotation":0,
-                         "visible":true,
-                         "width":0,
-                         "x":559,
-                         "y":1142
-                        }, 
-                        {
-                         "class":"",
-                         "height":0,
-                         "id":19,
-                         "name":"",
-                         "point":true,
-                         "rotation":0,
-                         "visible":true,
-                         "width":0,
-                         "x":591.5,
-                         "y":1142
+                         "x":76.5196227563128,
+                         "y":143.693337389717
                         }],
                  "opacity":1,
                  "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":2
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":4
+                        }, 
                         {
                          "name":"d_direction",
                          "type":"string",
@@ -278,34 +198,35 @@
                         {
                          "name":"d_tag",
                          "type":"string",
-                         "value":"TantegelCastle"
-                        }, 
+                         "value":"Mercado2"
+                        },
+                    
                         {
                          "name":"height",
                          "type":"int",
-                         "value":64
+                         "value":32
                         }, 
                         {
                          "name":"t_nextScene",
                          "type":"string",
-                         "value":"World"
-                        },
-                    
+                         "value":"Mercado1"
+                        }, 
                         {
                          "name":"t_tag",
                          "type":"string",
-                         "value":"TantegelCastle"
+                         "value":"Mercado2"
                         }, 
                         {
                          "name":"width",
                          "type":"int",
-                         "value":252
+                         "value":32
                         }, 
                         {
                          "name":"x",
                          "type":"int",
                          "value":480
-                        }, 
+                        },
+                    
                         {
                          "name":"y",
                          "type":"int",
@@ -344,7 +265,7 @@
          "y":0
         }],
  "nextlayerid":32,
- "nextobjectid":20,
+ "nextobjectid":21,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",

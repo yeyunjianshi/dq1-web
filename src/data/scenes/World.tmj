@@ -314,12 +314,12 @@
                         {
                          "name":"coordX",
                          "type":"int",
-                         "value":47
+                         "value":52
                         }, 
                         {
                          "name":"coordY",
                          "type":"int",
-                         "value":47
+                         "value":45
                         }, 
                         {
                          "name":"d_direction",
@@ -334,7 +334,7 @@
                         {
                          "name":"d_tag",
                          "type":"string",
-                         "value":"TantegelCastle"
+                         "value":"Radatome"
                         }, 
                         {
                          "name":"height",
@@ -344,12 +344,12 @@
                         {
                          "name":"t_nextScene",
                          "type":"string",
-                         "value":"TantegelCastle"
+                         "value":"Radatome"
                         }, 
                         {
                          "name":"t_tag",
                          "type":"string",
-                         "value":"TantegelCastle"
+                         "value":"Radatome"
                         }, 
                         {
                          "name":"width",
@@ -363,21 +363,90 @@
                 }, 
                 {
                  "draworder":"topdown",
-                 "id":35,
-                 "name":"Rimuldar",
+                 "id":36,
+                 "name":"Mercado",
                  "objects":[
                         {
                          "class":"",
                          "height":0,
-                         "id":31,
+                         "id":34,
                          "name":"",
                          "point":true,
                          "rotation":0,
                          "visible":true,
                          "width":0,
-                         "x":1678.18181818182,
-                         "y":1457.63636363636
+                         "x":2454.5,
+                         "y":3409
                         }, 
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":35,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":2474.25,
+                         "y":3408.75
+                        }],
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":76
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":106
+                        }, 
+                        {
+                         "name":"d_direction",
+                         "type":"string",
+                         "value":"down"
+                        }, 
+                        {
+                         "name":"d_isPremutation",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"d_tag",
+                         "type":"string",
+                         "value":"Mercado"
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"t_nextScene",
+                         "type":"string",
+                         "value":"Mercado1"
+                        }, 
+                        {
+                         "name":"t_tag",
+                         "type":"string",
+                         "value":"Mercado"
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":64
+                        }],
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "draworder":"topdown",
+                 "id":35,
+                 "name":"Rimuldar",
+                 "objects":[
                         {
                          "class":"",
                          "height":0,
@@ -614,12 +683,12 @@
                         {
                          "name":"coordX",
                          "type":"int",
-                         "value":52
+                         "value":47
                         }, 
                         {
                          "name":"coordY",
                          "type":"int",
-                         "value":45
+                         "value":47
                         }, 
                         {
                          "name":"d_direction",
@@ -634,7 +703,7 @@
                         {
                          "name":"d_tag",
                          "type":"string",
-                         "value":"Radatome"
+                         "value":"TantegelCastle"
                         }, 
                         {
                          "name":"height",
@@ -644,12 +713,12 @@
                         {
                          "name":"t_nextScene",
                          "type":"string",
-                         "value":"Radatome"
+                         "value":"TantegelCastle"
                         }, 
                         {
                          "name":"t_tag",
                          "type":"string",
-                         "value":"Radatome"
+                         "value":"TantegelCastle"
                         }, 
                         {
                          "name":"width",
@@ -741,8 +810,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":36,
- "nextobjectid":33,
+ "nextlayerid":37,
+ "nextobjectid":36,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",
