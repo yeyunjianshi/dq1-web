@@ -119,6 +119,7 @@ export enum InputType {
   Message,
   Task,
   Title,
+  Transition,
 }
 
 export class GameData {

@@ -17,16 +17,7 @@
         "active": true,
         "pivot": [0.5, 0.5],
         "layoutGravity": ["center", "center"],
-        "components": [
-          {
-            "type": "$TextComponent",
-            "text": "Loading ...",
-            "font": {
-              "size": 40,
-              "align": "center"
-            }
-          }
-        ]
+        "components": []
       }
     ]
   }

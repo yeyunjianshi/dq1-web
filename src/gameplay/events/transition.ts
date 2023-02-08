@@ -6,9 +6,12 @@ import { Direction, parseDirection } from '../../engine/input'
 import { AssetLoader } from '../../engine/resource'
 import { SceneLoadType } from '../../engine/sceneManager'
 import { nextFrame } from '../../engine/time'
-import { globalGameData } from '../asset/gameData'
+import { globalGameData, InputType } from '../asset/gameData'
 import TeamControllerComponent from '../core/TeamControllerComponent'
 import { EventTriggerWhen, QuestEvent } from './QuestEvent'
+import { fading, setInputType } from './EventExector'
+
+export const DefaultTransitionTime = 1000
 
 export async function transitionToSceneByTransition(
   transition: SceneTransition
@@ -29,13 +32,21 @@ export async function transitionToSceneByTransition(
 export async function transitionToScene(
   engine: Engine,
   nextSceneName: string,
-  tag?: string
+  tag?:
+    | string
+    | {
+        worldPosition: Vector2
+        direction: Direction
+        isPremutation: boolean
+      }
 ) {
   const sceneManager = engine.sceneManager
   let nextScene = sceneManager.currentScene
   let isSameScene = true
 
+  const previousInputType = setInputType(InputType.Transition)
   if (sceneManager.currentScene.name ?? '__$$$$__' !== nextSceneName) {
+    await fading({ duration: DefaultTransitionTime, type: 'in' })
     nextScene = sceneManager.loadScene(nextSceneName, SceneLoadType.Replace)
     isSameScene = false
     while (engine.sceneManager.loading) {
@@ -45,34 +56,44 @@ export async function transitionToScene(
 
   globalGameData.reinitWhenChangeScene(!isSameScene)
 
-  if (!tag) return
-
-  const destination = nextScene!.rootObject
-    .getComponentsInChildren(SceneTransitionDestination)
-    .find((com) => {
-      return (com as SceneTransitionDestination).tag === tag
-    })
-
-  if (!destination)
-    throw new Error(
-      `Transition to next scene error: not find ${nextSceneName}-${tag}`
-    )
-
-  const moveDestination = destination as SceneTransitionDestination
   const teamController = engine.getVariable<TeamControllerComponent>(
     GlobalTeamControllerMarker
   )
-  teamController.moveTo(
-    moveDestination.worldPosition,
-    moveDestination.direciton,
-    moveDestination.isPremutation
-  )
+  if (!tag) {
+    await fading({ duration: DefaultTransitionTime, type: 'out' })
+    setInputType(previousInputType)
+    return
+  } else if (typeof tag === 'string') {
+    const destination = nextScene!.rootObject
+      .getComponentsInChildren(SceneTransitionDestination)
+      .find((com) => {
+        return (com as SceneTransitionDestination).tag === tag
+      })
 
-  // 触发入口事件
-  const enterEvent = (
-    moveDestination.root.getComponents(QuestEvent) as QuestEvent[]
-  ).find((event) => event.canTrigger(EventTriggerWhen.InteractiveEnter))
-  if (enterEvent) await enterEvent.interactive()
+    if (!destination)
+      throw new Error(
+        `Transition to next scene error: not find ${nextSceneName}-${tag}`
+      )
+    const moveDestination = destination as SceneTransitionDestination
+    teamController.moveTo(
+      moveDestination.worldPosition,
+      moveDestination.direciton,
+      moveDestination.isPremutation
+    )
+
+    await fading({ duration: DefaultTransitionTime, type: 'out' })
+    setInputType(previousInputType)
+    // 触发入口事件
+    const enterEvent = (
+      moveDestination.root.getComponents(QuestEvent) as QuestEvent[]
+    ).find((event) => event.canTrigger(EventTriggerWhen.InteractiveEnter))
+    if (enterEvent) await enterEvent.interactive()
+  } else {
+    teamController.moveTo(tag.worldPosition, tag.direction, tag.isPremutation)
+
+    await fading({ duration: DefaultTransitionTime, type: 'out' })
+    setInputType(previousInputType)
+  }
 }
 
 type SceneTransitionData = {

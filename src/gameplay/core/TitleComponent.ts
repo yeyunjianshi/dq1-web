@@ -2,7 +2,6 @@ import Component from '@engine/component'
 import { GameplayComponent } from '@engine/components'
 import ListComponent, { TextAdapter } from '@engine/components/ListComponent'
 import { GlobalTeamControllerMarker, GlobalWindowMarker } from '@engine/engine'
-import { Audios } from '../audio/AudioConfig'
 import { SaveData } from '../save/SaveSystem'
 import SaveWindow from '../menu/SaveWindow'
 import { transitionToScene } from '@gameplay/events/Transition'
@@ -15,6 +14,7 @@ import {
 import TeamControllerComponent from './TeamControllerComponent'
 import GlobalWindowComponent from '@gameplay/menu/GlobalWindowComponent'
 import { Direction } from '@engine/input'
+import { Audios } from '@gameplay/audio/AudioConfig'
 
 @GameplayComponent
 export default class TitleComponent extends Component {
@@ -85,10 +85,13 @@ export default class TitleComponent extends Component {
   private titleStartGame() {
     console.log('Start Game')
 
+    this.audios.playSE(Audios.Menu)
+
     const gameData = new GameData()
     gameData.init()
     setGlobalGameData(gameData)
 
+    this._teamController?.moveToCoord([-1, -1], Direction.down)
     this._teamController!.root.active = true
     this._globalWindow!.root.active = true
     transitionToScene(this.engine, 'TantegelCastle2', 'StartGame')
@@ -100,16 +103,14 @@ export default class TitleComponent extends Component {
 
     if (saveData) {
       setGlobalGameData(saveData.data)
-
-      transitionToScene(this.engine, saveData.sceneData.sceneName).then(() => {
+      transitionToScene(this.engine, saveData.sceneData.sceneName, {
+        worldPosition: saveData.sceneData.position,
+        direction: Direction.down,
+        isPremutation: false,
+      }).then(() => {
         globalGameData.inputType = InputType.Move
         this._globalWindow!.root.active = true
         this._teamController!.root.active = true
-        this._teamController!.moveTo(
-          saveData.sceneData.position,
-          Direction.down,
-          false
-        )
       })
     }
   }
