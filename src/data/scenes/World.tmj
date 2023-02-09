@@ -363,6 +363,75 @@
                 }, 
                 {
                  "draworder":"topdown",
+                 "id":38,
+                 "name":"RockyCave",
+                 "objects":[
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":38,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":1042,
+                         "y":537.333333333333
+                        }],
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":33
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":61
+                        }, 
+                        {
+                         "name":"d_direction",
+                         "type":"string",
+                         "value":"down"
+                        }, 
+                        {
+                         "name":"d_isPremutation",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"d_tag",
+                         "type":"string",
+                         "value":"RockyCave1"
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"t_nextScene",
+                         "type":"string",
+                         "value":"RockyCave1"
+                        }, 
+                        {
+                         "name":"t_tag",
+                         "type":"string",
+                         "value":"RockyCave1"
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":32
+                        }],
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "draworder":"topdown",
                  "id":21,
                  "name":"Radatome",
                  "objects":[
@@ -879,8 +948,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":38,
- "nextobjectid":38,
+ "nextlayerid":39,
+ "nextobjectid":39,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",
