@@ -214,6 +214,7 @@ function convert({ src, tileSize = DefaultTileSize }) {
       items: property(d, 'items'),
       hidden: property(d, 'hidden'),
       important: property(d, 'important'),
+      finishEvents: property(d, 'finishEvents'),
     })
     return ret
   })

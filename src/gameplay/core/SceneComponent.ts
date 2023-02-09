@@ -15,6 +15,7 @@ import {
 } from '../events/Transition'
 import TeamControllerComponent from './TeamControllerComponent'
 import Door from '../map/Door'
+import { AddExecuteEvent, Execute } from '@gameplay/events/EventExector'
 
 type SceneComponentData = {
   type: string
@@ -108,6 +109,15 @@ export default class SceneComponent extends Component {
         vector2Include(position, mapChest.root.boundingBox)
       )
     })
+  }
+
+  refreshAndTriggerAutoEvent() {
+    this._questEvents.forEach((e) => e.refresh())
+    const autoEvent = this.triggerQuestEventByWhen(EventTriggerWhen.Auto)
+    if (autoEvent) {
+      AddExecuteEvent(autoEvent)
+      Execute(this.engine)
+    }
   }
 
   collider(coord: Vector2, position: Vector2, layer: ColliderLayerType) {

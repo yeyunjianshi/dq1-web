@@ -3,6 +3,7 @@ import {
   EventExecuteEndMarker,
   EventExecuteStartMarker,
   ExecuteCommands,
+  refreshAndTriggerAutoEvent,
   talk,
 } from './EventExector'
 import NPCQuestEvent from './NPCQuestEvent'
@@ -55,6 +56,7 @@ export default class TalkQuestEvent extends NPCQuestEvent {
       questId: this.questId,
     })
     console.log(`===== talk event ${this.questId} execute end =====`)
+    refreshAndTriggerAutoEvent()
   }
 
   private getTalks(id: string) {

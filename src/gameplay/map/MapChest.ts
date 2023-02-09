@@ -1,10 +1,15 @@
 import Component from '../../engine/component'
 import { GameplayComponent } from '../../engine/components'
 import { BoxCollider, BoxColliderData } from '../../engine/components/Collider'
-import { generateMapChestId, message } from '../events/EventExector'
+import {
+  finishQuestEvents,
+  generateMapChestId,
+  message,
+  refreshAndTriggerAutoEvent,
+} from '../events/EventExector'
 import { AssetLoader } from '../../engine/resource'
 import { globalGameData } from '../asset/gameData'
-import { Audios } from '@gameplay/audio/AudioConfig'
+import { Audios } from '../audio/AudioConfig'
 
 type MapChestData = {
   type: string
@@ -14,6 +19,7 @@ type MapChestData = {
   colliderSize: Vector2
   hidden: boolean
   important: boolean
+  finishEvents?: string[]
 }
 
 @GameplayComponent
@@ -24,6 +30,7 @@ export default class MapChest extends Component implements Interaction {
   colliderSize: Vector2 = [32, 32]
   important = false
   hidden = false
+  finishEvents?: string[]
 
   start() {
     if (this.hidden) {
@@ -63,6 +70,11 @@ export default class MapChest extends Component implements Interaction {
 
     globalGameData.finishEvent(this.id)
     this.refreshStatus()
+
+    if (this.finishEvents) {
+      finishQuestEvents(...this.finishEvents)
+      refreshAndTriggerAutoEvent()
+    }
   }
 
   interactive(): void {
@@ -76,6 +88,7 @@ export default class MapChest extends Component implements Interaction {
     this.colliderSize = data.colliderSize || this.colliderSize
     this.hidden = data.hidden ?? this.hidden
     this.important = data.important ?? this.important
+    this.finishEvents = data.finishEvents
     this.root.addComponent(
       BoxCollider,
       { size: this.colliderSize } as BoxColliderData,

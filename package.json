@@ -8,6 +8,7 @@
     "build": "tsc && vite build",
     "build:i18n": "node ./scripts/buildi18n.mjs",
     "build:events": "node ./scripts/eventPack.mjs",
+    "build:tools": "pnpm run build:i18n & pnpm run build:events",
     "preview": "vite preview",
     "format": "prettier --write \"**/*.+(ts)\"",
     "lint": "eslint . --fix --ext .ts",

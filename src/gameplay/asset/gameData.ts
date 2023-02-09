@@ -16,9 +16,9 @@ const DefaultInitGameCharacter = import.meta.env.DEV
       lv: 1,
       inventory: [1, 2, 4, 206, 207, 302, 401, 402, 501, 50],
       magics: [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010],
-      npcs: [2, 3],
+      npcs: [2],
       events: [
-        // generateEventId('Q666'),
+        // generateEventId('Q300'),
         // generateEventId('Q888')
       ],
     }
@@ -213,6 +213,10 @@ export class GameData {
 
   hasEvent(id: string) {
     return this.events.has(id)
+  }
+
+  removeEvent(id: string) {
+    return this.events.delete(id)
   }
 
   reinitWhenChangeScene(refreshLight = true) {

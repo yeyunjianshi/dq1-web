@@ -1,3 +1,4 @@
+import { nextFrame } from '@engine/time'
 import { GameplayComponent } from '../../engine/components'
 import {
   ColliderLayerType,
@@ -205,6 +206,47 @@ export class NPCControllerComponent extends MoveComponent {
     }
   }
 
+  async smoothMoveToCoord(coord: Vector2, relative = true) {
+    const nextCoord = relative
+      ? vector2Add(this.moveState.targetCoord, coord)
+      : coord
+    const nextDirection = getDirectionByCoord(
+      vector2Minus(nextCoord, this.moveState.targetCoord)
+    )
+
+    this.moveState.targetCoord = nextCoord
+    this.moveState.targetPosition = CoordToPosition(nextCoord)
+    this.moveState.direction = nextDirection
+    this.direction = nextDirection
+    this.refreshAnimationSprite()
+
+    const previouseMoveSpeed = this.moveSpeed
+    if (this.moveSpeed <= 0) this.moveSpeed = DefaultMoveSpeed
+
+    this.isMoving = true
+    while (this.isMoving) {
+      this.move()
+      await nextFrame()
+    }
+
+    this.moveSpeed = previouseMoveSpeed
+  }
+
+  moveToCoord(coord: Vector2, direction: Direction, relative = true) {
+    const nextCoord = relative
+      ? vector2Add(this.moveState.targetCoord, coord)
+      : coord
+
+    this.localPosition =
+      this.moveState.targetPosition =
+      this.moveState.position =
+        CoordToPosition(nextCoord)
+    this.moveState.coord = this.moveState.targetCoord = nextCoord
+    this.moveState.targetPosition = this.moveState.position
+    this.direction = this.moveState.direction = direction
+    this.refreshAnimationSprite()
+  }
+
   private initMoveState(coord: Vector2) {
     this.moveState.coord = this.moveState.targetCoord = coord
     this.moveState.position = this.moveState.targetPosition = CoordToPosition(
@@ -254,10 +296,12 @@ export class NPCControllerComponent extends MoveComponent {
           dataPath.datas = dataPath.datas.map((d) => vector2Add(d, initCoord))
           this.initMoveState(dataPath.datas[0])
         } else {
-          this.initMoveState(this.worldPosition)
+          this.initMoveState(initCoord)
         }
         this.path = { ...dataPath }
       }
+    } else {
+      this.initMoveState(PositionToCoord(this.worldPosition))
     }
     this.root.addComponent(BoxCollider, {
       size: data.colliderSize ?? [DefalutMoveTileWidth, DefaultMoveTileHeight],

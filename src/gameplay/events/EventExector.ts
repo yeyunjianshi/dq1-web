@@ -1,20 +1,23 @@
 import Engine, {
   GlobalBattleInfo,
   GlobalFadingMarker,
+  GlobalSceneComponentMarker,
   GlobalWindowMarker,
 } from '@engine/engine'
 import { nextFrame } from '@engine/time'
+import FadingComponent from '@engine/components/FadingComponent'
+import { delay as timeDelay } from '@engine/time'
+import { useTextPostProcessing } from '@engine/helper'
 import GlobalWindowComponent, {
   WindowMarker,
 } from '../menu/GlobalWindowComponent'
-import { useTextPostProcessing } from '@engine/helper'
-import { delay as timeDelay } from '@engine/time'
 import { QuestEvent } from './QuestEvent'
 import { globalGameData, InputType } from '../asset/gameData'
 import { BattleFinishStatus, GenerateBattleInfo } from '../battle/BattleData'
-import FadingComponent from '@engine/components/FadingComponent'
 import { transitionToScene } from './Transition'
-import { Audios } from '@gameplay/audio/AudioConfig'
+import { Audios } from '../audio/AudioConfig'
+import SceneComponent from '../core/SceneComponent'
+import { NPCControllerComponent } from '../core/NPCControllerComponent'
 
 const gameEvents = new Map<string, string>()
 
@@ -75,13 +78,18 @@ export function AddExecuteEvent(event: QuestEvent) {
 export const EventExecuteStartMarker = Symbol('EventExecuteStartMarker')
 export const EventExecuteEndMarker = Symbol('EventExecuteEndMaker')
 
+let isExecuting = false
+
 export async function Execute(engine: Engine) {
+  if (isExecuting) return
+  isExecuting = true
+
   executingEngine = engine
   executingEventStatus = EventStatus.Pending
   // 高优先级先执行
   while (eventQueue.length > 0) {
     executingEvent = eventQueue.pop() as QuestEvent
-    console.log(`event ${executingEvent.questId} execute start`)
+    console.log(`===== event ${executingEvent.questId} execute start =====`)
     executingEvent.root.events.emit({
       marker: EventExecuteStartMarker,
       questId: executingEvent.questId,
@@ -89,15 +97,18 @@ export async function Execute(engine: Engine) {
     const eventScript = GetGameEventScript(executingEvent.eventId)
     executingEventStatus = EventStatus.Executing
     eval(eventScript)
-    while (isExecutingEventFinishOrCancel) {
+    while (!isExecutingEventFinishOrCancel()) {
       await nextFrame()
     }
     executingEvent.root.events.emit({
       marker: EventExecuteEndMarker,
       questId: executingEvent.questId,
     })
-    console.log(`event ${executingEvent.questId} execute end`)
+    console.log(`===== event ${executingEvent.questId} execute end =====`)
+    refreshAndTriggerAutoEvent()
   }
+
+  isExecuting = false
 }
 
 function isExecutingEventFinishOrCancel() {
@@ -360,4 +371,41 @@ export function setInputType(type: InputType) {
   const previousType = globalGameData.inputType
   globalGameData.inputType = type
   return previousType
+}
+
+export function refreshAndTriggerAutoEvent() {
+  const sceneComponent = executingEngine!.getVariable(
+    GlobalSceneComponentMarker
+  ) as SceneComponent
+  sceneComponent.refreshAndTriggerAutoEvent()
+}
+
+export function getQuestNPC(characterName?: string) {
+  if (!characterName)
+    return executingEvent!.root.getComponent(
+      NPCControllerComponent
+    ) as NPCControllerComponent
+
+  return currentScene().rootObject.getComponentInChildByName(
+    characterName,
+    NPCControllerComponent
+  ) as NPCControllerComponent
+}
+
+export function hasQuestEvents(...questsId: (number | string)[]) {
+  return questsId.forEach((questId) =>
+    globalGameData.hasEvent(generateEventId(questId))
+  )
+}
+
+export function finishQuestEvents(...questsId: (number | string)[]) {
+  questsId.forEach((id) => globalGameData.finishEvent(generateEventId(id)))
+}
+
+export function removeQuestEvents(...questsId: (number | string)[]) {
+  questsId.forEach((id) => globalGameData.removeEvent(generateEventId(id)))
+}
+
+export function hasItems(...items: number[]) {
+  return items.every((itemId) => globalGameData.inventory.hasItem(itemId))
 }

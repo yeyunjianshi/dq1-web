@@ -9,7 +9,11 @@ import { nextFrame } from '../../engine/time'
 import { globalGameData, InputType } from '../asset/gameData'
 import TeamControllerComponent from '../core/TeamControllerComponent'
 import { EventTriggerWhen, QuestEvent } from './QuestEvent'
-import { fading, setInputType } from './EventExector'
+import {
+  fading,
+  refreshAndTriggerAutoEvent,
+  setInputType,
+} from './EventExector'
 
 export const DefaultTransitionTime = 1000
 
@@ -62,7 +66,6 @@ export async function transitionToScene(
   if (!tag) {
     await fading({ duration: DefaultTransitionTime, type: 'out' })
     setInputType(previousInputType)
-    return
   } else if (typeof tag === 'string') {
     const destination = nextScene!.rootObject
       .getComponentsInChildren(SceneTransitionDestination)
@@ -94,6 +97,7 @@ export async function transitionToScene(
     await fading({ duration: DefaultTransitionTime, type: 'out' })
     setInputType(previousInputType)
   }
+  refreshAndTriggerAutoEvent()
 }
 
 type SceneTransitionData = {

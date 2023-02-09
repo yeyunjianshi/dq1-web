@@ -26,6 +26,8 @@ export type QuestEventData = {
   predecessorItem: number[]
   insertEventTable?: boolean
   hideAfterFinish?: boolean
+  hideStart?: boolean
+  hideEventsId?: string[]
 }
 
 @GameplayComponent
@@ -37,12 +39,14 @@ export class QuestEvent extends Component implements Interaction {
   isHideAfterFinish = false
   isStartHide = false
   priority = 10
+  hideEventsId?: string[]
   predecessorId: string[] = []
   predecessorItem: number[] = []
   isInsertGlobalAfterFinish = false // 完成后插入到全局事件表
 
   canTrigger(when: EventTriggerWhen) {
     return (
+      this.questId !== '0' &&
       !globalGameData.hasEvent(this.eventId) &&
       this.when === when &&
       this.predecessorId.every((id) => globalGameData.hasEvent(id)) &&
@@ -51,20 +55,23 @@ export class QuestEvent extends Component implements Interaction {
   }
 
   awake() {
-    if (
-      this.isStartHide ||
-      (this.isHideAfterFinish && globalGameData.hasEvent(this.eventId))
-    ) {
-      this.root.active = false
-    }
+    this.refresh()
 
     this.root.events.register(({ marker, questId }) => {
       console.log(`${this.questId} ${marker.toString()}`)
 
       if (this.questId === questId && marker === EventExecuteEndMarker) {
-        if (this.isHideAfterFinish) this.root.active = false
         if (this.isInsertGlobalAfterFinish) {
           return globalGameData.finishEvent(this.eventId)
+        }
+        if (this.isHideAfterFinish) {
+          const finish =
+            (this.hideEventsId &&
+              this.hideEventsId.every((id) =>
+                globalGameData.hasEvent(generateEventId(id))
+              )) ||
+            globalGameData.hasEvent(this.eventId)
+          this.root.active = !finish
         }
       }
     })
@@ -75,6 +82,26 @@ export class QuestEvent extends Component implements Interaction {
     await Execute(this.engine)
   }
 
+  refresh() {
+    if (this.isHideAfterFinish) {
+      if (
+        globalGameData.hasEvent(this.eventId) ||
+        (this.hideEventsId &&
+          this.hideEventsId.every((id) =>
+            globalGameData.hasEvent(generateEventId(id))
+          ))
+      ) {
+        this.root.active = false
+        return
+      }
+    }
+    if (this.isStartHide) {
+      this.root.active =
+        this.predecessorId.every((id) => globalGameData.hasEvent(id)) &&
+        this.predecessorItem.every((id) => globalGameData.inventory.hasItem(id))
+    }
+  }
+
   parseData(_: AssetLoader, data: QuestEventData): void {
     this.questId = data.eventId
     this.eventId = generateEventId(data.eventId)
@@ -83,10 +110,13 @@ export class QuestEvent extends Component implements Interaction {
     this.predecessorId = data.predecessorId
       ? data.predecessorId.map(generateEventId)
       : []
+
+    this.hideEventsId = data.hideEventsId
     this.predecessorItem = data.predecessorItem || []
+    this.isStartHide = data.hideStart ?? false
     this.isHideAfterFinish = data.hideAfterFinish ?? this.isHideAfterFinish
     this.isInsertGlobalAfterFinish =
-      data.insertEventTable ?? this.isHideAfterFinish
+      data.insertEventTable ?? this.isInsertGlobalAfterFinish
   }
 
   parseWhen(when: string | EventTriggerWhen | undefined): EventTriggerWhen {
