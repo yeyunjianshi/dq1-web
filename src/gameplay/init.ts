@@ -105,8 +105,7 @@ export function initScene(engine: Engine) {
 
   // engine.sceneManager.loadScene(TantegelCastleScene.name)
   // engine.sceneManager.loadScene(TantegelCastle2Scene.name)
-  console.log(TantegelCastle3Scene)
-  engine.sceneManager.loadScene(TantegelCastle3Scene.name)
+  // engine.sceneManager.loadScene(TantegelCastle3Scene.name)
   // engine.sceneManager.loadScene(RadatomeScene.name)
   // engine.sceneManager.loadScene(MairaScene.name)
   // engine.sceneManager.loadScene(RimuldarScene.name)
@@ -121,8 +120,8 @@ export function initScene(engine: Engine) {
   // engine.sceneManager.loadScene('RainShrine1')
   // engine.sceneManager.loadScene('RainShrine2')
 
-  // engine.sceneManager.loadScene('RotosCave1')
-  // engine.sceneManager.loadScene('RotosCave2')
+  // engine.sceneManager.loadScene(RotosCave1Scene.name)
+  engine.sceneManager.loadScene(RotosCave2Scene.name)
   // engine.sceneManager.loadScene('MarshyCave')
 
   // engine.sceneManager.loadScene('Garais1Scene')
