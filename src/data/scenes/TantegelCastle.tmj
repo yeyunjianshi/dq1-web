@@ -769,6 +769,86 @@
                 {
                  "class":"Entrace",
                  "draworder":"topdown",
+                 "id":65,
+                 "name":"\u592a\u9633\u4e4b\u77f3\u697c\u68af",
+                 "objects":[
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":32,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":1168.66666666667,
+                         "y":1140
+                        }],
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"string",
+                         "value":"36"
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"string",
+                         "value":"35"
+                        }, 
+                        {
+                         "name":"d_direction",
+                         "type":"string",
+                         "value":"down"
+                        }, 
+                        {
+                         "name":"d_isPremutation",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"d_tag",
+                         "type":"string",
+                         "value":"TantegelCastle3"
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"t_nextScene",
+                         "type":"string",
+                         "value":"TantegelCastle3"
+                        }, 
+                        {
+                         "name":"t_tag",
+                         "type":"string",
+                         "value":"TantegelCastle3"
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"x",
+                         "type":"int",
+                         "value":640
+                        }, 
+                        {
+                         "name":"y",
+                         "type":"int",
+                         "value":416
+                        }],
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "class":"Entrace",
+                 "draworder":"topdown",
                  "id":57,
                  "name":"\u5165\u53e3",
                  "objects":[
@@ -1388,8 +1468,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":65,
- "nextobjectid":31,
+ "nextlayerid":66,
+ "nextobjectid":33,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",
