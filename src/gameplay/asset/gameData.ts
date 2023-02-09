@@ -21,6 +21,8 @@ const DefaultInitGameCharacter = import.meta.env.DEV
         // generateEventId('Q300'),
         // generateEventId('Q888')
       ],
+      isMeetEnemty: false,
+      isLightInCave: true,
     }
   : {
       id: 1,
@@ -141,6 +143,8 @@ export class GameData {
   lightTime = 0
   notMeetEnemyStep = 0
   gameplayTime = 0
+  isMeetEnemy = true
+  isLightInCave = false
 
   init() {
     const initCharacter = GetCharacter(DefaultInitGameCharacter.id).clone()
@@ -162,6 +166,8 @@ export class GameData {
       this.notMeetEnemyStep =
       this.gameplayTime =
         0
+    this.isMeetEnemy = DefaultInitGameCharacter.isMeetEnemty ?? true
+    this.isLightInCave = DefaultInitGameCharacter.isLightInCave ?? false
   }
 
   startGame() {

@@ -270,7 +270,7 @@ export function checkMeetEnemy() {
 }
 
 export function isMeetEnemy() {
-  return currentScene().isMeetEnemy
+  return currentScene().isMeetEnemy && globalGameData.isMeetEnemy
 }
 
 export function currentScene() {
@@ -408,4 +408,16 @@ export function removeQuestEvents(...questsId: (number | string)[]) {
 
 export function hasItems(...items: number[]) {
   return items.every((itemId) => globalGameData.inventory.hasItem(itemId))
+}
+
+export function checkInventoryIsFull(...itemId: number[]) {
+  return globalGameData.inventory.isFull()
+}
+
+export function addItems(...itemsId: number[]) {
+  return itemsId.map((id) => globalGameData.inventory.addItem(id).item.name)
+}
+
+export function audio() {
+  return executingEngine!.audios
 }

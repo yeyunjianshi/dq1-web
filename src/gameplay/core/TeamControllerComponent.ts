@@ -246,7 +246,6 @@ export default class TeamControllerComponent
       GlobalFadingMarker
     ) as FadingComponent
     const tileData = sceneComponent.getMapData(this._head.coord)
-    console.log(hero().isImmunotoxicity)
     if (HasType(tileData, TileMapType.Poison) && !hero().isImmunotoxicity) {
       hero().HP -= tileData === TileMapType.Poison ? 15 : 1
       fadingComponent.flashing({ duration: 300, times: 1 })

@@ -24,7 +24,6 @@ export default class BornPointComponent extends Component {
         GlobalTeamControllerMarker
       )
       teamController.moveTo(this.position, this.direciton, this.isPremutation)
-      console.log(this.direciton)
     }
   }
 

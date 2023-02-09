@@ -121,13 +121,13 @@ export function initScene(engine: Engine) {
   // engine.sceneManager.loadScene('RainShrine2')
 
   // engine.sceneManager.loadScene(RotosCave1Scene.name)
-  engine.sceneManager.loadScene(RotosCave2Scene.name)
+  // engine.sceneManager.loadScene(RotosCave2Scene.name)
   // engine.sceneManager.loadScene('MarshyCave')
 
-  // engine.sceneManager.loadScene('Garais1Scene')
-  // engine.sceneManager.loadScene('Garais2Scene')
-  // engine.sceneManager.loadScene('Garais3Scene')
-  // engine.sceneManager.loadScene('Garais4Scene')
+  engine.sceneManager.loadScene(Garais1Scene.name)
+  // engine.sceneManager.loadScene(Garais2Scene.name)
+  // engine.sceneManager.loadScene(Garais3Scene.name)
+  // engine.sceneManager.loadScene(Garais4Scene.name)
   // engine.sceneManager.loadScene('RockyCave1Scene')
   // engine.sceneManager.loadScene('RockyCave2Scene')
   // engine.sceneManager.loadScene('DracolordsCastle1Scene')
