@@ -103,7 +103,7 @@ export function initScene(engine: Engine) {
   // engine.sceneManager.loadScene('Battle')
   // engine.sceneManager.loadScene('Title')
 
-  // engine.sceneManager.loadScene(TantegelCastleScene.name)
+  engine.sceneManager.loadScene(TantegelCastleScene.name)
   // engine.sceneManager.loadScene(TantegelCastle2Scene.name)
   // engine.sceneManager.loadScene(TantegelCastle3Scene.name)
   // engine.sceneManager.loadScene(RadatomeScene.name)
@@ -137,5 +137,5 @@ export function initScene(engine: Engine) {
   // engine.sceneManager.loadScene(DracolordsCastle5Scene.name)
   // engine.sceneManager.loadScene(DracolordsCastle6Scene.name)
   // engine.sceneManager.loadScene(DracolordsCastle7Scene.name)
-  engine.sceneManager.loadScene(DracolordsCastle8Scene.name)
+  // engine.sceneManager.loadScene(DracolordsCastle8Scene.name)
 }

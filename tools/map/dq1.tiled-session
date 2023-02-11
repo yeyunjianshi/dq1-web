@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave2.tmj",
+    "activeFile": "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj",
     "automapping.whileDrawing": false,
     "expandedProjectPaths": [
         "E:/projects/web/dq1-web-pre/src/data/scenes"
@@ -435,20 +435,20 @@
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave2.tmj": {
             "expandedGroupLayers": [
-                14,
-                28
+                28,
+                14
             ],
             "expandedObjectLayers": [
                 16,
-                14,
+                37,
                 38,
-                37
+                14
             ],
             "scale": 0.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 601,
-                "y": 520
+                "x": 618,
+                "y": 518
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave3.tmj": {
@@ -483,19 +483,19 @@
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj": {
             "expandedGroupLayers": [
-                14,
+                7,
                 28,
-                7
+                14
             ],
             "expandedObjectLayers": [
                 65,
                 14
             ],
             "scale": 1.5,
-            "selectedLayer": 33,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 606.3333333333334,
-                "y": 646
+                "x": 998,
+                "y": 802
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle3.tmj": {
@@ -547,23 +547,24 @@
     "map.lastUsedFormat": "json",
     "map.width": 40,
     "openFiles": [
-        "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave2.tmj"
+        "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave2.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj"
     ],
     "project": "dq1.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave2.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle8.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle7.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle6.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle5.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle3.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle1.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave2.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave3.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/RotosCave1.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/RotosCave2.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Domdora.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle2.tmj"
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Domdora.tmj"
     ],
     "resizeMap.removeObjects": true,
     "textEdit.monospace": true,

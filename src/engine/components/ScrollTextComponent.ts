@@ -129,6 +129,11 @@ export default class ScrollTextComponent extends Component {
   }
 
   render() {
+    const context = this.engine.renderer.selectedRendererContext
+    context.save()
+    context.rect(0, 0, this.width, this.height)
+    context.clip()
+
     const lineHeight = this.lineHeight * this.font.size
     const offsetY =
       (this.padding[0] + Math.max(1, this.lineHeight - 1) * this.font.size) >> 1
@@ -158,6 +163,8 @@ export default class ScrollTextComponent extends Component {
         this.root.alpha
       )
     })
+
+    context.restore()
   }
 
   get textMaxWidth() {

@@ -232,29 +232,11 @@
                  "y":0
                 }, 
                 {
-                 "id":54,
-                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/event.png",
-                 "name":"\u795e\u7236\u6062\u590dHP",
-                 "offsetx":832.5,
-                 "offsety":538.5,
-                 "opacity":1,
-                 "properties":[
-                        {
-                         "name":"components",
-                         "type":"string",
-                         "value":"[\n          {\n            \"type\": \"QuestEvent\",\n            \"eventId\": \"Q1122\"\n          }\n]"
-                        }],
-                 "type":"imagelayer",
-                 "visible":true,
-                 "x":0,
-                 "y":0
-                }, 
-                {
                  "id":55,
                  "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/event.png",
                  "name":"\u795e\u7236\u6062\u590dHP",
-                 "offsetx":861.5,
-                 "offsety":537.5,
+                 "offsetx":831.5,
+                 "offsety":538.833333333333,
                  "opacity":1,
                  "properties":[
                         {
@@ -289,8 +271,8 @@
                  "id":56,
                  "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_21.png",
                  "name":"\u53f3\u795e\u7236",
-                 "offsetx":846.5,
-                 "offsety":540,
+                 "offsetx":834.5,
+                 "offsety":544.666666666667,
                  "opacity":1,
                  "properties":[
                         {
