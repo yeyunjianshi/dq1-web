@@ -5,7 +5,8 @@
     "cost": 4,
     "type": 1,
     "useType": 3,
-    "effect": "u:all:HP:20-35"
+    "effect": "u:all:HP:20-35",
+    "useCommonTime": "after"
   },
   {
     "id": 2002,
@@ -29,7 +30,9 @@
     "cost": 3,
     "type": 0,
     "useType": 1,
-    "effect": "u:common:light"
+    "effect": "u:common:light:120-0",
+    "useCommonText": "照亮了四周",
+    "useCommonTime": "after"
   },
   {
     "id": 2005,
@@ -45,7 +48,8 @@
     "cost": 6,
     "type": 0,
     "useType": 1,
-    "effect": "u:common:entrance"
+    "effect": "u:common:entrance",
+    "useCommonTime": "after"
   },
 
   {
@@ -54,7 +58,8 @@
     "cost": 8,
     "type": 0,
     "useType": 1,
-    "effect": "u:common:home"
+    "effect": "u:common:home",
+    "useCommonTime": "after"
   },
   {
     "id": 2008,
@@ -62,7 +67,8 @@
     "cost": 2,
     "type": 0,
     "useType": 1,
-    "effect": "u:common:notMeetEnemy:127"
+    "effect": "u:common:notMeetEnemy:127",
+    "useCommonText": "暂时不会遭遇敌人了"
   },
   {
     "id": 2009,
@@ -70,7 +76,8 @@
     "cost": 5,
     "type": 1,
     "useType": 3,
-    "effect": "u:all:HP:58-60"
+    "effect": "u:all:HP:58-60",
+    "useCommonTime": "after"
   },
   {
     "id": 2010,

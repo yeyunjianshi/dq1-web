@@ -159,6 +159,7 @@ function convert({ src, tileSize = DefaultTileSize }) {
         tag: property(d, 't_tag'),
         nextScene: property(d, 't_nextScene'),
         playAudio: property(d, 't_playAudio'),
+        entraceTag: property(d, 't_entraceTag'),
       })
     }
     if (property(d, 'd_tag')) {

@@ -53,6 +53,10 @@ export function setEventEngine(engine: Engine) {
   executingEngine = engine
 }
 
+export function getEventEngine() {
+  return executingEngine
+}
+
 export function generateEventId(id: string | number): string {
   return generateId(id, 'e_')
 }

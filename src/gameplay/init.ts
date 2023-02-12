@@ -99,11 +99,11 @@ export function initScene(engine: Engine) {
   engine.sceneManager.loadScene(FadingScene.name)
   engine.sceneManager.loadScene(GlobalScene.name)
   engine.sceneManager.loadScene(TeamController.name)
-  // engine.sceneManager.loadScene('World')
+  engine.sceneManager.loadScene(WorldScene.name)
   // engine.sceneManager.loadScene('Battle')
   // engine.sceneManager.loadScene('Title')
 
-  engine.sceneManager.loadScene(TantegelCastleScene.name)
+  // engine.sceneManager.loadScene(TantegelCastleScene.name)
   // engine.sceneManager.loadScene(TantegelCastle2Scene.name)
   // engine.sceneManager.loadScene(TantegelCastle3Scene.name)
   // engine.sceneManager.loadScene(RadatomeScene.name)

@@ -22,7 +22,7 @@ const DefaultInitGameCharacter = import.meta.env.DEV
         // generateEventId('Q888')
       ],
       isMeetEnemty: false,
-      isLightInCave: true,
+      isLightInCave: false,
     }
   : {
       id: 1,
@@ -145,6 +145,7 @@ export class GameData {
   gameplayTime = 0
   isMeetEnemy = true
   isLightInCave = false
+  entraceTag?: string
 
   init() {
     const initCharacter = GetCharacter(DefaultInitGameCharacter.id).clone()

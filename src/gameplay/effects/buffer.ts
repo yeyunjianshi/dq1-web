@@ -1,4 +1,6 @@
+import BackHomeEffect from './BackHomeEffect'
 import DamageEffect from './DamageEffect'
+import GoToEntraceEffect from './GoToEntraceEffect'
 import LightCaveEffect from './LightCaveEffect'
 import { SleepBufferMaker, SealingMagicBufferMaker } from './MarkerBuffer'
 import { MarkerBufferEffect } from './MarkerBufferEffect'
@@ -107,6 +109,10 @@ export function parseUseEffect(
                   return new LightCaveEffect(value[0], value[1])
                 }
                 break
+              case 'home': // 回城
+                return new BackHomeEffect()
+              case 'entrance': // 洞穴回到入口处
+                return new GoToEntraceEffect()
               case 'notMeetEnemy': // 不遇敌
                 if (args.length >= 3) {
                   const [_, value] = parseNumberValue(args[2])

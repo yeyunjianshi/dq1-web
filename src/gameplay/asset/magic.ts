@@ -1,4 +1,9 @@
-import { Command, parseUseEffect } from '../effects/buffer'
+import {
+  Command,
+  CommandTriggerType,
+  CommandTriggerWhen,
+  parseUseEffect,
+} from '../effects/buffer'
 
 export enum MagicType {
   Common = 0,
@@ -17,6 +22,18 @@ export default class Magic {
   targetIsEnemy = true
   isCanCommonUse = false
   isCanBattleUse = false
+  useCommonText?: string
+  useBattleText?: string
+  useCommonTime: 'before' | 'after' = 'before' // 使用时机是在窗口打开后，还是在窗口之前
+
+  useInCommon() {
+    return this.useEffects
+      .map((effect) => {
+        return effect.execute(CommandTriggerWhen.Common, CommandTriggerType.Use)
+      })
+      .filter((s) => s.trim().length > 0)
+      .join('\n')
+  }
 }
 
 export function parseMagic(data: MagicData) {
@@ -35,4 +52,7 @@ export type MagicData = {
   useType: number
   effect?: string
   targetIsEnemy?: boolean
+  useCommonText?: string
+  useBattleText?: string
+  useCommonTime: 'before' | 'after'
 }

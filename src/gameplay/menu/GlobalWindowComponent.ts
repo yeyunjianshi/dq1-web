@@ -16,6 +16,7 @@ import MessageWindow from './MessageWindow'
 import SaveWindow from './SaveWindow'
 import ConfigWindow from './ConfigWindow'
 import { Audios } from '@gameplay/audio/AudioConfig'
+import MenuMagicWindow from './MenuMagicWindow'
 
 interface IWindowStack {
   pushWindow(w: BaseWindow | string): void
@@ -39,6 +40,7 @@ export default class GlobalWindowComponent
   private _commonGoldWindow?: CommonGoldWindow
   private _menuStatusWindow?: MenuStatusWindow
   private _menuEquipmentWindow?: MenuEquipmentWindow
+  private _menuMagicWindow?: MenuMagicWindow
   private _menuItemWindow?: MenuItemWindow
   private _shopWindow?: ShopWindow
   private _saveWindow?: SaveWindow
@@ -80,6 +82,11 @@ export default class GlobalWindowComponent
       'menuEquipmentWindow',
       MenuEquipmentWindow
     ) as MenuEquipmentWindow
+
+    this._menuMagicWindow = this.root.getComponentInChildByName(
+      'menuMagicWindow',
+      MenuMagicWindow
+    ) as MenuMagicWindow
 
     this._menuItemWindow = this.root.getComponentInChildByName(
       'menuItemWindow',
@@ -165,6 +172,8 @@ export default class GlobalWindowComponent
         ? this._menuEquipmentWindow!
         : w === 'item'
         ? this._menuItemWindow!
+        : w === 'magic'
+        ? this._menuMagicWindow!
         : w === 'save'
         ? this._saveWindow
         : w === 'config'

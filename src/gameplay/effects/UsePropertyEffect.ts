@@ -1,3 +1,5 @@
+import { Audios } from '@gameplay/audio/AudioConfig'
+import { audio } from '@gameplay/events/EventExector'
 import { HasType, range } from '../../engine/math'
 import Character from '../asset/character'
 import { globalGameData } from '../asset/gameData'
@@ -63,6 +65,9 @@ export default class UsePeropertyEffect
           value
         )
       }
+
+      audio().playME(Audios.Heal)
+
       return `${this.property}增加了${
         hero[this.property as PropertyType] - previouseValue
       }`

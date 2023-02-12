@@ -182,8 +182,8 @@
          "id":31,
          "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_0.png",
          "name":"BornPoint",
-         "offsetx":1633.27272727273,
-         "offsety":1443.81818181818,
+         "offsetx":1025.27272727273,
+         "offsety":554.81818181818,
          "opacity":1,
          "properties":[
                 {
@@ -354,6 +354,11 @@
                          "value":32
                         }, 
                         {
+                         "name":"t_entraceTag",
+                         "type":"string",
+                         "value":"DracolordsCastle1"
+                        }, 
+                        {
                          "name":"t_nextScene",
                          "type":"string",
                          "value":"DracolordsCastle1"
@@ -423,6 +428,11 @@
                          "value":32
                         }, 
                         {
+                         "name":"t_entraceTag",
+                         "type":"string",
+                         "value":"RockyCave1"
+                        }, 
+                        {
                          "name":"t_nextScene",
                          "type":"string",
                          "value":"RockyCave1"
@@ -490,6 +500,11 @@
                          "name":"height",
                          "type":"int",
                          "value":32
+                        }, 
+                        {
+                         "name":"t_entraceTag",
+                         "type":"string",
+                         "value":"RotosCave1"
                         }, 
                         {
                          "name":"t_nextScene",
@@ -1029,8 +1044,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":41,
- "nextobjectid":45,
+ "nextlayerid":42,
+ "nextobjectid":46,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",

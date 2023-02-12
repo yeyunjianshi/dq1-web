@@ -11,6 +11,8 @@ export const Audios = {
   Inn: 'se/inn.mp3',
   Revive: 'se/revive.mp3',
   Dead: 'se/dead.mp3',
+  Magic: 'se/magic.mp3',
+  Heal: 'se/heal.mp3',
 }
 
 export function audioInitLoad(resource: IResource) {

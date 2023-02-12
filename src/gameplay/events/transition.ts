@@ -26,6 +26,10 @@ export async function transitionToSceneByTransition(
   ).find((event) => event.canTrigger(EventTriggerWhen.InteractiveExit))
   if (exitEvent) await exitEvent.interactive()
 
+  if (transition.entraceTag) {
+    globalGameData.entraceTag = transition.entraceTag
+  }
+
   transitionToScene(
     transition.root.engine,
     transition.nextScene,
@@ -105,6 +109,7 @@ type SceneTransitionData = {
   tag: string
   nextScene: string
   playAudio?: boolean
+  entraceTag?: string
 }
 
 @GameplayComponent
@@ -112,6 +117,7 @@ export class SceneTransition extends Component {
   tag = 'A'
   nextScene = 'A'
   playAudio = true
+  entraceTag?: string
 
   transitionTo() {
     if (this.playAudio) this.engine.audios.playME(Audios.Stairs)
@@ -123,6 +129,7 @@ export class SceneTransition extends Component {
     this.tag = data.tag
     this.nextScene = data.nextScene
     this.playAudio = data.playAudio ?? true
+    this.entraceTag = data.entraceTag
   }
 }
 

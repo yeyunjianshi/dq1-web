@@ -89,7 +89,7 @@ export default class SceneManger {
     return this._scenes
   }
 
-  get currentScene() {
+  get currentScene(): Scene {
     return this._currentScene!
   }
 

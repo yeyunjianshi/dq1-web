@@ -440,15 +440,15 @@
             ],
             "expandedObjectLayers": [
                 16,
+                14,
                 37,
-                38,
-                14
+                38
             ],
             "scale": 0.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 618,
-                "y": 518
+                "x": 704,
+                "y": 703
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave3.tmj": {
@@ -488,11 +488,11 @@
                 14
             ],
             "expandedObjectLayers": [
-                65,
-                14
+                14,
+                65
             ],
             "scale": 1.5,
-            "selectedLayer": 1,
+            "selectedLayer": 0,
             "viewCenter": {
                 "x": 998,
                 "y": 802
