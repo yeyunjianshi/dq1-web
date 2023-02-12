@@ -71,7 +71,7 @@ export default class Character {
   }
 
   set MP(delta: number) {
-    this._mp += delta
+    this._mp = delta
     if (this._mp >= this.maxMP) this._mp = this.maxMP
     else if (this._mp < 0) this._mp = 0
     GlobalEventEmit(GlobalEventType.ChracterStatusChanged, this)
