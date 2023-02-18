@@ -24,13 +24,13 @@ import EnemyData from '../public/assets/data/enemies.json'
 import MagicData from '../public/assets/data/magic.json'
 import TorchPostProcess from './gameplay/postprocess/TorchPostProcess'
 import { initScene } from '@gameplay/init'
-import FadingComponent from '@engine/components/FadingComponent'
+import { MagicData as MagicDataType } from '@gameplay/asset/magic'
 
 SetCharacters((AllCharactersData as CharacterData[]).map(parseCharacter))
 SetItems((AllItemData as ItemData[]).map(parseItem))
 SetShopItems(ShopData)
 SetEneies(EnemyData)
-SetMagics(MagicData)
+SetMagics(MagicData as MagicDataType[])
 globalGameData.startGame()
 
 const engine = createEngine()
@@ -62,11 +62,4 @@ engine.run({
 
 document.getElementById('startBtn')?.addEventListener('click', () => {
   engine.audios.replayBGM()
-  // const fadingComponent =
-  //   engine.getVariable<FadingComponent>(GlobalFadingMarker)
-  // fadingComponent.fading({
-  //   type: 'in',
-  //   duration: 2000,
-  // })
-  // fadingComponent.flashing({ duration: 1000, times: 5, color: '#F53838' })
 })

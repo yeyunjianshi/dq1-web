@@ -60,12 +60,16 @@ export class PropertyAnimationComponent extends Component {
         const keys = this._animation.currentKeys()
         keys.forEach(({ property, animationKey }) => {
           const value = this._animation!.getFrameKeyValue(animationKey)
+          console.log(value)
           if (property === 'localX' || property === 'localY') {
             this.root[property] = value
           } else if (property === 'backgroundAlpha') {
             this.background.alpha = value
           } else if (property === 'backgroundSprite') {
             this.root.background.name = animationKey.value
+            this.root.background.sprite = this.resource.getSprite(
+              animationKey.value
+            )
           }
         })
       }

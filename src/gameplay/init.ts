@@ -40,6 +40,7 @@ import DracolordsCastle6Scene from '@data/scenes/DracolordsCastle6.tmj'
 import DracolordsCastle7Scene from '@data/scenes/DracolordsCastle7.tmj'
 import DracolordsCastle8Scene from '@data/scenes/DracolordsCastle8.tmj'
 
+import LogoScene from '@data/scenes/Logo.json'
 import TitleScene from '@data/scenes/Title.json'
 import BattleData from '@data/scenes/battle.json'
 import GlobalScene from '@data/scenes/globalWindow.json'
@@ -88,6 +89,7 @@ AddGameSceneData([
   DracolordsCastle8Scene,
 
   WorldScene,
+  LogoScene,
   TitleScene,
   TeamController,
   GlobalScene,
@@ -99,9 +101,10 @@ export function initScene(engine: Engine) {
   engine.sceneManager.loadScene(FadingScene.name)
   engine.sceneManager.loadScene(GlobalScene.name)
   engine.sceneManager.loadScene(TeamController.name)
-  engine.sceneManager.loadScene(WorldScene.name)
+  // engine.sceneManager.loadScene(WorldScene.name)
   // engine.sceneManager.loadScene('Battle')
   // engine.sceneManager.loadScene('Title')
+  engine.sceneManager.loadScene(LogoScene.name)
 
   // engine.sceneManager.loadScene(TantegelCastleScene.name)
   // engine.sceneManager.loadScene(TantegelCastle2Scene.name)

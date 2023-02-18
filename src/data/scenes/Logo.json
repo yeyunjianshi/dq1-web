@@ -1,0 +1,76 @@
+{
+  "name": "Logo",
+  "width": -2,
+  "height": -2,
+  "priority": 500,
+  "hasCamera": false,
+  "bgm": "bgm/overture.mp3",
+  "root": {
+    "x": 0,
+    "y": 0,
+    "width": -2,
+    "height": -2,
+    "active": true,
+    "alpha": 1,
+    "useScreenPosition": true,
+    "renderLayer": 20,
+    "components": [
+      {
+        "type": "LogoComponent"
+      }
+    ],
+    "children": [
+      {
+        "x": 0,
+        "y": -100,
+        "width": 690,
+        "height": 255,
+        "pivot": [0.5, 0.5],
+        "layoutGravity": ["center", "center"],
+        "background": {
+          "sprite": "",
+          "backgroundColor": "black"
+        },
+        "active": true,
+        "components": [
+          {
+            "type": "$PropertyAnimationComponent",
+            "keys": {
+              "backgroundSprite": [
+                {
+                  "frame": 0,
+                  "value": "system/logo_1.png"
+                },
+                {
+                  "frame": 10,
+                  "value": "system/logo_2.png"
+                },
+                {
+                  "frame": 20,
+                  "value": "system/logo_3.png"
+                },
+                {
+                  "frame": 30,
+                  "value": "system/logo_4.png"
+                },
+                {
+                  "frame": 40,
+                  "value": "system/logo_5.png"
+                },
+                {
+                  "frame": 50,
+                  "value": "system/logo_6.png"
+                }
+              ]
+            },
+            "frameCount": 100,
+            "times": -1,
+            "reverse": false,
+            "duration": 2000,
+            "auto": true
+          }
+        ]
+      }
+    ]
+  }
+}

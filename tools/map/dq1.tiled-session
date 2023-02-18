@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj",
+    "activeFile": "E:/projects/web/dq1-web-pre/src/data/scenes/World.tmj",
     "automapping.whileDrawing": false,
     "expandedProjectPaths": [
         "E:/projects/web/dq1-web-pre/src/data/scenes"
@@ -439,8 +439,8 @@
                 14
             ],
             "expandedObjectLayers": [
-                16,
                 14,
+                16,
                 37,
                 38
             ],
@@ -483,16 +483,16 @@
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj": {
             "expandedGroupLayers": [
-                7,
                 28,
-                14
+                14,
+                7
             ],
             "expandedObjectLayers": [
-                14,
-                65
+                65,
+                14
             ],
             "scale": 1.5,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
                 "x": 998,
                 "y": 802
@@ -548,13 +548,15 @@
     "map.width": 40,
     "openFiles": [
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave2.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj"
+        "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/World.tmj"
     ],
     "project": "dq1.tiled-project",
     "property.type": "string",
     "recentFiles": [
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave2.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/World.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle8.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle7.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle6.tmj",
@@ -563,8 +565,7 @@
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle1.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave3.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/RotosCave1.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/RotosCave2.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Domdora.tmj"
+        "E:/projects/web/dq1-web-pre/src/data/scenes/RotosCave2.tmj"
     ],
     "resizeMap.removeObjects": true,
     "textEdit.monospace": true,

@@ -25,8 +25,8 @@ export default class ConfigWindow extends BaseWindow {
       this._listComponent.setAdapter(this._adapter)
       this._listComponent.addSelectListener((_, pos: number) => {
         if (pos === 0) {
-          // back to title
-          transitionToScene(this.engine, 'Title')
+          // back to logo
+          transitionToScene(this.engine, 'Logo')
         }
       })
       this._listComponent.setCursorIndex(0)
