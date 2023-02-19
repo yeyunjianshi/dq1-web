@@ -195,20 +195,20 @@
         "E:/projects/web/dq1-web-pre/src/data/scenes/Garais1.tmj": {
             "expandedGroupLayers": [
                 35,
-                14,
-                28,
                 7,
-                22
+                22,
+                14,
+                28
             ],
             "expandedObjectLayers": [
                 16,
-                14,
-                21
+                21,
+                14
             ],
             "scale": 3,
             "selectedLayer": 10,
             "viewCenter": {
-                "x": 1087.5,
+                "x": 1087.3333333333333,
                 "y": 1196.3333333333333
             }
         },
@@ -265,16 +265,16 @@
             "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 325.33333333333337,
-                "y": 327.99999999999994
+                "x": 326,
+                "y": 327.33333333333337
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/HolyShrine1.tmj": {
             "scale": 1.9237499999999998,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 240.93567251461997,
-                "y": 241.19558154645878
+                "x": 241.19558154645875,
+                "y": 241.71539961013647
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/HolyShrine2.tmj": {
@@ -295,22 +295,22 @@
             ],
             "expandedObjectLayers": [
                 21,
+                14,
                 56,
-                57,
-                14
+                57
             ],
             "scale": 1.5,
             "selectedLayer": 8,
             "viewCenter": {
-                "x": 638.3333333333333,
-                "y": 526.3333333333334
+                "x": 638,
+                "y": 526
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/MarshyCave.tmj": {
             "scale": 0.45087890625,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 418.0723413471952,
+                "x": 419.1812865497077,
                 "y": 1026.8832575265324
             }
         },
@@ -435,14 +435,14 @@
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave2.tmj": {
             "expandedGroupLayers": [
-                28,
-                14
+                14,
+                28
             ],
             "expandedObjectLayers": [
-                14,
                 16,
+                38,
                 37,
-                38
+                14
             ],
             "scale": 0.5,
             "selectedLayer": 0,
@@ -483,19 +483,19 @@
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj": {
             "expandedGroupLayers": [
-                28,
+                7,
                 14,
-                7
+                28
             ],
             "expandedObjectLayers": [
-                65,
-                14
+                14,
+                65
             ],
             "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 998,
-                "y": 802
+                "x": 672,
+                "y": 655.6666666666666
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle3.tmj": {
@@ -524,15 +524,15 @@
             "expandedObjectLayers": [
                 35,
                 32,
-                14,
                 21,
-                36
+                36,
+                14
             ],
             "scale": 0.33,
             "selectedLayer": 8,
             "viewCenter": {
-                "x": 2213.6363636363635,
-                "y": 3315.151515151515
+                "x": 1948.4848484848485,
+                "y": 1672.727272727273
             }
         },
         "Tiles/Tiles.tsx": {

@@ -104,7 +104,7 @@ export function initScene(engine: Engine) {
   // engine.sceneManager.loadScene(WorldScene.name)
   // engine.sceneManager.loadScene('Battle')
   // engine.sceneManager.loadScene('Title')
-  engine.sceneManager.loadScene(LogoScene.name)
+  // engine.sceneManager.loadScene(LogoScene.name)
 
   // engine.sceneManager.loadScene(TantegelCastleScene.name)
   // engine.sceneManager.loadScene(TantegelCastle2Scene.name)
@@ -113,7 +113,7 @@ export function initScene(engine: Engine) {
   // engine.sceneManager.loadScene(MairaScene.name)
   // engine.sceneManager.loadScene(RimuldarScene.name)
   // engine.sceneManager.loadScene(DomdoraScene.name)
-  // engine.sceneManager.loadScene(GaraiScene.name)
+  engine.sceneManager.loadScene(GaraiScene.name)
   // engine.sceneManager.loadScene(Mercado1Scene.name)
   // engine.sceneManager.loadScene(Mercado2Scene.name)
   // engine.sceneManager.loadScene(Mercado3Scene.name)
