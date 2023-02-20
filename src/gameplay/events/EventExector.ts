@@ -327,6 +327,11 @@ export function healMP(val?: number) {
   hero().MP = val
 }
 
+export function rest() {
+  healHP()
+  healMP()
+}
+
 export function hero() {
   return globalGameData.hero
 }

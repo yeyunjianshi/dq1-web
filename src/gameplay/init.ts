@@ -110,7 +110,7 @@ export function initScene(engine: Engine) {
   // engine.sceneManager.loadScene(TantegelCastle2Scene.name)
   // engine.sceneManager.loadScene(TantegelCastle3Scene.name)
   // engine.sceneManager.loadScene(RadatomeScene.name)
-  // engine.sceneManager.loadScene(MairaScene.name)
+  engine.sceneManager.loadScene(MairaScene.name)
   // engine.sceneManager.loadScene(RimuldarScene.name)
   // engine.sceneManager.loadScene(DomdoraScene.name)
   // engine.sceneManager.loadScene(GaraiScene.name)
@@ -125,7 +125,7 @@ export function initScene(engine: Engine) {
 
   // engine.sceneManager.loadScene(RotosCave1Scene.name)
   // engine.sceneManager.loadScene(RotosCave2Scene.name)
-  engine.sceneManager.loadScene('MarshyCave')
+  // engine.sceneManager.loadScene('MarshyCave')
 
   // engine.sceneManager.loadScene(Garais1Scene.name)
   // engine.sceneManager.loadScene(Garais2Scene.name)

@@ -17,7 +17,7 @@ task(async (event) => {
       await talk('*', 'Q4_N')
     } else {
       hero().gold -= money
-      healHP()
+      rest()
       const audios = executingEngine.audios
       audios.pauseBGM()
       await fading({ type: 'in', duration: 1000 })
