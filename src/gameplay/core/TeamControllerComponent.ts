@@ -56,6 +56,7 @@ export default class TeamControllerComponent
   extends MoveComponent
   implements ICollider
 {
+  [x: string]: any
   characterSpriteName = ''
   playerMoveComponents: MoveComponent[] = []
   playerStats: MoveState[] = []

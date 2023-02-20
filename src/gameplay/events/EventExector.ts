@@ -2,6 +2,7 @@ import Engine, {
   GlobalBattleInfo,
   GlobalFadingMarker,
   GlobalSceneComponentMarker,
+  GlobalTeamControllerMarker,
   GlobalWindowMarker,
 } from '@engine/engine'
 import { nextFrame } from '@engine/time'
@@ -18,6 +19,7 @@ import { transitionToScene } from './Transition'
 import { Audios } from '../audio/AudioConfig'
 import SceneComponent from '../core/SceneComponent'
 import { NPCControllerComponent } from '../core/NPCControllerComponent'
+import TeamControllerComponent from '../core/TeamControllerComponent'
 
 const gameEvents = new Map<string, string>()
 
@@ -424,4 +426,14 @@ export function addItems(...itemsId: number[]) {
 
 export function audio() {
   return executingEngine!.audios
+}
+
+export function changeHeroRoleId(role: number) {
+  hero().roleId = role
+
+  const teamController = executingEngine!.getVariable<TeamControllerComponent>(
+    GlobalTeamControllerMarker
+  )
+
+  teamController.initTeam()
 }
