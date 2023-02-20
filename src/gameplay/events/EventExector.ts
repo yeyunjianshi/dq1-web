@@ -442,3 +442,10 @@ export function changeHeroRoleId(role: number) {
 
   teamController.initTeam()
 }
+
+export function headCoord() {
+  const teamController = executingEngine!.getVariable<TeamControllerComponent>(
+    GlobalTeamControllerMarker
+  )
+  return teamController.headCoord
+}

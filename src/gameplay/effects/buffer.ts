@@ -2,6 +2,7 @@ import BackHomeEffect from './BackHomeEffect'
 import DamageEffect from './DamageEffect'
 import GoToEntraceEffect from './GoToEntraceEffect'
 import LightCaveEffect from './LightCaveEffect'
+import LoveOfPrincess from './LoveOfPrincess'
 import { SleepBufferMaker, SealingMagicBufferMaker } from './MarkerBuffer'
 import { MarkerBufferEffect } from './MarkerBufferEffect'
 import NotMeetEnemyEffect from './NotMeetEnemyEffect'
@@ -144,6 +145,9 @@ export function parseUseEffect(
                     parseNumberValue(args[3])[1]
                   )
                 }
+                break
+              case 'script':
+                if (args[2] === 'loveOfPrincess') return new LoveOfPrincess()
                 break
               case 'buff': // buff
                 break
