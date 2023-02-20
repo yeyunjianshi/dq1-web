@@ -19,6 +19,7 @@ type MapChestData = {
   colliderSize: Vector2
   hidden: boolean
   important: boolean
+  trigger?: boolean
   finishEvents?: string[]
 }
 
@@ -30,6 +31,7 @@ export default class MapChest extends Component implements Interaction {
   colliderSize: Vector2 = [32, 32]
   important = false
   hidden = false
+  trigger = false
   finishEvents?: string[]
 
   start() {
@@ -89,9 +91,10 @@ export default class MapChest extends Component implements Interaction {
     this.hidden = data.hidden ?? this.hidden
     this.important = data.important ?? this.important
     this.finishEvents = data.finishEvents
+    this.trigger = data.trigger ?? this.trigger
     this.root.addComponent(
       BoxCollider,
-      { size: this.colliderSize } as BoxColliderData,
+      { size: this.colliderSize, trigger: this.trigger } as BoxColliderData,
       assertLoader
     )
   }

@@ -5,7 +5,7 @@ import {
   GlobalSceneComponentMarker,
   GlobalTeamControllerMarker,
 } from '../../engine/engine'
-import { HasType, vector2Include } from '../../engine/math'
+import { vector2Include } from '../../engine/math'
 import { AssetLoader } from '../../engine/resource'
 import Collider, { ColliderLayerType } from '../../engine/components/Collider'
 import { EventTriggerWhen, QuestEvent } from '../events/QuestEvent'
@@ -102,10 +102,11 @@ export default class SceneComponent extends Component {
     })
   }
 
-  triggerMapChest(position: Vector2) {
+  triggerMapChest(position: Vector2, trigger = false) {
     return this._mapChests.find((mapChest) => {
       return (
         mapChest.canTrigger() &&
+        mapChest.trigger === trigger &&
         vector2Include(position, mapChest.root.boundingBox)
       )
     })

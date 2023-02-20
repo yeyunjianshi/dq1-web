@@ -25,6 +25,7 @@ export function GetColliderLayerInteractive(
 }
 
 export default abstract class Collider extends Component implements ICollider {
+  trigger = false
   abstract collider(point: Vector2, layer: ColliderLayerType): boolean
 }
 
@@ -32,6 +33,7 @@ export type BoxColliderData = {
   type: string
   size?: Vector2
   layer?: ColliderLayerType
+  trigger?: boolean
 }
 
 @InnerGameComponent
@@ -39,8 +41,9 @@ export class BoxCollider extends Collider {
   size: Vector2 = [32, 32]
   layer = ColliderLayerType.Static
 
-  collider(point: Vector2, layer: ColliderLayerType): boolean {
+  collider(point: Vector2, layer: ColliderLayerType, trigger = false): boolean {
     return (
+      this.trigger === trigger &&
       this.root.active &&
       this.active &&
       GetColliderLayerInteractive(this.layer, layer) &&
@@ -54,5 +57,6 @@ export class BoxCollider extends Collider {
   parseData(_: AssetLoader, data: BoxColliderData): void {
     this.size = data.size || this.size
     this.layer = data.layer || this.layer
+    this.trigger = data.trigger ?? this.trigger
   }
 }

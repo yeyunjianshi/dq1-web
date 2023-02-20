@@ -503,10 +503,10 @@
                 65
             ],
             "scale": 1.5,
-            "selectedLayer": 32,
+            "selectedLayer": 42,
             "viewCenter": {
-                "x": 668.6666666666667,
-                "y": 666.6666666666666
+                "x": 636.3333333333334,
+                "y": 666
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle3.tmj": {
@@ -530,7 +530,7 @@
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/World.tmj": {
             "expandedGroupLayers": [
-                14,
+                28,
                 22
             ],
             "expandedObjectLayers": [
@@ -540,11 +540,11 @@
                 36,
                 21
             ],
-            "scale": 0.25,
-            "selectedLayer": 10,
+            "scale": 3,
+            "selectedLayer": 20,
             "viewCenter": {
-                "x": 1762,
-                "y": 1324
+                "x": 2811.1666666666665,
+                "y": 3722.333333333333
             }
         },
         "Tiles/Tiles.tsx": {
@@ -577,11 +577,12 @@
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle1.tmj"
     ],
     "project": "dq1.tiled-project",
-    "property.type": "string",
+    "property.type": "bool",
     "recentFiles": [
-        "E:/projects/web/dq1-web-pre/src/data/scenes/World.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/MarshyCave.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave2.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/World.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle1.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/Domdora.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle3.tmj",
@@ -589,8 +590,7 @@
         "E:/projects/web/dq1-web-pre/src/data/scenes/Rimuldar.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine1.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/Radatome.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Garai.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Garais1.tmj"
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Garai.tmj"
     ],
     "resizeMap.removeObjects": true,
     "textEdit.monospace": true,

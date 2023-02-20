@@ -236,6 +236,15 @@ export default class TeamControllerComponent
       interaction.interactive()
       return true
     }
+    const centerPosition = playerCenterPosition(this._head.position)
+    const mapChestInCurrentPosition = sceneComponent.triggerMapChest(
+      centerPosition,
+      true
+    )
+    if (mapChestInCurrentPosition) {
+      mapChestInCurrentPosition.interactive()
+      return true
+    }
     return false
   }
 
@@ -387,6 +396,10 @@ export default class TeamControllerComponent
 
   get headCameraPosition() {
     return vector2Add(this.cameraPosition, this.headPosition)
+  }
+
+  get headCoord() {
+    return this._head.coord
   }
 
   parseData(assetLoader: AssetLoader, data: TeamControllerData): void {
