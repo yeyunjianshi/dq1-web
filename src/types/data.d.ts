@@ -1,11 +1,3 @@
-/// <reference types="vite/client" />
-//----------------- Plugins -------------------
-declare module '*.tmj' {
-  const classes: SceneData
-  export default classes
-}
-// --------------------------------------------
-
 type ListenerFunction = (...args: any[]) => void
 
 interface SelectListener {
