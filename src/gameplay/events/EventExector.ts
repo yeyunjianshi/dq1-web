@@ -471,3 +471,7 @@ export async function transitionTo(
 ) {
   await transitionToScene(executingEngine!, nextSceneName, tag)
 }
+
+export function globalWindow() {
+  return executingEngine!.getVariable<GlobalWindowComponent>(GlobalWindowMarker)
+}

@@ -329,8 +329,10 @@
     "name": "虹之水滴",
     "price": 0,
     "sellPrice": -1,
+    "canUse": 1,
     "isCanDiscard": false,
-    "type": 32
+    "type": 32,
+    "effect": "u:common:script:rainbow"
   },
   {
     "id": 508,

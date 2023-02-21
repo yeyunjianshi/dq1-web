@@ -101,7 +101,7 @@ export function initScene(engine: Engine) {
   engine.sceneManager.loadScene(FadingScene.name)
   engine.sceneManager.loadScene(GlobalScene.name)
   engine.sceneManager.loadScene(TeamController.name)
-  // engine.sceneManager.loadScene(WorldScene.name)
+  engine.sceneManager.loadScene(WorldScene.name)
   // engine.sceneManager.loadScene('Battle')
   // engine.sceneManager.loadScene('Title')
   // engine.sceneManager.loadScene(LogoScene.name)
@@ -121,7 +121,7 @@ export function initScene(engine: Engine) {
   // engine.sceneManager.loadScene('RainShrine1')
   // engine.sceneManager.loadScene('RainShrine2')
   // engine.sceneManager.loadScene('HolyShrine1')
-  engine.sceneManager.loadScene('HolyShrine2')
+  // engine.sceneManager.loadScene('HolyShrine2')
 
   // engine.sceneManager.loadScene(RotosCave1Scene.name)
   // engine.sceneManager.loadScene(RotosCave2Scene.name)

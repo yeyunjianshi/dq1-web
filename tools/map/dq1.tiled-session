@@ -238,20 +238,20 @@
                 7
             ],
             "expandedObjectLayers": [
-                16,
-                34,
-                35,
-                32,
-                33,
-                36,
                 37,
+                36,
+                16,
+                33,
+                32,
+                35,
+                34,
                 14
             ],
-            "scale": 5.5,
+            "scale": 1.5,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 978.8181818181818,
-                "y": 810.7272727272727
+                "x": 1033.6666666666665,
+                "y": 676
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Garais4.tmj": {
@@ -266,8 +266,8 @@
             "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 416,
-                "y": 383.66666666666663
+                "x": 416.33333333333337,
+                "y": 383.33333333333337
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/HolyShrine1.tmj": {
@@ -294,7 +294,7 @@
             "selectedLayer": 11,
             "viewCenter": {
                 "x": 275.75,
-                "y": 301
+                "y": 300.5
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Maira.tmj": {
@@ -548,22 +548,19 @@
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/World.tmj": {
-            "expandedGroupLayers": [
-                14
-            ],
             "expandedObjectLayers": [
                 21,
                 36,
                 32,
                 35,
-                44,
+                45,
                 14
             ],
-            "scale": 1.5,
-            "selectedLayer": 11,
+            "scale": 4,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 3598.6666666666665,
-                "y": 3639.333333333333
+                "x": 2216.375,
+                "y": 1732.25
             }
         },
         "Tiles/Tiles.tsx": {
@@ -599,7 +596,7 @@
         "E:/projects/web/dq1-web-pre/src/data/scenes/RotosCave2.tmj"
     ],
     "project": "dq1.tiled-project",
-    "property.type": "string",
+    "property.type": "int",
     "recentFiles": [
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave2.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj",

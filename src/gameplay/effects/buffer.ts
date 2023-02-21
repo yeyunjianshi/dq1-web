@@ -6,6 +6,7 @@ import LoveOfPrincess from './LoveOfPrincess'
 import { SleepBufferMaker, SealingMagicBufferMaker } from './MarkerBuffer'
 import { MarkerBufferEffect } from './MarkerBufferEffect'
 import NotMeetEnemyEffect from './NotMeetEnemyEffect'
+import Rainbow from './Rainbow'
 import UsePeropertyEffect from './UsePropertyEffect'
 
 export enum CommandTriggerWhen {
@@ -148,6 +149,7 @@ export function parseUseEffect(
                 break
               case 'script':
                 if (args[2] === 'loveOfPrincess') return new LoveOfPrincess()
+                else if (args[2] === 'rainbow') return new Rainbow()
                 break
               case 'buff': // buff
                 break

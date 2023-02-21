@@ -13,6 +13,7 @@ export const Audios = {
   Dead: 'se/dead.mp3',
   Magic: 'se/magic.mp3',
   Heal: 'se/heal.mp3',
+  Rainbow: 'se/rainbow.mp3',
 }
 
 export function audioInitLoad(resource: IResource) {

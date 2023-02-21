@@ -182,8 +182,8 @@
          "id":31,
          "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_0.png",
          "name":"BornPoint",
-         "offsetx":2755.27272727273,
-         "offsety":3743.81818181818,
+         "offsetx":2211.27272727273,
+         "offsety":1697.81818181818,
          "opacity":1,
          "properties":[
                 {
@@ -203,7 +203,40 @@
         }, 
         {
          "id":30,
-         "layers":[],
+         "layers":[
+                {
+                 "id":46,
+                 "image":"..\/..\/..\/public\/assets\/sprites\/map\/ocean.png",
+                 "name":"ocean-block",
+                 "offsetx":2176,
+                 "offsety":1696,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"background",
+                         "type":"string",
+                         "value":"map\/ocean.png"
+                        }, 
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n\t {\n\t   \"type\": \"$BoxCollider\",\n\t   \"size\": [32, 32]\n\t },\n          {\n            \"type\": \"QuestEvent\",\n            \"eventId\": \"Q350\",\n\t   \"hideAfterFinish\": true,\n\t   \"when\": \"trigger\"\n          }\n]"
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":32
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }],
          "name":"Objects",
          "opacity":1,
          "type":"group",
@@ -1277,7 +1310,7 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":46,
+ "nextlayerid":47,
  "nextobjectid":56,
  "orientation":"orthogonal",
  "renderorder":"right-down",

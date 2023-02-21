@@ -14,7 +14,7 @@ const DefaultInitGameCharacter = import.meta.env.DEV
   ? {
       id: 1,
       lv: 1,
-      inventory: [1, 2, 4, 206, 207, 502, 401, 506, 503, 504],
+      inventory: [1, 2, 4, 206, 207, 507, 401, 506, 503, 504],
       magics: [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010],
       npcs: [2],
       events: [
