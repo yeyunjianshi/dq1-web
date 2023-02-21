@@ -39,7 +39,6 @@ export default class Character {
   power = 7
   speed = 2
   resilience = 5
-  exp = 0
   _gold = 120
 
   weaponId = 0
@@ -47,7 +46,7 @@ export default class Character {
   shieldId = 0
   accessoriesId = 0
 
-  lvsAbility?: Partial<Character>[]
+  lvsAbility: Partial<Character>[] = []
   buffers: Buffer[] = []
   magics: Magic[] = []
 
@@ -209,10 +208,20 @@ export default class Character {
     return this._gold
   }
 
-  _currentExp = 0
+  exp = 0
+  nextLvExp = 0
+
+  get nextExp() {
+    if (this.lv >= this.maxLv) return 0
+
+    const ability = this.lvsAbility!.find((val) => val.lv === this.lv + 1)
+    return (ability?.exp ?? this.exp) - this.exp
+  }
+
+  set nextExp(val: number) {}
 
   addExp(exp: number) {
-    this._currentExp += exp
+    this.exp += exp
     while (
       this.judgeLvUp() &&
       this.lvsAbility &&
@@ -223,17 +232,15 @@ export default class Character {
   }
 
   judgeLvUp() {
-    return this.lv < this.maxLv && this._currentExp >= this.exp
+    return this.lv < this.maxLv && this.exp >= this.nextLvExp
   }
 
   lvUp(): Partial<Character> | undefined {
     if (this.lv >= this.maxLv) return undefined
 
     this.lv++
-    let ability = undefined
-
-    if (this.lvsAbility && this.lvsAbility.length > this.lv) {
-      ability = this.lvsAbility[this.lv]
+    const ability = this.lvsAbility.find((val) => val.lv === this.lv)
+    if (ability) {
       for (const prop in ability) {
         if (
           ['maxHP', 'maxMP', 'power', 'speed', 'resilience'].indexOf(prop) >= 0
@@ -244,6 +251,7 @@ export default class Character {
         }
       }
     }
+
     GlobalEventEmit(GlobalEventType.ChracterStatusChanged, this)
     return ability
   }

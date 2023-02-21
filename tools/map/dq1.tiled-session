@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "E:/projects/web/dq1-web-pre/src/data/scenes/MarshyCave.tmj",
+    "activeFile": "E:/projects/web/dq1-web-pre/src/data/scenes/Garais2.tmj",
     "automapping.whileDrawing": false,
     "expandedProjectPaths": [
         "E:/projects/web/dq1-web-pre/src/data/scenes"
@@ -20,17 +20,17 @@
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle1.tmj": {
             "expandedGroupLayers": [
+                22,
                 14,
-                28,
-                22
+                28
             ],
             "expandedObjectLayers": [
-                14,
                 35,
                 34,
                 33,
                 32,
-                16
+                16,
+                14
             ],
             "scale": 0.75,
             "selectedLayer": 2,
@@ -173,38 +173,38 @@
         "E:/projects/web/dq1-web-pre/src/data/scenes/Garai.tmj": {
             "expandedGroupLayers": [
                 26,
-                14,
-                28,
                 7,
-                22
+                22,
+                14,
+                28
             ],
             "expandedObjectLayers": [
-                59,
-                57,
                 56,
-                14,
                 55,
-                21
+                21,
+                14,
+                59,
+                57
             ],
             "scale": 0.75,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 856,
-                "y": 455.99999999999994
+                "x": 576,
+                "y": 560.6666666666667
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Garais1.tmj": {
             "expandedGroupLayers": [
-                14,
-                35,
-                28,
                 7,
-                22
+                35,
+                22,
+                14,
+                28
             ],
             "expandedObjectLayers": [
-                14,
+                21,
                 16,
-                21
+                14
             ],
             "scale": 3,
             "selectedLayer": 10,
@@ -238,20 +238,20 @@
                 7
             ],
             "expandedObjectLayers": [
-                14,
-                35,
-                34,
-                33,
-                32,
                 16,
+                34,
+                35,
+                32,
+                33,
+                36,
                 37,
-                36
+                14
             ],
-            "scale": 1,
+            "scale": 5.5,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 944,
-                "y": 524
+                "x": 978.8181818181818,
+                "y": 810.7272727272727
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Garais4.tmj": {
@@ -259,15 +259,15 @@
                 14
             ],
             "expandedObjectLayers": [
-                14,
                 32,
-                16
+                16,
+                14
             ],
             "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 340.66666666666663,
-                "y": 325.33333333333337
+                "x": 416,
+                "y": 383.66666666666663
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/HolyShrine1.tmj": {
@@ -289,56 +289,56 @@
         "E:/projects/web/dq1-web-pre/src/data/scenes/Maira.tmj": {
             "expandedGroupLayers": [
                 26,
-                14,
-                28,
                 7,
-                22
-            ],
-            "expandedObjectLayers": [
-                57,
-                56,
-                14,
-                21
-            ],
-            "scale": 1.5,
-            "selectedLayer": 15,
-            "viewCenter": {
-                "x": 651.3333333333333,
-                "y": 524.6666666666666
-            }
-        },
-        "E:/projects/web/dq1-web-pre/src/data/scenes/MarshyCave.tmj": {
-            "expandedGroupLayers": [
-                14,
-                7,
-                22
-            ],
-            "expandedObjectLayers": [
-                14,
-                32,
-                21
-            ],
-            "scale": 1.5,
-            "selectedLayer": 10,
-            "viewCenter": {
-                "x": 410.3333333333333,
-                "y": 1018.3333333333333
-            }
-        },
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado1.tmj": {
-            "expandedGroupLayers": [
                 22,
-                7,
-                26,
                 14,
                 28
             ],
             "expandedObjectLayers": [
-                61,
-                16,
+                56,
                 21,
                 14,
+                57
+            ],
+            "scale": 1.5,
+            "selectedLayer": 8,
+            "viewCenter": {
+                "x": 640,
+                "y": 639.6666666666666
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/MarshyCave.tmj": {
+            "expandedGroupLayers": [
+                7,
+                22,
+                14
+            ],
+            "expandedObjectLayers": [
+                21,
+                32,
+                14
+            ],
+            "scale": 0.75,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 582,
+                "y": 1661.3333333333333
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado1.tmj": {
+            "expandedGroupLayers": [
+                26,
+                7,
+                22,
+                14,
+                28
+            ],
+            "expandedObjectLayers": [
+                21,
+                16,
                 62,
+                61,
+                14,
                 60
             ],
             "scale": 0.75,
@@ -387,8 +387,8 @@
             "scale": 0.7593749999999999,
             "selectedLayer": 16,
             "viewCenter": {
-                "x": 691.3580246913581,
-                "y": 608.3950617283951
+                "x": 608.3950617283951,
+                "y": 609.053497942387
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine1.tmj": {
@@ -403,45 +403,45 @@
             "scale": 2.4046875,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 176.73814165042236,
-                "y": 192.5406107862248
+                "x": 176.53021442495128,
+                "y": 192.3326835607537
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Rimuldar.tmj": {
             "expandedGroupLayers": [
                 26,
+                7,
+                22,
                 14,
                 30,
-                28,
-                7,
-                22
+                28
             ],
             "expandedObjectLayers": [
-                58,
-                57,
                 56,
-                14,
                 55,
-                21
+                21,
+                14,
+                58,
+                57
             ],
             "scale": 0.75,
             "selectedLayer": 24,
             "viewCenter": {
-                "x": 585.3333333333333,
-                "y": 866.6666666666667
+                "x": 607.9999999999999,
+                "y": 593.3333333333333
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave1.tmj": {
             "expandedGroupLayers": [
+                22,
                 14,
-                28,
-                22
+                28
             ],
             "scale": 0.75,
-            "selectedLayer": 1,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 765.3333333333333,
-                "y": 579.9999999999999
+                "x": 704,
+                "y": 702.6666666666667
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave2.tmj": {
@@ -450,10 +450,10 @@
                 28
             ],
             "expandedObjectLayers": [
-                14,
                 38,
+                37,
                 16,
-                37
+                14
             ],
             "scale": 0.5,
             "selectedLayer": 0,
@@ -494,57 +494,56 @@
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj": {
             "expandedGroupLayers": [
+                7,
                 14,
-                28,
-                7
+                28
             ],
             "expandedObjectLayers": [
-                14,
-                65
+                65,
+                14
             ],
             "scale": 1.5,
-            "selectedLayer": 42,
+            "selectedLayer": 32,
             "viewCenter": {
-                "x": 636.3333333333334,
-                "y": 666
+                "x": 672,
+                "y": 655.6666666666666
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle3.tmj": {
             "expandedGroupLayers": [
                 26,
-                14,
-                28,
                 7,
-                22
+                22,
+                14,
+                28
             ],
             "expandedObjectLayers": [
-                14,
-                16
+                16,
+                14
             ],
             "scale": 1.5,
             "selectedLayer": 11,
             "viewCenter": {
-                "x": 340,
-                "y": 221.99999999999997
+                "x": 272,
+                "y": 160.33333333333331
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/World.tmj": {
             "expandedGroupLayers": [
-                28,
-                22
+                14
             ],
             "expandedObjectLayers": [
-                14,
-                35,
-                32,
                 36,
-                21
+                35,
+                21,
+                32,
+                14
             ],
-            "scale": 3,
-            "selectedLayer": 20,
+            "scale": 0.33,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 2811.1666666666665,
-                "y": 3722.333333333333
+                "x": 2019.6969696969697,
+                "y": 2019.6969696969695
             }
         },
         "Tiles/Tiles.tsx": {
@@ -574,23 +573,26 @@
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave1.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle3.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/Domdora.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle1.tmj"
+        "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle1.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado1.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/RotosCave1.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/RotosCave2.tmj"
     ],
     "project": "dq1.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "E:/projects/web/dq1-web-pre/src/data/scenes/MarshyCave.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave2.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/World.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/RotosCave2.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/RotosCave1.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado1.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle1.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/Domdora.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle3.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave1.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/Rimuldar.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine1.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Radatome.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Garai.tmj"
+        "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine1.tmj"
     ],
     "resizeMap.removeObjects": true,
     "textEdit.monospace": true,

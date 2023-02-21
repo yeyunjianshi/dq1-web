@@ -3,27 +3,287 @@
     "id": 1,
     "roleId": 0,
     "name": "阿弗雷",
-    "lv": 0,
-    "maxHP": 105,
-    "maxMP": 100,
+    "lv": 1,
+    "maxHP": 15,
+    "maxMP": 0,
     "_hp": 15,
-    "_mp": 100,
+    "_mp": 0,
     "power": 7,
     "speed": 2,
     "resilience": 5,
     "exp": 0,
-    "nextExp": 0,
     "gold": 120,
 
     "lvsAbility": [
       {
         "lv": 1,
-        "exp": 0
+        "exp": 0,
+        "maxHP": 0,
+        "maxMP": 0,
+        "power": 0,
+        "speed": 0,
+        "resilience": 0
       },
       {
         "lv": 2,
+        "exp": 7,
+        "maxHP": 6,
+        "maxMP": 0,
         "power": 2,
-        "maxHp": 6
+        "speed": 0,
+        "resilience": 0
+      },
+      {
+        "lv": 3,
+        "exp": 23,
+        "maxHP": 2,
+        "maxMP": 4,
+        "power": 2,
+        "speed": 1,
+        "resilience": 2
+      },
+      {
+        "lv": 4,
+        "exp": 47,
+        "maxHP": 6,
+        "maxMP": 6,
+        "power": 1,
+        "speed": 1,
+        "resilience": 2
+      },
+      {
+        "lv": 5,
+        "exp": 110,
+        "maxHP": 4,
+        "maxMP": 4,
+        "power": 4,
+        "speed": 2,
+        "resilience": 1
+      },
+      {
+        "lv": 6,
+        "exp": 220,
+        "maxHP": 4,
+        "maxMP": 3,
+        "power": 4,
+        "speed": 0,
+        "resilience": 0
+      },
+      {
+        "lv": 7,
+        "exp": 450,
+        "maxHP": 1,
+        "maxMP": 2,
+        "power": 5,
+        "speed": 7,
+        "resilience": 3
+      },
+      {
+        "lv": 8,
+        "exp": 800,
+        "maxHP": 5,
+        "maxMP": 3,
+        "power": 4,
+        "speed": 3,
+        "resilience": 2
+      },
+      {
+        "lv": 9,
+        "exp": 1300,
+        "maxHP": 4,
+        "maxMP": 6,
+        "power": 4,
+        "speed": 2,
+        "resilience": 1
+      },
+      {
+        "lv": 10,
+        "exp": 2000,
+        "maxHP": 3,
+        "maxMP": 3,
+        "power": 5,
+        "speed": 9,
+        "resilience": 4
+      },
+      {
+        "lv": 11,
+        "exp": 2900,
+        "maxHP": 7,
+        "maxMP": 9,
+        "power": 5,
+        "speed": 4,
+        "resilience": 2
+      },
+      {
+        "lv": 12,
+        "exp": 4000,
+        "maxHP": 1,
+        "maxMP": 7,
+        "power": 8,
+        "speed": 5,
+        "resilience": 3
+      },
+      {
+        "lv": 13,
+        "exp": 5500,
+        "maxHP": 7,
+        "maxMP": 5,
+        "power": 4,
+        "speed": 8,
+        "resilience": 4
+      },
+      {
+        "lv": 14,
+        "exp": 7500,
+        "maxHP": 7,
+        "maxMP": 6,
+        "power": 8,
+        "speed": 7,
+        "resilience": 3
+      },
+      {
+        "lv": 15,
+        "exp": 10000,
+        "maxHP": 7,
+        "maxMP": 1,
+        "power": 8,
+        "speed": 9,
+        "resilience": 5
+      },
+      {
+        "lv": 16,
+        "exp": 13000,
+        "maxHP": 5,
+        "maxMP": 21,
+        "power": 4,
+        "speed": 6,
+        "resilience": 3
+      },
+      {
+        "lv": 17,
+        "exp": 16000,
+        "maxHP": 8,
+        "maxMP": 5,
+        "power": 8,
+        "speed": 0,
+        "resilience": 4
+      },
+      {
+        "lv": 18,
+        "exp": 19000,
+        "maxHP": 13,
+        "maxMP": 7,
+        "power": 13,
+        "speed": 6,
+        "resilience": 3
+      },
+      {
+        "lv": 19,
+        "exp": 22000,
+        "maxHP": 14,
+        "maxMP": 6,
+        "power": 2,
+        "speed": 2,
+        "resilience": 1
+      },
+      {
+        "lv": 20,
+        "exp": 26000,
+        "maxHP": 7,
+        "maxMP": 12,
+        "power": 5,
+        "speed": 2,
+        "resilience": 1
+      },
+      {
+        "lv": 21,
+        "exp": 30000,
+        "maxHP": 10,
+        "maxMP": 7,
+        "power": 3,
+        "speed": 2,
+        "resilience": 1
+      },
+      {
+        "lv": 22,
+        "exp": 34000,
+        "maxHP": 8,
+        "maxMP": 10,
+        "power": 2,
+        "speed": 0,
+        "resilience": 0
+      },
+      {
+        "lv": 23,
+        "exp": 38000,
+        "maxHP": 2,
+        "maxMP": 4,
+        "power": 2,
+        "speed": 6,
+        "resilience": 6
+      },
+      {
+        "lv": 24,
+        "exp": 42000,
+        "maxHP": 5,
+        "maxMP": 7,
+        "power": 4,
+        "speed": 4,
+        "resilience": 2
+      },
+      {
+        "lv": 25,
+        "exp": 46000,
+        "maxHP": 3,
+        "maxMP": 0,
+        "power": 10,
+        "speed": 2,
+        "resilience": 1
+      },
+      {
+        "lv": 26,
+        "exp": 50000,
+        "maxHP": 6,
+        "maxMP": 7,
+        "power": 4,
+        "speed": 5,
+        "resilience": 2
+      },
+      {
+        "lv": 27,
+        "exp": 54000,
+        "maxHP": 8,
+        "maxMP": 6,
+        "power": 8,
+        "speed": 2,
+        "resilience": 1
+      },
+      {
+        "lv": 28,
+        "exp": 58000,
+        "maxHP": 5,
+        "maxMP": 5,
+        "power": 5,
+        "speed": 8,
+        "resilience": 4
+      },
+      {
+        "lv": 29,
+        "exp": 62000,
+        "maxHP": 5,
+        "maxMP": 9,
+        "power": 5,
+        "speed": 5,
+        "resilience": 3
+      },
+      {
+        "lv": 30,
+        "exp": 65536,
+        "maxHP": 10,
+        "maxMP": 10,
+        "power": 5,
+        "speed": 10,
+        "resilience": 5
       }
     ]
   }
