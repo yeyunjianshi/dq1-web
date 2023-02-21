@@ -20,6 +20,7 @@ import { Audios } from '../audio/AudioConfig'
 import SceneComponent from '../core/SceneComponent'
 import { NPCControllerComponent } from '../core/NPCControllerComponent'
 import TeamControllerComponent from '../core/TeamControllerComponent'
+import { Direction } from '@engine/input'
 
 const gameEvents = new Map<string, string>()
 
@@ -403,6 +404,10 @@ export function getQuestNPC(characterName?: string) {
   ) as NPCControllerComponent
 }
 
+export function getGameObject(name: string) {
+  return currentScene().rootObject.getGameObjectInChildren(name)
+}
+
 export function hasQuestEvents(...questsId: (number | string)[]) {
   return questsId.forEach((questId) =>
     globalGameData.hasEvent(generateEventId(questId))
@@ -429,6 +434,10 @@ export function addItems(...itemsId: number[]) {
   return itemsId.map((id) => globalGameData.inventory.addItem(id).item.name)
 }
 
+export function removeItems(...itemsId: number[]) {
+  itemsId.forEach((id) => globalGameData.inventory.removeItemId(id))
+}
+
 export function audio() {
   return executingEngine!.audios
 }
@@ -448,4 +457,17 @@ export function headCoord() {
     GlobalTeamControllerMarker
   )
   return teamController.headCoord
+}
+
+export async function transitionTo(
+  nextSceneName: string,
+  tag?:
+    | string
+    | {
+        worldPosition: Vector2
+        direction: Direction
+        isPremutation: boolean
+      }
+) {
+  await transitionToScene(executingEngine!, nextSceneName, tag)
 }

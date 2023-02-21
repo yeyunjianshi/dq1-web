@@ -906,6 +906,75 @@
                 }, 
                 {
                  "draworder":"topdown",
+                 "id":44,
+                 "name":"RainShrine",
+                 "objects":[
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":53,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":2734.66666666667,
+                         "y":180
+                        }],
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":85
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":5
+                        }, 
+                        {
+                         "name":"d_direction",
+                         "type":"string",
+                         "value":"down"
+                        }, 
+                        {
+                         "name":"d_isPremutation",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"d_tag",
+                         "type":"string",
+                         "value":"RainShrine1"
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"t_nextScene",
+                         "type":"string",
+                         "value":"RainShrine1"
+                        }, 
+                        {
+                         "name":"t_tag",
+                         "type":"string",
+                         "value":"RainShrine1"
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":32
+                        }],
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "draworder":"topdown",
                  "id":34,
                  "name":"Maira",
                  "objects":[
@@ -1139,8 +1208,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":44,
- "nextobjectid":52,
+ "nextlayerid":45,
+ "nextobjectid":54,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",

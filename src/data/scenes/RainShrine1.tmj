@@ -3,28 +3,6 @@
  "infinite":false,
  "layers":[
         {
-         "class":"BornPoint",
-         "id":31,
-         "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_0.png",
-         "name":"BornPoint",
-         "opacity":1,
-         "properties":[
-                {
-                 "name":"direction",
-                 "type":"string",
-                 "value":"down"
-                }, 
-                {
-                 "name":"isPremutation",
-                 "type":"bool",
-                 "value":false
-                }],
-         "type":"imagelayer",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
          "id":2,
          "image":"..\/..\/..\/public\/assets\/sprites\/map\/RainShrine1.png",
          "name":"Map",
@@ -65,11 +43,11 @@
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0,
+            0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -81,6 +59,30 @@
          "type":"tilelayer",
          "visible":true,
          "width":13,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "class":"BornPoint",
+         "id":31,
+         "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_0.png",
+         "name":"BornPoint",
+         "offsetx":192.367338098332,
+         "offsety":225.254494260342,
+         "opacity":1,
+         "properties":[
+                {
+                 "name":"direction",
+                 "type":"string",
+                 "value":"down"
+                }, 
+                {
+                 "name":"isPremutation",
+                 "type":"bool",
+                 "value":false
+                }],
+         "type":"imagelayer",
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -219,7 +221,7 @@
                         {
                          "name":"d_tag",
                          "type":"string",
-                         "value":"RainShrine1"
+                         "value":""
                         }, 
                         {
                          "name":"height",
@@ -240,6 +242,86 @@
                          "name":"width",
                          "type":"int",
                          "value":252
+                        }, 
+                        {
+                         "name":"x",
+                         "type":"int",
+                         "value":128
+                        }, 
+                        {
+                         "name":"y",
+                         "type":"int",
+                         "value":288
+                        }],
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "class":"Entrace",
+                 "draworder":"topdown",
+                 "id":32,
+                 "name":"\u4e0b\u5165\u53e3",
+                 "objects":[
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":23,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":206.783625730994,
+                         "y":276.16200996318
+                        }],
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":6
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":8
+                        }, 
+                        {
+                         "name":"d_direction",
+                         "type":"string",
+                         "value":"up"
+                        }, 
+                        {
+                         "name":"d_isPremutation",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"d_tag",
+                         "type":"string",
+                         "value":"RainShrine1"
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"t_nextScene",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"t_tag",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":32
                         }, 
                         {
                          "name":"x",
@@ -283,8 +365,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":32,
- "nextobjectid":22,
+ "nextlayerid":33,
+ "nextobjectid":24,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",
