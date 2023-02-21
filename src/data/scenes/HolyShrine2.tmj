@@ -3,28 +3,6 @@
  "infinite":false,
  "layers":[
         {
-         "class":"BornPoint",
-         "id":31,
-         "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_0.png",
-         "name":"BornPoint",
-         "opacity":1,
-         "properties":[
-                {
-                 "name":"direction",
-                 "type":"string",
-                 "value":"down"
-                }, 
-                {
-                 "name":"isPremutation",
-                 "type":"bool",
-                 "value":false
-                }],
-         "type":"imagelayer",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
          "id":2,
          "image":"..\/..\/..\/public\/assets\/sprites\/map\/HolyShrine2.png",
          "name":"Map",
@@ -61,20 +39,20 @@
          "y":0
         }, 
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "data":[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+            1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1,
+            1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1,
+            1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1,
+            1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1,
+            1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1,
+            1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1,
+            1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1,
+            1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1,
+            1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1,
+            1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1,
+            1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
          "height":14,
          "id":1,
          "name":"Tiles",
@@ -82,6 +60,30 @@
          "type":"tilelayer",
          "visible":true,
          "width":15,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "class":"BornPoint",
+         "id":31,
+         "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_0.png",
+         "name":"BornPoint",
+         "offsetx":224.660385531731,
+         "offsety":324.826619016678,
+         "opacity":1,
+         "properties":[
+                {
+                 "name":"direction",
+                 "type":"string",
+                 "value":"down"
+                }, 
+                {
+                 "name":"isPremutation",
+                 "type":"bool",
+                 "value":false
+                }],
+         "type":"imagelayer",
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -107,7 +109,43 @@
         }, 
         {
          "id":7,
-         "layers":[],
+         "layers":[
+                {
+                 "id":32,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_7.png",
+                 "name":"\u6cd5\u5e08 Q340",
+                 "offsetx":224.14554905783,
+                 "offsety":281.880008663634,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 7,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          },\n          {\n            \"type\": \"QuestEvent\",\n            \"eventId\": \"Q340\",\n\t   \"hideAfterFinish\": true\n          }\n    \n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":33,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_7.png",
+                 "name":"\u6cd5\u5e08 Q341",
+                 "offsetx":255.681178254278,
+                 "offsety":284.30582629413,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 7,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q341\",\n\t   \"predecessorId\": [\"Q340\"],\n\t   \"hideStart\": true\n          }\n    \n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }],
          "name":"NPC",
          "opacity":1,
          "type":"group",
@@ -255,7 +293,70 @@
         }, 
         {
          "id":28,
-         "layers":[],
+         "layers":[
+                {
+                 "id":35,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/MapChest.png",
+                 "name":"Chest1 Q342",
+                 "offsetx":223,
+                 "offsety":192,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"background",
+                         "type":"string",
+                         "value":"map\/MapChest.png"
+                        }, 
+                        {
+                         "name":"collider_height",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"collider_width",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[          \n\t{\n            \"type\": \"QuestEvent\",\n            \"eventId\": \"Q342\",\n\t   \"predecessorId\": [\"Q340\"],\n\t   \"insertEventTable\": true,\n\t   \"hideAfterFinish\": true,\n\t   \"hideStart\": true\n          }\n]"
+                        }, 
+                        {
+                         "name":"finishEvents",
+                         "type":"string",
+                         "value":"[\"Q342\"]"
+                        }, 
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"HolyShrine2_Chest_1"
+                        }, 
+                        {
+                         "name":"items",
+                         "type":"string",
+                         "value":"[507]"
+                        }, 
+                        {
+                         "name":"money",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"Holy"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }],
          "name":"MapChests",
          "opacity":1,
          "type":"group",
@@ -273,7 +374,7 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":32,
+ "nextlayerid":36,
  "nextobjectid":21,
  "orientation":"orthogonal",
  "renderorder":"right-down",

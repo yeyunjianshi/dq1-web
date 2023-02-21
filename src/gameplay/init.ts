@@ -119,9 +119,9 @@ export function initScene(engine: Engine) {
   // engine.sceneManager.loadScene(Mercado3Scene.name)
 
   // engine.sceneManager.loadScene('RainShrine1')
-  engine.sceneManager.loadScene('RainShrine2')
+  // engine.sceneManager.loadScene('RainShrine2')
   // engine.sceneManager.loadScene('HolyShrine1')
-  // engine.sceneManager.loadScene('HolyShrine2')
+  engine.sceneManager.loadScene('HolyShrine2')
 
   // engine.sceneManager.loadScene(RotosCave1Scene.name)
   // engine.sceneManager.loadScene(RotosCave2Scene.name)

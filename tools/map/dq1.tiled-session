@@ -271,19 +271,30 @@
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/HolyShrine1.tmj": {
+            "expandedGroupLayers": [
+                14
+            ],
+            "expandedObjectLayers": [
+                32,
+                14
+            ],
             "scale": 1.9237499999999998,
-            "selectedLayer": 0,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 325.66601689408714,
-                "y": 295.2566601689409
+                "x": 262.50812215724494,
+                "y": 303.5737491877843
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/HolyShrine2.tmj": {
-            "scale": 2.0611607142857142,
-            "selectedLayer": 0,
+            "expandedGroupLayers": [
+                7,
+                28
+            ],
+            "scale": 2,
+            "selectedLayer": 11,
             "viewCenter": {
-                "x": 241.61143599740092,
-                "y": 224.14554905782975
+                "x": 275.75,
+                "y": 301
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Maira.tmj": {
@@ -359,7 +370,7 @@
             "scale": 2,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 204.75,
+                "x": 205,
                 "y": 140
             }
         },
@@ -398,8 +409,8 @@
             "scale": 2.2197115384615387,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 259.0426683993935,
-                "y": 231.1111111111111
+                "x": 213.5412605588044,
+                "y": 325.26748971193416
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine2.tmj": {
@@ -409,10 +420,10 @@
                 14
             ],
             "scale": 2,
-            "selectedLayer": 7,
+            "selectedLayer": 5,
             "viewCenter": {
                 "x": 213.5,
-                "y": 157.5
+                "y": 157
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Rimuldar.tmj": {
@@ -511,10 +522,10 @@
                 14
             ],
             "scale": 1.5,
-            "selectedLayer": 45,
+            "selectedLayer": 32,
             "viewCenter": {
-                "x": 672.6666666666666,
-                "y": 654.6666666666666
+                "x": 673.6666666666666,
+                "y": 654
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle3.tmj": {
@@ -545,13 +556,14 @@
                 36,
                 32,
                 35,
+                44,
                 14
             ],
             "scale": 1.5,
-            "selectedLayer": 15,
+            "selectedLayer": 11,
             "viewCenter": {
-                "x": 203.3333333333333,
-                "y": 209.99999999999997
+                "x": 3598.6666666666665,
+                "y": 3639.333333333333
             }
         },
         "Tiles/Tiles.tsx": {
@@ -587,7 +599,7 @@
         "E:/projects/web/dq1-web-pre/src/data/scenes/RotosCave2.tmj"
     ],
     "project": "dq1.tiled-project",
-    "property.type": "int",
+    "property.type": "string",
     "recentFiles": [
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave2.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj",
