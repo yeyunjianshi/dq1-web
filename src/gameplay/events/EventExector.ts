@@ -409,7 +409,7 @@ export function getGameObject(name: string) {
 }
 
 export function hasQuestEvents(...questsId: (number | string)[]) {
-  return questsId.forEach((questId) =>
+  return questsId.every((questId) =>
     globalGameData.hasEvent(generateEventId(questId))
   )
 }
@@ -420,6 +420,7 @@ export function finishQuestEvents(...questsId: (number | string)[]) {
 
 export function removeQuestEvents(...questsId: (number | string)[]) {
   questsId.forEach((id) => globalGameData.removeEvent(generateEventId(id)))
+  console.log(globalGameData.events)
 }
 
 export function hasItems(...items: number[]) {

@@ -6,4 +6,5 @@ task(async () => {
   await talk('luola', 'Q610_4')
   await message('Q610_5')
   changeHeroRoleId(1)
+  finishQuestEvents('Q665')
 })

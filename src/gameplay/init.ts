@@ -1,7 +1,7 @@
 import { AddGameSceneData } from '@engine/sceneManager'
 
 import TantegelCastleScene from '@data/scenes/TantegelCastle.tmj'
-import TantegelCastle2Scene from '@data/scenes/TantegelCastle2.json'
+import TantegelCastle2Scene from '@data/scenes/TantegelCastle2.tmj'
 import TantegelCastle3Scene from '@data/scenes/TantegelCastle3.tmj'
 import GaraiScene from '@data/scenes/Garai.tmj'
 import MairaScene from '@data/scenes/Maira.tmj'
@@ -101,13 +101,13 @@ export function initScene(engine: Engine) {
   engine.sceneManager.loadScene(FadingScene.name)
   engine.sceneManager.loadScene(GlobalScene.name)
   engine.sceneManager.loadScene(TeamController.name)
-  engine.sceneManager.loadScene(WorldScene.name)
+  // engine.sceneManager.loadScene(WorldScene.name)
   // engine.sceneManager.loadScene('Battle')
   // engine.sceneManager.loadScene('Title')
   // engine.sceneManager.loadScene(LogoScene.name)
 
   // engine.sceneManager.loadScene(TantegelCastleScene.name)
-  // engine.sceneManager.loadScene(TantegelCastle2Scene.name)
+  engine.sceneManager.loadScene(TantegelCastle2Scene.name)
   // engine.sceneManager.loadScene(TantegelCastle3Scene.name)
   // engine.sceneManager.loadScene(RadatomeScene.name)
   // engine.sceneManager.loadScene(MairaScene.name)

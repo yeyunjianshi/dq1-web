@@ -1176,6 +1176,11 @@
                  "opacity":1,
                  "properties":[
                         {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[{\n\t\"type\": \"QuestEvent\",\n\t\"eventId\": \"Q2\",\n\t\"when\": \"enter\"\n}]"
+                        }, 
+                        {
                          "name":"coordX",
                          "type":"int",
                          "value":47
