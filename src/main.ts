@@ -6,6 +6,7 @@ import { audioInitLoad } from './gameplay/audio/AudioConfig'
 import {
   setEventEngine,
   SetGameEventScript,
+  transitionTo,
 } from './gameplay/events/EventExector'
 import {
   globalGameData,

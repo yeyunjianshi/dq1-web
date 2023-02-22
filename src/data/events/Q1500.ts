@@ -43,8 +43,12 @@ task(async () => {
     .map((_, i) => getQuestNPC(`bingshi_${i}`))
     .forEach((v) => (v.roleIndex = 20))
 
-  if (hasQuestEvents('666')) await princess.smoothMoveToCoord([0, 1])
+  if (hasQuestEvents('Q666')) {
+    await princess.smoothMoveToCoord([0, 1])
+  }
 
   teamController().smoothMoveToCoord([17, 20])
   await princess.smoothMoveToCoord([0, 6])
+  await delay(1000)
+  transitionTo('End')
 })

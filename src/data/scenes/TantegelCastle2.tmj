@@ -154,7 +154,7 @@
                         {
                          "name":"door_collider_height",
                          "type":"int",
-                         "value":32
+                         "value":96
                         }, 
                         {
                          "name":"door_collider_width",

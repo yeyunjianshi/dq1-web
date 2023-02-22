@@ -94,8 +94,8 @@
          "id":31,
          "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_0.png",
          "name":"BornPoint",
-         "offsetx":546.666666666667,
-         "offsety":476.333333333333,
+         "offsetx":542.666666666667,
+         "offsety":964.333333333333,
          "opacity":1,
          "properties":[
                 {
@@ -191,7 +191,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 16,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1101\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 16,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          },\n          {\n            \"type\": \"QuestEvent\",\n            \"eventId\": \"Q7000\",\n\t   \"hideEventsId\": [\"Q888\"],\n\t   \"hideAfterFinish\": true\n          }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,

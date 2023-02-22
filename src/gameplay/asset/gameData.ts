@@ -18,7 +18,7 @@ const DefaultInitGameCharacter = import.meta.env.DEV
       magics: [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010],
       npcs: [2],
       events: [
-        // generateEventId('Q660'),
+        generateEventId('Q660'),
         generateEventId('Q666'),
         // generateEventId('Q888'),
       ],

@@ -43,7 +43,7 @@
                 {
                  "name":"isCave",
                  "type":"bool",
-                 "value":false
+                 "value":true
                 }, 
                 {
                  "name":"isMeetEnemy",
