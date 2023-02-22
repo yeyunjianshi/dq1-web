@@ -1,4 +1,5 @@
 import FadingComponent from '@engine/components/FadingComponent'
+import { nextFrame } from '@engine/time'
 import { Audios } from '@gameplay/audio/AudioConfig'
 import { GameplayComponent } from '../../engine/components'
 import { ColliderLayerType } from '../../engine/components/Collider'
@@ -22,13 +23,19 @@ import {
   GlobalWindowMarker,
 } from '../../engine/engine'
 import GameObject from '../../engine/gameObject'
-import { Direction, oppsiteDirection } from '../../engine/input'
+import {
+  Direction,
+  getDirectionByCoord,
+  oppsiteDirection,
+} from '../../engine/input'
 import {
   vector2Add,
   distance,
   lerpVector2,
   vector2Include,
   HasType,
+  vector2Minus,
+  vector2Equal,
 } from '../../engine/math'
 import { AssetLoader } from '../../engine/resource'
 import { globalGameData, InputType } from '../asset/gameData'
@@ -56,7 +63,6 @@ export default class TeamControllerComponent
   extends MoveComponent
   implements ICollider
 {
-  [x: string]: any
   characterSpriteName = ''
   playerMoveComponents: MoveComponent[] = []
   playerStats: MoveState[] = []
@@ -114,8 +120,8 @@ export default class TeamControllerComponent
     this.camera.moveToCenter(this.headPosition)
   }
 
-  updateDistance(moveDelta: number): void {
-    if (globalGameData.inputType !== InputType.Move) return
+  updateDistance(moveDelta: number, force = false): void {
+    if (!force && globalGameData.inputType !== InputType.Move) return
 
     const pressedDirection = this.input.getPressedDirection()
 
@@ -166,7 +172,7 @@ export default class TeamControllerComponent
         if (this.checkTargetEvent()) return
 
         if (moveDistance - moveDelta > 0.01) {
-          this.updateDistance(moveDistance - moveDelta)
+          this.updateDistance(moveDistance - moveDelta, force)
         }
       } else {
         this.move(moveDelta)
@@ -384,6 +390,32 @@ export default class TeamControllerComponent
 
   public moveTo(worldPostion: Vector2, dir: Direction, isPermutation = true) {
     this.moveToCoord(PositionToCoord(worldPostion), dir, isPermutation)
+  }
+
+  public async smoothMoveToCoord(targetCoord: Vector2) {
+    while (!vector2Equal(targetCoord, this._head.targetCoord)) {
+      const direction = getDirectionByCoord(
+        vector2Minus(targetCoord, this._head.coord)
+      )
+      this.changeHeadDirection(direction)
+      this._head.targetCoord = nextCoordByDirection(
+        this._head.targetCoord,
+        direction
+      )
+      this._head.targetPosition = CoordToPosition(this._head.targetCoord)
+      this.refreshNextPlayerStats()
+      this.isMoving = true
+
+      while (this.isMoving) {
+        this.updateDistance(
+          (this.moveSpeed * this.time.scaleDeltaTime) / 1000,
+          true
+        )
+        this.refreshAnimation()
+        this.camera.moveToCenter(this.headPosition)
+        await nextFrame()
+      }
+    }
   }
 
   get headDirection() {

@@ -519,17 +519,18 @@
             "expandedGroupLayers": [
                 7,
                 28,
-                14
+                30,
+                26
             ],
             "expandedObjectLayers": [
                 14,
                 65
             ],
             "scale": 1,
-            "selectedLayer": 24,
+            "selectedLayer": 20,
             "viewCenter": {
-                "x": 759,
-                "y": 720
+                "x": 671.5,
+                "y": 784
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle2.tmj": {
@@ -546,10 +547,10 @@
                 68
             ],
             "scale": 1.5,
-            "selectedLayer": 16,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 496.66666666666663,
-                "y": 371.33333333333337
+                "x": 508.33333333333326,
+                "y": 370.66666666666663
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle3.tmj": {
@@ -573,8 +574,7 @@
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/World.tmj": {
             "expandedGroupLayers": [
-                30,
-                14
+                30
             ],
             "expandedObjectLayers": [
                 32,
@@ -585,10 +585,10 @@
                 36
             ],
             "scale": 8,
-            "selectedLayer": 19,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 1551.75,
-                "y": 1527.625
+                "x": 1553.8125,
+                "y": 1527.5
             }
         },
         "Tiles/Tiles.tsx": {
@@ -620,6 +620,7 @@
     "project": "dq1.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle2.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine2.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave1.tmj",
@@ -630,8 +631,7 @@
         "E:/projects/web/dq1-web-pre/src/data/scenes/RotosCave2.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/Garais3.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/Garais4.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado2.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle3.tmj"
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado2.tmj"
     ],
     "resizeMap.removeObjects": true,
     "textEdit.monospace": true,

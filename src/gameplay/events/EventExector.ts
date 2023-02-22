@@ -476,3 +476,9 @@ export async function transitionTo(
 export function globalWindow() {
   return executingEngine!.getVariable<GlobalWindowComponent>(GlobalWindowMarker)
 }
+
+export function teamController() {
+  return executingEngine!.getVariable<TeamControllerComponent>(
+    GlobalTeamControllerMarker
+  )
+}

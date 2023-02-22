@@ -43,8 +43,8 @@
          "id":31,
          "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_0.png",
          "name":"BornPoint",
-         "offsetx":545.75,
-         "offsety":1057.33333333333,
+         "offsetx":573.083333333333,
+         "offsety":610.666666666663,
          "opacity":1,
          "properties":[
                 {
@@ -116,7 +116,63 @@
         }, 
         {
          "id":30,
-         "layers":[],
+         "layers":[
+                {
+                 "id":81,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/event.png",
+                 "name":"block1",
+                 "offsetx":512.666666666667,
+                 "offsety":439.333333333333,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n\t {\n\t   \"type\": \"$BoxCollider\",\n\t   \"size\": [32, 32]\n\t },\n          {\n            \"type\": \"QuestEvent\",\n            \"eventId\": \"$$\",\n\t   \"predecessorId\": [\"Q888\"],\n\t   \"hideStart\": true,\n\t   \"when\": \"trigger\"\n          }\n]"
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":32
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":82,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/event.png",
+                 "name":"block2",
+                 "offsetx":604.666666666667,
+                 "offsety":440.666666666667,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n\t {\n\t   \"type\": \"$BoxCollider\",\n\t   \"size\": [32, 32]\n\t },\n          {\n            \"type\": \"QuestEvent\",\n            \"eventId\": \"$$\",\n\t   \"predecessorId\": [\"Q888\"],\n\t   \"hideStart\": true,\n\t   \"when\": \"trigger\"\n          }\n]"
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":32
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }],
          "name":"Objects",
          "opacity":1,
          "type":"group",
@@ -196,6 +252,285 @@
          "id":7,
          "layers":[
                 {
+                 "id":66,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_5.png",
+                 "name":"Q1500 \u58eb\u5175",
+                 "offsetx":515,
+                 "offsety":478,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"right\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1408\",\n\t   \"hideStart\": true,\n\t   \"predecessorId\": [\"Q888\"]\n\t }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":68,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_5.png",
+                 "name":"Q1500 \u58eb\u5175",
+                 "offsetx":608,
+                 "offsety":478,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1408\",\n\t   \"hideStart\": true,\n\t   \"predecessorId\": [\"Q888\"]\n\t }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":70,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_5.png",
+                 "name":"Q1500 \u58eb\u5175",
+                 "offsetx":516.5,
+                 "offsety":516,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1408\",\n\t   \"hideStart\": true,\n\t   \"predecessorId\": [\"Q888\"]\n\t }\n]"
+                        }, 
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"bingshi_0"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":72,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_5.png",
+                 "name":"Q1500 \u58eb\u5175",
+                 "offsetx":610,
+                 "offsety":514.5,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1408\",\n\t   \"hideStart\": true,\n\t   \"predecessorId\": [\"Q888\"]\n\t }\n]"
+                        }, 
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"bingshi_1"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":73,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_5.png",
+                 "name":"Q1500 \u58eb\u5175",
+                 "offsetx":517.5,
+                 "offsety":549.5,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1408\",\n\t   \"hideStart\": true,\n\t   \"predecessorId\": [\"Q888\"]\n\t }\n]"
+                        }, 
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"bingshi_2"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":74,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_5.png",
+                 "name":"Q1500 \u58eb\u5175",
+                 "offsetx":610,
+                 "offsety":547,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1408\",\n\t   \"hideStart\": true,\n\t   \"predecessorId\": [\"Q888\"]\n\t }\n]"
+                        }, 
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"bingshi_3"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":75,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_5.png",
+                 "name":"Q1500 \u58eb\u5175",
+                 "offsetx":518.5,
+                 "offsety":585,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1408\",\n\t   \"hideStart\": true,\n\t   \"predecessorId\": [\"Q888\"]\n\t }\n]"
+                        }, 
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"bingshi_4"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":76,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_5.png",
+                 "name":"Q1500 \u58eb\u5175",
+                 "offsetx":610,
+                 "offsety":580.5,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1408\",\n\t   \"hideStart\": true,\n\t   \"predecessorId\": [\"Q888\"]\n\t }\n]"
+                        }, 
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"bingshi_5"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":77,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_5.png",
+                 "name":"Q1500 \u58eb\u5175",
+                 "offsetx":519,
+                 "offsety":618,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1408\",\n\t   \"hideStart\": true,\n\t   \"predecessorId\": [\"Q888\"]\n\t }\n]"
+                        }, 
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"bingshi_6"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":71,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_5.png",
+                 "name":"Q1500 \u58eb\u5175",
+                 "offsetx":610.5,
+                 "offsety":614.5,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1408\",\n\t   \"hideStart\": true,\n\t   \"predecessorId\": [\"Q888\"]\n\t }\n]"
+                        }, 
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"bingshi_7"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":67,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_3.png",
+                 "name":"Q1500 \u516c\u4e3b ",
+                 "offsetx":576.5,
+                 "offsety":418.5,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 3,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1407\",\n\t   \"hideStart\": true,\n\t   \"predecessorId\": [\"Q888\", \"Q666\"]\n\t }\n]"
+                        }, 
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"PrincessQ1500"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":69,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_2.png",
+                 "name":"Q1500 \u56fd\u738b",
+                 "offsetx":544,
+                 "offsety":417.5,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 2,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          },\n\t {\n\t   \"type\": \"QuestEvent\",\n\t   \"eventId\": \"Q1500\",\n\t   \"hideStart\": true,\n\t   \"predecessorId\": [\"Q888\"]\n\t }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":80,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_11.png",
+                 "name":"Q1500 \u5de6\u5973\u5b50",
+                 "offsetx":384,
+                 "offsety":692.833333333333,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 11,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q2601\",\n\t   \"hideStart\": true,\n\t   \"predecessorId\": [\"Q888\"]\n\t }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
                  "id":50,
                  "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/event.png",
                  "name":"\u94a5\u5319\u4e8b\u4ef6",
@@ -209,7 +544,7 @@
                          "value":"[\n          {\n            \"type\": \"QuestEvent\",\n            \"eventId\": \"Q11\",\n\t   \"args\": [24]\n          }\n]"
                         }],
                  "type":"imagelayer",
-                 "visible":true,
+                 "visible":false,
                  "x":0,
                  "y":0
                 }, 
@@ -224,7 +559,25 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"QuestEvent\",\n            \"eventId\": \"Q1121\"\n          }\n]"
+                         "value":"[\n\t{\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1421\",\n\t   \"predecessorId\": [\"Q888\"]\n\t },\n          {\n            \"type\": \"QuestEvent\",\n            \"eventId\": \"Q1121\"\n          }\n]"
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "id":79,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/event.png",
+                 "name":"\u795e\u7236\u6062\u590dHP2",
+                 "offsetx":864.166666666667,
+                 "offsety":536.166666666666,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"QuestEvent\",\n            \"eventId\": \"Q1122\"\n          }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -235,8 +588,8 @@
                  "id":55,
                  "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/event.png",
                  "name":"\u795e\u7236\u6062\u590dHP",
-                 "offsetx":831.5,
-                 "offsety":538.833333333333,
+                 "offsetx":827.5,
+                 "offsety":536.833333333333,
                  "opacity":1,
                  "properties":[
                         {
@@ -271,14 +624,14 @@
                  "id":56,
                  "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_21.png",
                  "name":"\u53f3\u795e\u7236",
-                 "offsetx":834.5,
-                 "offsety":544.666666666667,
+                 "offsetx":848,
+                 "offsety":540,
                  "opacity":1,
                  "properties":[
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 21,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"$MoveComponent\",\n            \"roleIndex\": 21,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          },\n\t {\n\t   \"type\": \"QuestEvent\",\n\t   \"hideAfterFinish\": true,\n\t   \"hideEventsId\": [\"Q888\"]\n\t }\n]"
                         }, 
                         {
                          "name":"floatPosition",
@@ -301,7 +654,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 8,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 8,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          },\n\t {\n\t   \"type\": \"QuestEvent\",\n\t   \"eventId\": \"$$\",\n\t   \"hideAfterFinish\": true,\n\t   \"hideEventsId\": [\"Q888\"]\n\t }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -319,7 +672,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 9,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"up\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1120\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 9,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"up\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1120\",\n\t   \"hideAfterFinish\": true,\n\t   \"hideEventsId\": [\"Q888\"]\n          }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -337,7 +690,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1119\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1119\",\n\t   \"hideAfterFinish\": true,\n\t   \"hideEventsId\": [\"Q888\"]\n          }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -355,7 +708,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 9,\n            \"path\": {\n\t\t\"type\": \"random\"\t\n\t   }\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1118\"\n          }\n    \n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 9,\n            \"path\": {\n\t\t\"type\": \"random\"\t\n\t   }\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1118\",\n\t   \"hideAfterFinish\": true,\n\t   \"hideEventsId\": [\"Q888\"]\n          }\n    \n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -373,7 +726,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 13,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1117\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 13,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1117\",\n\t   \"hideAfterFinish\": true,\n\t   \"hideEventsId\": [\"Q888\"]\n          }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -391,7 +744,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 11,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1116\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 11,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1116\",\n\t   \"hideAfterFinish\": true,\n\t   \"hideEventsId\": [\"Q888\"]\n          }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -409,7 +762,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n\t   \"initDirection\": \"up\",\n            \"path\": {\n\t\t\"type\": \"fixed\",\n\t\t\"datas\": [[0, 0],[0, -2], [2, -2], [2, 0]]\n\t   }\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1115\"\n          }\n    \n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n\t   \"initDirection\": \"up\",\n            \"path\": {\n\t\t\"type\": \"fixed\",\n\t\t\"datas\": [[0, 0],[0, -2], [2, -2], [2, 0]]\n\t   }\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1115\",\n\t   \"hideAfterFinish\": true,\n\t   \"hideEventsId\": [\"Q888\"]\n          }\n    \n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -427,7 +780,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 9,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"right\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1112\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 9,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"right\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1112\",\n\t   \"hideAfterFinish\": true,\n\t   \"hideEventsId\": [\"Q888\"]\n          }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -445,7 +798,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"up\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1111\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"up\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1111\",\n\t   \"hideAfterFinish\": true,\n\t   \"hideEventsId\": [\"Q888\"]\n          }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -463,7 +816,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 12,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1209\",\n\t   \"predecessorId\": [\"Q665\"]\n\t },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1109\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 12,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1409\",\n\t   \"predecessorId\": [\"Q888\"]\n\t },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1209\",\n\t   \"predecessorId\": [\"Q665\"]\n\t },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1109\"\n          }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -481,7 +834,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 8,\n            \"path\": {\n\t\t\"type\": \"random\"\t\n\t   }\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1210\",\n\t   \"predecessorId\": [\"Q665\"]\n\t },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1110\"\n          }\n    \n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 8,\n            \"path\": {\n\t\t\"type\": \"random\"\t\n\t   }\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1410\",\n\t   \"predecessorId\": [\"Q888\"]\n\t },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1210\",\n\t   \"predecessorId\": [\"Q665\"]\n\t },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1110\"\n          }\n    \n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -535,7 +888,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1306\",\n\t   \"predecessorId\": [\"Q666\"]\n\t },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1206\",\n\t   \"predecessorId\": [\"Q665\"]\n\t },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1106\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1306\",\n\t   \"predecessorId\": [\"Q666\"]\n\t },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1206\",\n\t   \"predecessorId\": [\"Q665\"]\n\t },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1106\",\n\t   \"hideAfterFinish\": true,\n\t   \"hideEventsId\": [\"Q888\"]\n          }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -553,7 +906,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1305\",\n\t   \"predecessorId\": [\"Q666\"]\n\t },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1205\",\n\t   \"predecessorId\": [\"Q665\"]\n\t },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1105\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1305\",\n\t   \"predecessorId\": [\"Q666\"]\n\t },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1205\",\n\t   \"predecessorId\": [\"Q665\"]\n\t },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1105\",\n\t   \"hideAfterFinish\": true,\n\t   \"hideEventsId\": [\"Q888\"]\n          }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -571,7 +924,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 11,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1114\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 11,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1114\",\n\t   \"hideAfterFinish\": true,\n\t   \"hideEventsId\": [\"Q888\"]\n          }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -589,7 +942,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 10,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1113\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 10,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"down\"\n          },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1113\",\n\t   \"hideAfterFinish\": true,\n\t   \"hideEventsId\": [\"Q888\"]\n          }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -607,7 +960,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 11,\n            \"path\": {\n\t\t\"type\": \"random\"\t\n\t   }\n          },\n      \t {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1303\",\n\t   \"predecessorId\": [\"Q666\"]\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1203\",\n\t   \"predecessorId\": [\"Q665\"]\n\t },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1103\"\n          }\n    \n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 11,\n            \"path\": {\n\t\t\"type\": \"random\"\t\n\t   }\n          },\n      \t {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1303\",\n\t   \"predecessorId\": [\"Q666\"]\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1203\",\n\t   \"predecessorId\": [\"Q665\"]\n\t },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1103\",\n\t   \"hideAfterFinish\": true,\n\t   \"hideEventsId\": [\"Q888\"]\n          }\n    \n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -625,7 +978,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 10,\n            \"path\": {\n\t\t\"type\": \"random\"\t\n\t   }\n          },\n      \t {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1304\",\n\t   \"predecessorId\": [\"Q666\"]\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1204\",\n\t   \"predecessorId\": [\"Q665\"]\n\t },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1104\"\n          }\n    \n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 10,\n            \"path\": {\n\t\t\"type\": \"random\"\t\n\t   }\n          },\n      \t {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1304\",\n\t   \"predecessorId\": [\"Q666\"]\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1204\",\n\t   \"predecessorId\": [\"Q665\"]\n\t },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1104\",\n\t   \"hideAfterFinish\": true,\n\t   \"hideEventsId\": [\"Q888\"]\n          }\n    \n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -643,7 +996,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1202\",\n\t   \"predecessorId\": [\"Q665\"]\n\t },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1102\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"left\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1202\",\n\t   \"predecessorId\": [\"Q665\"]\n\t },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1102\",\n\t   \"hideAfterFinish\": true,\n\t   \"hideEventsId\": [\"Q888\"]\n          }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -661,7 +1014,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"right\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1201\",\n\t   \"predecessorId\": [\"Q665\"]\n\t },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1101\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 5,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"right\"\n          },\n\t {\n\t   \"type\": \"TalkQuestEvent\",\n\t   \"eventId\": \"Q1201\",\n\t   \"predecessorId\": [\"Q665\"]\n\t },\n          {\n            \"type\": \"TalkQuestEvent\",\n            \"eventId\": \"Q1101\",\n\t   \"hideAfterFinish\": true,\n\t   \"hideEventsId\": [\"Q888\"]\n          }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -1450,7 +1803,7 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":66,
+ "nextlayerid":83,
  "nextobjectid":33,
  "orientation":"orthogonal",
  "renderorder":"right-down",
