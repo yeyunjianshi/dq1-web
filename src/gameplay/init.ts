@@ -43,12 +43,15 @@ import DracolordsCastle8Scene from '@data/scenes/DracolordsCastle8.tmj'
 import LogoScene from '@data/scenes/Logo.json'
 import TitleScene from '@data/scenes/Title.json'
 import EndScene from '@data/scenes/End.json'
+import StartScene from '@data/scenes/Start.json'
+import DescriptionScene from '@data/scenes/Description.json'
 import BattleData from '@data/scenes/battle.json'
 import GlobalScene from '@data/scenes/globalWindow.json'
 import TeamController from '@data/scenes/team_controller.json'
 import FadingScene from '@data/scenes/fading.json'
 
 import Engine from '@engine/engine'
+import { waitWhile } from '@engine/time'
 
 AddGameSceneData([
   TantegelCastleScene,
@@ -90,6 +93,8 @@ AddGameSceneData([
   DracolordsCastle8Scene,
 
   WorldScene,
+  StartScene,
+  DescriptionScene,
   LogoScene,
   TitleScene,
   EndScene,
@@ -99,12 +104,20 @@ AddGameSceneData([
   BattleData as any,
 ])
 
-export function initScene(engine: Engine) {
+async function loadCoreScene(engine: Engine) {
   engine.sceneManager.loadScene(FadingScene.name)
   engine.sceneManager.loadScene(GlobalScene.name)
   engine.sceneManager.loadScene(TeamController.name)
+  await waitWhile(() => engine.sceneManager.loading, Infinity, engine.time)
+}
+
+export async function initScene(engine: Engine) {
+  await loadCoreScene(engine)
+
   // engine.sceneManager.loadScene(WorldScene.name)
   // engine.sceneManager.loadScene('Battle')
+  engine.sceneManager.loadScene(StartScene.name)
+  // engine.sceneManager.loadScene(DescriptionScene.name)
   // engine.sceneManager.loadScene(TitleScene.name)
   // engine.sceneManager.loadScene(LogoScene.name)
   // engine.sceneManager.loadScene(EndScene.name)
@@ -143,5 +156,5 @@ export function initScene(engine: Engine) {
   // engine.sceneManager.loadScene(DracolordsCastle5Scene.name)
   // engine.sceneManager.loadScene(DracolordsCastle6Scene.name)
   // engine.sceneManager.loadScene(DracolordsCastle7Scene.name)
-  engine.sceneManager.loadScene(DracolordsCastle8Scene.name)
+  // engine.sceneManager.loadScene(DracolordsCastle8Scene.name)
 }

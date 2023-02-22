@@ -1,0 +1,48 @@
+{
+  "name": "Start",
+  "width": -2,
+  "height": -2,
+  "priority": 500,
+  "hasCamera": false,
+  "bgm": "",
+  "root": {
+    "x": 0,
+    "y": 0,
+    "width": -2,
+    "height": -2,
+    "active": true,
+    "alpha": 1,
+    "useScreenPosition": true,
+    "renderLayer": 20,
+    "components": [
+      {
+        "type": "StartComponent"
+      }
+    ],
+    "children": [
+      {
+        "x": 0,
+        "y": -50,
+        "width": -2,
+        "height": 255,
+        "pivot": [0.5, 0.5],
+        "layoutGravity": ["center", "center"],
+        "background": {
+          "sprite": "",
+          "backgroundColor": "black"
+        },
+        "active": true,
+        "components": [
+          {
+            "type": "$TextComponent",
+            "text": "RESPECT FOR SE",
+            "font": {
+              "size": 50,
+              "align": "center"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

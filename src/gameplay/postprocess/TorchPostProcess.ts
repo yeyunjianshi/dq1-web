@@ -21,7 +21,11 @@ export default class TorchPostProcess implements IPostProcess {
 
       let clip = false
 
-      if (currentScene.isCave && !globalGameData.isLightInCave) {
+      if (
+        currentScene &&
+        currentScene.isCave &&
+        !globalGameData.isLightInCave
+      ) {
         const teamController =
           this._engine.getVariable<TeamControllerComponent>(
             GlobalTeamControllerMarker

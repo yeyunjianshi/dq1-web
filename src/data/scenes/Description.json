@@ -1,0 +1,102 @@
+{
+  "name": "Description",
+  "width": "-2",
+  "height": "-2",
+  "root": {
+    "x": 0,
+    "y": 0,
+    "width": -2,
+    "height": -2,
+    "active": true,
+    "components": [
+      {
+        "type": "DescriptionComponent"
+      }
+    ],
+    "children": [
+      {
+        "x": 0,
+        "y": -200,
+        "width": -2,
+        "height": 60,
+        "active": true,
+        "pivot": [0.5, 0.5],
+        "layoutGravity": ["center", "center"],
+        "components": [
+          {
+            "type": "$TextComponent",
+            "text": "操作说明",
+            "font": {
+              "size": 50,
+              "align": "center"
+            }
+          }
+        ]
+      },
+      {
+        "x": 0,
+        "y": 0,
+        "width": -2,
+        "height": 200,
+        "active": true,
+        "pivot": [0.5, 0.5],
+        "layoutGravity": ["center", "center"],
+        "layout": { "type": "VerticalLayout", "gravity": "center" },
+        "alpha": 1,
+        "children": [
+          {
+            "x": 10,
+            "y": 0,
+            "width": -2,
+            "height": 50,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "W - 上    S - 下",
+                "font": {
+                  "size": 40,
+                  "align": "center"
+                }
+              }
+            ]
+          },
+          {
+            "x": 10,
+            "y": 0,
+            "width": -2,
+            "height": 50,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "A - 左    D - 右",
+                "font": {
+                  "size": 40,
+                  "align": "center"
+                }
+              }
+            ]
+          },
+          {
+            "x": 10,
+            "y": 0,
+            "width": -2,
+            "height": 50,
+            "active": true,
+            "components": [
+              {
+                "type": "$TextComponent",
+                "text": "J - 确定    K - 取消",
+                "font": {
+                  "size": 40,
+                  "align": "center"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

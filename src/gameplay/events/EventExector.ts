@@ -386,10 +386,14 @@ export function setInputType(type: InputType) {
 }
 
 export function refreshAndTriggerAutoEvent() {
-  const sceneComponent = executingEngine!.getVariable(
-    GlobalSceneComponentMarker
-  ) as SceneComponent
-  sceneComponent.refreshAndTriggerAutoEvent()
+  try {
+    const sceneComponent = executingEngine!.getVariable(
+      GlobalSceneComponentMarker
+    ) as SceneComponent
+    sceneComponent!.refreshAndTriggerAutoEvent()
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 export function getQuestNPC(characterName?: string) {
