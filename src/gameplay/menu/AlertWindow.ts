@@ -37,16 +37,24 @@ export default class AlertWindow extends BaseWindow {
     this._judgeComponent?.setAdapter(
       new TextAdapter([{ text: '是' }, { text: '否' }])
     )
-    this._judgeComponent?.addSelectListener(() => {
+    const confirmListener = () => {
       this._status = AlertStatus.Yes
       this._listeners.forEach((l) => l(true))
       console.log('alert confirm')
-    })
-    this._judgeComponent?.addCancelListener(() => {
+    }
+    const cancelListener = () => {
       this._status = AlertStatus.No
       this._listeners.forEach((l) => l(false))
       console.log('alert cancel')
+    }
+    this._judgeComponent?.addSelectListener(() => {
+      if (this._judgeComponent!.cursorIndex === 1) {
+        cancelListener()
+      } else {
+        confirmListener()
+      }
     })
+    this._judgeComponent?.addCancelListener(cancelListener)
   }
 
   update(): void {
