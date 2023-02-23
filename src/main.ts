@@ -4,9 +4,9 @@ import './gameplay/componentConfig'
 import { AssetLoader } from './engine/resource'
 import { audioInitLoad } from './gameplay/audio/AudioConfig'
 import {
+  currentScene,
   setEventEngine,
   SetGameEventScript,
-  transitionTo,
 } from './gameplay/events/EventExector'
 import {
   globalGameData,
@@ -61,6 +61,14 @@ engine.run({
   },
 })
 
-document.getElementById('startBtn')?.addEventListener('click', () => {
-  engine.audios.replayBGM()
-})
+initDevEnv()
+
+function initDevEnv() {
+  const isDev = import.meta.env.DEV
+  console.log(isDev)
+  const btn = document.getElementById('startBtn') as HTMLButtonElement
+  btn.style.display = isDev ? 'block' : 'none'
+  btn.addEventListener('click', () => {
+    engine.audios.playBGM(currentScene().bgm)
+  })
+}

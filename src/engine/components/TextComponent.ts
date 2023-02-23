@@ -13,7 +13,7 @@ export type TextData = {
 export const DefaultLineHeightScale = 1.25
 export const DefaultFont: Required<Font> = {
   color: '#eee',
-  family: 'VonwaonBitmap',
+  family: 'ipix',
   size: 30,
   bold: false,
   italic: false,
