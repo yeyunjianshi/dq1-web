@@ -8,7 +8,7 @@ task(async (event) => {
     textArgs: [['{money}', money]],
   })
   while (select) {
-    if (checkInventoryIsFull()) {
+    if (checkInventoryIsFull(50, 1)) {
       await talk('*', 'InventoryIsFull')
       break
     }

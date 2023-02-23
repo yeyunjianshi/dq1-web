@@ -431,8 +431,8 @@ export function hasItems(...items: number[]) {
   return items.every((itemId) => globalGameData.inventory.hasItem(itemId))
 }
 
-export function checkInventoryIsFull(...itemId: number[]) {
-  return globalGameData.inventory.isFull()
+export function checkInventoryIsFull(itemId: number, count = 1) {
+  return globalGameData.inventory.isFull(itemId, count)
 }
 
 export function addItems(...itemsId: number[]) {

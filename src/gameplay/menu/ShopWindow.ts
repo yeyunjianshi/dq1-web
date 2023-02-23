@@ -1,6 +1,6 @@
 import { GameplayComponent } from '../../engine/components'
 import BaseWindow from '../../engine/components/BaseWindow'
-import { message } from '../events/EventExector'
+import { checkInventoryIsFull, message } from '../events/EventExector'
 import ListComponent, {
   KeyValueAdapter,
   TextAdapter,
@@ -120,7 +120,7 @@ export default class ShopWindow extends BaseWindow {
       if (this._shopType === ShopType.Buy) {
         if (globalGameData.hero.gold < itemSlot.item.price) {
           message(`金额不足，无法购买 ${itemSlot.item.name}`)
-        } else if (globalGameData.inventory.isFull()) {
+        } else if (checkInventoryIsFull(itemSlot.item.id)) {
           message('背包已经满了，无法装下更多物品了')
         } else {
           globalGameData.hero.addGold(-itemSlot.item.price)
@@ -146,6 +146,7 @@ export default class ShopWindow extends BaseWindow {
           if (globalGameData.inventory.isEmpty()) this.interceptCancel()
         }
       }
+      this._itemsWindow?.refreshHover()
     })
 
     this.refreshItemData()
@@ -189,6 +190,7 @@ export default class ShopWindow extends BaseWindow {
       id: 0,
       item,
       isEquip: false,
+      count: 1,
     }))
 
     this.refreshItemData()

@@ -45,6 +45,11 @@ export default class Item {
   useCommonText = ''
   useBattleText = ''
   buffers: Buffer[] = []
+  capacity = 0
+
+  get isGroup() {
+    return this.capacity > 0
+  }
 
   get isCanEquip(): boolean {
     return (
@@ -108,6 +113,7 @@ export function parseItem(data: ItemData): Item {
   item.useCount = typeof data.useCount === 'number' ? data.useCount : 1
   item.useCommonText = data.useCommonText || item.useCommonText
   item.useBattleText = data.useBattleText || item.useBattleText
+  item.capacity = data.capacity ?? item.capacity
   if (data.effect && data.effect.length > 0)
     parseEffect(data.effect ?? '', item)
   return item
@@ -174,4 +180,5 @@ export type ItemData = {
   isCanDiscard?: boolean
   useCommonText?: string
   useBattleText?: string
+  capacity?: number
 }

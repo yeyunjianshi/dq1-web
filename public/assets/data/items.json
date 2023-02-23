@@ -6,7 +6,8 @@
     "sellPrice": 5,
     "canUse": 3,
     "type": 16,
-    "effect": "u:all:HP:20-35"
+    "effect": "u:all:HP:20-35",
+    "capacity": 99
   },
   {
     "id": 2,
@@ -16,7 +17,8 @@
     "canUse": 3,
     "type": 16,
     "effect": "u:common:light:120-0;use:battle:damage:4-6",
-    "useCommonText": "{name}点燃了火把，照亮了四周"
+    "useCommonText": "{name}点燃了火把，照亮了四周",
+    "capacity": 99
   },
   {
     "id": 3,
@@ -25,7 +27,8 @@
     "sellPrice": 12,
     "canUse": 1,
     "type": 16,
-    "effect": "u:common:move"
+    "effect": "u:common:move",
+    "capacity": 99
   },
   {
     "id": 4,
@@ -35,7 +38,8 @@
     "canUse": 3,
     "type": 16,
     "effect": "u:common:notMeetEnemy:127;u:battle:damage:16-20",
-    "useCommonText": "{name}使用了圣水\n暂时不会遭遇敌人了"
+    "useCommonText": "{name}使用了圣水\n暂时不会遭遇敌人了",
+    "capacity": 99
   },
   {
     "id": 5,
@@ -44,7 +48,8 @@
     "sellPrice": 112,
     "canUse": 1,
     "type": 16,
-    "effect": "u:common:power:1-3"
+    "effect": "u:common:power:1-3",
+    "capacity": 99
   },
   {
     "id": 6,
@@ -53,7 +58,8 @@
     "sellPrice": 100,
     "canUse": 1,
     "type": 16,
-    "effect": "u:common:speed:1-3"
+    "effect": "u:common:speed:1-3",
+    "capacity": 99
   },
   {
     "id": 7,
@@ -62,7 +68,8 @@
     "sellPrice": 100,
     "canUse": 1,
     "type": 16,
-    "effect": "u:common:resilience:4"
+    "effect": "u:common:resilience:4",
+    "capacity": 99
   },
   {
     "id": 8,
@@ -71,7 +78,8 @@
     "sellPrice": 150,
     "canUse": 1,
     "type": 16,
-    "effect": "u:common:maxHP:4-6"
+    "effect": "u:common:maxHP:4-6",
+    "capacity": 99
   },
   {
     "id": 9,
@@ -80,7 +88,8 @@
     "sellPrice": 100,
     "canUse": 1,
     "type": 16,
-    "effect": "u:common:maxMP:3-5"
+    "effect": "u:common:maxMP:3-5",
+    "capacity": 99
   },
   {
     "id": 50,
@@ -88,7 +97,8 @@
     "price": 24,
     "sellPrice": 12,
     "canUse": 0,
-    "type": 16
+    "type": 16,
+    "capacity": 99
   },
   {
     "id": 101,

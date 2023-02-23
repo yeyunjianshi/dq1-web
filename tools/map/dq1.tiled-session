@@ -19,10 +19,10 @@
                 14
             ],
             "scale": 1,
-            "selectedLayer": 6,
+            "selectedLayer": 12,
             "viewCenter": {
-                "x": 502,
-                "y": 193
+                "x": 417,
+                "y": 490
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle1.tmj": {
@@ -322,7 +322,7 @@
             "selectedLayer": 13,
             "viewCenter": {
                 "x": 640,
-                "y": 639.3333333333333
+                "y": 638.6666666666666
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/MarshyCave.tmj": {
@@ -534,10 +534,10 @@
                 14
             ],
             "scale": 1,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 671,
-                "y": 784
+                "x": 1157,
+                "y": 295
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle2.tmj": {

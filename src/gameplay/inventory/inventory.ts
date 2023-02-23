@@ -5,6 +5,7 @@ export type ItemSlot = {
   id: number
   item: Item
   isEquip: boolean
+  count: number
 }
 
 // 显示装备无的插槽
@@ -12,6 +13,7 @@ export const DefaultNoneItemSlot: ItemSlot = {
   id: 0,
   item: parseItem({ id: 0, name: '无', price: 0, sellPrice: 0, type: 15 }),
   isEquip: false,
+  count: 0,
 }
 
 export const DefaultRemoveEquipItemSlot = {
@@ -24,6 +26,7 @@ export const DefaultRemoveEquipItemSlot = {
     type: 15,
   }),
   isEquip: false,
+  count: 0,
 }
 
 export default class inventory {
@@ -35,7 +38,16 @@ export default class inventory {
     if (typeof item === 'number') {
       item = GetItem(item)
     }
-    const slot = { id: this.generateSlotId(), item, isEquip: false }
+
+    let slot
+    if (item.isGroup) {
+      slot = this.getItemSlotByItemId(item.id)
+      if (slot !== DefaultNoneItemSlot) {
+        slot.count++
+        return slot
+      }
+    }
+    slot = { id: this.generateSlotId(), item, count: 1, isEquip: false }
     this._slots.push(slot)
     this.sort()
     return slot
@@ -51,6 +63,12 @@ export default class inventory {
 
   getItemSlot(id: number): ItemSlot {
     return this._slots.find((slot) => slot.id === id) ?? DefaultNoneItemSlot
+  }
+
+  getItemSlotByItemId(id: number) {
+    return (
+      this._slots.find((slot) => slot.item.id === id) ?? DefaultNoneItemSlot
+    )
   }
 
   filterItemType(type: ItemType): ItemSlot[] {
@@ -69,14 +87,23 @@ export default class inventory {
     this._slots.splice(index, 1)
   }
 
-  removeSlotId(id: number): void {
+  removeSlotId(id: number, count = 1): void {
     const removeIndex = this._slots.findIndex((slot) => slot.id === id)
-    if (removeIndex >= 0) this.removeSlotIndex(removeIndex)
+    if (removeIndex >= 0) {
+      const slot = this._slots[removeIndex]
+      if (slot.item.isGroup) {
+        slot.count -= count
+        if (slot.count > 0) return
+      }
+      this.removeSlotIndex(removeIndex)
+    }
   }
 
-  removeItemId(id: number) {
+  removeItemId(id: number, count = 1) {
     const removeIndex = this._slots.findIndex((slot) => slot.item.id === id)
-    if (removeIndex >= 0) this.removeSlotIndex(removeIndex)
+    if (removeIndex >= 0) {
+      this.removeSlotId(this._slots[removeIndex].id, count)
+    }
   }
 
   sort(): void {
@@ -89,6 +116,8 @@ export default class inventory {
   }
 
   itemCount(itemId: number): number {
+    const item = GetItem(itemId)
+    if (item.isGroup) return this.getItemSlotByItemId(itemId).count
     return this._slots.filter((slot) => slot.item.id === itemId).length
   }
 
@@ -96,7 +125,10 @@ export default class inventory {
     return this._slots.length === 0
   }
 
-  isFull() {
+  isFull(itemId: number, count = 1) {
+    const slot = this.getItemSlotByItemId(itemId)
+    if (slot !== DefaultNoneItemSlot)
+      if (slot.item.isGroup) return slot.count + count > slot.item.capacity
     return this._slots.length === this.capacity
   }
 

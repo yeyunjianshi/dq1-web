@@ -94,7 +94,10 @@ export default class MenuItemWindow extends BaseWindow {
           message(
             useTextPostProcessing(useText, globalGameData.hero.name),
             async () => {
-              globalGameData.inventory.removeSlotId(this._selectedItem!.id)
+              globalGameData.inventory.removeSlotId(
+                this._selectedItem!.id,
+                this._selectedItem!.item.useCount
+              )
               this.setSelectItem(true)
               this.refreshDealData()
               this.refreshItemData()
@@ -138,7 +141,11 @@ export default class MenuItemWindow extends BaseWindow {
     this._selectWindow!.adapter<KeyValueAdapter>()!.setData(
       this._itemData.map((slot) => ({
         key: slot.item.name,
-        value: slot.isEquip ? 'E' : '',
+        value: slot.isEquip
+          ? 'E'
+          : slot.item.isGroup
+          ? slot.count.toString()
+          : '',
       }))
     )
   }
