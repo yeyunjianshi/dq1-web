@@ -1,6 +1,7 @@
 {
   "name": "dq1-web",
-  "version": "1.0.0",
+  "version": "0.1.0",
+  "packageManager": "pnpm@7.26.2",
   "description": "",
   "main": "index.js",
   "scripts": {
