@@ -9,6 +9,7 @@ import { transitionToScene } from '@gameplay/events/Transition'
 export default class LogoComponent extends Component {
   private _teamController?: TeamControllerComponent
   private _globalWindow?: GlobalWindowComponent
+  private _isTransition = false
 
   start() {
     this._teamController = this.engine.getVariable<TeamControllerComponent>(
@@ -23,12 +24,15 @@ export default class LogoComponent extends Component {
   }
 
   update(): void {
+    if (this._isTransition) return
+
     if (this.input.isCancelPressed() || this.input.isConfirmPressed()) {
       this.gotoTitle()
     }
   }
 
   gotoTitle() {
+    this._isTransition = true
     transitionToScene(this.engine, 'Title')
   }
 }

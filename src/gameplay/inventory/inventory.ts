@@ -29,7 +29,7 @@ export const DefaultRemoveEquipItemSlot = {
   count: 0,
 }
 
-export default class inventory {
+export default class Inventory {
   constructor(public capacity: number = 10) {}
 
   private _slots = [] as ItemSlot[]
@@ -147,4 +147,26 @@ export default class inventory {
   accessories() {
     return this._slots.find((slot) => slot.item.isAccessories)
   }
+
+  toSaveData(): SaveItemSlot[] {
+    return this._slots.map((v) => ({
+      id: v.id,
+      itemId: v.item.id,
+      count: v.count,
+      isEquip: v.isEquip,
+    }))
+  }
+
+  static parseFromSaveData(slots: SaveItemSlot[]) {
+    const inventory = new Inventory()
+    inventory._slots = slots.map((s) => ({
+      id: s.id,
+      item: GetItem(s.itemId),
+      isEquip: s.isEquip,
+      count: s.count,
+    }))
+    return inventory
+  }
 }
+
+export type SaveItemSlot = Omit<ItemSlot, 'item'> & { itemId: number }

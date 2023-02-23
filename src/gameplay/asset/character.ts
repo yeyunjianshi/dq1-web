@@ -7,23 +7,9 @@ import {
 } from '../effects/buffer'
 import { DefaultNoneItemSlot, ItemSlot } from '../inventory/inventory'
 import { HasType, ItemEquipmentType, ItemType } from '../inventory/item'
-import { globalGameData } from './gameData'
+import { GetCharacter, GetMagic, globalGameData } from './gameData'
 import { GlobalEventEmit, GlobalEventType } from './globaEvents'
 import ImmunotoxicityBuffer from '@gameplay/effects/ImmunotoxicityBuffer'
-
-const gameAllCharacters: Map<number, Character> = new Map()
-
-export function SetCharacters(characters: Character[]) {
-  characters.forEach((ch) => {
-    gameAllCharacters.set(ch.id, ch)
-  })
-}
-
-export function GetCharacter(id: number): Character {
-  const ch = gameAllCharacters.get(id)
-  if (!ch) throw new Error('未找到id等于${id}的Character')
-  return ch
-}
 
 export default class Character {
   id = 0
@@ -40,6 +26,8 @@ export default class Character {
   speed = 2
   resilience = 5
   _gold = 120
+  exp = 0
+  nextLvExp = 0
 
   weaponId = 0
   bodyId = 0
@@ -208,9 +196,6 @@ export default class Character {
     return this._gold
   }
 
-  exp = 0
-  nextLvExp = 0
-
   get nextExp() {
     if (this.lv >= this.maxLv) return 0
 
@@ -265,6 +250,29 @@ export default class Character {
   clone() {
     return Object.assign(new Character(), { ...this })
   }
+
+  toSaveData(): SaveCharacterData {
+    return {
+      id: this.id,
+      roleId: this.roleId,
+      lv: this.lv,
+      maxHP: this.maxHP,
+      maxMP: this.maxMP,
+      _hp: this._hp,
+      _mp: this._mp,
+      power: this.power,
+      speed: this.speed,
+      resilience: this.resilience,
+      _gold: this.gold,
+      exp: this.exp,
+      nextLvExp: this.nextLvExp,
+      weaponId: this.weaponId,
+      bodyId: this.bodyId,
+      shieldId: this.shieldId,
+      accessoriesId: this.accessoriesId,
+      magicsId: this.magics.map((magic) => magic.id),
+    }
+  }
 }
 
 type LVUpCharacterProperties =
@@ -275,7 +283,22 @@ type LVUpCharacterProperties =
   | 'resilience'
 
 export type CharacterData = Partial<Character>
+export type SaveCharacterData = CharacterData & { magicsId: number[] }
 
 export function parseCharacter(data: CharacterData): Character {
   return Object.assign(new Character(), data)
+}
+
+export function parseCharacterFromSaveData(saveData: SaveCharacterData) {
+  const character = Object.assign(
+    new Character(),
+    GetCharacter(saveData.id!).clone(),
+    saveData
+  ) as Character
+  character.magics = saveData.magicsId.map((id) => GetMagic(id))
+  character.equip(character.weapon, ItemType.Weapon)
+  character.equip(character.body, ItemType.Body)
+  character.equip(character.shield, ItemType.Shield)
+  character.equip(character.accessories, ItemType.Accessories)
+  return character
 }

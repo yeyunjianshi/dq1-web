@@ -1,8 +1,16 @@
 import storage from './Storage'
-import { GameData, globalGameData } from '../asset/gameData'
-import Character from '../asset/character'
+import {
+  GameData,
+  globalGameData,
+  InputType,
+  setGlobalGameData,
+} from '../asset/gameData'
+import {
+  parseCharacterFromSaveData,
+  SaveCharacterData,
+} from '../asset/character'
 import { timestampToTimeFormat } from '@engine/time'
-import Inventory from '@gameplay/inventory/inventory'
+import Inventory, { SaveItemSlot } from '@gameplay/inventory/inventory'
 
 export interface SaveSceneData {
   sceneName: string
@@ -10,18 +18,50 @@ export interface SaveSceneData {
 }
 
 export class SaveData {
-  constructor(
-    public data: GameData,
-    public eventData: string[],
-    public sceneData: SaveSceneData
-  ) {}
+  teamCharactes: SaveCharacterData[] = []
+  npcCharacters: { roleId: number }[] = []
+  inventory: SaveItemSlot[] = []
+  inputType: InputType = InputType.Move
+  lightRadius = 0
+  lightTime = 0
+  notMeetEnemyStep = 0
+  gameplayTime = 0
+  isMeetEnemy = true
+  isLightInCave = false
+  entraceTag?: string
+  eventData: string[] = []
+  sceneData?: SaveSceneData
 
   toSlotText() {
     return {
-      key: `LV ${this.data.hero.lv}`,
-      value: timestampToTimeFormat(this.data.gameplayTime),
+      key: `LV ${this.hero.lv}`,
+      value: timestampToTimeFormat(this.gameplayTime),
     }
   }
+
+  get hero() {
+    return this.teamCharactes[0]
+  }
+}
+
+export function generateSaveData(sceneData: SaveSceneData): SaveData {
+  const saveData = new SaveData()
+  saveData.teamCharactes = globalGameData.teamCharactes.map((c) =>
+    c.toSaveData()
+  )
+  saveData.npcCharacters = globalGameData.npcCharacters.map((v) => ({ ...v }))
+  saveData.inventory = globalGameData.inventory.toSaveData()
+  saveData.lightRadius = globalGameData.lightRadius
+  saveData.lightTime = globalGameData.lightTime
+  saveData.notMeetEnemyStep = globalGameData.notMeetEnemyStep
+  saveData.gameplayTime = globalGameData.gameplayTime
+  saveData.isMeetEnemy = globalGameData.isMeetEnemy
+  saveData.isLightInCave = globalGameData.isLightInCave
+  saveData.eventData = Array.from(globalGameData.events)
+  saveData.entraceTag = globalGameData.entraceTag
+  saveData.sceneData = sceneData
+
+  return saveData
 }
 
 export const DefaultMaxSlotNumber = 3
@@ -41,11 +81,6 @@ const deserialize = (data: string | null) => {
   }
 }
 
-export function generateSaveData(sceneData: SaveSceneData) {
-  const eventData = Array.from(globalGameData.events)
-  return new SaveData(globalGameData, eventData, sceneData)
-}
-
 export function save(slotIndex: number, data: SaveData): void {
   if (slotIndex < 0 && slotIndex >= 3) {
     throw new Error(`SaveSytem: SlotInde必须大于等于0小于3`)
@@ -58,17 +93,26 @@ export function load(slotIndex: number): SaveData | null {
     throw new Error(`SaveSytem: SlotInde必须大于等于0小于3`)
   }
   const jsonData = deserialize(storage.read(getSlotName(slotIndex)))
-  if (jsonData) {
-    const sceneData = jsonData.sceneData
-    const gameData = Object.assign(new GameData(), jsonData.data)
-    gameData.events = new Set(jsonData.eventData)
-    gameData.inventory = Object.assign(new Inventory(), gameData.inventory)
-    gameData.teamCharactes = gameData.teamCharactes.map((v: any) =>
-      Object.assign(new Character(), v)
-    )
-    return new SaveData(gameData, jsonData.eventData, sceneData)
-  }
-  return null
+  return jsonData ? Object.assign(new SaveData(), jsonData) : null
+}
+
+export function loadSaveDataToGame(data: SaveData) {
+  const gameData = new GameData()
+  setGlobalGameData(gameData)
+
+  gameData.inventory = Inventory.parseFromSaveData(data.inventory)
+  gameData.teamCharactes = data.teamCharactes.map((c) =>
+    parseCharacterFromSaveData(c)
+  )
+  gameData.npcCharacters = data.npcCharacters.map((v) => ({ ...v }))
+  gameData.lightRadius = data.lightRadius
+  gameData.lightTime = data.lightTime
+  gameData.notMeetEnemyStep = data.notMeetEnemyStep
+  gameData.gameplayTime = data.gameplayTime
+  gameData.isMeetEnemy = data.isMeetEnemy
+  gameData.isLightInCave = data.isLightInCave
+  gameData.events = new Set(data.eventData)
+  gameData.entraceTag = globalGameData.entraceTag
 }
 
 export function remove(slotIndex: number): SaveData | null {

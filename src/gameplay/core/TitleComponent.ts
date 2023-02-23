@@ -2,7 +2,7 @@ import Component from '@engine/component'
 import { GameplayComponent } from '@engine/components'
 import ListComponent, { TextAdapter } from '@engine/components/ListComponent'
 import { GlobalTeamControllerMarker, GlobalWindowMarker } from '@engine/engine'
-import { SaveData } from '../save/SaveSystem'
+import { loadSaveDataToGame, SaveData } from '../save/SaveSystem'
 import SaveWindow from '../menu/SaveWindow'
 import { transitionToScene } from '@gameplay/events/Transition'
 import {
@@ -22,6 +22,7 @@ export default class TitleComponent extends Component {
   private _globalWindow?: GlobalWindowComponent
   private _menuWindow?: ListComponent
   private _saveWindow?: SaveWindow
+  private _isTransition = false
 
   start() {
     this._teamController = this.engine.getVariable<TeamControllerComponent>(
@@ -84,6 +85,7 @@ export default class TitleComponent extends Component {
 
   private titleStartGame() {
     console.log('Start Game')
+    this._isTransition = true
 
     this.audios.playSE(Audios.Menu)
 
@@ -102,9 +104,13 @@ export default class TitleComponent extends Component {
     console.log(saveData)
 
     if (saveData) {
-      setGlobalGameData(saveData.data)
-      transitionToScene(this.engine, saveData.sceneData.sceneName, {
-        worldPosition: saveData.sceneData.position,
+      this._isTransition = true
+
+      loadSaveDataToGame(saveData)
+      this._teamController!.initTeam()
+
+      transitionToScene(this.engine, saveData.sceneData!.sceneName, {
+        worldPosition: saveData.sceneData!.position,
         direction: Direction.down,
         isPremutation: false,
       }).then(() => {
@@ -120,7 +126,7 @@ export default class TitleComponent extends Component {
   }
 
   update(): void {
-    if (!this._menuWindow || !this._saveWindow) return
+    if (this._isTransition || !this._menuWindow || !this._saveWindow) return
 
     if (this.input.isCancelPressed()) {
       if (this.isSelectSave) {
