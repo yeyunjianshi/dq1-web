@@ -1,6 +1,7 @@
 import EventEmitter from './eventEmitter'
 
-export const ASSETS_PREFIX = '/assets/'
+export const BASE_URL = import.meta.env.BASE_URL
+export const ASSETS_PREFIX = `${BASE_URL}/assets/`
 export const SPRITES_PREFIX = ASSETS_PREFIX + 'sprites/'
 export const AUDIO_PREFIX = ASSETS_PREFIX + 'audios/'
 export const DATA_PREFIX = ASSETS_PREFIX + 'data/'
