@@ -1,4 +1,4 @@
-name: dq1-game
+name: dq1-web
 on:
   push:
     branches:

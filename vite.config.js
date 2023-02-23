@@ -7,7 +7,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   plugins: [tmj()],
-  base: '/dq1-game/',
+  base: '/dq1-web/',
   resolve: {
     alias: {
       '@data': resolve(__dirname, './src/data'),
