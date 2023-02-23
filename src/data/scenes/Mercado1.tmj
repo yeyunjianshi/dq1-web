@@ -19,6 +19,11 @@
                  "value":"bgm\/castle.mp3"
                 }, 
                 {
+                 "name":"group",
+                 "type":"string",
+                 "value":"Mercado"
+                }, 
+                {
                  "name":"isCave",
                  "type":"bool",
                  "value":false

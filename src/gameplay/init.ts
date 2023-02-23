@@ -116,7 +116,7 @@ export async function initScene(engine: Engine) {
 
   // engine.sceneManager.loadScene(WorldScene.name)
   // engine.sceneManager.loadScene('Battle')
-  engine.sceneManager.loadScene(StartScene.name)
+  // engine.sceneManager.loadScene(StartScene.name)
   // engine.sceneManager.loadScene(DescriptionScene.name)
   // engine.sceneManager.loadScene(TitleScene.name)
   // engine.sceneManager.loadScene(LogoScene.name)
@@ -147,7 +147,7 @@ export async function initScene(engine: Engine) {
   // engine.sceneManager.loadScene(Garais2Scene.name)
   // engine.sceneManager.loadScene(Garais3Scene.name)
   // engine.sceneManager.loadScene(Garais4Scene.name)
-  // engine.sceneManager.loadScene(RockyCave1Scene.name)
+  engine.sceneManager.loadScene(RockyCave1Scene.name)
   // engine.sceneManager.loadScene(RockyCave2Scene.name)
   // engine.sceneManager.loadScene(DracolordsCastle1Scene.name)
   // engine.sceneManager.loadScene(DracolordsCastle2Scene.name)

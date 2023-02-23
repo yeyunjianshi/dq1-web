@@ -48,16 +48,21 @@
                  "value":"bgm\/castle.mp3"
                 }, 
                 {
-                 "name":"isCave",
-                 "type":"bool",
-                 "value":false
+                 "name":"group",
+                 "type":"string",
+                 "value":"Mercado"
                 }, 
                 {
-                 "name":"isMeetEnemy",
+                 "name":"isCave",
                  "type":"bool",
                  "value":false
                 },
             
+                {
+                 "name":"isMeetEnemy",
+                 "type":"bool",
+                 "value":false
+                }, 
                 {
                  "name":"name",
                  "type":"string",

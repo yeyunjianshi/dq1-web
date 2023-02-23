@@ -41,6 +41,11 @@
                  "value":"bgm\/town.mp3"
                 }, 
                 {
+                 "name":"group",
+                 "type":"string",
+                 "value":"DracolordsCastle"
+                }, 
+                {
                  "name":"isCave",
                  "type":"bool",
                  "value":true

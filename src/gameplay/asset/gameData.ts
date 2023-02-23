@@ -19,7 +19,7 @@ const DefaultInitGameCharacter = import.meta.env.DEV
       npcs: [2],
       events: [
         generateEventId('Q660'),
-        generateEventId('Q666'),
+        // generateEventId('Q666'),
         // generateEventId('Q888'),
       ],
       isMeetEnemty: false,

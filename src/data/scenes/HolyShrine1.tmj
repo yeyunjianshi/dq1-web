@@ -41,6 +41,11 @@
                  "value":"bgm\/town.mp3"
                 }, 
                 {
+                 "name":"group",
+                 "type":"string",
+                 "value":"HolyShrine"
+                }, 
+                {
                  "name":"isCave",
                  "type":"bool",
                  "value":false

@@ -19,6 +19,7 @@ export default class implements LifeCycle {
   loadType: SceneLoadType = SceneLoadType.Replace
   isMeetEnemy = false
   isCave = false
+  group?: string
 
   constructor(name = '', rootObject: GameObject, engine: Engine) {
     this.name = name
@@ -42,6 +43,7 @@ export default class implements LifeCycle {
   }
 
   awake() {
+    this.group = this.group ?? this.name
     this.rootObject.measureWidth =
       this.rootObject.configWidth === LayoutMatchParent
         ? this.width
@@ -62,8 +64,8 @@ export default class implements LifeCycle {
   }
 
   private init() {
-    if (this.loadType === SceneLoadType.Replace && this.bgm)
-      this.engine.audios.playBGM(this.bgm)
+    // if (this.loadType === SceneLoadType.Replace && this.bgm)
+    //   this.engine.audios.playBGM(this.bgm)
   }
 
   start() {

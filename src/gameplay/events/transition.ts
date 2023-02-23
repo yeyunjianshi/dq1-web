@@ -49,20 +49,29 @@ export async function transitionToScene(
       }
 ) {
   const sceneManager = engine.sceneManager
+  const previousIsCave = sceneManager.currentScene.isCave
+  const previousGroup = sceneManager.currentScene.group
   let nextScene = sceneManager.currentScene
-  let isSameScene = true
+  // let isSameScene= true
 
   const previousInputType = setInputType(InputType.Transition)
   if (sceneManager.currentScene.name ?? '__$$$$__' !== nextSceneName) {
     await fading({ duration: DefaultTransitionTime, type: 'in' })
     nextScene = sceneManager.loadScene(nextSceneName, SceneLoadType.Replace)
-    isSameScene = false
+    //  isSameScene = false
     while (engine.sceneManager.loading) {
       await nextFrame()
     }
   }
 
-  globalGameData.reinitWhenChangeScene(!isSameScene)
+  const currentScene = sceneManager.currentScene
+  if (currentScene.group !== previousGroup) {
+    globalGameData.reinitWhenChangeScene(true)
+    if (currentScene.loadType === SceneLoadType.Replace && currentScene.bgm)
+      currentScene.engine.audios.playBGM(currentScene.bgm)
+  } else {
+    globalGameData.reinitWhenChangeScene(previousIsCave !== currentScene.isCave)
+  }
 
   const teamController = engine.getVariable<TeamControllerComponent>(
     GlobalTeamControllerMarker
