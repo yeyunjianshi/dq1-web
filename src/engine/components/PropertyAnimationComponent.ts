@@ -1,7 +1,7 @@
 import { AssetLoader } from '../resource'
 import Component from '@engine/component'
 import { InnerGameComponent } from '.'
-import { FrameKey, Animation } from '../animations/Animation'
+import { FrameKey, Animation } from '../animations/animation'
 
 export type PropertyAnimationPathData = {
   type: string

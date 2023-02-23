@@ -3,7 +3,7 @@ import { InnerGameComponent } from '.'
 import PropertyAnimationComponent, {
   PropertyAnimationData,
 } from './PropertyAnimationComponent'
-import { FrameKey, Animation } from '../animations/Animation'
+import { FrameKey, Animation } from '../animations/animation'
 import { waitUtil } from '@engine/time'
 import { GlobalFadingMarker } from '../engine'
 
