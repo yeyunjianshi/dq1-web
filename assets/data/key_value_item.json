@@ -1,0 +1,68 @@
+{
+  "x": 0,
+  "y": 0,
+  "width": -2,
+  "height": -2,
+  "active": true,
+  "components": [{ "type": "$KeyValueItemComponent", "canSelect": true }],
+  "children": [
+    {
+      "x": 0,
+      "y": 0,
+      "width": -2,
+      "height": -2,
+      "active": true,
+      "components": [
+        {
+          "type": "$TextComponent",
+          "text": "武",
+          "lineHeight": 1,
+          "font": {
+            "size": "26",
+            "align": "left"
+          },
+          "padding": [0, 30, 0, 32]
+        }
+      ]
+    },
+    {
+      "x": 0,
+      "y": 0,
+      "width": -2,
+      "height": -2,
+      "active": true,
+      "components": [
+        {
+          "type": "$TextComponent",
+          "text": "钢剑",
+          "lineHeight": 1,
+          "font": {
+            "size": "26",
+            "align": "right"
+          },
+          "padding": [0, 20, 0, 0]
+        }
+      ]
+    },
+    {
+      "x": 14,
+      "y": 6,
+      "width": 10,
+      "height": 16,
+      "background": {
+        "sprite": "system/cursor.png",
+        "scaleType": "fit",
+        "spriteWidth": 8,
+        "spriteHeight": 13
+      },
+      "components": [
+        {
+          "type": "$Cursor"
+        }
+      ],
+      "layoutGravity": ["left", "center"],
+      "pivot": [0, 0.5],
+      "active": false
+    }
+  ]
+}

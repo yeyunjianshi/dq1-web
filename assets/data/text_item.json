@@ -1,0 +1,48 @@
+{
+  "x": 0,
+  "y": 0,
+  "width": -2,
+  "height": -2,
+  "active": true,
+  "components": [{ "type": "$KeyValueItemComponent", "canSelect": true }],
+  "children": [
+    {
+      "x": 0,
+      "y": 0,
+      "width": -2,
+      "height": -2,
+      "active": true,
+      "components": [
+        {
+          "type": "$TextComponent",
+          "text": "诅咒戒指",
+          "lineHeight": 1,
+          "font": {
+            "size": "26",
+            "align": "center"
+          }
+        }
+      ]
+    },
+    {
+      "x": 20,
+      "y": 6,
+      "width": 10,
+      "height": 16,
+      "background": {
+        "sprite": "system/cursor.png",
+        "scaleType": "fit",
+        "spriteWidth": 8,
+        "spriteHeight": 13
+      },
+      "components": [
+        {
+          "type": "$Cursor"
+        }
+      ],
+      "layoutGravity": ["left", "center"],
+      "pivot": [0, 0.5],
+      "active": false
+    }
+  ]
+}

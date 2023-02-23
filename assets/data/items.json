@@ -1,0 +1,355 @@
+[
+  {
+    "id": 1,
+    "name": "药草",
+    "price": 10,
+    "sellPrice": 5,
+    "canUse": 3,
+    "type": 16,
+    "effect": "u:all:HP:20-35",
+    "capacity": 99
+  },
+  {
+    "id": 2,
+    "name": "火把",
+    "price": 8,
+    "sellPrice": 4,
+    "canUse": 3,
+    "type": 16,
+    "effect": "u:common:light:120-0;use:battle:damage:4-6",
+    "useCommonText": "{name}点燃了火把，照亮了四周",
+    "capacity": 99
+  },
+  {
+    "id": 3,
+    "name": "基美拉之翅",
+    "price": 24,
+    "sellPrice": 12,
+    "canUse": 1,
+    "type": 16,
+    "effect": "u:common:move",
+    "capacity": 99
+  },
+  {
+    "id": 4,
+    "name": "圣水",
+    "price": 12,
+    "sellPrice": 19,
+    "canUse": 3,
+    "type": 16,
+    "effect": "u:common:notMeetEnemy:127;u:battle:damage:16-20",
+    "useCommonText": "{name}使用了圣水\n暂时不会遭遇敌人了",
+    "capacity": 99
+  },
+  {
+    "id": 5,
+    "name": "力量种子",
+    "price": 224,
+    "sellPrice": 112,
+    "canUse": 1,
+    "type": 16,
+    "effect": "u:common:power:1-3",
+    "capacity": 99
+  },
+  {
+    "id": 6,
+    "name": "速度种子",
+    "price": 200,
+    "sellPrice": 100,
+    "canUse": 1,
+    "type": 16,
+    "effect": "u:common:speed:1-3",
+    "capacity": 99
+  },
+  {
+    "id": 7,
+    "name": "守护种子",
+    "price": 200,
+    "sellPrice": 100,
+    "canUse": 1,
+    "type": 16,
+    "effect": "u:common:resilience:4",
+    "capacity": 99
+  },
+  {
+    "id": 8,
+    "name": "生命果实",
+    "price": 300,
+    "sellPrice": 150,
+    "canUse": 1,
+    "type": 16,
+    "effect": "u:common:maxHP:4-6",
+    "capacity": 99
+  },
+  {
+    "id": 9,
+    "name": "神奇果实",
+    "price": 200,
+    "sellPrice": 100,
+    "canUse": 1,
+    "type": 16,
+    "effect": "u:common:maxMP:3-5",
+    "capacity": 99
+  },
+  {
+    "id": 50,
+    "name": "魔法钥匙",
+    "price": 24,
+    "sellPrice": 12,
+    "canUse": 0,
+    "type": 16,
+    "capacity": 99
+  },
+  {
+    "id": 101,
+    "name": "竹枪",
+    "price": 10,
+    "sellPrice": 5,
+    "canUse": 0,
+    "type": 1,
+    "effect": "e:attack:2"
+  },
+  {
+    "id": 102,
+    "name": "狼牙棒",
+    "price": 60,
+    "sellPrice": 30,
+    "canUse": 0,
+    "type": 1,
+    "effect": "e:attack:4"
+  },
+  {
+    "id": 103,
+    "name": "铜剑",
+    "price": 180,
+    "sellPrice": 90,
+    "canUse": 0,
+    "type": 1,
+    "effect": "e:attack:10"
+  },
+  {
+    "id": 104,
+    "name": "铁斧",
+    "price": 560,
+    "sellPrice": 280,
+    "canUse": 0,
+    "type": 1,
+    "effect": "e:attack:15"
+  },
+  {
+    "id": 105,
+    "name": "钢剑",
+    "price": 1500,
+    "sellPrice": 750,
+    "canUse": 0,
+    "type": 1,
+    "effect": "e:attack:20"
+  },
+  {
+    "id": 106,
+    "name": "火焰之剑",
+    "price": 9800,
+    "sellPrice": 4980,
+    "canUse": 2,
+    "type": 1,
+    "useCount": 0,
+    "effect": "e:attack:28;u:battle:magicDamage:12-36"
+  },
+  {
+    "id": 107,
+    "name": "洛特之剑",
+    "price": 0,
+    "sellPrice": -1,
+    "canUse": 0,
+    "type": 1,
+    "effect": "e:attack:40"
+  },
+  {
+    "id": 201,
+    "name": "布衣",
+    "price": 20,
+    "sellPrice": 10,
+    "canUse": 0,
+    "type": 2,
+    "effect": "e:defend:2"
+  },
+  {
+    "id": 202,
+    "name": "皮衣",
+    "price": 70,
+    "sellPrice": 35,
+    "canUse": 0,
+    "type": 2,
+    "effect": "e:defend:4"
+  },
+  {
+    "id": 203,
+    "name": "锁子甲",
+    "price": 300,
+    "sellPrice": 150,
+    "canUse": 0,
+    "type": 2,
+    "effect": "e:defend:10"
+  },
+  {
+    "id": 204,
+    "name": "铁铠甲",
+    "price": 1000,
+    "sellPrice": 500,
+    "canUse": 0,
+    "type": 2,
+    "effect": "e:defend:16"
+  },
+  {
+    "id": 205,
+    "name": "钢铠甲",
+    "price": 3000,
+    "sellPrice": 1500,
+    "canUse": 0,
+    "type": 2,
+    "effect": "e:defend:24"
+  },
+  {
+    "id": 206,
+    "name": "魔法铠甲",
+    "price": 7700,
+    "sellPrice": 3550,
+    "canUse": 0,
+    "type": 2,
+    "effect": "e:defend:24;e:buffer:magicHurt:-25%;e:buffer:moveAddHP:4:1"
+  },
+  {
+    "id": 207,
+    "name": "洛特之铠",
+    "price": 0,
+    "sellPrice": -1,
+    "canUse": 0,
+    "type": 2,
+    "effect": "e:defend:40;e:buffer:magicHurt:-25%;e:buffer:moveAddHP:1:1;e:buffer:immunotoxicity"
+  },
+
+  {
+    "id": 301,
+    "name": "皮盾",
+    "price": 90,
+    "sellPrice": 45,
+    "canUse": 0,
+    "type": 4,
+    "effect": "e:defend:4"
+  },
+  {
+    "id": 302,
+    "name": "铁盾",
+    "price": 800,
+    "sellPrice": 400,
+    "canUse": 0,
+    "type": 4,
+    "effect": "e:defend:10"
+  },
+  {
+    "id": 303,
+    "name": "水镜之盾",
+    "price": 14800,
+    "sellPrice": 7400,
+    "canUse": 0,
+    "type": 4,
+    "effect": "e:defend:20"
+  },
+  {
+    "id": 401,
+    "name": "龙鳞",
+    "price": 20,
+    "sellPrice": 10,
+    "canUse": 0,
+    "type": 8,
+    "effect": "e:defend:5"
+  },
+  {
+    "id": 402,
+    "name": "诅咒腰带",
+    "price": 800,
+    "sellPrice": 400,
+    "canUse": 0,
+    "type": 8
+  },
+  {
+    "id": 405,
+    "name": "战士戒指",
+    "price": 0,
+    "sellPrice": 15,
+    "canUse": 0,
+    "type": 8
+  },
+  {
+    "id": 501,
+    "name": "妖精之笛",
+    "price": 0,
+    "sellPrice": 15,
+    "canUse": 0,
+    "type": 32,
+    "isCanDiscard": false
+  },
+  {
+    "id": 502,
+    "name": "银之竖琴",
+    "price": 0,
+    "sellPrice": -1,
+    "canUse": 1,
+    "type": 32,
+    "isCanDiscard": false,
+    "effect": "u:common:script:meetEnemy"
+  },
+  {
+    "id": 503,
+    "name": "雨云之杖",
+    "price": 0,
+    "sellPrice": -1,
+    "canUse": 0,
+    "type": 32,
+    "isCanDiscard": false
+  },
+  {
+    "id": 504,
+    "name": "太阳之石",
+    "price": 0,
+    "sellPrice": -1,
+    "canUse": 0,
+    "type": 32,
+    "isCanDiscard": false
+  },
+  {
+    "id": 505,
+    "name": "公主的爱",
+    "price": 0,
+    "sellPrice": -1,
+    "canUse": 1,
+    "isCanDiscard": false,
+    "type": 32,
+    "effect": "u:common:script:loveOfPrincess"
+  },
+  {
+    "id": 506,
+    "name": "洛特之证",
+    "isCanDiscard": false,
+    "price": 0,
+    "type": 32
+  },
+  {
+    "id": 507,
+    "name": "虹之水滴",
+    "price": 0,
+    "sellPrice": -1,
+    "canUse": 1,
+    "isCanDiscard": false,
+    "type": 32,
+    "effect": "u:common:script:rainbow"
+  },
+  {
+    "id": 508,
+    "name": "光之珠",
+    "price": 0,
+    "sellPrice": -1,
+    "isCanDiscard": false,
+    "type": 32
+  }
+]
