@@ -11,11 +11,18 @@
     "file.lastUsedOpenFilter": "全部文件 (*)",
     "fileStates": {
         "E:/projects/web/dq1-web-pre/src/data/scenes/Domdora.tmj": {
-            "scale": 0.9618749999999999,
-            "selectedLayer": 0,
+            "expandedGroupLayers": [
+                28,
+                14
+            ],
+            "expandedObjectLayers": [
+                14
+            ],
+            "scale": 1,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 480.31189083820675,
-                "y": 480.83170890188444
+                "x": 502,
+                "y": 193
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle1.tmj": {
@@ -164,7 +171,7 @@
                 14
             ],
             "scale": 1.5,
-            "selectedLayer": 0,
+            "selectedLayer": 8,
             "viewCenter": {
                 "x": 678,
                 "y": 975.3333333333333
@@ -282,7 +289,7 @@
             "selectedLayer": 1,
             "viewCenter": {
                 "x": 240.675763482781,
-                "y": 240.67576348278106
+                "y": 241.19558154645878
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/HolyShrine2.tmj": {
@@ -549,7 +556,7 @@
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 507.99999999999994,
+                "x": 507.33333333333337,
                 "y": 370.66666666666663
             }
         },
@@ -574,10 +581,12 @@
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/World.tmj": {
             "expandedGroupLayers": [
+                28,
                 30,
                 14
             ],
             "expandedObjectLayers": [
+                47,
                 21,
                 36,
                 32,
@@ -585,11 +594,11 @@
                 14,
                 45
             ],
-            "scale": 0.75,
-            "selectedLayer": 7,
+            "scale": 2,
+            "selectedLayer": 9,
             "viewCenter": {
-                "x": 2048,
-                "y": 2047.3333333333333
+                "x": 1025.5,
+                "y": 3025
             }
         },
         "Tiles/Tiles.tsx": {
@@ -622,17 +631,17 @@
     "property.type": "string",
     "recentFiles": [
         "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine2.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave1.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/World.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Maira.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/HolyShrine1.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/HolyShrine2.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine1.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle3.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado2.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/HolyShrine1.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado3.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle2.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Garais3.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/Garais4.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Garais3.tmj"
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado1.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/MarshyCave.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Maira.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Garais2.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Garais1.tmj"
     ],
     "resizeMap.removeObjects": true,
     "textEdit.monospace": true,

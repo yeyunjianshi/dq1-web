@@ -3,28 +3,6 @@
  "infinite":false,
  "layers":[
         {
-         "class":"BornPoint",
-         "id":31,
-         "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_0.png",
-         "name":"BornPoint",
-         "opacity":1,
-         "properties":[
-                {
-                 "name":"direction",
-                 "type":"string",
-                 "value":"down"
-                }, 
-                {
-                 "name":"isPremutation",
-                 "type":"bool",
-                 "value":false
-                }],
-         "type":"imagelayer",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
          "id":2,
          "image":"..\/..\/..\/public\/assets\/sprites\/map\/Domdora.png",
          "name":"Map",
@@ -66,26 +44,26 @@
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -98,6 +76,30 @@
          "type":"tilelayer",
          "visible":true,
          "width":30,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "class":"BornPoint",
+         "id":31,
+         "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_0.png",
+         "name":"BornPoint",
+         "offsetx":159,
+         "offsety":226,
+         "opacity":1,
+         "properties":[
+                {
+                 "name":"direction",
+                 "type":"string",
+                 "value":"down"
+                }, 
+                {
+                 "name":"isPremutation",
+                 "type":"bool",
+                 "value":false
+                }],
+         "type":"imagelayer",
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -137,93 +139,32 @@
                 {
                  "class":"Entrace",
                  "draworder":"topdown",
-                 "id":16,
-                 "name":"\u4e2d\u697c\u68af",
+                 "id":40,
+                 "name":"\u4e0a\u51fa\u53e3",
                  "objects":[
                         {
                          "class":"",
-                         "height":0,
-                         "id":7,
+                         "height":128,
+                         "id":47,
                          "name":"",
-                         "point":true,
                          "rotation":0,
                          "visible":true,
-                         "width":0,
-                         "x":653.5,
-                         "y":433
+                         "width":916,
+                         "x":22,
+                         "y":16
                         }],
                  "opacity":1,
                  "properties":[
                         {
-                         "name":"d_direction",
-                         "type":"string",
-                         "value":"left"
-                        }, 
-                        {
-                         "name":"d_isPremutation",
-                         "type":"bool",
-                         "value":false
-                        }, 
-                        {
-                         "name":"d_tag",
-                         "type":"string",
-                         "value":"middle"
-                        }, 
-                        {
-                         "name":"height",
+                         "name":"coordX",
                          "type":"int",
-                         "value":32
+                         "value":0
                         }, 
                         {
-                         "name":"t_nextScene",
-                         "type":"string",
-                         "value":"TantegelCastle2"
-                        }, 
-                        {
-                         "name":"t_tag",
-                         "type":"string",
-                         "value":"middle"
-                        }, 
-                        {
-                         "name":"width",
+                         "name":"coordY",
                          "type":"int",
-                         "value":32
+                         "value":0
                         }, 
-                        {
-                         "name":"x",
-                         "type":"int",
-                         "value":640
-                        }, 
-                        {
-                         "name":"y",
-                         "type":"int",
-                         "value":416
-                        }],
-                 "type":"objectgroup",
-                 "visible":true,
-                 "x":0,
-                 "y":0
-                }, 
-                {
-                 "class":"Entrace",
-                 "draworder":"topdown",
-                 "id":21,
-                 "name":"\u4e0b\u51fa\u53e3",
-                 "objects":[
-                        {
-                         "class":"",
-                         "height":0,
-                         "id":17,
-                         "name":"",
-                         "point":true,
-                         "rotation":0,
-                         "visible":true,
-                         "width":0,
-                         "x":653.5,
-                         "y":433
-                        }],
-                 "opacity":1,
-                 "properties":[
                         {
                          "name":"d_direction",
                          "type":"string",
@@ -237,12 +178,12 @@
                         {
                          "name":"d_tag",
                          "type":"string",
-                         "value":"TantegelCastle"
+                         "value":""
                         }, 
                         {
                          "name":"height",
                          "type":"int",
-                         "value":64
+                         "value":160
                         }, 
                         {
                          "name":"t_nextScene",
@@ -252,17 +193,334 @@
                         {
                          "name":"t_tag",
                          "type":"string",
-                         "value":"TantegelCastle"
+                         "value":"Domdora"
                         }, 
                         {
                          "name":"width",
                          "type":"int",
-                         "value":252
+                         "value":1000
                         }, 
                         {
                          "name":"x",
                          "type":"int",
-                         "value":480
+                         "value":120
+                        }, 
+                        {
+                         "name":"y",
+                         "type":"int",
+                         "value":1120
+                        }],
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "class":"Entrace",
+                 "draworder":"topdown",
+                 "id":41,
+                 "name":"\u4e0b\u51fa\u53e3",
+                 "objects":[
+                        {
+                         "class":"",
+                         "height":138,
+                         "id":51,
+                         "name":"",
+                         "rotation":0,
+                         "visible":true,
+                         "width":929,
+                         "x":22,
+                         "y":815
+                        }],
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":25
+                        }, 
+                        {
+                         "name":"d_direction",
+                         "type":"string",
+                         "value":"down"
+                        }, 
+                        {
+                         "name":"d_isPremutation",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"d_tag",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":160
+                        }, 
+                        {
+                         "name":"t_nextScene",
+                         "type":"string",
+                         "value":"World"
+                        }, 
+                        {
+                         "name":"t_tag",
+                         "type":"string",
+                         "value":"Domdora"
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":1000
+                        }, 
+                        {
+                         "name":"x",
+                         "type":"int",
+                         "value":120
+                        }, 
+                        {
+                         "name":"y",
+                         "type":"int",
+                         "value":1120
+                        }],
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "class":"Entrace",
+                 "draworder":"topdown",
+                 "id":39,
+                 "name":"\u53f3\u51fa\u53e3",
+                 "objects":[
+                        {
+                         "class":"",
+                         "height":917,
+                         "id":44,
+                         "name":"",
+                         "rotation":0,
+                         "visible":true,
+                         "width":125,
+                         "x":820,
+                         "y":16
+                        }],
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":25
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"d_direction",
+                         "type":"string",
+                         "value":"down"
+                        }, 
+                        {
+                         "name":"d_isPremutation",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"d_tag",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":1000
+                        }, 
+                        {
+                         "name":"t_nextScene",
+                         "type":"string",
+                         "value":"World"
+                        }, 
+                        {
+                         "name":"t_tag",
+                         "type":"string",
+                         "value":"Domdora"
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":160
+                        }, 
+                        {
+                         "name":"x",
+                         "type":"int",
+                         "value":120
+                        }, 
+                        {
+                         "name":"y",
+                         "type":"int",
+                         "value":1120
+                        }],
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "class":"Entrace",
+                 "draworder":"topdown",
+                 "id":38,
+                 "name":"\u5de6\u51fa\u53e3",
+                 "objects":[
+                        {
+                         "class":"",
+                         "height":864,
+                         "id":41,
+                         "name":"",
+                         "rotation":0,
+                         "visible":true,
+                         "width":134,
+                         "x":13,
+                         "y":18
+                        }],
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"d_direction",
+                         "type":"string",
+                         "value":"down"
+                        }, 
+                        {
+                         "name":"d_isPremutation",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"d_tag",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":1000
+                        }, 
+                        {
+                         "name":"t_nextScene",
+                         "type":"string",
+                         "value":"World"
+                        }, 
+                        {
+                         "name":"t_tag",
+                         "type":"string",
+                         "value":"Domdora"
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":160
+                        }, 
+                        {
+                         "name":"x",
+                         "type":"int",
+                         "value":120
+                        }, 
+                        {
+                         "name":"y",
+                         "type":"int",
+                         "value":1120
+                        }],
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "class":"Entrace",
+                 "draworder":"topdown",
+                 "id":42,
+                 "name":"\u5de6\u5165\u53e3",
+                 "objects":[
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":54,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":181,
+                         "y":408
+                        }],
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":5
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":12
+                        }, 
+                        {
+                         "name":"d_direction",
+                         "type":"string",
+                         "value":"down"
+                        }, 
+                        {
+                         "name":"d_isPremutation",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"d_tag",
+                         "type":"string",
+                         "value":"Domdora"
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"t_nextScene",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"t_tag",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"x",
+                         "type":"int",
+                         "value":120
                         }, 
                         {
                          "name":"y",
@@ -288,8 +546,8 @@
                  "id":29,
                  "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/MapChest.png",
                  "name":"Chest1",
-                 "offsetx":800,
-                 "offsety":736,
+                 "offsetx":738,
+                 "offsety":543.333333333333,
                  "opacity":1,
                  "properties":[
                         {
@@ -315,22 +573,27 @@
                         {
                          "name":"id",
                          "type":"string",
-                         "value":"TantgelCastle_Chest1"
+                         "value":"Domdora_Chest_1"
                         }, 
                         {
                          "name":"important",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }, 
                         {
                          "name":"items",
                          "type":"string",
-                         "value":"[1]"
+                         "value":"[207]"
                         }, 
                         {
                          "name":"money",
                          "type":"int",
                          "value":0
+                        }, 
+                        {
+                         "name":"trigger",
+                         "type":"bool",
+                         "value":true
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -354,8 +617,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":32,
- "nextobjectid":20,
+ "nextlayerid":43,
+ "nextobjectid":55,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",

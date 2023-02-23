@@ -23,7 +23,7 @@ function deepParseJSON(json) {
 }
 
 function property(obj, name) {
-  if (!obj.properties) return undefined
+  if (obj.properties === undefined) return undefined
   const prop = find(obj.properties, 'name', name)
   if (!prop) return undefined
 
@@ -151,8 +151,8 @@ function convert({ src, tileSize = DefaultTileSize }) {
 
     const coordX = property(d, 'coordX')
     const coordY = property(d, 'coordY')
-    if (coordX) ret.x = coordX * tileSize
-    if (coordY) ret.y = coordY * tileSize
+    if (coordX !== undefined) ret.x = coordX * tileSize
+    if (coordY !== undefined) ret.y = coordY * tileSize
 
     if (property(d, 't_nextScene')) {
       ret.components.push({

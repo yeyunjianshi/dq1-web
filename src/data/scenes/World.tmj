@@ -182,8 +182,8 @@
          "id":31,
          "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_0.png",
          "name":"BornPoint",
-         "offsetx":2211.27272727273,
-         "offsety":1697.81818181818,
+         "offsetx":853.696969696973,
+         "offsety":2979.63636363636,
          "opacity":1,
          "properties":[
                 {
@@ -416,6 +416,80 @@
                          "name":"t_tag",
                          "type":"string",
                          "value":"RockyCave1"
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":32
+                        }],
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "draworder":"topdown",
+                 "id":47,
+                 "name":"Domdora",
+                 "objects":[
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":57,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":925.5,
+                         "y":2999
+                        }],
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":28
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":93
+                        }, 
+                        {
+                         "name":"d_direction",
+                         "type":"string",
+                         "value":"down"
+                        }, 
+                        {
+                         "name":"d_isPremutation",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"d_tag",
+                         "type":"string",
+                         "value":"Domdora"
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"t_entraceTag",
+                         "type":"string",
+                         "value":"Domdora"
+                        }, 
+                        {
+                         "name":"t_nextScene",
+                         "type":"string",
+                         "value":"Domdora"
+                        }, 
+                        {
+                         "name":"t_tag",
+                         "type":"string",
+                         "value":"Domdora"
                         }, 
                         {
                          "name":"width",
@@ -1315,8 +1389,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":47,
- "nextobjectid":56,
+ "nextlayerid":48,
+ "nextobjectid":58,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",
