@@ -38,7 +38,7 @@
                 {
                  "name":"bgm",
                  "type":"string",
-                 "value":"bgm\/town.mp3"
+                 "value":"bgm\/dungeon.mp3"
                 }, 
                 {
                  "name":"group",

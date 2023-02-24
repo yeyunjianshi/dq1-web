@@ -16,7 +16,7 @@
                 {
                  "name":"bgm",
                  "type":"string",
-                 "value":"bgm\/town.mp3"
+                 "value":"bgm\/world.mp3"
                 }, 
                 {
                  "name":"isCave",

@@ -45,7 +45,7 @@
                 {
                  "name":"bgm",
                  "type":"string",
-                 "value":"bgm\/castle.mp3"
+                 "value":"bgm\/town.mp3"
                 }, 
                 {
                  "name":"group",
