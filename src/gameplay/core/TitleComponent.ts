@@ -99,7 +99,7 @@ export default class TitleComponent extends Component {
     transitionToScene(this.engine, 'TantegelCastle2', 'StartGame')
   }
 
-  private titleLoadGame(saveData: SaveData | null) {
+  private async titleLoadGame(saveData: SaveData | null) {
     console.log('Load Game')
     console.log(saveData)
 
@@ -109,15 +109,19 @@ export default class TitleComponent extends Component {
       loadSaveDataToGame(saveData)
       this._teamController!.initTeam()
 
-      transitionToScene(this.engine, saveData.sceneData!.sceneName, {
+      await transitionToScene(this.engine, saveData.sceneData!.sceneName, {
         worldPosition: saveData.sceneData!.position,
         direction: Direction.down,
         isPremutation: false,
-      }).then(() => {
-        globalGameData.inputType = InputType.Move
-        this._globalWindow!.root.active = true
-        this._teamController!.root.active = true
       })
+
+      globalGameData.inputType = InputType.Move
+      globalGameData.lightRadius = saveData.lightRadius
+      globalGameData.lightTime = saveData.lightTime
+      globalGameData.entraceTag = saveData.entraceTag
+
+      this._globalWindow!.root.active = true
+      this._teamController!.root.active = true
     }
   }
 
