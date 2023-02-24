@@ -65,7 +65,6 @@ initDevEnv()
 
 function initDevEnv() {
   const isDev = import.meta.env.DEV
-  console.log(isDev)
   const btn = document.getElementById('startBtn') as HTMLButtonElement
   btn.style.display = isDev ? 'block' : 'none'
   btn.addEventListener('click', () => {

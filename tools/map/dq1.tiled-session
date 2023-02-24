@@ -433,8 +433,8 @@
             "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 176,
-                "y": 191.75
+                "x": 300,
+                "y": 237.5
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Rimuldar.tmj": {
@@ -630,18 +630,18 @@
     "project": "dq1.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle4.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine2.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave2.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/HolyShrine2.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/HolyShrine1.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado3.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle2.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Garais3.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Garais4.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado1.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave1.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine1.tmj",
         "E:/projects/web/dq1-web-pre/src/data/scenes/MarshyCave.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Maira.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Garais2.tmj",
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Garais1.tmj"
+        "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle3.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/World.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle5.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/HolyShrine1.tmj",
+        "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle6.tmj"
     ],
     "resizeMap.removeObjects": true,
     "textEdit.monospace": true,
