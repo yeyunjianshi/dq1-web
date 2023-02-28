@@ -1,11 +1,11 @@
-import BaseWindow from '../../engine/components/BaseWindow'
-import ListComponent, {
-  TextAdapter,
-} from '../../engine/components/ListComponent'
-import ScrollTextComponent from '../../engine/components/ScrollTextComponent'
-import TextComponent from '../../engine/components/TextComponent'
-import GameObject from '../../engine/gameObject'
-import { delay, nextFrame } from '../../engine/time'
+import BaseWindow from '@engine/components/BaseWindow'
+import { Animation } from '@engine/animations/animation'
+import ListComponent, { TextAdapter } from '@engine/components/ListComponent'
+import ScrollTextComponent from '@engine/components/ScrollTextComponent'
+import TextComponent from '@engine/components/TextComponent'
+import GameObject from '@engine/gameObject'
+import { delay, nextFrame, waitUtil } from '@engine/time'
+import PropertyAnimationComponent from '@engine/components/PropertyAnimationComponent'
 import { globalGameData } from '../asset/gameData'
 import { ItemSlot } from '../inventory/inventory'
 import { BattleCharacterCommand, BattleCommand } from './command/Command'
@@ -14,6 +14,8 @@ import {
   GlobalEventRegisterListener,
   GlobalEventType,
 } from '../asset/globaEvents'
+import BattleData from './BattleData'
+import Cursor from '@engine/components/Cursor'
 
 export default class BattleUI extends BaseWindow {
   private _commandsWindow: ListComponent
@@ -24,9 +26,13 @@ export default class BattleUI extends BaseWindow {
   private _hpText: TextComponent
   private _mpText: TextComponent
   private _messageText: ScrollTextComponent
+  private _enemyGameObejct: GameObject
   private _removeStatusListener?: () => void
+  private _data: BattleData
+  private _monsterAnim: PropertyAnimationComponent
+  private _cursor: Cursor
 
-  constructor(root: GameObject, enemyName: string) {
+  constructor(root: GameObject, data: BattleData) {
     super(root)
 
     this._nameText = root.getComponentInChildByName(
@@ -57,18 +63,34 @@ export default class BattleUI extends BaseWindow {
       'messageWindow',
       ScrollTextComponent
     ) as ScrollTextComponent
+    this._cursor = this.root.getComponentInChildren(Cursor) as Cursor
     this._enemyNameText = root.getComponentInChildByName(
       'enemyInfoText',
       TextComponent
     ) as TextComponent
 
-    this.init(enemyName)
+    this._enemyGameObejct = root.getGameObjectInChildren('enemy')!
+    this._monsterAnim = this._enemyGameObejct.getComponent(
+      PropertyAnimationComponent
+    ) as PropertyAnimationComponent
+
+    this._data = data
+
+    this.init(data)
   }
 
-  init(enemyName: string) {
+  init(data: BattleData) {
+    // init enemy sprite
+    this._enemyGameObejct.background.spriteWidth = data.info.monsterSprite.width
+    this._enemyGameObejct.background.spriteHeight =
+      data.info.monsterSprite.height
+    this._enemyGameObejct.background.pivotOffset =
+      data.info.monsterSprite.pivotOffset
+
     // init hero status
     this._nameText.setText(`${this.hero.name}`)
-    this._enemyNameText.setText(`${enemyName}`)
+    this._enemyNameText.setText(`${data.enemy.name}`)
+
     this.refreshHero()
 
     this._removeStatusListener = GlobalEventRegisterListener(
@@ -133,7 +155,7 @@ export default class BattleUI extends BaseWindow {
       )
       this._items = slots
     } else if (this._characterCommand === BattleCharacterCommand.Magic) {
-      const magics = this.hero.magicsInBattle
+      const magics = this.hero.magics
       this._itemsWindow.adapter<TextAdapter>()!.setData(
         magics.map((magic) => ({
           text: magic.name,
@@ -171,12 +193,27 @@ export default class BattleUI extends BaseWindow {
     this._messageText.root.parent.active = true
     if (!append) this._messageText.showText(text)
     else this._messageText.appendText(text)
-    if (delayTime > 0) await delay(delayTime)
-    this._messageText.root.parent.active = false
+    if (delayTime > 0) {
+      await delay(delayTime)
+      this._messageText.root.parent.active = false
+    }
+  }
+
+  async scrollMessage(text: string, clear = false, afterHide = false) {
+    this._messageText.root.parent.active = true
+    if (clear) this._messageText.clearText()
+
+    await this._messageText.showTextScroll(text, '')
+
+    this._cursor.setStatus('Hover')
+    await this.InputConfirmOrCancel()
+    this._cursor!.setStatus('Unselect')
+
+    if (afterHide) this._messageText.root.parent.active = false
   }
 
   get hero() {
-    return globalGameData.hero
+    return this._data.hero
   }
 
   changeSelectWindowShow(command: boolean) {
@@ -200,5 +237,35 @@ export default class BattleUI extends BaseWindow {
 
   destroy() {
     this._removeStatusListener && this._removeStatusListener()
+  }
+
+  async monsterFlashing(duration: number, times: number) {
+    const animation = new Animation({
+      name: `battleFadingAnimationFlashing`,
+      auto: true,
+      duration: duration,
+      times: times,
+      frameCount: 60,
+      keys: new Map([
+        [
+          'backgroundAlpha',
+          [
+            { frame: 0, value: 1 },
+            { frame: 30, value: 0 },
+            { frame: 60, value: 1 },
+          ],
+        ],
+      ]),
+    })
+    this._monsterAnim.setAnimation(animation)
+    await waitUtil(
+      () => animation.isEnd,
+      duration * times * 2,
+      this.engine.time
+    )
+  }
+
+  victory() {
+    this._enemyGameObejct.active = false
   }
 }

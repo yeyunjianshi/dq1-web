@@ -1,3 +1,4 @@
+import Engine from '@engine/engine'
 import { ItemSlot } from '../../inventory/inventory'
 import BattleCharacter from '../BattleCharacter'
 import BattleData from '../BattleData'
@@ -8,13 +9,14 @@ export default class ItemExecuteCommand extends ExecuteCommand {
   protected itemSlot: ItemSlot
 
   constructor(
+    engine: Engine,
     ui: BattleUI,
     data: BattleData,
     args: unknown[],
     character: BattleCharacter,
     targetIsEnemy = true
   ) {
-    super(ui, data, args, character, targetIsEnemy)
+    super(engine, ui, data, args, character, targetIsEnemy)
     this.itemSlot = args[0] as ItemSlot
   }
 

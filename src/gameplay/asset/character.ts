@@ -27,7 +27,6 @@ export default class Character {
   resilience = 5
   _gold = 120
   exp = 0
-  nextLvExp = 0
 
   weaponId = 0
   bodyId = 0
@@ -37,6 +36,7 @@ export default class Character {
   lvsAbility: Partial<Character>[] = []
   buffers: Buffer[] = []
   magics: Magic[] = []
+  magicsId?: number[]
 
   get magicsInCommon() {
     return this.magics.filter((m) => m.isCanCommonUse)
@@ -206,24 +206,23 @@ export default class Character {
   set nextExp(val: number) {}
 
   addExp(exp: number) {
-    this.exp += exp
-    while (
-      this.judgeLvUp() &&
-      this.lvsAbility &&
-      this.lvsAbility.length > this.lv
-    ) {
-      this.lvUp()
-    }
+    this.exp = Math.min(this.exp + exp, 65535)
   }
 
   judgeLvUp() {
     return this.lv < this.maxLv && this.exp >= this.nextLvExp
   }
 
+  get nextLvExp() {
+    const ability = this.lvsAbility.find((val) => val.lv === this.lv + 1)
+    return ability?.exp ?? 0
+  }
+
   lvUp(): Partial<Character> | undefined {
-    if (this.lv >= this.maxLv) return undefined
+    if (!this.judgeLvUp() || this.lv >= this.maxLv) return
 
     this.lv++
+
     const ability = this.lvsAbility.find((val) => val.lv === this.lv)
     if (ability) {
       for (const prop in ability) {
@@ -234,6 +233,9 @@ export default class Character {
             prop as LVUpCharacterProperties
           ] as number
         }
+      }
+      if (ability.magicsId?.length) {
+        this.magics.push(...ability.magicsId.map((v) => GetMagic(v)))
       }
     }
 
@@ -265,7 +267,6 @@ export default class Character {
       resilience: this.resilience,
       _gold: this.gold,
       exp: this.exp,
-      nextLvExp: this.nextLvExp,
       weaponId: this.weaponId,
       bodyId: this.bodyId,
       shieldId: this.shieldId,
@@ -275,7 +276,7 @@ export default class Character {
   }
 }
 
-type LVUpCharacterProperties =
+export type LVUpCharacterProperties =
   | 'maxHP'
   | 'maxMP'
   | 'power'
@@ -283,7 +284,7 @@ type LVUpCharacterProperties =
   | 'resilience'
 
 export type CharacterData = Partial<Character>
-export type SaveCharacterData = CharacterData & { magicsId: number[] }
+export type SaveCharacterData = CharacterData
 
 export function parseCharacter(data: CharacterData): Character {
   return Object.assign(new Character(), data)
@@ -295,7 +296,7 @@ export function parseCharacterFromSaveData(saveData: SaveCharacterData) {
     GetCharacter(saveData.id!).clone(),
     saveData
   ) as Character
-  character.magics = saveData.magicsId.map((id) => GetMagic(id))
+  character.magics = saveData.magicsId?.map((id) => GetMagic(id)) ?? []
   character.equip(character.weapon, ItemType.Weapon)
   character.equip(character.body, ItemType.Body)
   character.equip(character.shield, ItemType.Shield)

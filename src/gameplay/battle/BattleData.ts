@@ -22,14 +22,28 @@ export type BattleInfo = {
   exp: number
   bgm?: string
   background?: string
+  monsterSprite: {
+    width: number
+    height: number
+    pivotOffset: Vector2
+  }
 }
 
 export function GenerateBattleInfo(enemyId: number): BattleInfo {
   const enemyData = GetEnemyData(enemyId)
-  if (typeof enemyData.HP === 'undefined') enemyData.HP = enemyData.maxHP
-  if (typeof enemyData.MP === 'undefined') enemyData.MP = enemyData.maxMP
-  const enemy = new BattleCharacter(parseCharacter(enemyData))
-  return { enemy, gold: enemyData.gold, exp: enemyData.exp }
+  enemyData.HP ??= enemyData.maxHP
+  enemyData.MP ??= enemyData.maxMP
+  const enemy = new BattleCharacter(parseCharacter(enemyData), false)
+  return {
+    enemy,
+    gold: enemyData.gold,
+    exp: enemyData.exp,
+    monsterSprite: {
+      width: enemyData.spriteWidth ?? 120,
+      height: enemyData.spriteHeight ?? 120,
+      pivotOffset: enemyData.spritePivotOffset,
+    },
+  }
 }
 
 export default class BattleData {
@@ -57,6 +71,10 @@ export default class BattleData {
     return (
       this.hero.character.isDead || this.enemy.character.isDead || this.isEscape
     )
+  }
+
+  setEscape(escape: boolean) {
+    if (escape) this.escapeMarker = BattleEscapeMarker.Success
   }
 
   buffersTurnDown() {

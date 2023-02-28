@@ -78,6 +78,9 @@ export type EnemyData = Partial<Character> & {
   exp: number
   gold: number
   AI: string
+  spritePivotOffset: Vector2
+  spriteWidth?: number
+  spriteHeight?: number
 }
 
 const gameAllEneies: Map<number, EnemyData> = new Map()
@@ -90,7 +93,7 @@ export function SetEneies(enimies: EnemyData[]) {
 export function GetEnemyData(id: number): EnemyData {
   const enemy = gameAllEneies.get(id)
   if (!enemy) throw new Error('未找到id等于${id}的Enemy')
-  return enemy
+  return { ...enemy }
 }
 
 const gameAllMagics: Map<number, Magic> = new Map()

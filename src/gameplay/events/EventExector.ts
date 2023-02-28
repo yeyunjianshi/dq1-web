@@ -203,10 +203,10 @@ export async function message(text: string, callback?: () => void) {
 
 let _isBattleStatus: BattleFinishStatus = BattleFinishStatus.Pending
 
-export async function battle(wait = true) {
+export async function battle(enemyId: number, wait = true) {
   const previouseInputType = setInputType(InputType.Battle)
 
-  const battleInfo = GenerateBattleInfo(1)
+  const battleInfo = GenerateBattleInfo(enemyId)
   executingEngine!.setVariable(GlobalBattleInfo, battleInfo)
   executingEngine!.sceneManager.loadScene('Battle')
   _isBattleStatus = BattleFinishStatus.Pending
@@ -215,7 +215,9 @@ export async function battle(wait = true) {
   }
   executingEngine!.sceneManager.unloadScene('Battle')
   if (checkBattleFinishStatus()) return
+
   setInputType(previouseInputType)
+  audio().playBGM(currentScene().bgm)
 }
 
 function checkBattleFinishStatus(): boolean {

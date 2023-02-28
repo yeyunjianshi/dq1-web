@@ -1,14 +1,10 @@
 import Component from '../../engine/component'
 import { GameplayComponent } from '../../engine/components'
 import { GlobalBattleInfo } from '../../engine/engine'
-import { globalGameData } from '../asset/gameData'
+import { GetMagic, globalGameData } from '../asset/gameData'
 import AttackExectuteCommand from './command/AttackExecuteCommand'
 import BattleCharacter from './BattleCharacter'
-import BattleData, {
-  BattleFinishStatus,
-  BattleInfo,
-  GenerateBattleInfo,
-} from './BattleData'
+import BattleData, { BattleFinishStatus, BattleInfo } from './BattleData'
 import BattleUI from './BattleUI'
 import ExecuteCommand, {
   BattleCommand,
@@ -18,6 +14,9 @@ import ExecuteCommand, {
 import MagicExecuteCommand from './command/MagicExecuteCommand'
 import ItemExecuteCommand from './command/ItemExecuteCommand'
 import { setBattleFinishStatus } from '../events/EventExector'
+import { Audios } from '@gameplay/audio/AudioConfig'
+import { delay } from '@engine/time'
+import { LVUpCharacterProperties } from '@gameplay/asset/character'
 
 @GameplayComponent
 export default class BattleSystem extends Component {
@@ -30,14 +29,14 @@ export default class BattleSystem extends Component {
   }
 
   init() {
-    this.engine.setVariable(GlobalBattleInfo, GenerateBattleInfo(1))
+    this.audios.playBGM('bgm/battle.mp3')
     const info = this.engine.getVariable(GlobalBattleInfo) as BattleInfo
     this._data = new BattleData(
       info,
       new BattleCharacter(globalGameData.hero),
       info.enemy
     )
-    this._ui = new BattleUI(this.root, this.data.enemy.name)
+    this._ui = new BattleUI(this.root, this._data)
   }
 
   private async execute() {
@@ -56,9 +55,15 @@ export default class BattleSystem extends Component {
     BattleCharacterCommand,
     typeof ExecuteCommand
   > = new Map([
-    [BattleCharacterCommand.Attack, AttackExectuteCommand],
-    [BattleCharacterCommand.Item, ItemExecuteCommand],
-    [BattleCharacterCommand.Magic, MagicExecuteCommand],
+    [
+      BattleCharacterCommand.Attack,
+      AttackExectuteCommand as typeof ExecuteCommand,
+    ],
+    [BattleCharacterCommand.Item, ItemExecuteCommand as typeof ExecuteCommand],
+    [
+      BattleCharacterCommand.Magic,
+      MagicExecuteCommand as typeof ExecuteCommand,
+    ],
   ])
 
   private async battleExecuting() {
@@ -90,6 +95,7 @@ export default class BattleSystem extends Component {
           command.command
         )!
         const executeCommand = new executeCommandClass(
+          this.engine,
           this.ui,
           this.data,
           command.commandArgs,
@@ -111,6 +117,8 @@ export default class BattleSystem extends Component {
 
   private async battleEnd() {
     console.log(this.data.isVictory ? '胜利了' : '战败了')
+
+    await this.battleEndExecute()
     setBattleFinishStatus(
       this.data.isEscape
         ? BattleFinishStatus.Escape
@@ -120,6 +128,59 @@ export default class BattleSystem extends Component {
         ? BattleFinishStatus.Faield
         : BattleFinishStatus.Event
     )
+  }
+
+  private async battleEndExecute() {
+    if (this.data.isEscape) return
+
+    if (this.data.isVictory) {
+      this.ui.victory()
+
+      this.engine.audios.pauseBGM()
+      this.engine.audios.playSE(Audios.Victory)
+
+      await this.ui.scrollMessage(
+        `${this.data.enemy.name} 被打倒了\n获得 ${this.data.info.exp} 经验值\n获得 ${this.data.info.gold} 金钱`,
+        true
+      )
+
+      const hero = globalGameData.hero
+      hero.addGold(this.data.info.gold)
+      hero.addExp(this.data.info.exp)
+
+      while (hero.judgeLvUp()) {
+        this.engine.audios.playSE(Audios.LvUp)
+
+        const ability = hero.lvUp()!
+        const messageText = [`${hero.name} 升到 ${hero.lv}级`]
+
+        for (const prop of ['power', 'speed', 'resilience', 'maxHP', 'maxMP']) {
+          if (Object.hasOwn(ability, prop)) {
+            const value = ability[prop as LVUpCharacterProperties] as number
+            if (value <= 0) continue
+            messageText.push(
+              `${this.engine.i18n.getTextValue(prop)} 提升了 ${value} 点`
+            )
+          }
+        }
+        if (ability.magicsId?.length) {
+          messageText.push(
+            `学会了 ${ability.magicsId.map((v) => GetMagic(v).name).join('\n')}`
+          )
+        }
+
+        let times = 0
+        while (messageText.length > 0) {
+          await this.ui.scrollMessage(
+            messageText.splice(0, Math.min(messageText.length, 4)).join('\n'),
+            ++times == 1
+          )
+        }
+      }
+    } else if (this.data.isFailed) {
+      this.engine.audios.playSE(Audios.Dead)
+      await delay(6000)
+    }
   }
 
   private enemySelectCommand(): BattleCommand {

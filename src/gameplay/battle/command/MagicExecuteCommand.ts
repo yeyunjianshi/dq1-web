@@ -4,18 +4,22 @@ import BattleData from '../BattleData'
 import BattleUI from '../BattleUI'
 import Magic, { MagicType } from '../../asset/magic'
 import ExecuteCommand from './Command'
+import Engine from '@engine/engine'
+import { Audios } from '@gameplay/audio/AudioConfig'
+import { delay } from '@engine/time'
 
 export default class MagicExecuteCommand extends ExecuteCommand {
   protected magic: Magic
 
   constructor(
+    engine: Engine,
     ui: BattleUI,
     data: BattleData,
     args: unknown[],
     character: BattleCharacter,
     targetIsEnemy = true
   ) {
-    super(ui, data, args, character, targetIsEnemy)
+    super(engine, ui, data, args, character, targetIsEnemy)
     this.magic = args[0] as Magic
   }
 
@@ -35,8 +39,13 @@ export default class MagicExecuteCommand extends ExecuteCommand {
 
     await this.ui.showMessage(
       `${this.character.name}使用了${this.magic.name}`,
-      false
+      false,
+      -1
     )
+
+    this.engine.audios.playSE(Audios.Magic)
+    await delay(800)
+
     const type =
       this.magic.type === MagicType.Heal
         ? CommandTriggerType.Use

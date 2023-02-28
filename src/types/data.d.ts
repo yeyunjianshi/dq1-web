@@ -41,7 +41,7 @@ type Background = {
   color: Color
   scaleType: 'fit' | 'original'
   border: Border
-  pivotOffset: [number, number]
+  pivotOffset: Vector2
   alpha: number
   rotate: number
 }

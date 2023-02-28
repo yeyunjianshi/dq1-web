@@ -8,9 +8,18 @@ import {
 
 export default class BattleCharacter {
   private _buffers: Buffer[] = []
+  isHero: boolean
+  spriteWidth = 60
+  spriteHeight = 60
+  pivotOffset: Vector2 = [0, 0]
 
-  constructor(public character: Character) {
+  constructor(public character: Character, isHero = true) {
     this._buffers = [...character.buffers]
+    this.isHero = isHero
+  }
+
+  get lv() {
+    return this.character.lv
   }
 
   get name() {
@@ -63,6 +72,10 @@ export default class BattleCharacter {
     return this._buffers.some(
       (b) => b instanceof MarkerBuffer && b.marker === SealingMagicBufferMaker
     )
+  }
+
+  get magics() {
+    return this.character.magicsInBattle
   }
 
   get buffers() {

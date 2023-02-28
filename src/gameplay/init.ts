@@ -45,7 +45,7 @@ import TitleScene from '@data/scenes/Title.json'
 import EndScene from '@data/scenes/End.json'
 import StartScene from '@data/scenes/Start.json'
 import DescriptionScene from '@data/scenes/Description.json'
-import BattleData from '@data/scenes/battle.json'
+import BattleScene from '@data/scenes/battle.json'
 import GlobalScene from '@data/scenes/globalWindow.json'
 import TeamController from '@data/scenes/team_controller.json'
 import FadingScene from '@data/scenes/fading.json'
@@ -101,7 +101,7 @@ AddGameSceneData([
   TeamController,
   GlobalScene,
   FadingScene,
-  BattleData as any,
+  BattleScene as any,
 ])
 
 async function loadCoreScene(engine: Engine) {
@@ -115,8 +115,8 @@ export async function initScene(engine: Engine) {
   await loadCoreScene(engine)
 
   if (import.meta.env.DEV) {
-    // engine.sceneManager.loadScene(WorldScene.name)
-    // engine.sceneManager.loadScene('Battle')
+    engine.sceneManager.loadScene(WorldScene.name)
+    // engine.sceneManager.loadScene(BattleScene.name)
     // engine.sceneManager.loadScene(StartScene.name)
     // engine.sceneManager.loadScene(DescriptionScene.name)
     // engine.sceneManager.loadScene(TitleScene.name)
@@ -144,7 +144,7 @@ export async function initScene(engine: Engine) {
     // engine.sceneManager.loadScene(Garais2Scene.name)
     // engine.sceneManager.loadScene(Garais3Scene.name)
     // engine.sceneManager.loadScene(Garais4Scene.name)
-    engine.sceneManager.loadScene(RockyCave1Scene.name)
+    // engine.sceneManager.loadScene(RockyCave1Scene.name)
     // engine.sceneManager.loadScene(RockyCave2Scene.name)
     // engine.sceneManager.loadScene(DracolordsCastle1Scene.name)
     // engine.sceneManager.loadScene(DracolordsCastle2Scene.name)
