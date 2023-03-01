@@ -21,6 +21,7 @@ export default class AttackExectuteCommand extends ExecuteCommand {
 
     if (this.character.isHero) {
       this.engine.audios.playSE(Audios.Damage3)
+      await this.ui.playEffectAnimation('attack')
       await this.ui.monsterFlashing(400, 2)
     }
   }

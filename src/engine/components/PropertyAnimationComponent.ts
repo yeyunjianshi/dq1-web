@@ -75,9 +75,12 @@ export class PropertyAnimationComponent extends Component {
 
               this.root.background.name = value.name
               this.root.background.sprite = this.resource.getSprite(value.name)
-              this.root.background.spriteWidth = value.spriteWidth
-              this.root.background.spriteHeight = value.spriteHeight
-              this.root.background.pivotOffset = value.pivotOffset
+              if (value.spriteWidth)
+                this.root.background.spriteWidth = value.spriteWidth
+              if (value.spriteHeight)
+                this.root.background.spriteHeight = value.spriteHeight
+              if (value.pivotOffset)
+                this.root.background.pivotOffset = value.pivotOffset
             }
           }
         })

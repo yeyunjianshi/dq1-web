@@ -17,6 +17,8 @@ import { setBattleFinishStatus } from '../events/EventExector'
 import { Audios } from '@gameplay/audio/AudioConfig'
 import { delay } from '@engine/time'
 import { LVUpCharacterProperties } from '@gameplay/asset/character'
+import { AssetLoader } from '@engine/resource'
+import { init } from './BattleAnimationData'
 
 @GameplayComponent
 export default class BattleSystem extends Component {
@@ -196,5 +198,9 @@ export default class BattleSystem extends Component {
 
   private get data() {
     return this._data!
+  }
+
+  parseData(assetLoader: AssetLoader) {
+    assetLoader.addAssets(init(this.resource))
   }
 }

@@ -75,6 +75,27 @@
                 "auto": false
               }
             ]
+          },
+          {
+            "name": "effectAnim",
+            "x": 0,
+            "y": 10,
+            "width": 195,
+            "height": 165,
+            "pivot": [0.5, 0.5],
+            "layoutGravity": ["center", "center"],
+            "background": {
+              "sprite": "monsters.png",
+              "scaleType": "fit",
+              "pivotOffset": [0, 0]
+            },
+            "active": false,
+            "components": [
+              {
+                "type": "$PropertyAnimationComponent",
+                "auto": false
+              }
+            ]
           }
         ]
       },

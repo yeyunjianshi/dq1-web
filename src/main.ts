@@ -72,7 +72,7 @@ function initDevEnv() {
 
   setTimeout(() => {
     battle(1)
-  }, 1000)
+  }, 100)
 
   btn.addEventListener('click', () => {
     engine.audios.playBGM(currentScene().bgm)

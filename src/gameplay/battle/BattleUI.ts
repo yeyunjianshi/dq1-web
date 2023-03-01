@@ -16,6 +16,7 @@ import {
 } from '../asset/globaEvents'
 import BattleData from './BattleData'
 import Cursor from '@engine/components/Cursor'
+import { getAnimation } from './BattleAnimationData'
 
 export default class BattleUI extends BaseWindow {
   private _commandsWindow: ListComponent
@@ -30,6 +31,7 @@ export default class BattleUI extends BaseWindow {
   private _removeStatusListener?: () => void
   private _data: BattleData
   private _monsterAnim: PropertyAnimationComponent
+  private _effectAnim: PropertyAnimationComponent
   private _cursor: Cursor
 
   constructor(root: GameObject, data: BattleData) {
@@ -69,6 +71,11 @@ export default class BattleUI extends BaseWindow {
       TextComponent
     ) as TextComponent
 
+    this._effectAnim = root.getComponentInChildByName(
+      'effectAnim',
+      PropertyAnimationComponent
+    ) as PropertyAnimationComponent
+
     this._enemyGameObejct = root.getGameObjectInChildren('enemy')!
     this._monsterAnim = this._enemyGameObejct.getComponent(
       PropertyAnimationComponent
@@ -99,6 +106,8 @@ export default class BattleUI extends BaseWindow {
         this.refreshHero()
       }
     )
+
+    this.playEffectAnimation('attack1')
 
     // init command window
     this._commandsWindow.setAdapter(
@@ -263,6 +272,17 @@ export default class BattleUI extends BaseWindow {
       duration * times * 2,
       this.engine.time
     )
+  }
+
+  async playEffectAnimation(name: string | Animation) {
+    const animation = typeof name === 'string' ? getAnimation(name) : name
+    if (!animation) return
+
+    this._effectAnim.setAnimation(animation)
+    this._effectAnim.root.active = true
+    this._effectAnim.replay(true)
+    // await waitUtil(() => animation.isEnd, Infinity, this.engine.time)
+    // this._effectAnim.root.active = false
   }
 
   victory() {
