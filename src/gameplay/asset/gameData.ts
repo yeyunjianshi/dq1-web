@@ -32,6 +32,8 @@ const DefaultInitGameCharacter = import.meta.env.DEV
       magics: [],
       npcs: [],
       events: [generateEventId('Q660')],
+      isMeetEnemty: false,
+      isLightInCave: false,
     }
 
 const gameAllCharacters: Map<number, Character> = new Map()
