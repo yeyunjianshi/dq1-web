@@ -65,7 +65,7 @@ initDevEnv()
 
 function initDevEnv() {
   const isDev = import.meta.env.DEV
-  const btn = document.getElementById('startBtn') as HTMLButtonElement
+  const btn = document.getElementById('testBtn') as HTMLButtonElement
   btn.style.display = isDev ? 'block' : 'none'
   btn.addEventListener('click', () => {
     engine.audios.playBGM(currentScene().bgm)

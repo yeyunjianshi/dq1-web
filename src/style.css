@@ -24,7 +24,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
 }
 
 * {
@@ -42,4 +41,20 @@ body {
 
 canvas {
   /* border: 1px solid #999; */
+}
+
+#testBtn {
+  display: none;
+}
+
+nav {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+}
+
+nav img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }

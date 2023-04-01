@@ -7,7 +7,6 @@ import Inventory, {
 } from '../inventory/inventory'
 import Item, { ItemEquipmentType, ItemType } from '../inventory/item'
 import Character from './character'
-import TalkChinese from '../../data/i18n/talk_chinese.json'
 import { generateEventId } from '@gameplay/events/EventExector'
 
 const DefaultInitGameCharacter = import.meta.env.DEV
@@ -29,7 +28,7 @@ const DefaultInitGameCharacter = import.meta.env.DEV
       id: 1,
       lv: 1,
       inventory: [],
-      magics: [],
+      magics: [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010],
       npcs: [],
       events: [generateEventId('Q660')],
       isMeetEnemty: false,
@@ -106,23 +105,6 @@ export function GetMagic(id: number): Magic {
   const magic = gameAllMagics.get(id)
   if (!magic) throw new Error('未找到id等于${id}的Magic')
   return magic
-}
-
-export const talkQuests = TalkChinese as {
-  key: string
-  name: string
-  text: string
-}[]
-
-export function TalkGetAll(id: string) {
-  if (id.length === 0) return []
-
-  return talkQuests.filter((v) => v.key.startsWith(id))
-}
-
-export function TalkGet(id: string) {
-  if (id.length === 0) return []
-  return talkQuests.find((v) => v.key.startsWith(id))
 }
 
 export enum InputType {
