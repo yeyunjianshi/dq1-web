@@ -1,3 +1,4 @@
+import Engine from '@engine/engine'
 import BattleCharacter from '../BattleCharacter'
 import BattleData from '../BattleData'
 import BattleUI from '../BattleUI'
@@ -20,6 +21,7 @@ export const DefaultBattleCommand: BattleCommand = {
 
 export default class ExecuteCommand {
   constructor(
+    protected engine: Engine,
     protected ui: BattleUI,
     protected data: BattleData,
     protected args: unknown[],

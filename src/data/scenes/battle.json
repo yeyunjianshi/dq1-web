@@ -1,6 +1,6 @@
 {
   "name": "Battle",
-  "bgm": "PeacefulVillage.mp3",
+  "bgm": "bgm/battle.mp3",
   "width": -2,
   "height": -2,
   "loadType": 1,
@@ -59,18 +59,43 @@
             "name": "enemy",
             "x": 0,
             "y": 10,
-            "width": 300,
-            "height": 300,
+            "width": 180,
+            "height": 180,
             "pivot": [0.5, 0.5],
             "layoutGravity": ["center", "center"],
             "background": {
-              "sprite": "enemy.png",
-              "spriteWidth": 100,
-              "spriteHeight": 100,
+              "sprite": "monsters.png",
               "scaleType": "fit",
-              "pivotOffset": [300, 0]
+              "pivotOffset": [0, 0]
             },
-            "active": true
+            "active": true,
+            "components": [
+              {
+                "type": "$PropertyAnimationComponent",
+                "auto": false
+              }
+            ]
+          },
+          {
+            "name": "effectAnim",
+            "x": 0,
+            "y": 10,
+            "width": 195,
+            "height": 165,
+            "pivot": [0.5, 0.5],
+            "layoutGravity": ["center", "center"],
+            "background": {
+              "sprite": "monsters.png",
+              "scaleType": "fit",
+              "pivotOffset": [0, 0]
+            },
+            "active": false,
+            "components": [
+              {
+                "type": "$PropertyAnimationComponent",
+                "auto": false
+              }
+            ]
           }
         ]
       },
@@ -333,6 +358,26 @@
                 "padding": [16, 30, 10, 30]
               }
             ]
+          },
+          {
+            "name": "battleMessageCursor",
+            "x": 0,
+            "y": -6,
+            "width": 12,
+            "height": 24,
+            "background": {
+              "sprite": "system/cursor.png",
+              "scaleType": "fit",
+              "rotate": 90
+            },
+            "components": [
+              {
+                "type": "$Cursor"
+              }
+            ],
+            "layoutGravity": ["center", "bottom"],
+            "pivot": [0.5, 0.5],
+            "active": true
           }
         ]
       }

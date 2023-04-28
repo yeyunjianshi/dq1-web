@@ -14,6 +14,12 @@ export const Audios = {
   Magic: 'se/magic.mp3',
   Heal: 'se/heal.mp3',
   Rainbow: 'se/rainbow.mp3',
+  Attack: 'se/attack.mp3',
+  Damage1: 'se/damage1.mp3',
+  Damage2: 'se/damage2.mp3',
+  Damage3: 'se/damage3.mp3',
+  Victory: 'se/victory.mp3',
+  LvUp: 'se/lvup.mp3',
 }
 
 export function audioInitLoad(resource: IResource) {

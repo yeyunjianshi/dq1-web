@@ -4,6 +4,7 @@ import './gameplay/componentConfig'
 import { AssetLoader } from './engine/resource'
 import { audioInitLoad } from './gameplay/audio/AudioConfig'
 import {
+  battle,
   currentScene,
   setEventEngine,
   SetGameEventScript,
@@ -24,13 +25,14 @@ import ShopData from '../public/assets/data/shop.json'
 import EnemyData from '../public/assets/data/enemies.json'
 import MagicData from '../public/assets/data/magic.json'
 import TorchPostProcess from './gameplay/postprocess/TorchPostProcess'
-import { initScene } from '@gameplay/init'
-import { MagicData as MagicDataType } from '@gameplay/asset/magic'
+import { initScene } from './gameplay/init'
+import type { MagicData as MagicDataType } from './gameplay/asset/magic'
+import type { EnemyData as EnemyDataType } from './gameplay/asset/gameData'
 
 SetCharacters((AllCharactersData as CharacterData[]).map(parseCharacter))
 SetItems((AllItemData as ItemData[]).map(parseItem))
 SetShopItems(ShopData)
-SetEneies(EnemyData)
+SetEneies(EnemyData as unknown as EnemyDataType[])
 SetMagics(MagicData as MagicDataType[])
 globalGameData.startGame()
 
@@ -67,6 +69,11 @@ function initDevEnv() {
   const isDev = import.meta.env.DEV
   const btn = document.getElementById('testBtn') as HTMLButtonElement
   btn.style.display = isDev ? 'block' : 'none'
+
+  setTimeout(() => {
+    battle(1)
+  }, 100)
+
   btn.addEventListener('click', () => {
     engine.audios.playBGM(currentScene().bgm)
   })

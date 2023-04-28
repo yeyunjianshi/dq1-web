@@ -65,10 +65,23 @@ export class PropertyAnimationComponent extends Component {
           } else if (property === 'backgroundAlpha') {
             this.background.alpha = value
           } else if (property === 'backgroundSprite') {
-            this.root.background.name = animationKey.value
-            this.root.background.sprite = this.resource.getSprite(
-              animationKey.value
-            )
+            if (typeof animationKey.value === 'string') {
+              this.root.background.name = animationKey.value
+              this.root.background.sprite = this.resource.getSprite(
+                animationKey.value
+              )
+            } else if (typeof animationKey.value === 'object') {
+              const value = animationKey.value
+
+              this.root.background.name = value.name
+              this.root.background.sprite = this.resource.getSprite(value.name)
+              if (value.spriteWidth)
+                this.root.background.spriteWidth = value.spriteWidth
+              if (value.spriteHeight)
+                this.root.background.spriteHeight = value.spriteHeight
+              if (value.pivotOffset)
+                this.root.background.pivotOffset = value.pivotOffset
+            }
           }
         })
       }
