@@ -1,99 +1,132 @@
-import Character from '../asset/character'
-import { Buffer } from '../effects/buffer'
-import {
-  MarkerBuffer,
-  SealingMagicBufferMaker,
-  SleepBufferMaker,
-} from '../effects/MarkerBuffer'
+import Character from '@gameplay/asset/character'
+import BattleCharacter from './BaseBattleCharacter'
+import BattleData from './BattleData'
+import BattleUI from './BattleUI'
+import { BattleCharacterCommand, DefaultBattleCommand } from './command/Command'
+import { AICommandNode, GetMagic } from '@gameplay/asset/gameData'
 
-export default class BattleCharacter {
-  private _buffers: Buffer[] = []
-  isHero: boolean
-  spriteWidth = 60
-  spriteHeight = 60
-  pivotOffset: Vector2 = [0, 0]
+export class HeroBattleCharacter extends BattleCharacter {
+  async getCommand(_: BattleData, ui: BattleUI) {
+    return this.isSleep ? DefaultBattleCommand : await ui.selectCommand()
+  }
+}
 
-  constructor(public character: Character, isHero = true) {
-    this._buffers = [...character.buffers]
-    this.isHero = isHero
+export class EnemyBattleCharacter extends BattleCharacter {
+  AICommand: EnemyAICommand
+  executingAICommand?: EnemyAICommand
+
+  constructor(
+    public character: Character,
+    AICommand: EnemyAICommand,
+    isHero = true
+  ) {
+    super(character, isHero)
+    this.AICommand = AICommand
   }
 
-  get lv() {
-    return this.character.lv
+  async getCommand() {
+    if (this.isSleep) return DefaultBattleCommand
+
+    let node = this.tryFindNextCommand()
+    while (
+      (node.isSelectType() || node.isSequenceType()) &&
+      node.nodes.length > 0
+    ) {
+      if (node.isSequenceType()) node = node.nodes[0]
+      else if (node.isSelectType()) {
+        const sum = node.nodes.reduce(
+          (sum, command) => sum + command.percentage,
+          0
+        )
+        const randomValue = Math.floor(Math.random() * sum)
+        node = node.nodes.reduce(
+          (n, current) =>
+            n.v < 0 ? n : { v: n.v - current.percentage, k: current },
+          { v: randomValue, k: node.nodes[0] }
+        ).k
+      }
+    }
+    this.executingAICommand = node
+    return this.parseAICommand()
   }
 
-  get name() {
-    return this.character.name
+  tryFindNextCommand() {
+    if (!this.executingAICommand) return this.AICommand
+
+    let node: EnemyAICommand | undefined = this.executingAICommand
+    while (node.parentNode?.isSequenceType()) {
+      if (node.nextNode) return node.nextNode
+      node = node.parentNode
+    }
+    return node || this.AICommand
   }
 
-  get maxHP() {
-    return this.character.maxHP
+  parseAICommand() {
+    if (this.executingAICommand) {
+      if (this.executingAICommand.type === 'attack') {
+        return {
+          command: BattleCharacterCommand.Attack,
+          commandArgs: [],
+        }
+      } else if (this.executingAICommand.type === 'magic') {
+        const magic = GetMagic(parseInt(`${this.executingAICommand.value}`, 10))
+        if (magic.cost < this.MP) {
+          return {
+            command: BattleCharacterCommand.Magic,
+            commandArgs: [magic],
+          }
+        } else {
+          return {
+            command: BattleCharacterCommand.Attack,
+            commandArgs: [],
+          }
+        }
+      }
+    }
+    return {
+      command: BattleCharacterCommand.NotDo,
+      commandArgs: [],
+    }
+  }
+}
+
+export class EnemyAICommand {
+  type: string
+  value: number | string = 0
+  percentage = 100
+  nodes: EnemyAICommand[] = []
+  parentNode?: EnemyAICommand
+  nextNode?: EnemyAICommand
+
+  constructor(type: string, value: number | string = 0, percentage = 100) {
+    this.type = type
+    this.value = value
+    this.percentage = percentage
   }
 
-  get maxMP() {
-    return this.character.maxMP
+  isSequenceType() {
+    return this.type === 'sequence'
   }
 
-  set HP(val: number) {
-    this.character.HP = val
+  isSelectType() {
+    return this.type === 'select'
   }
+}
 
-  get HP() {
-    return this.character.HP
-  }
-
-  set MP(val: number) {
-    this.character.MP = val
-  }
-
-  get MP() {
-    return this.character.MP
-  }
-
-  get attack() {
-    return this.character.attack
-  }
-
-  get defend() {
-    return this.character.defend
-  }
-
-  get speed() {
-    return this.character.speed
-  }
-
-  get isSleep() {
-    return this._buffers.some(
-      (b) => b instanceof MarkerBuffer && b.marker === SleepBufferMaker
-    )
-  }
-
-  get isSealingMagic() {
-    return this._buffers.some(
-      (b) => b instanceof MarkerBuffer && b.marker === SealingMagicBufferMaker
-    )
-  }
-
-  get magics() {
-    return this.character.magicsInBattle
-  }
-
-  get buffers() {
-    return this._buffers
-  }
-
-  addBuffer(b: Buffer) {
-    this._buffers.push(b)
-  }
-
-  calcBufferEveryTurn() {
-    const showText = this._buffers
-      .map(
-        (buff) => (buff.turnsDownEveryTurn && buff.turnsDownEveryTurn()) || ''
-      )
-      .filter((s) => s.trim().length > 0)
-      .join('\n')
-    this._buffers = this._buffers.filter((b) => b.turns !== 0)
-    return showText.length > 0 ? this.name + showText : ''
-  }
+export function parseAICommand({
+  type,
+  value,
+  percentage,
+  nodes = [],
+}: AICommandNode) {
+  const command = new EnemyAICommand(type, value, percentage)
+  let pre: EnemyAICommand | undefined
+  command.nodes = nodes.map((n) => {
+    const c = parseAICommand(n)
+    c.parentNode = command
+    if (pre) pre.nextNode = c
+    pre = c
+    return c
+  })
+  return command
 }

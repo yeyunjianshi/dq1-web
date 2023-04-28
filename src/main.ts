@@ -70,9 +70,10 @@ function initDevEnv() {
   const btn = document.getElementById('testBtn') as HTMLButtonElement
   btn.style.display = isDev ? 'block' : 'none'
 
-  setTimeout(() => {
-    battle(1)
-  }, 100)
+  // battle test
+  // setTimeout(() => {
+  //   battle(105)
+  // }, 300)
 
   btn.addEventListener('click', () => {
     engine.audios.playBGM(currentScene().bgm)

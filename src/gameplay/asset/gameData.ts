@@ -74,11 +74,18 @@ export function GetShopItems(id: number) {
   return gameShopItems.get(id)!
 }
 
+export type AICommandNode = {
+  type: string
+  value?: number | string
+  percentage?: number
+  nodes?: AICommandNode[]
+}
+
 export type EnemyData = Partial<Character> & {
   id: number
   exp: number
   gold: number
-  AI: string
+  AI: AICommandNode
   spritePivotOffset: Vector2
   spriteWidth?: number
   spriteHeight?: number

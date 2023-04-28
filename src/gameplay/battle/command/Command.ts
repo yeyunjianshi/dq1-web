@@ -1,5 +1,5 @@
 import Engine from '@engine/engine'
-import BattleCharacter from '../BattleCharacter'
+import BattleCharacter from '../BaseBattleCharacter'
 import BattleData from '../BattleData'
 import BattleUI from '../BattleUI'
 
@@ -8,6 +8,7 @@ export enum BattleCharacterCommand {
   Magic,
   Item,
   Escape,
+  NotDo,
 }
 
 export type BattleCommand = {

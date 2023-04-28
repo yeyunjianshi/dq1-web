@@ -1,6 +1,7 @@
 import { parseCharacter } from '../asset/character'
 import { GetEnemyData } from '../asset/gameData'
-import BattleCharacter from './BattleCharacter'
+import BattleCharacter from './BaseBattleCharacter'
+import { EnemyBattleCharacter, parseAICommand } from './BattleCharacter'
 
 export enum BattleFinishStatus {
   Pending,
@@ -33,7 +34,11 @@ export function GenerateBattleInfo(enemyId: number): BattleInfo {
   const enemyData = GetEnemyData(enemyId)
   enemyData.HP ??= enemyData.maxHP
   enemyData.MP ??= enemyData.maxMP
-  const enemy = new BattleCharacter(parseCharacter(enemyData), false)
+  const enemy = new EnemyBattleCharacter(
+    parseCharacter(enemyData),
+    parseAICommand(enemyData.AI),
+    false
+  )
   return {
     enemy,
     gold: enemyData.gold,

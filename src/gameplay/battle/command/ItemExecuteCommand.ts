@@ -1,6 +1,6 @@
 import Engine from '@engine/engine'
 import { ItemSlot } from '../../inventory/inventory'
-import BattleCharacter from '../BattleCharacter'
+import BattleCharacter from '../BaseBattleCharacter'
 import BattleData from '../BattleData'
 import BattleUI from '../BattleUI'
 import ExecuteCommand from './Command'

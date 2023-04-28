@@ -107,7 +107,7 @@ export default class BattleUI extends BaseWindow {
       }
     )
 
-    this.playEffectAnimation('attack1')
+    // this.playEffectAnimation('attack2')
 
     // init command window
     this._commandsWindow.setAdapter(
@@ -281,8 +281,8 @@ export default class BattleUI extends BaseWindow {
     this._effectAnim.setAnimation(animation)
     this._effectAnim.root.active = true
     this._effectAnim.replay(true)
-    // await waitUtil(() => animation.isEnd, Infinity, this.engine.time)
-    // this._effectAnim.root.active = false
+    await waitUtil(() => animation.isEnd, Infinity, this.engine.time)
+    this._effectAnim.root.active = false
   }
 
   victory() {

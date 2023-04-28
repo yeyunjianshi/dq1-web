@@ -3,7 +3,7 @@ import { audio } from '@gameplay/events/EventExector'
 import { HasType, range } from '../../engine/math'
 import Character from '../asset/character'
 import { globalGameData } from '../asset/gameData'
-import BattleCharacter from '../battle/BattleCharacter'
+import BattleCharacter from '../battle/BaseBattleCharacter'
 import {
   Calacute,
   Command,

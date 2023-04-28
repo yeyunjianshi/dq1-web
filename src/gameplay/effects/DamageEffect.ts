@@ -1,5 +1,5 @@
 import { range } from '../../engine/math'
-import BattleCharacter from '../battle/BattleCharacter'
+import BattleCharacter from '../battle/BaseBattleCharacter'
 import { Command, CommandTriggerType, CommandTriggerWhen } from './buffer'
 import { ValueBuffer } from './ValueBuffer'
 

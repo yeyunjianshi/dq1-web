@@ -1,5 +1,5 @@
 import { CommandTriggerType, CommandTriggerWhen } from '../../effects/buffer'
-import BattleCharacter from '../BattleCharacter'
+import BattleCharacter from '../BaseBattleCharacter'
 import BattleData from '../BattleData'
 import BattleUI from '../BattleUI'
 import Magic, { MagicType } from '../../asset/magic'
@@ -26,23 +26,24 @@ export default class MagicExecuteCommand extends ExecuteCommand {
   async execute() {
     if (this.character.isSealingMagic) {
       await this.ui.showMessage(
-        `${this.character.name}咒语力量被封印了\n使用${this.magic.name}失败`
+        `${this.character.name} 咒语力量被封印了\n使用${this.magic.name}失败`
       )
       return
     }
     if (this.character.MP < this.magic.cost) {
       await this.ui.showMessage(
-        `${this.character.name}没有足够的MP\n使用${this.magic.name}失败`
+        `${this.character.name} 没有足够的MP\n使用${this.magic.name}失败`
       )
       return
     }
 
     await this.ui.showMessage(
-      `${this.character.name}使用了${this.magic.name}`,
+      `${this.character.name} 使用了${this.magic.name}`,
       false,
       -1
     )
 
+    this.character.MP -= this.magic.cost
     this.engine.audios.playSE(Audios.Magic)
     await delay(800)
 

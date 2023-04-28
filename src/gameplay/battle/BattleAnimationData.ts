@@ -222,6 +222,7 @@ export function getAnimation(name: string): Animation | undefined {
   return data
     ? new Animation({
         ...data,
+        times: 1,
         keys: new Map(Object.entries(data.keys)),
       })
     : undefined

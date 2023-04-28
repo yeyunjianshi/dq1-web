@@ -3,13 +3,11 @@ import { GameplayComponent } from '../../engine/components'
 import { GlobalBattleInfo } from '../../engine/engine'
 import { GetMagic, globalGameData } from '../asset/gameData'
 import AttackExectuteCommand from './command/AttackExecuteCommand'
-import BattleCharacter from './BattleCharacter'
 import BattleData, { BattleFinishStatus, BattleInfo } from './BattleData'
 import BattleUI from './BattleUI'
 import ExecuteCommand, {
   BattleCommand,
   BattleCharacterCommand,
-  DefaultBattleCommand,
 } from './command/Command'
 import MagicExecuteCommand from './command/MagicExecuteCommand'
 import ItemExecuteCommand from './command/ItemExecuteCommand'
@@ -19,6 +17,9 @@ import { delay } from '@engine/time'
 import { LVUpCharacterProperties } from '@gameplay/asset/character'
 import { AssetLoader } from '@engine/resource'
 import { init } from './BattleAnimationData'
+import { HeroBattleCharacter } from './BattleCharacter'
+import NotDoExecuteCommand from './command/NotDoExecuteCommand'
+import EscapeExecuteCommand from './command/EscapeExecuteCommand'
 
 @GameplayComponent
 export default class BattleSystem extends Component {
@@ -35,7 +36,7 @@ export default class BattleSystem extends Component {
     const info = this.engine.getVariable(GlobalBattleInfo) as BattleInfo
     this._data = new BattleData(
       info,
-      new BattleCharacter(globalGameData.hero),
+      new HeroBattleCharacter(globalGameData.hero),
       info.enemy
     )
     this._ui = new BattleUI(this.root, this._data)
@@ -66,16 +67,23 @@ export default class BattleSystem extends Component {
       BattleCharacterCommand.Magic,
       MagicExecuteCommand as typeof ExecuteCommand,
     ],
+    [
+      BattleCharacterCommand.Escape,
+      EscapeExecuteCommand as typeof ExecuteCommand,
+    ],
+    [
+      BattleCharacterCommand.NotDo,
+      NotDoExecuteCommand as typeof ExecuteCommand,
+    ],
   ])
 
   private async battleExecuting() {
     // 选择指令
-    const heroCommand = this.data.hero.isSleep
-      ? DefaultBattleCommand
-      : await this.ui.selectCommand()
-    const enemyCommand = this.data.hero.isSleep
-      ? DefaultBattleCommand
-      : this.enemySelectCommand()
+    const heroCommand = await this.data.hero.getCommand(this._data!, this._ui!)
+    const enemyCommand = await this.data.enemy.getCommand(
+      this._data!,
+      this._ui!
+    )
 
     const commands = [
       { ...heroCommand, character: this.data.hero },

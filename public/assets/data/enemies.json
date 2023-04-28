@@ -8,7 +8,7 @@
     "res": 3,
     "speed": 2,
     "agi": 0,
-    "AI": "attack:8",
+    "AI": { "type": "attack" },
     "exp": 1,
     "gold": 2,
     "spritePivotOffset": [1080, 0]
@@ -22,7 +22,7 @@
     "res": 3,
     "speed": 4,
     "agi": 0,
-    "AI": "attack:8",
+    "AI": { "type": "attack" },
     "exp": 2,
     "gold": 4,
     "spritePivotOffset": [1200, 0]
@@ -36,7 +36,7 @@
     "res": 6,
     "speed": 5,
     "agi": 2,
-    "AI": "attack:8",
+    "AI": { "type": "attack" },
     "exp": 3,
     "gold": 6,
     "spritePivotOffset": [360, 0]
@@ -50,7 +50,7 @@
     "res": 8,
     "speed": 6,
     "agi": 4,
-    "AI": "attack:8",
+    "AI": { "type": "attack" },
     "exp": 4,
     "gold": 8,
     "spritePivotOffset": [360, 0]
@@ -64,7 +64,35 @@
     "res": 12,
     "speed": 6,
     "agi": 0,
-    "AI": "magic:2002;attack:8",
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 10 },
+        { "type": "magic", "value": 2002, "percentage": 90 }
+      ]
+    },
+    "exp": 8,
+    "gold": 16,
+    "spritePivotOffset": [0, 240]
+  },
+  {
+    "id": 105,
+    "name": "龙王",
+    "maxHP": 12,
+    "maxMP": 100,
+    "power": 8,
+    "res": 12,
+    "speed": 6,
+    "agi": 0,
+    "AI": {
+      "type": "sequence",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 50 },
+        { "type": "magic", "value": "2002", "percentage": 50 }
+      ]
+    },
     "exp": 8,
     "gold": 16,
     "spritePivotOffset": [0, 240]
