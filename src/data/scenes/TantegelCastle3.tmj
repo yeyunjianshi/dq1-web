@@ -16,7 +16,7 @@
                 {
                  "name":"bgm",
                  "type":"string",
-                 "value":"bgm\/catle.mp3"
+                 "value":"bgm\/castle.mp3"
                 }, 
                 {
                  "name":"group",
