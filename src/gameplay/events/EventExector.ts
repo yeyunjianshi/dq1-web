@@ -203,6 +203,10 @@ export async function message(text: string, callback?: () => void) {
 
 let _isBattleStatus: BattleFinishStatus = BattleFinishStatus.Pending
 
+export async function battleInScene() {
+  await battle(1)
+}
+
 export async function battle(enemyId: number, wait = true) {
   const previouseInputType = setInputType(InputType.Battle)
 

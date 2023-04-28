@@ -41,9 +41,9 @@ import { AssetLoader } from '../../engine/resource'
 import { globalGameData, InputType } from '../asset/gameData'
 import {
   checkMeetEnemy,
-  battle,
   hero,
   checkDeadToInit,
+  battleInScene,
 } from '../events/EventExector'
 import { EventTriggerWhen } from '../events/QuestEvent'
 import GlobalWindowComponent from '../menu/GlobalWindowComponent'
@@ -204,7 +204,7 @@ export default class TeamControllerComponent
     globalGameData.hero.triggerMoveBuffers()
     // 检查敌人
     if (checkMeetEnemy()) {
-      battle()
+      battleInScene()
       return true
     }
 

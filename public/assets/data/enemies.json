@@ -77,24 +77,723 @@
     "spritePivotOffset": [0, 240]
   },
   {
-    "id": 105,
-    "name": "龙王",
-    "maxHP": 12,
-    "maxMP": 100,
-    "power": 8,
-    "res": 12,
-    "speed": 6,
+    "id": 6,
+    "name": "多基法师",
+    "maxHP": 15,
+    "maxMP": 8,
+    "power": 13,
+    "res": 13,
+    "speed": 8,
     "agi": 0,
+    "AI": { "type": "attack", "percentage": 100 },
+    "exp": 12,
+    "gold": 20,
+    "spritePivotOffset": [600, 0]
+  },
+  {
+    "id": 7,
+    "name": "大蝎子",
+    "maxHP": 30,
+    "maxMP": 0,
+    "power": 18,
+    "res": 35,
+    "speed": 4,
+    "agi": 0,
+    "AI": { "type": "attack", "percentage": 100 },
+    "exp": 16,
+    "gold": 25,
+    "spritePivotOffset": [1020, 120]
+  },
+  {
+    "id": 8,
+    "name": "骷髅",
+    "maxHP": 30,
+    "maxMP": 0,
+    "power": 28,
+    "res": 22,
+    "speed": 17,
+    "agi": 2,
+    "AI": { "type": "attack", "percentage": 100 },
+    "exp": 25,
+    "gold": 42,
+    "spritePivotOffset": [0, 240]
+  },
+  {
+    "id": 9,
+    "name": "梅达",
+    "maxHP": 22,
+    "maxMP": 8,
+    "power": 20,
+    "res": 18,
+    "speed": 11,
+    "agi": 4,
+    "AI": { "type": "attack", "percentage": 100 },
+    "exp": 14,
+    "gold": 21,
+    "spritePivotOffset": [240, 360]
+  },
+  {
+    "id": 10,
+    "name": "梅多鬼魂",
+    "maxHP": 23,
+    "maxMP": 10,
+    "power": 18,
+    "res": 20,
+    "speed": 14,
+    "agi": 1,
     "AI": {
-      "type": "sequence",
+      "type": "select",
       "percentage": 100,
       "nodes": [
         { "type": "attack", "percentage": 50 },
-        { "type": "magic", "value": "2002", "percentage": 50 }
+        { "type": "magic", "value": 2002, "percentage": 50 }
+      ]
+    },
+    "exp": 15,
+    "gold": 19,
+    "spritePivotOffset": [120, 120]
+  },
+  {
+    "id": 11,
+    "name": "多拉马基",
+    "maxHP": 28,
+    "maxMP": 10,
+    "power": 22,
+    "res": 26,
+    "speed": 16,
+    "agi": 4,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 3 },
+        { "type": "magic", "value": 2002, "percentage": 2 },
+        { "type": "magic", "value": 2001, "percentage": 2 }
+      ]
+    },
+    "exp": 20,
+    "gold": 25,
+    "spritePivotOffset": [600, 0]
+  },
+  {
+    "id": 12,
+    "name": "魔导士",
+    "maxHP": 28,
+    "maxMP": 10,
+    "power": 26,
+    "res": 24,
+    "speed": 15,
+    "agi": 1,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 2 },
+        { "type": "magic", "value": 2002, "percentage": 2 },
+        { "type": "magic", "value": 2003, "percentage": 2 }
+      ]
+    },
+    "exp": 28,
+    "gold": 50,
+    "spritePivotOffset": [120, 240]
+  },
+  {
+    "id": 13,
+    "name": "兽人",
+    "maxHP": 34,
+    "maxMP": 0,
+    "power": 40,
+    "res": 30,
+    "speed": 21,
+    "agi": 2,
+    "AI": { "type": "attack", "percentage": 100 },
+    "exp": 40,
+    "gold": 60,
+    "spritePivotOffset": [360, 240]
+  },
+  {
+    "id": 14,
+    "name": "铁蝎子",
+    "maxHP": 22,
+    "maxMP": 0,
+    "power": 36,
+    "res": 60,
+    "speed": 25,
+    "agi": 0,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 6 },
+        { "type": "defend", "percentage": 2 }
+      ]
+    },
+    "exp": 31,
+    "gold": 48,
+    "spritePivotOffset": [0, 240]
+  },
+  {
+    "id": 15,
+    "name": "死灵",
+    "maxHP": 36,
+    "maxMP": 9,
+    "power": 44,
+    "res": 34,
+    "speed": 23,
+    "agi": 0,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 5 },
+        { "type": "magic", "value": 2001, "percentage": 3 }
+      ]
+    },
+    "exp": 42,
+    "gold": 62,
+    "spritePivotOffset": [840, 0]
+  },
+  {
+    "id": 16,
+    "name": "封魔兽人",
+    "maxHP": 38,
+    "maxMP": 6,
+    "power": 50,
+    "res": 36,
+    "speed": 23,
+    "agi": 0,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 6 },
+        { "type": "magic", "value": 2005, "percentage": 2 }
+      ]
+    },
+    "exp": 52,
+    "gold": 80,
+    "spritePivotOffset": [0, 240]
+  },
+  {
+    "id": 17,
+    "name": "金人",
+    "maxHP": 99,
+    "maxMP": 0,
+    "power": 48,
+    "res": 30,
+    "speed": 26,
+    "agi": 1,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 6 },
+        { "type": "defend", "percentage": 2 }
+      ]
+    },
+    "exp": 6,
+    "gold": 650,
+    "spritePivotOffset": [360, 120]
+  },
+  {
+    "id": 18,
+    "name": "基美拉",
+    "maxHP": 42,
+    "maxMP": 0,
+    "power": 56,
+    "res": 48,
+    "speed": 31,
+    "agi": 1,
+    "AI": { "type": "attack", "percentage": 100 },
+    "exp": 64,
+    "gold": 105,
+    "spritePivotOffset": [720, 240]
+  },
+  {
+    "id": 19,
+    "name": "龙",
+    "maxHP": 155,
+    "maxMP": 0,
+    "power": 58,
+    "res": 72,
+    "speed": 33,
+    "agi": 0,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 5 },
+        { "type": "magic", "value": 2050, "percentage": 3 }
+      ]
+    },
+    "exp": 950,
+    "gold": 250,
+    "spritePivotOffset": [0, 0]
+  },
+  {
+    "id": 20,
+    "name": "地狱鬼魂",
+    "maxHP": 35,
+    "maxMP": 14,
+    "power": 40,
+    "res": 38,
+    "speed": 26,
+    "agi": 2,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 3 },
+        { "type": "magic", "value": 2002, "percentage": 2 },
+        { "type": "magic", "value": 2003, "percentage": 1 },
+        { "type": "magic", "value": 2005, "percentage": 1 }
+      ]
+    },
+    "exp": 47,
+    "gold": 72,
+    "spritePivotOffset": [240, 120]
+  },
+  {
+    "id": 21,
+    "name": "梅达王",
+    "maxHP": 35,
+    "maxMP": 30,
+    "power": 41,
+    "res": 40,
+    "speed": 28,
+    "agi": 8,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 3 },
+        { "type": "magic", "value": 2001, "percentage": 3 },
+        { "type": "magic", "value": 2002, "percentage": 2 }
+      ]
+    },
+    "exp": 56,
+    "gold": 95,
+    "spritePivotOffset": [360, 360]
+  },
+  {
+    "id": 22,
+    "name": "多罗法师",
+    "maxHP": 55,
+    "maxMP": 10,
+    "power": 44,
+    "res": 16,
+    "speed": 11,
+    "agi": 0,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 4 },
+        { "type": "magic", "value": 2003, "percentage": 2 }
+      ]
+    },
+    "exp": 58,
+    "gold": 110,
+    "spritePivotOffset": [120, 360]
+  },
+  {
+    "id": 23,
+    "name": "死灵骑士",
+    "maxHP": 46,
+    "maxMP": 12,
+    "power": 62,
+    "res": 46,
+    "speed": 36,
+    "agi": 0,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 6 },
+        { "type": "magic", "value": 2001, "percentage": 2 }
+      ]
+    },
+    "exp": 72,
+    "gold": 120,
+    "spritePivotOffset": [960, 0]
+  },
+  {
+    "id": 25,
+    "name": "铠甲骑士",
+    "maxHP": 55,
+    "maxMP": 6,
+    "power": 70,
+    "res": 71,
+    "speed": 45,
+    "agi": 1,
+    "AI": {
+      "type": "sequence",
+      "nodes": [
+        {
+          "type": "attack"
+        },
+        {
+          "type": "select",
+          "nodes": [
+            { "type": "attack", "percentage": 4 },
+            { "type": "magic", "value": 2005, "percentage": 4 }
+          ]
+        }
+      ]
+    },
+    "exp": 78,
+    "gold": 150,
+    "spritePivotOffset": [720, 120]
+  },
+  {
+    "id": 24,
+    "name": "しのさそり",
+    "maxHP": 35,
+    "maxMP": 0,
+    "power": 55,
+    "res": 90,
+    "speed": 45,
+    "agi": 0,
+    "AI": { "type": "attack", "percentage": 100 },
+    "exp": 70,
+    "gold": 110,
+    "spritePivotOffset": [1320, 120]
+  },
+  {
+    "id": 26,
+    "name": "影子骑士",
+    "maxHP": 43,
+    "maxMP": 0,
+    "power": 79,
+    "res": 51,
+    "speed": 40,
+    "agi": 15,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 10 },
+        { "type": "magic", "value": 2002, "percentage": 90 }
+      ]
+    },
+    "exp": 90,
+    "gold": 148,
+    "spritePivotOffset": [840, 0]
+  },
+  {
+    "id": 27,
+    "name": "基美法师",
+    "maxHP": 50,
+    "maxMP": 12,
+    "power": 68,
+    "res": 62,
+    "speed": 44,
+    "agi": 0,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 4 },
+        { "type": "magic", "value": 2002, "percentage": 2 },
+        { "type": "magic", "value": 2003, "percentage": 2 }
+      ]
+    },
+    "exp": 83,
+    "gold": 135,
+    "spritePivotOffset": [960, 240]
+  },
+  {
+    "id": 28,
+    "name": "金属史莱姆",
+    "maxHP": 4,
+    "maxMP": 6,
+    "power": 18,
+    "res": 254,
+    "speed": 153,
+    "agi": 0,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 4 },
+        { "type": "magic", "value": 2002, "percentage": 1 },
+        { "type": "escape", "value": 2002, "percentage": 3 }
+      ]
+    },
+    "exp": 775,
+    "gold": 6,
+    "spritePivotOffset": [1320, 0]
+  },
+  {
+    "id": 29,
+    "name": "兽人杀手",
+    "maxHP": 60,
+    "maxMP": 0,
+    "power": 80,
+    "res": 65,
+    "speed": 45,
+    "agi": 2,
+    "AI": { "type": "attack", "percentage": 100 },
+    "exp": 95,
+    "gold": 155,
+    "spritePivotOffset": [600, 240]
+  },
+  {
+    "id": 30,
+    "name": "星光基拉",
+    "maxHP": 73,
+    "maxMP": 15,
+    "power": 82,
+    "res": 65,
+    "speed": 52,
+    "agi": 2,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 4 },
+        { "type": "magic", "value": 2050, "percentage": 2 },
+        { "type": "magic", "value": 2009, "percentage": 2 }
+      ]
+    },
+    "exp": 105,
+    "gold": 195,
+    "spritePivotOffset": [840, 240]
+  },
+  {
+    "id": 31,
+    "name": "龙",
+    "maxHP": 67,
+    "maxMP": 0,
+    "power": 88,
+    "res": 72,
+    "speed": 47,
+    "agi": 0,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 5 },
+        { "type": "magic", "value": 2050, "percentage": 3 }
+      ]
+    },
+    "exp": 135,
+    "gold": 160,
+    "spritePivotOffset": [0, 0]
+  },
+  {
+    "id": 32,
+    "name": "大魔导士",
+    "maxHP": 70,
+    "maxMP": 16,
+    "power": 71,
+    "res": 60,
+    "speed": 49,
+    "agi": 1,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 5 },
+        { "type": "magic", "value": 2002, "percentage": 2 },
+        { "type": "magic", "value": 2010, "percentage": 1 }
+      ]
+    },
+    "exp": 120,
+    "gold": 185,
+    "spritePivotOffset": [0, 240]
+  },
+  {
+    "id": 33,
+    "name": "哥雷姆",
+    "maxHP": 155,
+    "maxMP": 0,
+    "power": 120,
+    "res": 60,
+    "speed": 39,
+    "agi": 0,
+    "AI": { "type": "attack", "percentage": 8 },
+    "exp": 2500,
+    "gold": 0,
+    "spritePivotOffset": [480, 120]
+  },
+  {
+    "id": 34,
+    "name": "恶魔骑士",
+    "maxHP": 79,
+    "maxMP": 4,
+    "power": 94,
+    "res": 92,
+    "speed": 53,
+    "agi": 1,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 5 },
+        { "type": "magic", "value": 2003, "percentage": 3 }
+      ]
+    },
+    "exp": 130,
+    "gold": 165,
+    "spritePivotOffset": [840, 124]
+  },
+  {
+    "id": 35,
+    "name": "基斯龙",
+    "maxHP": 98,
+    "maxMP": 0,
+    "power": 98,
+    "res": 80,
+    "speed": 52,
+    "agi": 2,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 4 },
+        { "type": "magic", "value": 2050, "percentage": 4 }
+      ]
+    },
+    "exp": 180,
+    "gold": 150,
+    "spritePivotOffset": [240, 0]
+  },
+  {
+    "id": 36,
+    "name": "石人",
+    "maxHP": 160,
+    "maxMP": 0,
+    "power": 100,
+    "res": 40,
+    "speed": 40,
+    "agi": 0,
+    "AI": { "type": "attack", "percentage": 8 },
+    "exp": 155,
+    "gold": 148,
+    "spritePivotOffset": [600, 120]
+  },
+  {
+    "id": 37,
+    "name": "死神骑士",
+    "maxHP": 95,
+    "maxMP": 14,
+    "power": 105,
+    "res": 99,
+    "speed": 57,
+    "agi": 2,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 3 },
+        { "type": "magic", "value": 2010, "percentage": 2 },
+        { "type": "magic", "value": 2009, "percentage": 2 }
+      ]
+    },
+    "exp": 172,
+    "gold": 152,
+    "spritePivotOffset": [840, 120]
+  },
+  {
+    "id": 38,
+    "name": "达斯龙",
+    "maxHP": 160,
+    "maxMP": 0,
+    "power": 100,
+    "res": 40,
+    "speed": 40,
+    "agi": 0,
+    "AI": {
+      "type": "sequence",
+      "nodes": [
+        {
+          "type": "attack"
+        },
+        {
+          "type": "magic",
+          "value": 2005
+        },
+        {
+          "type": "attack"
+        },
+        {
+          "type": "magic",
+          "value": 2050
+        },
+        {
+          "type": "attack"
+        },
+        {
+          "type": "attack"
+        },
+        {
+          "type": "magic",
+          "value": 2050
+        },
+        {
+          "type": "attack"
+        }
+      ]
+    },
+    "exp": 155,
+    "gold": 148,
+    "spritePivotOffset": [120, 0]
+  },
+  {
+    "id": 39,
+    "name": "龙王",
+    "maxHP": 240,
+    "maxMP": 40,
+    "power": 107,
+    "res": 110,
+    "speed": 55,
+    "agi": 2,
+    "AI": {
+      "type": "select",
+      "percentage": 100,
+      "nodes": [
+        { "type": "attack", "percentage": 3 },
+        { "type": "magic", "value": 2010, "percentage": 2 },
+        { "type": "magic", "value": 2009, "percentage": 2 },
+        { "type": "magic", "value": 2003, "percentage": 1 }
+      ]
+    },
+    "exp": 0,
+    "gold": 0,
+    "spritePivotOffset": [480, 360]
+  },
+  {
+    "id": 40,
+    "name": "龙王",
+    "maxHP": 350,
+    "maxMP": 0,
+    "power": 130,
+    "res": 150,
+    "speed": 90,
+    "agi": 0,
+    "AI": {
+      "type": "sequence",
+      "nodes": [
+        { "type": "magic", "value": "2052" },
+        { "type": "attack" },
+        {
+          "type": "select",
+          "nodes": [
+            { "type": "magic", "value": 2050, "percentage": 4 },
+            { "type": "magic", "value": 2051, "percentage": 4 }
+          ]
+        },
+        {
+          "type": "select",
+          "nodes": [{ "type": "attack" }, { "type": "magic", "value": 2051 }]
+        }
       ]
     },
     "exp": 8,
     "gold": 16,
-    "spritePivotOffset": [0, 240]
+    "spriteWidth": 240,
+    "spriteHeight": 240,
+    "spritePivotOffset": [0, 480]
   }
 ]

@@ -54,8 +54,9 @@ export class EnemyBattleCharacter extends BattleCharacter {
     if (!this.executingAICommand) return this.AICommand
 
     let node: EnemyAICommand | undefined = this.executingAICommand
-    while (node.parentNode?.isSequenceType()) {
-      if (node.nextNode) return node.nextNode
+    while (node) {
+      if (node.parentNode?.isSequenceType() && node.nextNode)
+        return node.nextNode
       node = node.parentNode
     }
     return node || this.AICommand
@@ -70,7 +71,7 @@ export class EnemyBattleCharacter extends BattleCharacter {
         }
       } else if (this.executingAICommand.type === 'magic') {
         const magic = GetMagic(parseInt(`${this.executingAICommand.value}`, 10))
-        if (magic.cost < this.MP) {
+        if (magic.cost <= this.MP) {
           return {
             command: BattleCharacterCommand.Magic,
             commandArgs: [magic],
