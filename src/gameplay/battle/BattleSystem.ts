@@ -188,15 +188,13 @@ export default class BattleSystem extends Component {
         }
       }
     } else if (this.data.isFailed) {
+      this.engine.audios.pauseBGM()
       this.engine.audios.playSE(Audios.Dead)
-      await delay(6000)
-    }
-  }
-
-  private enemySelectCommand(): BattleCommand {
-    return {
-      command: BattleCharacterCommand.Attack,
-      commandArgs: [],
+      await this.ui.showMessage(
+        `${this.data.hero.name} 被打败了！`,
+        false,
+        6000
+      )
     }
   }
 

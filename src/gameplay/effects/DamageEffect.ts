@@ -1,7 +1,9 @@
+import { Audios } from '@gameplay/audio/AudioConfig'
 import { range } from '../../engine/math'
 import BattleCharacter from '../battle/BaseBattleCharacter'
 import { Command, CommandTriggerType, CommandTriggerWhen } from './buffer'
 import { ValueBuffer } from './ValueBuffer'
+import { audio } from '@gameplay/events/EventExector'
 
 export default class DamageEffect implements Command, Cloneable<DamageEffect> {
   constructor(
@@ -31,6 +33,7 @@ export default class DamageEffect implements Command, Cloneable<DamageEffect> {
           damage = buffer.execute(when, type, damage)
         })
 
+      audio().playSE(Audios.Damage3)
       targetCharacter.HP -= damage
       return `${targetCharacter.name} 受到了 ${damage} 点伤害`
     }

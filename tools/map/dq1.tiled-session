@@ -21,8 +21,8 @@
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 426,
-                "y": 509
+                "x": 480,
+                "y": 480.5
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle1.tmj": {
@@ -32,18 +32,18 @@
                 28
             ],
             "expandedObjectLayers": [
-                35,
-                34,
-                33,
-                32,
                 16,
+                34,
+                35,
+                32,
+                33,
                 14
             ],
             "scale": 0.75,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 407.3333333333333,
-                "y": 468.66666666666663
+                "x": 419.9999999999999,
+                "y": 480.66666666666674
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle2.tmj": {
@@ -52,18 +52,18 @@
                 28
             ],
             "expandedObjectLayers": [
-                35,
-                34,
-                33,
-                32,
                 16,
+                34,
+                35,
+                32,
+                33,
                 14
             ],
             "scale": 0.75,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 596.6666666666666,
-                "y": 731.3333333333333
+                "x": 609.3333333333333,
+                "y": 741.9999999999999
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle3.tmj": {
@@ -72,8 +72,8 @@
                 28
             ],
             "expandedObjectLayers": [
-                34,
                 16,
+                34,
                 32,
                 33,
                 14
@@ -81,8 +81,8 @@
             "scale": 0.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 838,
-                "y": 142
+                "x": 602,
+                "y": 585
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle4.tmj": {
@@ -91,18 +91,18 @@
                 28
             ],
             "expandedObjectLayers": [
-                35,
-                34,
-                33,
-                32,
                 16,
+                34,
+                35,
+                32,
+                33,
                 14
             ],
             "scale": 3,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 453.16666666666663,
-                "y": 483.16666666666663
+                "x": 456,
+                "y": 485.8333333333333
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle5.tmj": {
@@ -111,18 +111,18 @@
                 28
             ],
             "expandedObjectLayers": [
-                35,
-                34,
-                33,
-                32,
                 16,
+                34,
+                35,
+                32,
+                33,
                 14
             ],
             "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 665.1515151515151,
-                "y": 516.6666666666667
+                "x": 693.9393939393939,
+                "y": 546.9696969696971
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle6.tmj": {
@@ -131,16 +131,16 @@
                 28
             ],
             "expandedObjectLayers": [
-                33,
-                32,
                 16,
+                32,
+                33,
                 14
             ],
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 40.5,
-                "y": 5.5
+                "x": 358,
+                "y": 512.5
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle7.tmj": {
@@ -149,21 +149,21 @@
                 28
             ],
             "expandedObjectLayers": [
-                32,
                 16,
+                32,
                 14
             ],
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 40.5,
-                "y": 5.5
+                "x": 418,
+                "y": 392.5
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/DracolordsCastle8.tmj": {
             "expandedGroupLayers": [
-                7,
                 22,
+                7,
                 14
             ],
             "expandedObjectLayers": [
@@ -173,51 +173,51 @@
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 522.3333333333333,
-                "y": 634.3333333333333
+                "x": 528,
+                "y": 639.6666666666666
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Garai.tmj": {
             "expandedGroupLayers": [
-                7,
                 22,
-                14,
-                28,
-                26
-            ],
-            "expandedObjectLayers": [
-                21,
-                14,
-                59,
-                57,
-                56,
-                55
-            ],
-            "scale": 0.75,
-            "selectedLayer": 0,
-            "viewCenter": {
-                "x": 575.3333333333334,
-                "y": 560.6666666666666
-            }
-        },
-        "E:/projects/web/dq1-web-pre/src/data/scenes/Garais1.tmj": {
-            "expandedGroupLayers": [
                 7,
-                22,
-                35,
+                26,
                 14,
                 28
             ],
             "expandedObjectLayers": [
                 21,
+                55,
+                59,
+                56,
+                14,
+                57
+            ],
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 576,
+                "y": 560.6666666666667
+            }
+        },
+        "E:/projects/web/dq1-web-pre/src/data/scenes/Garais1.tmj": {
+            "expandedGroupLayers": [
+                22,
+                35,
+                7,
+                14,
+                28
+            ],
+            "expandedObjectLayers": [
                 16,
+                21,
                 14
             ],
             "scale": 3,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 701.1666666666666,
-                "y": 701.1666666666666
+                "x": 704,
+                "y": 703.8333333333333
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Garais2.tmj": {
@@ -225,19 +225,19 @@
                 28
             ],
             "expandedObjectLayers": [
-                36,
-                35,
-                34,
-                33,
-                32,
                 16,
+                34,
+                35,
+                32,
+                33,
+                36,
                 14
             ],
             "scale": 0.75,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 500.66666666666663,
-                "y": 436.66666666666663
+                "x": 512,
+                "y": 448.66666666666674
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Garais3.tmj": {
@@ -245,13 +245,13 @@
                 7
             ],
             "expandedObjectLayers": [
-                36,
-                37,
+                16,
                 34,
                 35,
-                16,
                 32,
                 33,
+                36,
+                37,
                 14
             ],
             "scale": 1.5,
@@ -294,8 +294,8 @@
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/HolyShrine2.tmj": {
             "expandedGroupLayers": [
-                28,
-                7
+                7,
+                28
             ],
             "scale": 2,
             "selectedLayer": 0,
@@ -306,17 +306,17 @@
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Maira.tmj": {
             "expandedGroupLayers": [
-                14,
-                28,
-                26,
+                22,
                 7,
-                22
+                26,
+                14,
+                28
             ],
             "expandedObjectLayers": [
-                57,
                 21,
-                14,
-                56
+                56,
+                57,
+                14
             ],
             "scale": 1.5,
             "selectedLayer": 1,
@@ -327,43 +327,43 @@
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/MarshyCave.tmj": {
             "expandedGroupLayers": [
-                7,
                 22,
+                7,
                 14
             ],
             "expandedObjectLayers": [
-                21,
                 32,
+                21,
                 14
             ],
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 404.66666666666663,
-                "y": 1012.6666666666666
+                "x": 415.9999999999999,
+                "y": 1023.3333333333333
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado1.tmj": {
             "expandedGroupLayers": [
-                7,
                 22,
+                7,
+                26,
                 14,
-                28,
-                26
+                28
             ],
             "expandedObjectLayers": [
-                21,
-                16,
-                62,
+                60,
                 61,
+                16,
+                21,
                 14,
-                60
+                62
             ],
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 684.6666666666666,
-                "y": 711.3333333333333
+                "x": 696,
+                "y": 721.9999999999999
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado2.tmj": {
@@ -387,15 +387,15 @@
                 14
             ],
             "expandedObjectLayers": [
-                21,
                 32,
+                21,
                 14
             ],
             "scale": 2,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 91.75,
-                "y": 75.75
+                "x": 96,
+                "y": 80.25
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Radatome.tmj": {
@@ -426,52 +426,52 @@
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/RainShrine2.tmj": {
             "expandedGroupLayers": [
+                7,
                 14,
-                28,
-                7
+                28
             ],
             "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 176,
-                "y": 191.75
+                "y": 192
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Rimuldar.tmj": {
             "expandedGroupLayers": [
-                7,
                 22,
-                14,
+                7,
+                26,
                 30,
-                28,
-                26
+                14,
+                28
             ],
             "expandedObjectLayers": [
                 21,
-                14,
+                55,
                 58,
-                57,
                 56,
-                55
+                14,
+                57
             ],
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 607.3333333333334,
-                "y": 592.6666666666666
+                "x": 608,
+                "y": 592.6666666666667
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave1.tmj": {
             "expandedGroupLayers": [
+                22,
                 14,
-                28,
-                22
+                28
             ],
             "scale": 0.75,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 692.6666666666666,
-                "y": 692.6666666666666
+                "x": 704,
+                "y": 703.3333333333333
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave2.tmj": {
@@ -480,16 +480,16 @@
                 28
             ],
             "expandedObjectLayers": [
-                37,
                 16,
-                14,
-                38
+                38,
+                37,
+                14
             ],
             "scale": 0.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 687,
-                "y": 687
+                "x": 704,
+                "y": 705
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/RockyCave3.tmj": {
@@ -507,8 +507,8 @@
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 40.5,
-                "y": 5.5
+                "x": 393,
+                "y": 390.5
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/RotosCave2.tmj": {
@@ -518,20 +518,20 @@
             "scale": 3,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 413.16666666666663,
-                "y": 384.5
+                "x": 416,
+                "y": 387.5
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle.tmj": {
             "expandedGroupLayers": [
-                30,
-                28,
+                7,
                 26,
-                7
+                30,
+                28
             ],
             "expandedObjectLayers": [
-                14,
-                65
+                65,
+                14
             ],
             "scale": 1,
             "selectedLayer": 61,
@@ -542,31 +542,31 @@
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle2.tmj": {
             "expandedGroupLayers": [
-                14,
-                28,
-                26,
+                22,
                 7,
-                22
+                26,
+                14,
+                28
             ],
             "expandedObjectLayers": [
-                68,
                 16,
+                68,
                 14
             ],
             "scale": 1.5,
             "selectedLayer": 18,
             "viewCenter": {
-                "x": 506.66666666666663,
-                "y": 369.99999999999994
+                "x": 672,
+                "y": 655.6666666666666
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/TantegelCastle3.tmj": {
             "expandedGroupLayers": [
-                14,
-                28,
-                26,
+                22,
                 7,
-                22
+                26,
+                14,
+                28
             ],
             "expandedObjectLayers": [
                 16,
@@ -575,30 +575,30 @@
             "scale": 1.5,
             "selectedLayer": 15,
             "viewCenter": {
-                "x": 266.3333333333333,
-                "y": 154.33333333333331
+                "x": 272,
+                "y": 160.33333333333331
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/World.tmj": {
             "expandedGroupLayers": [
-                14,
                 30,
+                14,
                 28
             ],
             "expandedObjectLayers": [
-                36,
-                21,
+                47,
+                45,
                 35,
                 32,
-                14,
-                47,
-                45
+                21,
+                36,
+                14
             ],
             "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 2043.75,
-                "y": 2043.75
+                "x": 2048,
+                "y": 2047.75
             }
         },
         "Tiles/Tiles.tsx": {

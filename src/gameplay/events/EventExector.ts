@@ -218,17 +218,20 @@ export async function battle(enemyId: number, wait = true) {
     await nextFrame()
   }
   executingEngine!.sceneManager.unloadScene('Battle')
-  if (checkBattleFinishStatus()) return
-
   setInputType(previouseInputType)
-  audio().playBGM(currentScene().bgm)
+  if (checkBattleIsFailed()) {
+    transitionToScene(executingEngine!, 'TantegelCastle2', 'RebornPoint').then(
+      () => {
+        audio().playBGM(currentScene().bgm)
+      }
+    )
+  } else {
+    audio().playBGM(currentScene().bgm)
+  }
 }
 
-function checkBattleFinishStatus(): boolean {
-  if (_isBattleStatus === BattleFinishStatus.Faield) {
-    // back to tantegel castle
-  }
-  return false
+function checkBattleIsFailed() {
+  return _isBattleStatus === BattleFinishStatus.Faield
 }
 
 export async function setBattleFinishStatus(val: BattleFinishStatus) {

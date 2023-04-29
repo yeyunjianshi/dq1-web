@@ -139,7 +139,7 @@ export default class TitleComponent extends Component {
       }
       return
     } else if (this.input.isConfirmPressed()) {
-      // this.audios.playSE(Audios.Menu)
+      this.audios.playSE(Audios.Menu)
     }
 
     if (this.isSelectSave) this._saveWindow.update()

@@ -500,6 +500,103 @@
                  "visible":true,
                  "x":0,
                  "y":0
+                }, 
+                {
+                 "class":"Entrace",
+                 "draworder":"topdown",
+                 "id":70,
+                 "name":"\u91cd\u751f\u70b9",
+                 "objects":[
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":37,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":335,
+                         "y":625
+                        }, 
+                        {
+                         "class":"",
+                         "height":0,
+                         "id":38,
+                         "name":"",
+                         "point":true,
+                         "rotation":0,
+                         "visible":true,
+                         "width":0,
+                         "x":273.5,
+                         "y":276.5
+                        }],
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[{\t\n\t\"type\": \"TalkQuestEvent\",\n         \"eventId\": \"Q100\",\n         \"when\": \"enter\",\n         \"insertEventTable\": false\n}]"
+                        }, 
+                        {
+                         "name":"coordX",
+                         "type":"int",
+                         "value":8
+                        }, 
+                        {
+                         "name":"coordY",
+                         "type":"int",
+                         "value":8
+                        }, 
+                        {
+                         "name":"d_direction",
+                         "type":"string",
+                         "value":"up"
+                        }, 
+                        {
+                         "name":"d_isPremutation",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"d_tag",
+                         "type":"string",
+                         "value":"RebornPoint"
+                        }, 
+                        {
+                         "name":"height",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"t_nextScene",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"t_tag",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"width",
+                         "type":"int",
+                         "value":32
+                        }, 
+                        {
+                         "name":"x",
+                         "type":"int",
+                         "value":640
+                        }, 
+                        {
+                         "name":"y",
+                         "type":"int",
+                         "value":416
+                        }],
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
                 }],
          "name":"Entrances",
          "opacity":1,
@@ -730,8 +827,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":70,
- "nextobjectid":37,
+ "nextlayerid":71,
+ "nextobjectid":39,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",
