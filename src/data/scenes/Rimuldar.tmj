@@ -418,7 +418,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 19,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"right\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 18,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"right\"\n          }\n]"
                         }],
                  "type":"imagelayer",
                  "visible":true,
@@ -562,7 +562,7 @@
                         {
                          "name":"components",
                          "type":"string",
-                         "value":"[\n          {\n            \"type\": \"NPCControllerComponent\",\n            \"roleIndex\": 14,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"up\"\n          }\n]"
+                         "value":"[\n          {\n            \"type\": \"$MoveComponent\",\n            \"roleIndex\": 14,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"up\"\n          }\n]"
                         }, 
                         {
                          "name":"floatPosition",

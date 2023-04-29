@@ -457,6 +457,29 @@
                  "y":0
                 }, 
                 {
+                 "id":59,
+                 "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/npc_6.png",
+                 "name":"\u65c5\u9986\u5185\u5149\u5934\u7684\u526f\u672c",
+                 "offsetx":973.666666666666,
+                 "offsety":314.833333333333,
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"components",
+                         "type":"string",
+                         "value":"[\n          {\n            \"type\": \"$MoveComponent\",\n            \"roleIndex\": 6,\n            \"moveSpeed\": 0,\n            \"initDirection\": \"up\"\n          }\n]"
+                        }, 
+                        {
+                         "name":"floatPosition",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "type":"imagelayer",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
                  "id":42,
                  "image":"..\/..\/..\/tools\/map\/Sprites\/npc\/event.png",
                  "name":"\u65c5\u9986\u5185\u5149\u5934",
@@ -921,7 +944,7 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":59,
+ "nextlayerid":60,
  "nextobjectid":26,
  "orientation":"orthogonal",
  "renderorder":"right-down",

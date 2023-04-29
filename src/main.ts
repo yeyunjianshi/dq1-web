@@ -71,9 +71,9 @@ function initDevEnv() {
   btn.style.display = isDev ? 'block' : 'none'
 
   // battle test
-  setTimeout(() => {
-    battle(40)
-  }, 300)
+  // setTimeout(() => {
+  //   battle(40)
+  // }, 300)
 
   btn.addEventListener('click', () => {
     engine.audios.playBGM(currentScene().bgm)
