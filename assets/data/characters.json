@@ -4,9 +4,9 @@
     "roleId": 0,
     "name": "阿弗雷",
     "lv": 1,
-    "maxHP": 15,
+    "maxHP": 215,
     "maxMP": 100,
-    "_hp": 15,
+    "_hp": 215,
     "_mp": 100,
     "power": 7,
     "speed": 2,
@@ -40,7 +40,8 @@
         "maxMP": 4,
         "power": 2,
         "speed": 1,
-        "resilience": 2
+        "resilience": 2,
+        "magicsId": [2001]
       },
       {
         "lv": 4,
@@ -49,7 +50,8 @@
         "maxMP": 6,
         "power": 1,
         "speed": 1,
-        "resilience": 2
+        "resilience": 2,
+        "magicsId": [2002]
       },
       {
         "lv": 5,
@@ -76,7 +78,8 @@
         "maxMP": 2,
         "power": 5,
         "speed": 7,
-        "resilience": 3
+        "resilience": 3,
+        "magicsId": [2003]
       },
       {
         "lv": 8,
@@ -94,7 +97,8 @@
         "maxMP": 6,
         "power": 4,
         "speed": 2,
-        "resilience": 1
+        "resilience": 1,
+        "magicsId": [2004]
       },
       {
         "lv": 10,
@@ -103,7 +107,8 @@
         "maxMP": 3,
         "power": 5,
         "speed": 9,
-        "resilience": 4
+        "resilience": 4,
+        "magicsId": [2005]
       },
       {
         "lv": 11,
@@ -121,7 +126,8 @@
         "maxMP": 7,
         "power": 8,
         "speed": 5,
-        "resilience": 3
+        "resilience": 3,
+        "magicsId": [2006]
       },
       {
         "lv": 13,
@@ -130,7 +136,8 @@
         "maxMP": 5,
         "power": 4,
         "speed": 8,
-        "resilience": 4
+        "resilience": 4,
+        "magicsId": [2007]
       },
       {
         "lv": 14,
@@ -148,7 +155,8 @@
         "maxMP": 1,
         "power": 8,
         "speed": 9,
-        "resilience": 5
+        "resilience": 5,
+        "magicsId": [2008]
       },
       {
         "lv": 16,
@@ -166,7 +174,8 @@
         "maxMP": 5,
         "power": 8,
         "speed": 0,
-        "resilience": 4
+        "resilience": 4,
+        "magicsId": [2009]
       },
       {
         "lv": 18,
@@ -184,7 +193,8 @@
         "maxMP": 6,
         "power": 2,
         "speed": 2,
-        "resilience": 1
+        "resilience": 1,
+        "magicsId": [2010]
       },
       {
         "lv": 20,

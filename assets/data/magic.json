@@ -86,5 +86,29 @@
     "type": 2,
     "useType": 2,
     "effect": "u:battle:damage:58-65"
+  },
+  {
+    "id": 2050,
+    "name": "火之息",
+    "cost": 0,
+    "type": 2,
+    "useType": 2,
+    "effect": "u:battle:damage:18-35"
+  },
+  {
+    "id": 2051,
+    "name": "火炎之息",
+    "cost": 0,
+    "type": 2,
+    "useType": 2,
+    "effect": "u:battle:damage:18-35"
+  },
+  {
+    "id": 2052,
+    "name": "激烈之火",
+    "cost": 0,
+    "type": 2,
+    "useType": 2,
+    "effect": "u:battle:damage:18-35"
   }
 ]
