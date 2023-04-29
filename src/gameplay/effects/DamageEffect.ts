@@ -33,7 +33,7 @@ export default class DamageEffect implements Command, Cloneable<DamageEffect> {
           damage = buffer.execute(when, type, damage)
         })
 
-      audio().playSE(Audios.Damage3)
+      audio().playSE(targetCharacter.isHero ? Audios.Damage2 : Audios.Damage3)
       targetCharacter.HP -= damage
       return `${targetCharacter.name} 受到了 ${damage} 点伤害`
     }

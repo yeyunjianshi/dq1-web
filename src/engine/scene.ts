@@ -18,6 +18,7 @@ export default class implements LifeCycle {
   priority = 10
   loadType: SceneLoadType = SceneLoadType.Replace
   isMeetEnemy = false
+  enemies: number[] = []
   isCave = false
   group?: string
 

@@ -60,6 +60,7 @@ function convert({ src, tileSize = DefaultTileSize }) {
     'hasCamera',
     'isCave',
     'isMeetEnemy',
+    'enemies',
     'group',
   ].forEach((prop) => {
     scene[prop] = property(mapData, prop)

@@ -213,6 +213,7 @@ type SceneData = {
   hasCamera?: boolean // 是否有摄像机
   isCave?: boolean
   isMeetEnemy: boolean
+  enemies?: string
   group?: string
 }
 

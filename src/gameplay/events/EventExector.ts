@@ -204,7 +204,12 @@ export async function message(text: string, callback?: () => void) {
 let _isBattleStatus: BattleFinishStatus = BattleFinishStatus.Pending
 
 export async function battleInScene() {
-  await battle(1)
+  const sceneEnemiesIds = currentScene().enemies
+  const enemyId =
+    sceneEnemiesIds.length > 0
+      ? sceneEnemiesIds[Math.floor(Math.random() * sceneEnemiesIds.length)]
+      : 1
+  await battle(enemyId)
 }
 
 export async function battle(enemyId: number, wait = true) {

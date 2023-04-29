@@ -21,8 +21,8 @@ const DefaultInitGameCharacter = import.meta.env.DEV
         // generateEventId('Q666'),
         // generateEventId('Q888'),
       ],
-      isMeetEnemty: false,
-      isLightInCave: false,
+      isMeetEnemty: true,
+      isLightInCave: true,
     }
   : {
       id: 1,

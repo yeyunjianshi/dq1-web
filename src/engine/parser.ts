@@ -156,6 +156,11 @@ export function parseScene(data: SceneData, engine: Engine) {
   scene.isCave = data.isCave ?? false
   scene.isMeetEnemy = data.isMeetEnemy ?? false
   scene.isSetCamera = data.hasCamera ?? true
+  scene.enemies =
+    data.enemies
+      ?.split(',')
+      .filter((v) => !!v)
+      .map((v) => parseInt(v)) ?? []
   scene.group = data.group
   if (data.bgm) {
     assetLoader.addAssets(engine.resource.loadAudio(data.bgm))
