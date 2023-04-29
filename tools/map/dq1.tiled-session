@@ -196,8 +196,8 @@
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 576,
-                "y": 560.6666666666667
+                "x": 566.6666666666665,
+                "y": 561.3333333333333
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Garais1.tmj": {
@@ -217,7 +217,7 @@
             "selectedLayer": 1,
             "viewCenter": {
                 "x": 704,
-                "y": 703.8333333333333
+                "y": 703.6666666666666
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Garais2.tmj": {
@@ -339,8 +339,8 @@
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 415.9999999999999,
-                "y": 1023.3333333333333
+                "x": 416,
+                "y": 1022.6666666666667
             }
         },
         "E:/projects/web/dq1-web-pre/src/data/scenes/Mercado1.tmj": {
