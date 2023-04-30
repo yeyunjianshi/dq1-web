@@ -230,7 +230,7 @@
     },
     "exp": 31,
     "gold": 48,
-    "spritePivotOffset": [0, 240]
+    "spritePivotOffset": [1200, 120]
   },
   {
     "id": 15,

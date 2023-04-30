@@ -19,6 +19,11 @@
                  "value":"bgm\/dungeon.mp3"
                 }, 
                 {
+                 "name":"enemies",
+                 "type":"string",
+                 "value":"12,8,10,11,22"
+                }, 
+                {
                  "name":"group",
                  "type":"string",
                  "value":"RockyCave"
