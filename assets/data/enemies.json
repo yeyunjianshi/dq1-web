@@ -88,7 +88,7 @@
     "AI": { "type": "attack", "percentage": 100 },
     "exp": 12,
     "gold": 20,
-    "spritePivotOffset": [600, 0]
+    "spritePivotOffset": [480, 0]
   },
   {
     "id": 7,
@@ -102,7 +102,7 @@
     "AI": { "type": "attack", "percentage": 100 },
     "exp": 16,
     "gold": 25,
-    "spritePivotOffset": [1020, 120]
+    "spritePivotOffset": [1080, 120]
   },
   {
     "id": 8,
@@ -230,7 +230,7 @@
     },
     "exp": 31,
     "gold": 48,
-    "spritePivotOffset": [0, 240]
+    "spritePivotOffset": [1200, 120]
   },
   {
     "id": 15,
